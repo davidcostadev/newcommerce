@@ -10,7 +10,10 @@
 
   export default {
     components: { HeaderPage },
-    name: 'page'
+    name: 'page',
+    created () {
+      console.log(this)
+    }
   }
 </script>
 

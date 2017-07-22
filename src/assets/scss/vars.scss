@@ -1,6 +1,9 @@
 @import 'functions';
 
+
+
 $color-deeppurple: #7957D5;
+$color-deeppurpledark: #543C95;
 $color-indigo: #558AEC;
 $color-bluegray: #8CAAAB;
 $color-purple: #DE55EC;
@@ -33,6 +36,12 @@ $button-default-hover: $color-gray400;
 $button-default-active: $color-gray600;
 
 
+$button-default-inverse: $color-deeppurpledark;
+$button-default-inverse-hover: darken($color-deeppurpledark, 10%);
+$button-default-inverse-active: darken($color-deeppurpledark, 20%);
+
+
 // fonts
 $font-primary: 'Oxygen', sans-serif;
 
+$navbar-inverse: $color-deeppurpledark;
