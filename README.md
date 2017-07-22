@@ -1,6 +1,6 @@
 # newCommerce
 
-> more Project of ecommerce
+> Just more an open source Ecommerce Project, but new
 
 ## Build Setup
 
