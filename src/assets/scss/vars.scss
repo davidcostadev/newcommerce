@@ -1,0 +1,38 @@
+@import 'functions';
+
+$color-deeppurple: #7957D5;
+$color-indigo: #558AEC;
+$color-bluegray: #8CAAAB;
+$color-purple: #DE55EC;
+$color-red: #E25151;
+
+
+$color-gray50:  #FAFAFA;
+$color-gray100: #F5F5F5;
+$color-gray200: #EEEEEE;
+$color-gray300: #E0E0E0;
+$color-gray400: #BDBDBD;
+$color-gray500: #9E9E9E;
+$color-gray600: #757575;
+$color-gray700: #616161;
+$color-gray800: #424242;
+$color-gray900: #212121;
+
+$color-primary: $color-deeppurple;
+$color-second: $color-indigo;
+
+// texts
+$text-color: $color-gray800;
+
+// bordes
+$border-color: $color-gray200;
+
+// buttons
+$button-default: $color-gray200;
+$button-default-hover: $color-gray400;
+$button-default-active: $color-gray600;
+
+
+// fonts
+$font-primary: 'Oxygen', sans-serif;
+

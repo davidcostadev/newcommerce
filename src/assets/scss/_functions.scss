@@ -1,0 +1,7 @@
+@function text-color-background($color) {
+  @if (lightness($color) > 50) {
+    @return #212121; // Lighter backgorund, return dark color
+  } @else {
+    @return #FAFAFA; // Darker background, return light color
+  }
+}
