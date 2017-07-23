@@ -2,14 +2,16 @@
   <div id="page">
     <header-page></header-page>
     <router-view></router-view>
+    <overlay></overlay>
   </div>
 </template>
 
 <script>
   import HeaderPage from '~layout/header'
+  import Overlay from '~layout/overlay'
 
   export default {
-    components: { HeaderPage },
+    components: { HeaderPage, Overlay },
     name: 'page',
     created () {
       console.log(this)

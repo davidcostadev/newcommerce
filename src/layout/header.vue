@@ -22,19 +22,21 @@
             <a class="menu-link" href="#"><i class="ion-ios-cart-outline"></i> <span class="badge">1</span></a>
           </div>
           <div v-if="!detect.isDesktop" class="menu-item">
-            <button class="menu-link" href="#"><i class="ion-navicon"></i></button>
+            <button class="menu-link" @click="openMenu"><i class="ion-navicon"></i></button>
           </div>
         </div>
       </div>
     </div>
+     <menu-mobile></menu-mobile>
   </header>
 </template>
 
 <script>
   import SearchTop from '~layout/search-top'
+  import MenuMobile from '~layout/menu-mobile'
 
   export default {
-    components: { SearchTop },
+    components: { SearchTop, MenuMobile },
     created () {
       console.log(this.$detect.width)
     },
@@ -53,6 +55,11 @@
     },
     data () {
       return {
+      }
+    },
+    methods: {
+      openMenu () {
+        this.$store.dispatch('overMenu')
       }
     }
   }
