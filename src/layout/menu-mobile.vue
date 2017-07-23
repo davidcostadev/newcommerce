@@ -3,18 +3,13 @@
     <nav v-if="show" class="menu-mobile">
       <div class="menu-title">Menu</div>
       <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        <li class="nav-item"><a href="/" class="nav-link">Telefonia</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Informática</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Eletrodomésticos</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Móveis</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Importados</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Alimentos</a></li>
+        <li class="nav-item"><a href="/" class="nav-link">Serviços</a></li>
       </ul>
     </nav>
   </transition>
@@ -25,6 +20,12 @@
     computed: {
       show () {
         return this.$store.state.layout.overlay
+      },
+      detect () {
+        if (this.$detect.isDesktop) {
+          this.$store.dispatch('closeMenu')
+        }
+        return this.$detect
       }
     }
   }

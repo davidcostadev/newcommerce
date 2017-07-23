@@ -26,6 +26,7 @@ module.exports = {
       '~layout': resolve('src/layout'),
       '~assets': resolve('src/assets'),
       'assets': resolve('src/assets'),
+      'assets/img': resolve('src/assets/img'),
       '~plugins': resolve('src/plugins'),
     }
   },
