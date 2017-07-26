@@ -1,5 +1,6 @@
 <template>
   <div class="page-home">
+    <banner1></banner1>
     <div class="hero is-primary">
       <div class="title">asds</div>
     </div>
@@ -7,8 +8,11 @@
 </template>
 
 <script>
+  import Banner1 from '~layout/banner'
+
   export default {
-    name: 'hello',
+    name: 'Home',
+    components: { Banner1 },
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'

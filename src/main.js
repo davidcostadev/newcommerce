@@ -5,6 +5,7 @@ import Vue from 'vue'
 import '~plugins/bootstrap-vue'
 import '~plugins/vuex'
 import '~plugins/window-detect'
+import '~plugins/vue-awesome-swiper'
 
 import App from './default'
 import router from './router'
