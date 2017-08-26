@@ -2,6 +2,7 @@
   <div id="page">
     <header-page></header-page>
     <router-view></router-view>
+    <footer-page></footer-page>
     <overlay></overlay>
   </div>
 </template>
@@ -9,9 +10,10 @@
 <script>
   import HeaderPage from '~layout/header'
   import Overlay from '~layout/overlay'
+  import footerPage from '~layout/footer'
 
   export default {
-    components: { HeaderPage, Overlay },
+    components: { HeaderPage, footerPage, Overlay },
     name: 'page',
     created () {
       console.log(this)
@@ -27,6 +29,7 @@
     overflow-x: initial;
     color: $text-color;
     font-family: $font-primary;
+    background: $color-gray100;
   }
 
   a {

@@ -72,6 +72,10 @@
 <style lang="scss">
   @import '~assets/scss/vars.scss';
 
+  #header-page-one {
+    background-color: white;
+  }
+
   .brand {
     flex-grow: 2;
     a {

@@ -21,8 +21,15 @@ $color-gray700: #616161;
 $color-gray800: #424242;
 $color-gray900: #212121;
 
+$white: $color-gray50;
+$black: $color-gray900;
+
+
 $color-primary: $color-deeppurple;
 $color-second: $color-indigo;
+
+$primary-color: $color-primary;
+$secondary-color: $color-second;
 
 // texts
 $text-color: $color-gray800;
