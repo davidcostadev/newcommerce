@@ -28,6 +28,7 @@ module.exports = {
       'assets': resolve('src/assets'),
       'assets/img': resolve('src/assets/img'),
       '~plugins': resolve('src/plugins'),
+      '~components': resolve('src/components'),
     }
   },
   module: {
