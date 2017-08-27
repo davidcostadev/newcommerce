@@ -33,8 +33,10 @@
 
   .banner-mosaico-grid {
     display: flex;
+    flex-wrap: wrap;
+
     .banner-mosaico-col {
-      flex: 1 1 auto;
+      flex: 1 1 100%;
       display: flex;
       justify-content: stretch;
       align-items: stretch;
@@ -50,10 +52,11 @@
   }
 
   .banner-mosaico {
-    flex: 1 1 auto;
+    flex: 1 1 50%;
     display: flex;
     flex-direction: column;
     background-size: cover;
+    background-position: center;
     padding: 40px 60px;
     transition: transform 0.4s ease;
 
@@ -123,6 +126,15 @@
       .banner-text2,
       .banner-btn {
         text-align: left;
+      }
+    }
+  }
+
+  @include min-sm {
+    .banner-mosaico-grid {
+      .banner-mosaico-col {
+        flex: 1 1 50%;
+        max-width: 50%;
       }
     }
   }

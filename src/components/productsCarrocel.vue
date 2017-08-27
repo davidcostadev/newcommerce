@@ -43,11 +43,27 @@
         ]
       }
     },
+    computed: {
+      detect () {
+        return this.$detect
+      },
+      quant () {
+        console.log(this.detect)
+
+        let row = 5
+
+        if (this.detect.width < 1200) {
+          row = 4
+        }
+
+        return row
+      }
+    },
     methods: {
       getImg () {
         const index = Math.floor(Math.random() * 14)
 
-        console.log(index)
+        // console.log(index)
 
         return this.img[index]
       }
@@ -128,6 +144,8 @@
       .btn {
         flex: 1 1 auto;
         border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
       }
       .btn-detail {
         background-color: $color-gray300;
@@ -158,18 +176,62 @@
 
   .products-section-row {
     display: flex;
+    flex-wrap: wrap;
     margin-left: -5px;
     margin-right: -5px;
 
 
     .product {
-      flex: 1 1 20%;
-      max-width: 20%;
+      flex: 1 1 calc(100% - 10px);
+      max-width: calc(100% - 10px);
       margin-left: 5px;
       margin-right: 5px;
       margin-bottom: 30px;
     }
   }
+
+
+
+
+  @include min-xs {
+    .products-section-row {
+      .product {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+  @include min-md {
+    .products-section-row {
+      .product {
+        flex: 1 1 calc(25% - 10px);
+        max-width: calc(25% - 10px);
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include min-lg {
+    .products-section-row {
+      .product {
+        flex: 1 1 calc(20% - 10px);
+        max-width: calc(20% - 10px);
+
+        &:last-child {
+          display: block;
+        }
+
+      }
+    }
+  }
+
 
   .products-section+.products-section {
     border-top: 1px solid $color-gray300;

@@ -52,3 +52,34 @@ $button-default-inverse-active: darken($color-deeppurpledark, 20%);
 $font-primary: 'Oxygen', sans-serif;
 
 $navbar-inverse: $color-deeppurpledark;
+
+
+$min-xs: 540px;
+$min-sm: 768px;
+$min-md: 992px;
+$min-lg: 1200px;
+
+
+@mixin min-mobile {
+  @content;
+}
+@mixin min-xs {
+  @media(min-width: $min-xs) {
+    @content;
+  }
+}
+@mixin min-sm {
+  @media(min-width: $min-sm) {
+    @content;
+  }
+}
+@mixin min-md {
+  @media(min-width: $min-md) {
+    @content;
+  }
+}
+@mixin min-lg {
+  @media(min-width: $min-lg) {
+    @content;
+  }
+}

@@ -64,13 +64,13 @@ const WindowDetect = {
       created () {
         this.$nextTick(() => {
           window.addEventListener('resize', this.eventResizeWindow)
-          this.$store.commit('RESIZE_WINDOW', document.documentElement.clientWidth)
+          this.$store.commit('RESIZE_WINDOW', window.innerWidth)
         })
       },
 
       methods: {
         eventResizeWindow () {
-          this.$store.commit('RESIZE_WINDOW', document.documentElement.clientWidth)
+          this.$store.commit('RESIZE_WINDOW', window.innerWidth)
         }
       }
     })

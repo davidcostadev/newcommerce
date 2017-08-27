@@ -42,7 +42,7 @@
   export default {
     components: { SearchTop, MenuMobile, Navbar },
     created () {
-      console.log(this.$detect.width)
+      // console.log(this.$detect.width)
     },
     computed: {
       detect () {

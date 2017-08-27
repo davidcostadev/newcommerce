@@ -26,6 +26,8 @@
 
 .banner-separate-grid {
   display: flex;
+  flex-wrap: wrap;
+
   .banner-separate-col {
     flex: 1 1 auto;
     display: flex;
