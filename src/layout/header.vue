@@ -4,10 +4,10 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col col-md-4 brand">
-            <a class="brand-link" href="/">
+            <router-link to="/" class="brand-linkl">
               <img v-if="!detect.isMobile && !detect.isTable" src="~assets/img/newcommerce-h.svg" alt="newcommerce">
               <img v-else src="~assets/img/newcommerce-h-inverse.svg" alt="newcommerce">
-            </a>
+            </router-link>
           </div>
           <div v-if="detect.isDesktop" class="col">
             <search-top></search-top>

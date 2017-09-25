@@ -1,7 +1,7 @@
 <template>
   <div class="products-section">
     <h2 class="products-section-title">{{title}}</h2>
-    <div class="products-section-row">
+    <div class="products-section-row products">
       <div v-for="n in 5" class="product">
         <picture class="product-image">
           <img :src="getImg()" alt="">
@@ -11,7 +11,8 @@
           <span class="currency">R$</span> <span class="amount">16,80</span>
         </div>
         <div class="product-buttons">
-          <button type="button" class="btn btn-detail">Ver Detalhes</button>
+          <!-- <button type="button" class="btn btn-detail">Ver Detalhes</button> -->
+          <router-link to="/product/name-of-product" class="btn btn-detail">Ver Detalhes</router-link>
           <button type="button" class="btn btn-buy">Comprar</button>
         </div>
       </div>
@@ -88,87 +89,89 @@
       margin-bottom: 20px;
     }
   }
-  .product {
-    background-color: white;
-    transition: background-color 0.4s ease-in-out;
+  .products {
+    .product {
+      background-color: white;
+      transition: background-color 0.4s ease-in-out;
 
-    display: flex;
-    flex-direction: column;
-
-    &:hover {
-      background-color: darken(white, 6%);
-
-      img {
-        opacity: 0.9;
-      }
-    }
-    .product-image,
-    .product-title
-    .product-buttons {
-      flex: 1 1 auto;
-    }
-
-    .product-image {
       display: flex;
-      align-items: center;
-      // display: inline-block;
-      border-bottom: 3px solid $primary-color;
-      overflow: hidden;
+      flex-direction: column;
 
-      img {
-        width: 100%;
-        transition: opacity 0.4s ease-in-out;
-      }
-    }
-    .product-title {
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-    .product-price {
-      display: flex;
-      justify-content: center;
-      padding: 8px 12px;
-      color: $color-indigo;
-      align-items: baseline;
+      &:hover {
+        background-color: darken(white, 6%);
 
-      .currency {
-        font-size: 16px;
-        margin-right: 5px;
+        img {
+          opacity: 0.9;
+        }
       }
-      .amount {
-        font-size: 30px;
-      }
-    }
-    .product-buttons {
-      display: flex;
-      .btn {
+      .product-image,
+      .product-title
+      .product-buttons {
         flex: 1 1 auto;
-        border-radius: 0;
-        padding-left: 0;
-        padding-right: 0;
       }
-      .btn-detail {
-        background-color: $color-gray300;
-        color: $black;
-        &:hover {
-          background-color: $color-gray400;
-        }
-        &:active {
-          background-color: $color-gray600;
-          color: $white;
-        }
-      }
-      .btn-buy {
-        background-color: $color-gray300;
-        color: $primary-color;
 
-        &:hover {
-          background-color: darken($primary-color, 20%);
-          color: $white;
+      .product-image {
+        display: flex;
+        align-items: center;
+        // display: inline-block;
+        border-bottom: 3px solid $primary-color;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          transition: opacity 0.4s ease-in-out;
         }
-        &:active {
-          background-color: darken($primary-color, 50%);
-          color: $white;
+      }
+      .product-title {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      .product-price {
+        display: flex;
+        justify-content: center;
+        padding: 8px 12px;
+        color: $color-indigo;
+        align-items: baseline;
+
+        .currency {
+          font-size: 16px;
+          margin-right: 5px;
+        }
+        .amount {
+          font-size: 30px;
+        }
+      }
+      .product-buttons {
+        display: flex;
+        .btn {
+          flex: 1 1 auto;
+          border-radius: 0;
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .btn-detail {
+          background-color: $color-gray300;
+          color: $black;
+          &:hover {
+            background-color: $color-gray400;
+          }
+          &:active {
+            background-color: $color-gray600;
+            color: $white;
+          }
+        }
+        .btn-buy {
+          background-color: $color-gray300;
+          color: $primary-color;
+
+          &:hover {
+            background-color: darken($primary-color, 20%);
+            color: $white;
+          }
+          &:active {
+            background-color: darken($primary-color, 50%);
+            color: $white;
+          }
         }
       }
     }

@@ -1,7 +1,9 @@
 <template>
   <div id="page">
     <header-page></header-page>
-    <router-view></router-view>
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
     <footer-page></footer-page>
     <overlay></overlay>
   </div>
@@ -16,7 +18,7 @@
     components: { HeaderPage, footerPage, Overlay },
     name: 'page',
     created () {
-      console.log(this)
+      // console.log(this)
     }
   }
 </script>
@@ -29,7 +31,7 @@
     overflow-x: initial;
     color: $text-color;
     font-family: $font-primary;
-    background: $color-gray100;
+    background: $body-bg;
   }
 
   a {
@@ -47,4 +49,22 @@
   select {
     font-family: $font-primary;
   }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+  }
+
+  .fade-enter-active {
+    transition-delay: .25s;
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
+  }
+
+
+
 </style>

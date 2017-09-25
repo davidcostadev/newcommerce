@@ -27,17 +27,23 @@
   }
 </script>
 
-
-<style lang="scss" scoped>
+.navbar-toggleable-md .navbar-nav .nav-link
+<style lang="scss" >
   @import '~assets/scss/vars';
+  .bg-faded {
+    background-color: $color-gray200;
+  }
+  .navbar-spaced {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
 
   .navbar {
-
+    padding: 0;
 
     .nav-link {
       font-size: 18px;
       text-transform: capitalize;
-      padding: .5rem 1.5rem;
       transition: all .4s cubic-bezier(0.39, 0.575, 0.565, 1);
 
       &:hover,
@@ -47,5 +53,9 @@
       }
     }
   }
+  .navbar-toggleable-md .navbar-nav .nav-link {
+      padding: .5rem 1.5rem;
+  }
+
 
 </style>
