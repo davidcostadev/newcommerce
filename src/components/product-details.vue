@@ -62,16 +62,24 @@
       <span class="amount">{{price(boleto_price)}}</span>
       <span class="text">{{boleto_desconto}}% de Desconco no Boleto ou Transferencia</span>
     </p>
-    <div class="product-correio-calc">
-      <i class="ion-ios-location"></i>
-      <span>Digite seu CEP para calcular o frete</span>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="00000-000">
-        <span class="input-group-btn">
-          <button class="btn btn-primary">Calcular</button>
+    <div class="product-more">
+      <div class="product-correio-calc">
+        <span>
+          <i class="ion-ios-location"></i>
+          <span>Digite seu CEP para calcular o frete</span>
         </span>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="00000-000">
+          <span class="input-group-btn">
+            <button class="btn btn-primary">Calcular</button>
+          </span>
+        </div>
+      </div>
+      <div class="product-buttons">
+        <button class="btn btn-default">Achou preço melhor?</button>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -250,12 +258,18 @@
     }
   }
 
-  .product-correio-calc {
+  .product-more {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .product-correio-calc {
+    display: flex;
+    align-items: end;
     padding: 15px 0;
     margin-bottom: 20px;
+    flex-direction: column;
 
     i {
       color: $color-primary;
@@ -264,6 +278,9 @@
     }
     span {
       flex: 1;
+    }
+    & > span {
+      margin-bottom: 15px
     }
     .input-group {
       max-width: 290px;
