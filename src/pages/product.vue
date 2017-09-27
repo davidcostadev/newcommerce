@@ -4,7 +4,7 @@
       <breadcrumb></breadcrumb>
       <div class="product">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-lg-4">
             <div class="gallery">
               <picture class="gallery-feature gallery-image"><img :src="gallery_feature" alt="name product"></picture>
               <div class="gallery-thumbs">
@@ -17,7 +17,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-lg-8">
             <product-details></product-details>
           </div>
 
@@ -123,12 +123,15 @@
   @import '~assets/scss/vars.scss';
 
   .product {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .gallery {
     background-color: white;
-    .gallery-feature {
+    margin-bottom: 20px;
 
+    .gallery-feature {
+      display: block;
+      text-align: center;
     }
     .gallery-thumbs {
       .gallery-thumb {
@@ -137,6 +140,7 @@
     }
     img {
       width: 100%;
+      max-width: 400px;
     }
   }
 </style>

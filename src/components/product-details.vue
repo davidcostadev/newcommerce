@@ -50,8 +50,8 @@
       </div>
       <div class="product-price-col">
         <div class="product-buttons">
-          <button class="btn btn-lg btn-primary"> Adicionar ao Carrinho</button>
-          <button class="btn btn-lg btn-danger">
+          <button class="btn btn-lg btn-primary btn-buy"> Comprar</button>
+          <button class="btn btn-lg btn-danger btn-favorite">
             <i class="ion-ios-heart"></i>
           </button>
         </div>
@@ -75,7 +75,7 @@
           </span>
         </div>
       </div>
-      <div class="product-buttons">
+      <div class="product-more-buttons">
         <button class="btn btn-default">Achou preço melhor?</button>
       </div>
     </div>
@@ -157,11 +157,15 @@
       margin-bottom: 30px;
     }
     .product-header {
+      display: flex;
+      flex-wrap: wrap;
       border-bottom: 1px solid $color-gray400;
-      padding-bottom: 15px;
+      padding-bottom: 10px;
 
-      &>span+span {
-        padding-left: 15px;
+      &>span {
+        padding-right: 30px ;
+        padding-bottom: 5px;
+
       }
     }
     .currency {
@@ -175,7 +179,13 @@
     }
 
     .product-buttons {
-      .btn {}
+      .btn {
+
+      }
+      .btn-favorite {
+        font-size: 2.00rem;
+        padding: 0.35rem 0.9rem;
+      }
     }
   }
 
@@ -196,15 +206,23 @@
   .product-price-pagseguro {
     display: flex;
     align-items: center;
-    font-size: 18px;
-    span {
+    font-size: 14px;
+    span+span {
       margin-left: 6px
-
     }
 
     a {
       font-size: 12px;
       margin-left: 10px
+    }
+    .amount {
+      margin-left: 0;
+    }
+  }
+
+  @include min-lg {
+    .product-price-pagseguro {
+      font-size: 18px;
     }
   }
 
@@ -212,22 +230,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    flex-direction: column;
+    .product-price-col {
+      margin-bottom: 15px;
+    }
 
     p {
       margin-bottom: 0;
+    }
+  }
+  @include min-md {
+    .product-block {
+      flex-direction: row;
     }
   }
 
   .product-price-boleto {
     background: $color-gray300;
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
-    margin-bottom: 15px;
+    padding: 10px 15px;
+    margin: 0 -15px 15px;
 
     .currency {}
     .amount {
@@ -235,6 +261,14 @@
     }
     .text {
       margin: 10px;
+    }
+  }
+
+  @include min-sm {
+    .product-price-boleto {
+      font-size: 18px;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -250,11 +284,15 @@
     i {
       color: $color-second;
     }
+    span {
+      padding-left: 5px;
+    }
   }
 
   .tags {
     i {
       color: $color-second;
+      margin-right: 5px;
     }
   }
 
@@ -262,6 +300,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+  }
+  @include min-sm {
+    .product-more {
+      flex-direction: row;
+
+    }
   }
 
   .product-correio-calc {
