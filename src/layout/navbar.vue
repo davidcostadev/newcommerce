@@ -2,13 +2,13 @@
   <nav class="navbar navbar-light navbar-toggleable-md bg-faded">
     <div class="container">
       <ul class="navbar-nav">
-        <li class="nav-item"><a href="/" class="nav-link">Telefonia</a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Informática</a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Eletrodomésticos</a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Móveis</a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Importados</a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Alimentos</a></li>
-        <li class="nav-item"><a href="/" class="nav-link">Serviços</a></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Telefonia</router-link></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Informática</router-link></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Eletrodomésticos</router-link></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Móveis</router-link></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Importados</router-link></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Alimentos</router-link></li>
+        <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Serviços</router-link></li>
       </ul>
       <ul v-if="detect.isXl" class="navbar-nav ml-auto">
         <li class="nav-item"><a href="/" class="nav-link">Minha Conta</a></li>
