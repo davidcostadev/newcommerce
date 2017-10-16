@@ -7,7 +7,7 @@
 }
 
 @function color-bg($color) {
-    @if (lightness($color) > 40) {
+    @if (lightness($color) > 50) {
       @return rgba(0, 0, 0, 0.85);
     }
     @else {
