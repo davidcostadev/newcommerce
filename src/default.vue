@@ -26,6 +26,8 @@
 <style lang="scss">
   @import '~assets/scss/vars.scss';
   @import '~assets/scss/overridebootstrap';
+  @import '~assets/scss/products.scss';
+
 
   body {
     overflow-x: initial;

@@ -2,10 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
-import '~plugins/bootstrap-vue'
+// import '~plugins/bootstrap-vue'
+import '~plugins/bootstrap'
 import '~plugins/vuex'
 import '~plugins/window-detect'
 import '~plugins/vue-awesome-swiper'
+import '~plugins/vue-affix'
 
 import App from './default'
 import router from './router'

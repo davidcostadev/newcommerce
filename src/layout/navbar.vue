@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+  <nav class="navbar navbar-light navbar-toggleable-md bg-faded navbar-expand-lg">
     <div class="container">
       <ul class="navbar-nav">
         <li class="nav-item"><router-link to="/category/name-of-category" class="nav-link">Telefonia</router-link></li>
