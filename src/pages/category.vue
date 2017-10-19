@@ -2,83 +2,104 @@
   <div class="category-page container">
     <div class="row">
       <div class="sidebar col-md-3">
-        <affix class="sidebar-menu" relative-element-selector="#example-content" scroll-affix>
-          <div class="widget widget-filter">
-            <h3 class="widget-title">Filtrar</h3>
-            <form action="" class="widget-content">
-              <label>Preço</label>
-              <div class="form-row align-items-center">
-                <div class="col-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Min.">
+        <div>
+
+
+          <affix class="sidebar-menu" relative-element-selector="#example-content"  :offset="{ top: 15, bottom: 40 }">
+            <div class="widget widget-filter">
+              <h3 class="widget-title">Filtrar</h3>
+              <form action="" class="widget-content">
+                <label>Preço</label>
+                <div class="form-row align-items-center">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Min.">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Máx.">
+                    </div>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Máx.">
-                  </div>
+                <label>Fabricantes</label>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Galaxy
+                  </label>
                 </div>
-              </div>
-              <label>Fabricantes</label>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input"> Galaxy
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input"> Xperia
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input"> Iphone
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input"> Zemfone
-                </label>
-              </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Xperia
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Iphone
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Zemfone
+                  </label>
+                </div>
 
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <div class="widget widget-category">
-            <h3 class="widget-title">Categorias</h3>
-            <ul class="product-categories">
-              <li v-for="(menu, index) in categories" :key="index" class="product-category">
-                <router-link :to="menu.path">{{menu.title}}</router-link>
-              </li>
-            </ul>
-          </div>
-        </affix>
+            <div class="widget widget-category">
+              <h3 class="widget-title">Categorias</h3>
+              <ul class="product-categories">
+                <li v-for="(menu, index) in categories" :key="index" class="product-category">
+                  <router-link :to="menu.path">{{menu.title}}</router-link>
+                </li>
+              </ul>
+            </div>
+          </affix>
+        </div>
       </div>
-      <div class="col col-lg-9" id="example-content">
-        <div class="title-section">
-          <h1>Informática</h1>
-        </div>
-        <div class="row">
-          <div class="col">
-            1066 Produtos
+      <div class="col col-lg-9">
+        <div id="example-content">
+
+          <div class="title-section">
+            <h1>Informática</h1>
           </div>
-          <div class="col">
-            <form class="form-inline">
-              <select class="form-control">
-                <option>Mais Vendidos</option>
-                <option>Mais Visitados</option>
-                <option>Maior Preço</option>
-                <option>Menor Preço</option>
-                <option>Nome A-Z</option>
-                <option>Nome Z-A</option>
-              </select>
-            </form>
+          <div class="row row-block align-items-center">
+            <div class="col">
+              1066 Produtos
+            </div>
+            <div class="col">
+              <form class="form-inline justify-content-end">
+                  <label for="" class="col-sm-2 col-form-label">Filtrar</label>
+                  <select class="form-control">
+                    <option>Mais Vendidos</option>
+                    <option>Mais Visitados</option>
+                    <option>Maior Preço</option>
+                    <option>Menor Preço</option>
+                    <option>Nome A-Z</option>
+                    <option>Nome Z-A</option>
+                  </select>
+                </form>
+            </div>
           </div>
-        </div>
-        <div class="products-section">
-          <div class="products-section-row products columns-3">
-            <product-box v-for="n in 21" :key="n"></product-box>
+          <div class="products-section">
+            <div class="products-section-row products columns-3">
+              <product-box v-for="n in 21" :key="n"></product-box>
+            </div>
           </div>
+
+          <div class="row-block">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+              </ul>
+            </nav>
+          </div>
+
         </div>
       </div>
     </div>
@@ -139,6 +160,10 @@
   .category-page {
     padding-top: 15px;
     padding-bottom: 30px;
+  }
+
+  .row-block {
+    margin-bottom: 15px;
   }
 
   .sidebar {
