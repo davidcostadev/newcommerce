@@ -55,6 +55,26 @@
         </affix>
       </div>
       <div class="col col-lg-9" id="example-content">
+        <div class="title-section">
+          <h1>Informática</h1>
+        </div>
+        <div class="row">
+          <div class="col">
+            1066 Produtos
+          </div>
+          <div class="col">
+            <form class="form-inline">
+              <select class="form-control">
+                <option>Mais Vendidos</option>
+                <option>Mais Visitados</option>
+                <option>Maior Preço</option>
+                <option>Menor Preço</option>
+                <option>Nome A-Z</option>
+                <option>Nome Z-A</option>
+              </select>
+            </form>
+          </div>
+        </div>
         <div class="products-section">
           <div class="products-section-row products columns-3">
             <product-box v-for="n in 21" :key="n"></product-box>
@@ -115,6 +135,7 @@
 <style lang="scss">
   @import '~assets/scss/vars.scss';
 
+
   .category-page {
     padding-top: 15px;
     padding-bottom: 30px;
@@ -144,6 +165,20 @@
   @include min-gg {
     .sidebar-menu {
       width: 293px;
+    }
+  }
+
+
+  .title-section {
+    background-image: url('https://images.unsplash.com/photo-1497171156029-51dfc973e5f9?dpr=1&auto=format&fit=crop&w=1500&q=60&cs=tinysrgb');
+    background-size: cover;
+    background-position: center;
+    padding: 30px 60px;
+    margin-bottom: 20px;
+
+    h1 {
+      color: rgb(0, 255, 255);
+      mix-blend-mode: difference;
     }
   }
 
