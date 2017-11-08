@@ -1,19 +1,31 @@
-# newCommerce
+# APP_TITLE
 
-> Just more an open source Ecommerce Project, but new
+## Usage
 
-## Build Setup
+### Dev
 
-``` bash
-# install dependencies
-npm install or yarn
+```
+npm start
+```
 
-# serve with hot reload at localhost:8080
-npm run dev
+#### TODO
+  * Add Redux
+  http://blog.revathskumar.com/2017/07/reactjs-server-side-rendering-with-router-v4-redux.html
 
-# build for production with minification
-npm run build
+### PROD
 
-# build for production and view the bundle analyzer report
-npm run build --report
+```
+npm start:prod
+```
 
+## Demo
+
+https://react-router-ssr-hmr.herokuapp.com
+
+## Credit
+
+https://github.com/DigitalKwarts/react-server-render-example
+
+## Deployment
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
