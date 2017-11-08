@@ -8,13 +8,12 @@ console.log(styles);
 
 const ProductsCarrocel = props => (
   <div className={styles.productsSection}>
-    <h2 className="products-section-title">{props.title}</h2>
-    <div className="products-section-row products columns-4">
+    <h2 className={styles.productsSectionTitle}>{props.title}</h2>
+    <div className={`${styles.productsSectionRow} ${styles.columns4} products`}>
       <ProductBox />
       <ProductBox />
       <ProductBox />
       <ProductBox />
-      {/* <product-box v-for="n in 4" :key="n"></product-box> */}
     </div>
   </div>
 );

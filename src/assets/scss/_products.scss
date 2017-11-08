@@ -2,7 +2,7 @@
     // padding-top: 20px;
     padding-bottom: 60px;
 
-    .products-section-title {
+    .productsSectionTitle {
       color: #543C95;
       font-size: 2.2rem;
       margin-top: 0;
@@ -11,7 +11,7 @@
       margin-bottom: 20px;
     }
   }
-  .products-section-row {
+  .productsSectionRow {
     display: flex;
     flex-wrap: wrap;
     margin-left: -5px;
@@ -31,7 +31,7 @@
 
 
   @include min-xs {
-    .products-section-row.columns-4 {
+    .productsSectionRow.columns4 {
       .product {
         flex: 1 1 calc(50% - 10px);
         max-width: calc(50% - 10px);
@@ -39,7 +39,7 @@
     }
   }
   @include min-md {
-    .products-section-row.columns-4 {
+    .productsSectionRow.columns4 {
       .product {
         flex: 1 1 calc(25% - 10px);
         max-width: calc(25% - 10px);
@@ -47,7 +47,7 @@
     }
   }
   @include min-md {
-    .products-section-row.columns-3 {
+    .productsSectionRow.columns3 {
       .product {
         flex: 1 1 calc(33.3333% - 10px);
         max-width: calc(33.3333% - 10px);
