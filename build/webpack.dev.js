@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
@@ -34,6 +34,10 @@ module.exports = [
               loader: 'babel-loader'
             }
           ]
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.scss$/,
@@ -93,6 +97,13 @@ module.exports = [
           ]
         },
         {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader']
+          })
+        },
+        {
           test: /\.scss$/,
           use: [
             {
@@ -113,6 +124,9 @@ module.exports = [
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new ExtractTextPlugin('style3.css')
+    ]
   }
 ];

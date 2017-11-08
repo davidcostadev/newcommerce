@@ -4,7 +4,8 @@ export default ({ markup, helmet }) => `<!doctype html>
   ${helmet.title.toString()}
   ${helmet.meta.toString()}
   ${helmet.link.toString()}
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"></link>
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 </head>
 <body ${helmet.bodyAttributes.toString()}>
   <div id="root" style="height: 100%">${markup}</div>

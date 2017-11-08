@@ -35,6 +35,10 @@ module.exports = [
           ]
         },
         {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
+        },
+        {
           test: /\.scss$/,
           use: [
             {
@@ -57,6 +61,7 @@ module.exports = [
       ]
     },
     plugins: [
+      // new ExtractTextPlugin('style2.css'),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: '"production"'
@@ -97,6 +102,13 @@ module.exports = [
               loader: 'babel-loader'
             }
           ]
+        },
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader']
+          })
         },
         {
           test: /\.scss$/,
