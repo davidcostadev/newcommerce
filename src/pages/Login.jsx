@@ -4,10 +4,8 @@ import Helmet from 'react-helmet';
 
 import TopMenu from '../components/TopMenu';
 
-import styles from '../App.scss';
-
 const Login = () => (
-  <div className={styles.mainContainer}>
+  <div>
     <Helmet
       title="Login"
     />

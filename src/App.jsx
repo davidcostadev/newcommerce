@@ -2,22 +2,24 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-import { Segment } from 'semantic-ui-react';
+
+import 'bootstrap/dist/css/bootstrap.css';
+// import './assets/scss/App.scss';
+
 
 import Homepage from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
 
-
 const App = () => (
-  <Segment padded="very" style={{ height: '100%' }}>
+  <div id="page" style={{ height: '100%' }}>
     <Helmet
-      htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
-      titleTemplate="%s | APP_TITLE"
-      titleAttributes={{ itemprop: 'name', lang: 'en' }}
+      htmlAttributes={{ lang: 'pt-br', amp: undefined }} // amp takes no value
+      titleTemplate="%s | Atacado Ribeirão"
+      titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
       meta={[
-        { name: 'description', content: 'An example of hot reloading universal React/Express App' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+        { name: 'description', content: 'Agilize sua vida Comprando Online e receba na comodidade do seu endereço produtos eletrônicos, Informática, celulares, notebooks, perfumes importados, relógios e etc. Tudo o que você precisa para estar conectado com o mundo.' },
+        { charset: 'utf-8' }
       ]}
     />
     <Switch>
@@ -25,7 +27,7 @@ const App = () => (
       <Route path="/about" component={About} />
       <Route path="/login" component={Login} />
     </Switch>
-  </Segment>
+  </div>
 );
 
 App.propTypes = {};

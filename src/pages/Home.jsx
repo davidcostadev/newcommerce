@@ -1,25 +1,19 @@
 import React from 'react';
-import { Container, Header } from 'semantic-ui-react';
+// import { Container, Header } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
 
-import TopMenu from '../components/TopMenu';
 
-import styles from '../App.scss';
+// import TopMenu from '../components/TopMenu';
+import ProductsCarrocel from '../components/ProductsCarrocel';
 
 const Homepage = () => (
-  <div className={styles.mainContainer}>
+  <div className="page-home">
     <Helmet
-      title="Welcome"
+      title="Inicio"
     />
-    <TopMenu activeItem="home" />
-    <Container>
-      <Header as="h2">
-        Home
-      </Header>
-      <p>
-        Welcome!
-      </p>
-    </Container>
+    <div className="container">
+      <ProductsCarrocel title="Informática" />
+    </div>
   </div>
 );
 

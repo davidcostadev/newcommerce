@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 
 import TopMenu from '../components/TopMenu';
 
-import styles from '../App.scss';
+import styles from '../assets/scss/App.scss';
 
 const About = () => (
   <div className={styles.mainContainer}>

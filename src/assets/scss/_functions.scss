@@ -1,0 +1,67 @@
+@function text-color-background($color) {
+  @if (lightness($color) > 50) {
+    @return #212121; // Lighter backgorund, return dark color
+  } @else {
+    @return #FAFAFA; // Darker background, return light color
+  }
+}
+
+@function color-bg($color) {
+    @if (lightness($color) > 50) {
+      @return rgba(0, 0, 0, 0.85);
+    }
+    @else {
+      @return rgba(255, 255, 255, 0.85);
+    }
+}
+
+
+
+@mixin min-xs {
+  @media (min-width: 540px) {
+    @content;
+  }
+}
+
+@mixin max-xs {
+  @media (max-width: 540px - 1px) {
+    @content;
+  }
+}
+@mixin min-sm {
+  @media (min-width: 767px) {
+    @content;
+  }
+}
+
+@mixin max-sm {
+  @media (max-width: 767px - 1px) {
+    @content;
+  }
+}
+
+
+@mixin min-md {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin max-md {
+  @media (max-width: 992px - 1px) {
+    @content;
+  }
+}
+
+
+@mixin min-lg {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin min-gg {
+  @media (min-width: 1350px) {
+    @content;
+  }
+}

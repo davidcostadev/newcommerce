@@ -1,0 +1,39 @@
+
+  body {
+    overflow-x: initial;
+    color: $text-color;
+    font-family: $font-primary;
+    background: $body-bg;
+  }
+
+  a {
+    color: $color-primary;
+
+    &:focus,
+    &:hover {
+      color: darken($color-primary, 10%);
+      text-decoration: none;
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: $font-primary;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+  }
+
+  .fade-enter-active {
+    transition-delay: .25s;
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
+  }
+
