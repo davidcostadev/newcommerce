@@ -1,0 +1,22 @@
+
+.menu {
+  display: flex;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+
+  &.menuVertical {
+    flex-direction: column;
+  }
+
+  .menu-item {
+    a {
+      &:hover {
+
+      }
+      &:active {
+
+      }
+    }
+  }
+}

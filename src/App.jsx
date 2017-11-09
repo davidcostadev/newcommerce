@@ -12,6 +12,9 @@ import About from './pages/About';
 import Login from './pages/Login';
 
 import HeaderPage from './components/HeaderPage';
+import FooterPage from './components/FooterPage';
+import Sitemap from './components/Sitemap';
+import Copy from './components/Copy';
 
 const App = () => (
   <div id="page" style={{ height: '100%' }}>
@@ -30,6 +33,10 @@ const App = () => (
       <Route path="/about" component={About} />
       <Route path="/login" component={Login} />
     </Switch>
+    <FooterPage>
+      <Sitemap />
+      <Copy />
+    </FooterPage>
   </div>
 );
 
