@@ -6,6 +6,7 @@ import styles from '../assets/scss/App.scss';
 // import TopMenu from '../components/TopMenu';
 import ProductsCarrocel from '../components/ProductsCarrocel';
 import BannerMosaico from '../components/BannerMosaico';
+import BannerSeparate from '../components/BannerSeparate';
 
 const Homepage = () => (
   <div className="page-home">
@@ -15,6 +16,7 @@ const Homepage = () => (
     <BannerMosaico />
     <div className={`container ${styles.container}`}>
       <ProductsCarrocel title="Informática" />
+      <BannerSeparate />
     </div>
   </div>
 );
