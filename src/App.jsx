@@ -11,6 +11,8 @@ import Homepage from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
 
+import HeaderPage from './components/HeaderPage';
+
 const App = () => (
   <div id="page" style={{ height: '100%' }}>
     <Helmet
@@ -22,6 +24,7 @@ const App = () => (
         { charset: 'utf-8' }
       ]}
     />
+    <HeaderPage />
     <Switch>
       <Route exact path="/" component={Homepage} />
       <Route path="/about" component={About} />

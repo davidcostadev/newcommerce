@@ -1,9 +1,11 @@
 @import "functions";
 @import "vars";
+@import "base";
 @import "products";
 @import "product";
 @import "overridebootstrap";
-@import "base";
+@import "header";
+@import "searchForm";
 
 .mainContainer {
   background: red;

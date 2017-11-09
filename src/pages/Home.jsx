@@ -2,7 +2,7 @@ import React from 'react';
 // import { Container, Header } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
 
-
+import styles from '../assets/scss/App.scss';
 // import TopMenu from '../components/TopMenu';
 import ProductsCarrocel from '../components/ProductsCarrocel';
 
@@ -11,7 +11,7 @@ const Homepage = () => (
     <Helmet
       title="Inicio"
     />
-    <div className="container">
+    <div className={`container ${styles.container}`}>
       <ProductsCarrocel title="Informática" />
     </div>
   </div>
