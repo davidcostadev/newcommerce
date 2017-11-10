@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../assets/scss/App.scss';
 
 import SearchForm from './SearchForm';
+import NavBar from './Navbar';
 
 const HeaderPage = () => (
   <div id={styles.headerPageOne}>
@@ -38,7 +39,7 @@ const HeaderPage = () => (
         </div>
       </div>
     </header>
-    {/* <menu-mobile></menu-mobile> */}
+    <NavBar />
   </div>
 );
 

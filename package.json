@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
+    "classnames": "^2.2.5",
     "express": "^4.15.3",
     "morgan": "^1.8.2"
   },
