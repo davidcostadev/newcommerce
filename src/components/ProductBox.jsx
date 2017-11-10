@@ -11,8 +11,8 @@ const ProductBox = () => (
       <span className={styles.currency}>R$</span> <span className={styles.amount}>16,80</span>
     </div>
     <div className={styles.productButtons}>
-      <button type="button" className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</button>
-      <button type="button" className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</button>
+      <a href="/product" className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</a>
+      <a href="/product" className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</a>
     </div>
   </div>
 );

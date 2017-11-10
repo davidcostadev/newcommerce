@@ -8,7 +8,7 @@ import { Switch, Route } from 'react-router-dom';
 
 
 import Homepage from './pages/Home';
-import About from './pages/About';
+import Product from './pages/Product';
 import Login from './pages/Login';
 
 import HeaderPage from './components/HeaderPage';
@@ -30,7 +30,7 @@ const App = () => (
     <HeaderPage />
     <Switch>
       <Route exact path="/" component={Homepage} />
-      <Route path="/about" component={About} />
+      <Route path="/product" component={Product} />
       <Route path="/login" component={Login} />
     </Switch>
     <FooterPage>
