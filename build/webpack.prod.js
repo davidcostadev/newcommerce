@@ -22,7 +22,6 @@ module.exports = [
     resolve: {
       extensions: ['.js', '.jsx']
     },
-    devtool: 'source-map',
     module: {
       rules: [
         {
@@ -33,10 +32,6 @@ module.exports = [
               loader: 'babel-loader'
             }
           ]
-        },
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.scss$/,
@@ -88,7 +83,6 @@ module.exports = [
       libraryTarget: 'commonjs2',
       publicPath: '/dist/'
     },
-    devtool: 'source-map',
     resolve: {
       extensions: ['.js', '.jsx']
     },
@@ -104,13 +98,6 @@ module.exports = [
           ]
         },
         {
-          test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader']
-          })
-        },
-        {
           test: /\.scss$/,
           use: ExtractTextPlugin.extract({
             fallback: 'isomorphic-style-loader',
@@ -120,8 +107,7 @@ module.exports = [
                 options: {
                   modules: true,
                   importLoaders: 1,
-                  localIdentName: '[hash:base64:10]',
-                  sourceMap: true
+                  localIdentName: '[hash:base64:10]'
                 }
               },
               {
