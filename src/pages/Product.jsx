@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import styles from '../assets/scss/App.scss';
 import ProductDetails from '../components/ProductDetails';
 import ProductsCarrocel from '../components/ProductsCarrocel';
+import ProductDescription from '../components/ProductDescription';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 const data = {
@@ -79,6 +80,7 @@ const Product = () => (
           {/* <products-carrocel title="Relacionados"></products-carrocel> */}
         </div>
 
+        <ProductDescription />
         <ProductsCarrocel title="Relacionados" />
       </div>
     </main>
