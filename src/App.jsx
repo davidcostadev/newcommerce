@@ -9,7 +9,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Homepage from './pages/Home';
 import Product from './pages/Product';
-import Login from './pages/Login';
+import Category from './pages/Category';
 
 import HeaderPage from './components/HeaderPage';
 import FooterPage from './components/FooterPage';
@@ -31,7 +31,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Homepage} />
       <Route path="/product" component={Product} />
-      <Route path="/login" component={Login} />
+      <Route path="/category" component={Category} />
     </Switch>
     <FooterPage>
       <Sitemap />
