@@ -1,0 +1,24 @@
+
+  .productLanding {
+    margin-bottom: 20px;
+  }
+  .gallery {
+    background-color: white;
+    margin-bottom: 20px;
+
+    .galleryFeature {
+      display: block;
+      text-align: center;
+    }
+    .galleryThumbs {
+      display: flex;
+      .galleryThumb {
+        flex: 1;
+
+      }
+    }
+    img {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
