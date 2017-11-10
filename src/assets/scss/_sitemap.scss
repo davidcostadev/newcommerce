@@ -19,12 +19,12 @@
     .sitemapMenu {
 
       a {
-        color: $color-indigo;
+        color: $color-second;
         &:hover {
-          color: lighten($color-indigo, 15%)
+          color: lighten($color-second, 15%)
         }
         &:active {
-          color: lighten($color-indigo, 30%)
+          color: lighten($color-second, 30%)
         }
       }
 

@@ -46,7 +46,7 @@
 
     .bannerText1 {
       flex-basis: auto;
-      color: $color-deeppurple;
+      color: $color-primary;
       font-size: 18px;
       margin-bottom: 20px;
     }
@@ -58,7 +58,7 @@
     }
     .bannerBtn {
       flex-basis: auto;
-      background-color: $color-deeppurple;
+      background-color: $color-primary;
       padding: 8px 12px;
       font-size: 18px;
       color: $white;
@@ -67,7 +67,7 @@
       transition: background-color 0.4s ease;
 
       &:hover {
-        background-color: darken($color-deeppurple, 10%)
+        background-color: darken($color-primary, 10%)
       }
     }
 

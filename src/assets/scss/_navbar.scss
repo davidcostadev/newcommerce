@@ -1,0 +1,26 @@
+.bgFaded {
+  background-color: $color-gray200;
+}
+.navbarSpaced {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.navbar {
+  padding: 0;
+
+  .navLink {
+    font-size: 18px;
+    text-transform: capitalize;
+    transition: all .4s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    &:hover,
+    &:focus {
+      background-color: $color-primary;
+      color: text-color-background($color-primary);
+    }
+  }
+}
+.navbarToggleableMd .navbarNav .navLink {
+    padding: .5rem 1.5rem;
+}
