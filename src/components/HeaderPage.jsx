@@ -10,8 +10,8 @@ const HeaderPage = () => (
         <div className="row align-items-center">
           <div className={`col col-md-4 ${styles.brand}`}>
             <a to="/" className="brand-link">
-              <img className={styles.logoDesktop} src="/img/newcommerce-h.svg" alt="newcommerce" />
-              <img className={styles.logoMobile} src="/img/newcommerce-h-inverse.svg" alt="newcommerce" />
+              <img className={styles.logoDesktop} src="/img/logo-atacadoribeirao.svg" alt="Atacado Ribeirão" />
+              <img className={styles.logoMobile} src="/img/logo-atacadoribeirao-white.svg" alt="Atacado Ribeirão" />
             </a>
           </div>
           <div className={`col ${styles.colSearch}`}>
