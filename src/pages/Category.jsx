@@ -5,6 +5,8 @@ import styles from '../assets/scss/App.scss';
 
 import ProductBox from '../components/ProductBox';
 import TitleSection from '../components/TitleSection';
+import WidgetFilter from '../components/WidgetFilter';
+import WidgetCategory from '../components/WidgetCategory';
 
 const Category = () => (
   <div>
@@ -14,13 +16,14 @@ const Category = () => (
     <div className={`container ${styles.container}`}>
       <div className={styles.categoryPage}>
         <div className="row">
-          <div className="sidebar col-md-3">
-            sidebar
+          <div className={classNames(styles.sidebar, 'col-md-3')}>
+            <WidgetFilter />
+            <WidgetCategory />
           </div>
           <div className="col col-lg-9">
             <div id="example-content">
               <TitleSection />
-              <div className="row row-block align-items-center">
+              <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
                 <div className="col">
                   1066 Produtos
                 </div>

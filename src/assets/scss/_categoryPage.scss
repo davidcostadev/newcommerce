@@ -3,3 +3,16 @@
     padding-top: 15px;
     padding-bottom: 30px;
   }
+
+.rowBlock {
+  margin-bottom: 15px;
+}
+
+.sidebar {
+  display: none;
+}
+@include min-md {
+  .sidebar {
+    display: block;
+  }
+}
