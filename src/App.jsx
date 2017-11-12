@@ -23,8 +23,9 @@ const App = () => (
       titleTemplate="%s - Atacado Ribeirão"
       titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
       meta={[
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
         { name: 'description', content: 'Agilize sua vida Comprando Online e receba na comodidade do seu endereço produtos eletrônicos, Informática, celulares, notebooks, perfumes importados, relógios e etc. Tudo o que você precisa para estar conectado com o mundo.' },
-        { charset: 'utf-8' }
       ]}
     />
     <HeaderPage />
