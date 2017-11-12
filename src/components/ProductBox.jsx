@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../assets/scss/App.scss';
 
 const ProductBox = () => (
@@ -11,8 +12,8 @@ const ProductBox = () => (
       <span className={styles.currency}>R$</span> <span className={styles.amount}>16,80</span>
     </div>
     <div className={styles.productButtons}>
-      <a href="/product" className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</a>
-      <a href="/product" className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</a>
+      <Link to="/product" className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</Link>
+      <Link to="/product" className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</Link>
     </div>
   </div>
 );

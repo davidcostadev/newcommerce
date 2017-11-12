@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from '../assets/scss/App.scss';
 
@@ -63,11 +64,11 @@ const Category = () => (
               <div className="row-block">
                 <nav aria-label="Page navigation example">
                   <ul className="pagination justify-content-center">
-                    <li className="page-item"><a className="page-link" href="#">Anterior</a></li>
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item"><a className="page-link" href="#">Próximo</a></li>
+                    <li className="page-item"><Link to="/category" className="page-link">Anterior</Link></li>
+                    <li className="page-item"><Link to="/category" className="page-link">1</Link></li>
+                    <li className="page-item"><Link to="/category" className="page-link">2</Link></li>
+                    <li className="page-item"><Link to="/category" className="page-link">3</Link></li>
+                    <li className="page-item"><Link to="/category" className="page-link">Próximo</Link></li>
                   </ul>
                 </nav>
               </div>

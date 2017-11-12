@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ProductBox from './ProductBox';
 import styles from '../assets/scss/App.scss';
 
-console.log(styles);
+// console.log(styles);
 
 const ProductsCarrocel = props => (
   <div className={styles.productsSection}>
