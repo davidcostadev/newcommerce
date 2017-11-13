@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 
 import styles from '../assets/scss/App.scss';
 // import TopMenu from '../components/TopMenu';
+import ProdutosEmDestaque from '../containers/ProdutosEmDestaque';
 import ProductsCarrocel from '../components/ProductsCarrocel';
 import BannerMosaico from '../components/BannerMosaico';
 import BannerSeparate from '../components/BannerSeparate';
@@ -16,6 +17,7 @@ const Homepage = () => (
     />
     <BannerMosaico />
     <div className={`container ${styles.container}`}>
+      <ProdutosEmDestaque />
       <ProductsCarrocel title="Produtos em Destaques" />
       <ProductsCarrocel title="Os últimos que Chegaram" />
       <BannerSeparate />
