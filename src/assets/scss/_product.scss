@@ -29,8 +29,9 @@
     }
   }
   .productTitle {
-    padding: 8px 12px;
+    flex: 1;
     font-size: 14px;
+    padding: 8px 12px;
   }
   .productPrice {
     display: flex;
@@ -78,6 +79,43 @@
         background-color: darken($primary-color, 50%);
         color: $white;
       }
+    }
+  }
+}
+
+@include min-xs {
+  .product {
+    .productImage {
+      max-height: 253px;
+    }
+  }
+}
+@include min-sm {
+  .product {
+    .productImage {
+      max-height: 340px;
+    }
+  }
+}
+@include min-md {
+  .product {
+    .productImage {
+      max-height: 225px;
+    }
+  }
+}
+@include min-lg {
+  .product {
+    .productImage {
+      max-height: 270px;
+    }
+  }
+}
+
+@include min-gg {
+  .product {
+    .productImage {
+      max-height: 308px;
     }
   }
 }
