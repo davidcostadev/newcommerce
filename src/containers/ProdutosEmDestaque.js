@@ -35,7 +35,6 @@ class ProdutosEmDestaqueContainer extends React.Component {
       PE_COLUNA_ORDER: 2
     });
     axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_web_busca_home_sel', data).then((response) => {
-      console.log(response.data.result[0].PS_TABELA_INFO)
       this.setState({
         products: response.data.result[0].PS_TABELA_INFO
       });

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styles from '../assets/scss/App.scss';
 
 import SearchForm from './SearchForm';
-import NavBar from './Navbar';
+import CategoriasContainer from '../containers/Categorias';
+
 
 const HeaderPage = () => (
   <div id={styles.headerPageOne}>
@@ -40,7 +41,7 @@ const HeaderPage = () => (
         </div>
       </div>
     </header>
-    <NavBar />
+    <CategoriasContainer />
   </div>
 );
 
