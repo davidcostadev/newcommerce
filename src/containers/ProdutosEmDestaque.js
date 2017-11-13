@@ -29,7 +29,7 @@ class ProdutosEmDestaqueContainer extends React.Component {
       PE_IP: '127.0.0.1',
       PE_SESSAO: 'asdfgh',
       PE_ID_CLIENTE: 0,
-      PE_QUANT_REGISTROS: 21,
+      PE_QUANT_REGISTROS: 4,
       PE_PAGINA_ID: 1,
       PE_COLUNA_ID: 2,
       PE_COLUNA_ORDER: 2

@@ -18,7 +18,6 @@ const Homepage = () => (
     <BannerMosaico />
     <div className={`container ${styles.container}`}>
       <ProdutosEmDestaque />
-      <ProductsCarrocel title="Produtos em Destaques" />
       <ProductsCarrocel title="Os últimos que Chegaram" />
       <BannerSeparate />
       <ProductsCarrocel title="Os mais Vendidos" />

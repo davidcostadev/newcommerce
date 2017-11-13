@@ -1,21 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from '../assets/scss/App.scss';
 
-const ProductBox = () => (
+function toReal(number) {
+  const float = parseFloat(number.replace(',', '.'), 10);
+  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+
+const ProductBox = ({ product }) => (
   <div className={styles.product}>
     <picture className={styles.productImage}>
-      <img src="http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-300-193420.jpg" alt="" />
+      <img src={product.PS_PATH_IMAGEM_250} alt={product.PS_PRODUTO}ss />
     </picture>
-    <div className={styles.productTitle}>Quadros De Distribuição Embutir 5 Din/3 Nema Tramontina 56300/001</div>
+    <div className={styles.productTitle}>{product.PS_PRODUTO}</div>
     <div className={styles.productPrice}>
-      <span className={styles.currency}>R$</span> <span className={styles.amount}>16,80</span>
+      <span className={styles.currency}>R$</span>
+      <span className={styles.amount}>{toReal(product.PS_VALOR_DE_VENDA)}</span>
     </div>
     <div className={styles.productButtons}>
-      <Link to="/product" className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</Link>
+      <Link to={`/product/${product.PS_PATH_PAGE}`} className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</Link>
       <Link to="/product" className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</Link>
     </div>
   </div>
 );
+
+ProductBox.propTypes = {
+  product: PropTypes.object.isRequired
+};
+
 
 export default ProductBox;

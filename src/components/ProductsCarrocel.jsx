@@ -10,16 +10,20 @@ const ProductsCarrocel = props => (
   <div className={styles.productsSection}>
     <h2 className={styles.productsSectionTitle}>{props.title}</h2>
     <div className={`${styles.productsSectionRow} ${styles.columns4} products`}>
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
+      {props.products.map(product => (
+        <ProductBox product={product} key={product.PS_ID_PRODUTO} />
+      ))}
     </div>
   </div>
 );
 
 ProductsCarrocel.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  products: PropTypes.object.isRequired
+};
+
+ProductsCarrocel.defaultProps = {
+  products: []
 };
 
 export default ProductsCarrocel;
