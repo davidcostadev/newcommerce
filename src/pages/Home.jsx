@@ -5,7 +5,10 @@ import Helmet from 'react-helmet';
 import styles from '../assets/scss/App.scss';
 // import TopMenu from '../components/TopMenu';
 import ProdutosEmDestaque from '../containers/ProdutosEmDestaque';
-import ProductsCarrocel from '../components/ProductsCarrocel';
+import ProdutosNovos from '../containers/ProdutosNovos';
+import ProdutosVendidos from '../containers/ProdutosVendidos';
+import ProdutosVisitatos from '../containers/ProdutosVisitatos';
+// import ProductsCarrocel from '../components/ProductsCarrocel';
 import BannerMosaico from '../components/BannerMosaico';
 import BannerSeparate from '../components/BannerSeparate';
 import InfoBlocks from '../components/InfoBlocks';
@@ -18,10 +21,10 @@ const Homepage = () => (
     <BannerMosaico />
     <div className={`container ${styles.container}`}>
       <ProdutosEmDestaque />
-      <ProductsCarrocel title="Os últimos que Chegaram" />
+      <ProdutosNovos />
       <BannerSeparate />
-      <ProductsCarrocel title="Os mais Vendidos" />
-      <ProductsCarrocel title="Mais Visitados" />
+      <ProdutosVisitatos />
+      <ProdutosVendidos />
       <InfoBlocks />
     </div>
   </div>
