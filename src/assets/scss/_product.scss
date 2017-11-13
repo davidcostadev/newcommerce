@@ -30,13 +30,16 @@
   }
   .productTitle {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
     font-size: 14px;
-    padding: 8px 12px;
   }
   .productPrice {
     display: flex;
     justify-content: center;
-    padding: 8px 12px;
+    padding: 6px 12px;
     color: $color-second;
     align-items: baseline;
 
@@ -46,6 +49,24 @@
     }
     .amount {
       font-size: 30px;
+    }
+  }
+  .productComplement {
+    display: flex;
+    justify-content: center;
+    padding: 6px 12px;
+    font-size: 14px;
+    align-items: baseline;
+
+    .currency {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+    .amount {
+      margin-right: 5px;
+    }
+    strong {
+      color: $color-second;
     }
   }
   .productButtons {
