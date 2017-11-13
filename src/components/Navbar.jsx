@@ -7,9 +7,9 @@ import styles from '../assets/scss/App.scss';
 const CategoriesFirst = ({ categories }) => {
   const links = [];
 
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 7; i += 1) {
     links.push({
-      to: categories[i].PATH_PAGE_FAMILIA,
+      to: `/category/${categories[i].PATH_PAGE_FAMILIA}`,
       title: categories[i].FAMILIA
     });
   }
