@@ -19,7 +19,7 @@ const ProductsCarrocel = props => (
 
 ProductsCarrocel.propTypes = {
   title: PropTypes.string.isRequired,
-  products: PropTypes.object.isRequired
+  products: PropTypes.array
 };
 
 ProductsCarrocel.defaultProps = {

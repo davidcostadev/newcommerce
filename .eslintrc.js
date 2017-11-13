@@ -67,7 +67,7 @@ module.exports = {
     "curly": [2, "all"],
     "brace-style": [2, "1tbs", { "allowSingleLine": false }],
     "no-alert": 2,
-    "react/forbid-prop-types": [2, { "forbid": ["any", "array"] }],
+    "react/forbid-prop-types": [2, { "forbid": ["any"] }],
     /* https://github.com/AtomLinter/linter-eslint/issues/768 */
     "import/no-extraneous-dependencies": 0,
     "no-extra-parens": ["error", "all", { "ignoreJSX": "all", "nestedBinaryExpressions": false }],

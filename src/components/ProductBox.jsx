@@ -11,7 +11,7 @@ function toReal(number) {
 const ProductBox = ({ product }) => (
   <div className={styles.product}>
     <picture className={styles.productImage}>
-      <img src={product.PS_PATH_IMAGEM_250} alt={product.PS_PRODUTO}ss />
+      <img src={product.PS_PATH_IMAGEM_250} alt={product.PS_PRODUTO} />
     </picture>
     <div className={styles.productTitle}>{product.PS_PRODUTO}</div>
     <div className={styles.productPrice}>
