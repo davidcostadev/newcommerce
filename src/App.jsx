@@ -31,8 +31,8 @@ const App = () => (
     <HeaderPage />
     <Switch>
       <Route exact path="/" component={Homepage} />
-      <Route path="/product" component={Product} />
-      <Route path="/category" component={Category} />
+      <Route path="/product/:slug" component={Product} />
+      <Route path="/category/:slug" component={Category} />
     </Switch>
     <FooterPage>
       <Sitemap />

@@ -1,15 +1,17 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from '../assets/scss/App.scss';
 
+import ProdutosCategoriaContainer from '../containers/ProdutosCategoria';
 import ProductBox from '../components/ProductBox';
 import TitleSection from '../components/TitleSection';
 import WidgetFilter from '../components/WidgetFilter';
 import WidgetCategory from '../components/WidgetCategory';
 
-const Category = () => (
+const Category = ({ match }) => (
   <div>
     <Helmet
       title="Category"
@@ -44,20 +46,7 @@ const Category = () => (
               </div>
               <div className={styles.productsSection}>
                 <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
-                  <ProductBox />
+                  <ProdutosCategoriaContainer slug={match.params.slug} />
                 </div>
               </div>
 
@@ -81,5 +70,9 @@ const Category = () => (
 
   </div>
 );
+
+Category.propTypes = {
+  match: PropTypes.object.isRequired
+};
 
 export default Category;
