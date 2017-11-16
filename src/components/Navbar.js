@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from '../assets/scss/App.scss';
@@ -27,9 +27,9 @@ const Menu = ({ links }) => (
   <ul className="navbar-nav">
     {links.map(link => (
       <li className="nav-item">
-        <Link
-          to={link.to}
-          className={classNames([styles.navLink, 'nav-link'])} title={link.title}>{link.title}</Link>
+        <Link href={link.to}>
+          <a className={classNames([styles.navLink, 'nav-link'])} title={link.title}>{link.title}</a>
+        </Link>
       </li>
     ))}
   </ul>
@@ -44,7 +44,7 @@ const Navbar = ({ categories }) => (
     <div className={`container ${styles.container}`}>
       <CategoriesFirst categories={categories} />
       <ul className="navbar-nav ml-auto onlyDesktopBig">
-        <li className="nav-item"><Link to="/" className={classNames([styles.navLink, 'nav-link'])}>Minha Conta</Link></li>
+        <li className="nav-item"><Link href="/" className={classNames([styles.navLink, 'nav-link'])}>Minha Conta</Link></li>
       </ul>
     </div>
   </nav>
