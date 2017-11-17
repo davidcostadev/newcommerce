@@ -1,4 +1,4 @@
-# Newcommerce P
+# Newcommerce
 
 Just more an open source Ecommerce Project, build with React
 
