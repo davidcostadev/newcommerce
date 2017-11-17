@@ -12,8 +12,8 @@ import React from 'react';
 // import WidgetCategory from '../sr/components/WidgetCategory';
 
 class Category extends React.Component {
-  static getInitialProps(all) {
-    console.log(all)
+  static getInitialProps({ query }) {
+    console.log(query)
     return { a : true}
   }
   render(props) {

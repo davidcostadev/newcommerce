@@ -6,35 +6,15 @@ import flush from 'styled-jsx/server'
 
 
 
-import ApiCategories from '../api/Categories'
-
-import HeaderPage from '../src/components/HeaderPage';
-import FooterPage from '../src/components/FooterPage';
-import Sitemap from '../src/components/Sitemap';
-import Copy from '../src/components/Copy';
-
 export default class MyDocument extends Document {
   static async getInitialProps ({ renderPage }) {
     // console.log('MyDocument')
 
     const { html, head, errorHtml, chunks } = renderPage()
     const styles = flush()
-    const categories = await ApiCategories()
-    return { html, head, errorHtml, chunks, styles, categories }
 
-    // console.log(categories)
+    return { html, head, errorHtml, chunks, styles }
 
-    // store.dispatch(setCategories(categories))
-  // static async getInitialProps ({ renderPage }) {
-    // const sheet = new ServerStyleSheet()
-    // const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
-    // const styleTags = sheet.getStyleElement()
-    // const categories = await ApiCategories()
-
-    // return { ...page, styleTags, store }
-    // return { ...page, styleTags, store }
-    // return {  }
-    // return { categories }
   }
 
 
@@ -51,12 +31,7 @@ export default class MyDocument extends Document {
             {this.props.styleTags}
         </Head>
         <body>
-          <HeaderPage categories={this.props.categories}/>
           <Main  />
-          <FooterPage>
-            <Sitemap />
-            <Copy />
-          </FooterPage>
           <NextScript />
         </body>
       </html>

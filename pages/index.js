@@ -5,6 +5,13 @@ import withRedux from 'next-redux-wrapper'
 
 import styles from '../src/assets/scss/App.scss';
 
+import ApiCategories from '../api/Categories'
+
+import HeaderPage from '../src/components/HeaderPage';
+import FooterPage from '../src/components/FooterPage';
+import Sitemap from '../src/components/Sitemap';
+import Copy from '../src/components/Copy';
+
 import ProdutosEmDestaque from '../src/containers/ProdutosEmDestaque';
 import ProdutosNovos from '../src/containers/ProdutosNovos';
 import ProdutosVendidos from '../src/containers/ProdutosVendidos';
@@ -14,18 +21,30 @@ import BannerSeparate from '../src/components/BannerSeparate';
 import InfoBlocks from '../src/components/InfoBlocks';
 
 class Counter extends React.Component {
+ static async getInitialProps () {
+    const categories = await ApiCategories()
+
+    return { categories }
+ }
 
   render () {
     return (
-      <div className="page-home">
-      <BannerMosaico />
-      <div className={`container ${styles.container}`}>
-        <ProdutosEmDestaque />
-        <ProdutosNovos />
-        <BannerSeparate />
-        <ProdutosVisitatos />
-        <ProdutosVendidos />
-        <InfoBlocks />
+      <div id="page">
+        <HeaderPage categories={this.props.categories}/>
+        <div className="page-home">
+        <BannerMosaico />
+        <div className={`container ${styles.container}`}>
+          <ProdutosEmDestaque />
+          <ProdutosNovos />
+          <BannerSeparate />
+          <ProdutosVisitatos />
+          <ProdutosVendidos />
+          <InfoBlocks />
+        </div>
+        <FooterPage>
+          <Sitemap />
+          <Copy />
+        </FooterPage>
       </div>
     </div>
     )
