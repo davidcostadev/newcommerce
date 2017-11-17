@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import Link from 'next/link';
+import {Link} from '../../routes'
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from '../assets/scss/App.scss';
@@ -9,7 +10,10 @@ const CategoriesFirst = ({ categories }) => {
 
   for (let i = 0; i < 7; i += 1) {
     links.push({
-      to: `/category/${categories[i].PATH_PAGE_FAMILIA}`,
+      id: categories[i].ID_FAMILIA,
+      // to: `/category/${categories[i].PATH_PAGE_FAMILIA}`,
+      to: `category`,
+      slug: categories[i].PATH_PAGE_FAMILIA,
       title: categories[i].FAMILIA
     });
   }
@@ -26,10 +30,10 @@ CategoriesFirst.propTypes = {
 const Menu = ({ links }) => (
   <ul className="navbar-nav">
     {links.map(link => (
-      <li className="nav-item">
-        <Link
-          to={link.to}
-          className={classNames([styles.navLink, 'nav-link'])} title={link.title}>{link.title}</Link>
+      <li key={link.id} className="nav-item">
+        <Link route={link.to} params={{slug: link.slug}}>
+          <a className={classNames([styles.navLink, 'nav-link'])} title={link.title}>{link.title}</a>
+        </Link>
       </li>
     ))}
   </ul>
@@ -44,7 +48,11 @@ const Navbar = ({ categories }) => (
     <div className={`container ${styles.container}`}>
       <CategoriesFirst categories={categories} />
       <ul className="navbar-nav ml-auto onlyDesktopBig">
-        <li className="nav-item"><Link to="/" className={classNames([styles.navLink, 'nav-link'])}>Minha Conta</Link></li>
+        <li className="nav-item">
+          <Link href="/">
+            <a className={classNames([styles.navLink, 'nav-link'])}>Minha Conta</a>
+          </Link>
+        </li>
       </ul>
     </div>
   </nav>
