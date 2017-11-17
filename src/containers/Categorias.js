@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux'
 import NavBar from '../components/Navbar';
 
 class CategoriasContainer extends React.Component {
 
   render() {
-
+    // console.log(this)
+    // return (<div>asdsad</div>)
     // return (<pre>{JSON.stringify(this.props.categories, null, "\t")}</pre>)
     if (this.props.categories.length === 0) {
      return <div>vazio</div>;
@@ -17,5 +18,6 @@ class CategoriasContainer extends React.Component {
   }
 }
 
+const mapState = (state) => state
 
-export default CategoriasContainer;
+export default connect(mapState)(CategoriasContainer);

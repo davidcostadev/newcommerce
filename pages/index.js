@@ -20,17 +20,21 @@ import BannerMosaico from '../src/components/BannerMosaico';
 import BannerSeparate from '../src/components/BannerSeparate';
 import InfoBlocks from '../src/components/InfoBlocks';
 
-class Counter extends React.Component {
- static async getInitialProps () {
-    const categories = await ApiCategories()
+class Home extends React.Component {
+ static async getInitialProps ({ store }) {
+    const state = store.getState()
 
-    return { categories }
+    if (!state.categories.length) {
+      const categories = await ApiCategories()
+      store.dispatch(setCategories(categories))
+    }
+    return { }
  }
 
   render () {
     return (
       <div id="page">
-        <HeaderPage categories={this.props.categories}/>
+        <HeaderPage />
         <div className="page-home">
         <BannerMosaico />
         <div className={`container ${styles.container}`}>
@@ -51,15 +55,16 @@ class Counter extends React.Component {
   }
 }
 
-// const mapStateTodos = state => {
-//   return state
-// }
-
-const mapDispatchToProps = (dispatch) => {
+const mapState = (state) => {
   return {
-    // addCount: bindActionCreators(addCount, dispatch),
-    // startClock: bindActionCreators(startClock, dispatch)
+    categories: state.categories
   }
 }
 
-export default withRedux(initStore, null, mapDispatchToProps)(Counter)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCategories: bindActionCreators(setCategories, dispatch),
+  }
+}
+
+export default withRedux(initStore, mapState, mapDispatchToProps)(Home)

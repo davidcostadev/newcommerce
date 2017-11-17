@@ -8,7 +8,7 @@ import SearchForm from './SearchForm';
 import CategoriasContainer from '../containers/Categorias';
 
 
-const HeaderPage = ({ categories }) => {
+const HeaderPage = () => {
   // console.log('HeaderPage')
   // console.log(props)
   // return ( <div> headerpage</div> )
@@ -49,7 +49,7 @@ const HeaderPage = ({ categories }) => {
           </div>
         </div>
       </header>
-      <CategoriasContainer categories={categories}/>
+      <CategoriasContainer />
     </div>
   );
 }

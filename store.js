@@ -1,14 +1,16 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { composeWithDevTools  } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
-const categoriesInitialState = {}
+const categoriesInitialState = {
+  categories: []
+}
 
 export const actionTypes = {
   CATEGORIES_FULL: 'CATEGORIES_FULL'
 }
 
-export const reducer = (state = categoriesInitialState, { type, payload }) => {
+export const categories = (state = categoriesInitialState, { type, payload }) => {
   switch (type) {
     case actionTypes.CATEGORIES_FULL:
       return payload
@@ -32,20 +34,13 @@ export const setCategories = (info) => dispatch => {
   return dispatch(categoriesFull(info))
 }
 
-// export const serverRenderClock = (isServer) => dispatch => {
-//   return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() })
-// }
-
-// export const startClock = () => dispatch => {
-//   return setInterval(() => dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() }), 800)
-// }
-
-
-
-// export const addCount = () => dispatch => {
-//   return dispatch({ type: actionTypes.ADD })
-// }
 
 export const initStore = (initialState = categoriesInitialState) => {
-  return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+  return createStore(
+    combineReducers({
+      categories
+    }),
+    initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
+  )
 }
