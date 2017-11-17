@@ -1,31 +1,26 @@
-# APP_TITLE
+# Newcommerce P
 
-## Usage
+Just more an open source Ecommerce Project, build with React
 
 ### Dev
 
 ```
-npm start
+npm run dev
 ```
 
-#### TODO
-  * Add Redux
-  http://blog.revathskumar.com/2017/07/reactjs-server-side-rendering-with-router-v4-redux.html
 
 ### PROD
 
 ```
-npm start:prod
+npm dev build:prod
+npm run start
 ```
 
 ## Demo
 
-https://react-router-ssr-hmr.herokuapp.com
+http://www.atacadoribeirao.com.br/
 
 ## Credit
 
-https://github.com/DigitalKwarts/react-server-render-example
+https://github.com/zeit/next.js/
 
-## Deployment
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
