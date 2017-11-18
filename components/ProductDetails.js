@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import classNames from 'classnames';
 
 import styles from '../assets/scss/App.scss';
