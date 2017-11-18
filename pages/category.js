@@ -2,11 +2,12 @@ import React from 'react';
 import { bindActionCreators} from 'redux'
 import { initStore, setCategories } from '../store'
 import withRedux from 'next-redux-wrapper'
-
+import Head from 'next/head'
 
 import { Link } from '../routes'
 import ApiCategories from '../api/Categories'
 import ApiUrl from '../api/Url'
+import ApiCategory from '../api/Category'
 
 import classNames from 'classnames';
 import styles from '../assets/scss/App.scss';
@@ -22,11 +23,24 @@ import ProductBox from '../components/ProductBox';
 import TitleSection from '../components/TitleSection';
 import WidgetFilter from '../components/WidgetFilter';
 import WidgetCategory from '../components/WidgetCategory';
+import Pagination from '../components/Pagination';
 
 class Category extends React.Component {
   static async getInitialProps ({ store, query }) {
 
-    await ApiUrl(query)
+    const urlMeta = await ApiUrl(query)
+    console.log(query)
+    const page = query.page ? query.page : 1
+
+    const resultCategory = await ApiCategory({
+      familyId: urlMeta.PS_ID_FAMILIA,
+      groupId: urlMeta.PS_ID_GRUPO,
+      subGroupId: urlMeta.PS_ID_SUBGRUPO,
+      page
+    })
+
+    const products = resultCategory.products
+    const pagination = resultCategory.pagination
 
     const state = store.getState()
 
@@ -34,13 +48,52 @@ class Category extends React.Component {
       const categories = await ApiCategories()
       store.dispatch(setCategories(categories))
     }
-    return { }
+
+    return { products, pagination, urlMeta }
+  }
+
+ prefixGerate() {
+    const prefix = [this.props.url.pathname]
+
+    if (this.props.url.query.family) {
+      prefix.push(this.props.url.query.family)
+    }
+    if (this.props.url.query.group) {
+      prefix.push(this.props.url.query.group)
+    }
+    if (this.props.url.query.subGroup) {
+      prefix.push(this.props.url.query.subGroup)
+    }
+
+
+    return prefix.join('/')
+  }
+  suffixGerate() {
+    const sufix = []
+
+    if (this.props.url.query.familyId) {
+      sufix.push(`familyId=${this.props.url.query.familyId}`)
+    }
+    if (this.props.url.query.groupId) {
+      sufix.push(`groupId=${this.props.url.query.groupId}`)
+    }
+    if (this.props.url.query.subGroupId) {
+      sufix.push(`subGroupId=${this.props.url.query.subGroupId}`)
+    }
+
+    return sufix
   }
 
   render() {
-    // console.log(this.props.url.query.slug)
+
+    // console.log(this.props)
+    // console.log('pagination', this.props.pagination)
     return (
       <div id="page">
+        <Head>
+          <title>{this.props.urlMeta.PS_TITLE}</title>
+          <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
+        </Head>
         <HeaderPage />
         <div className="page-home">
           <div className={`container ${styles.container}`}>
@@ -73,20 +126,13 @@ class Category extends React.Component {
                     </div>
                     <div className={styles.productsSection}>
                       <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                        {/* <ProdutosCategoriaContainer slug={match.params.slug} /> */}
+                        <ProdutosCategoriaContainer products={this.props.products} />
                       </div>
                     </div>
 
                     <div className="row-block">
-                      <nav aria-label="Page navigation example">
-                        <ul className="pagination justify-content-center">
-                          <li className="page-item"><Link to="/category" className="page-link">Anterior</Link></li>
-                          <li className="page-item"><Link to="/category" className="page-link">1</Link></li>
-                          <li className="page-item"><Link to="/category" className="page-link">2</Link></li>
-                          <li className="page-item"><Link to="/category" className="page-link">3</Link></li>
-                          <li className="page-item"><Link to="/category" className="page-link">Próximo</Link></li>
-                        </ul>
-                      </nav>
+                      <Pagination prefix={this.prefixGerate()} suffix={this.suffixGerate()} {...this.props.pagination} />
+
                     </div>
 
                   </div>

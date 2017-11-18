@@ -25,7 +25,7 @@ async function Url(query) {
 
   const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_website_url_sel', data);
 
-  return response
+  return response.data.result[0].PS_TABELA_INFO[0]
 }
 
 export default Url

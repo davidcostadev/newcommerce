@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+import { Link } from '../routes'
 import styles from '../assets/scss/App.scss';
 
 function toFloat(number) {
@@ -67,10 +67,10 @@ const ProductBox = ({ product }) => (
     </div>
     {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
     <div className={styles.productButtons}>
-      <Link href={`/product/${product.PS_PATH_PAGE}`}>
+      <Link route={`/product/${product.PS_PATH_PAGE}`}>
         <a className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</a>
       </Link>
-      <Link href="/product">
+      <Link route="/product">
         <a className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</a>
       </Link>
     </div>
