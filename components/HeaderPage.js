@@ -1,7 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../assets/scss/App.scss';
+import Router from 'next/router'
+import NProgress from 'nprogress'
 
+
+Router.onRouteChangeStart = (url) => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+}
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 
 import SearchForm from './SearchForm';
