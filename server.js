@@ -12,8 +12,8 @@ app.prepare().then(() => {
   express().use(handler).listen(3000)
 })
 
-// Without express
-const {createServer} = require('http')
-app.prepare().then(() => {
-  createServer(handler).listen(3000)
-})
+// // Without express
+// const {createServer} = require('http')
+// app.prepare().then(() => {
+//   createServer(handler).listen(3000)
+// })
