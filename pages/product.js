@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import classNames from 'classnames';
 
 import styles from '../assets/scss/App.scss';
@@ -44,9 +43,6 @@ const data = {
 
 const Product = () => (
   <div>
-    <Helmet
-      title="Product"
-    />
     <main id="product-page">
       <div className={`container ${styles.container}`}>
         <Breadcrumbs />
