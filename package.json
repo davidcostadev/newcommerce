@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "classnames": "^2.2.5",
     "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "isomorphic-unfetch": "^2.0.0",
     "next": "^4.1.4",
     "next-redux-wrapper": "^1.3.4",
@@ -41,6 +42,7 @@
   "devDependencies": {},
   "scripts": {
     "dev": "next",
+    "dev2": "node server.js",
     "build": "next build",
     "build:prod": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js"
