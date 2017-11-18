@@ -3,22 +3,22 @@ import { bindActionCreators} from 'redux'
 import { initStore, setCategories } from '../store'
 import withRedux from 'next-redux-wrapper'
 
-import styles from '../src/assets/scss/App.scss';
+import styles from '../assets/scss/App.scss';
 
 import ApiCategories from '../api/Categories'
 
-import HeaderPage from '../src/components/HeaderPage';
-import FooterPage from '../src/components/FooterPage';
-import Sitemap from '../src/components/Sitemap';
-import Copy from '../src/components/Copy';
+import HeaderPage from '../components/HeaderPage';
+import FooterPage from '../components/FooterPage';
+import Sitemap from '../components/Sitemap';
+import Copy from '../components/Copy';
 
-import ProdutosEmDestaque from '../src/containers/ProdutosEmDestaque';
-import ProdutosNovos from '../src/containers/ProdutosNovos';
-import ProdutosVendidos from '../src/containers/ProdutosVendidos';
-import ProdutosVisitatos from '../src/containers/ProdutosVisitatos';
-import BannerMosaico from '../src/components/BannerMosaico';
-import BannerSeparate from '../src/components/BannerSeparate';
-import InfoBlocks from '../src/components/InfoBlocks';
+import ProdutosEmDestaque from '../containers/ProdutosEmDestaque';
+import ProdutosNovos from '../containers/ProdutosNovos';
+import ProdutosVendidos from '../containers/ProdutosVendidos';
+import ProdutosVisitatos from '../containers/ProdutosVisitatos';
+import BannerMosaico from '../components/BannerMosaico';
+import BannerSeparate from '../components/BannerSeparate';
+import InfoBlocks from '../components/InfoBlocks';
 
 class Home extends React.Component {
  static async getInitialProps ({ store }) {
@@ -36,21 +36,21 @@ class Home extends React.Component {
       <div id="page">
         <HeaderPage />
         <div className="page-home">
-        <BannerMosaico />
-        <div className={`container ${styles.container}`}>
-          <ProdutosEmDestaque />
-          <ProdutosNovos />
-          <BannerSeparate />
-          <ProdutosVisitatos />
-          <ProdutosVendidos />
-          <InfoBlocks />
+          <BannerMosaico />
+          <div className={`container ${styles.container}`}>
+            <ProdutosEmDestaque />
+            <ProdutosNovos />
+            <BannerSeparate />
+            <ProdutosVisitatos />
+            <ProdutosVendidos />
+            <InfoBlocks />
+          </div>
+          <FooterPage>
+            <Sitemap />
+            <Copy />
+          </FooterPage>
         </div>
-        <FooterPage>
-          <Sitemap />
-          <Copy />
-        </FooterPage>
       </div>
-    </div>
     )
   }
 }
