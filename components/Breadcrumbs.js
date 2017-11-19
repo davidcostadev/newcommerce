@@ -4,15 +4,28 @@ import classNames from 'classnames';
 
 import styles from '../assets/scss/App.scss';
 
-const Breadcrumbs = () => (
+const BreadcrumbItemLink = ({ item }) => (
+  <li className={classNames([styles.breadcrumbItem, 'breadcrumb-item'])}>
+    <Link route={item.route}><a>{item.title}</a></Link>
+  </li>
+)
+const BreadcrumbItemCurrent = ({ item }) => (
+  <li className={classNames([styles.breadcrumbItem, 'breadcrumb-item', 'active'])}>
+    {item.title}
+  </li>
+)
+
+
+const Breadcrumbs = ({ itens }) => (
   <ol className={classNames([styles.breadcrumb, 'breadcrumb'])}>
-    <li className={classNames([styles.breadcrumbItem, 'breadcrumb-item'])}>
-      <Link route="/category"><a>Informática</a></Link>
-    </li>
-    <li className={classNames([styles.breadcrumbItem, 'breadcrumb-item'])}>
-      <Link route="/category"><a>Gabinetes</a></Link>
-    </li>
-    <li className={classNames([styles.breadcrumbItem, 'breadcrumb-item', 'active'])}>Gabinete Raidmax Gamer EXO Pto/verde S/fonte 108bg</li>
+    {itens.map((item, index) => {
+      console.log(itens.length - 1 === index)
+      if (itens.length - 1 === index) {
+        return <BreadcrumbItemCurrent item={item} key={index}/>
+      } else {
+        return <BreadcrumbItemLink item={item} key={index}/>
+      }
+    })}
   </ol>
 );
 

@@ -50,12 +50,14 @@
     }
     .currency {
       font-size: 22px;
+      margin-left: 5px;
     }
     .amount {
       font-size: 50px;
     }
   }
 
+  .productComplement,
   .productPricePagseguro {
     display: flex;
     align-items: center;
@@ -74,6 +76,7 @@
   }
 
   @include min-lg {
+    .productComplement,
     .productPricePagseguro {
       font-size: 18px;
     }

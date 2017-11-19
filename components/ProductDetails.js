@@ -1,7 +1,9 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from '../routes'
+import classNames from 'classnames'
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 const data = {
   name: 'Gabinete Raidmax Gamer EXO Pto/Verde S/Fonte 108bg',
@@ -37,11 +39,73 @@ const data = {
   ]
 };
 
-const ProductDetail = () => (
+function toFloat(number) {
+  return parseFloat(number.replace(',', '.'), 10);
+}
+
+function floatToReal(float) {
+  const float2Decimal = Math.round(float * 100) / 100;
+  return float2Decimal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+function StringToReal(number) {
+  const float = toFloat(number);
+  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+
+
+function parcelado(number) {
+  const float = toFloat(number);
+
+  let currentParcel = 0;
+  let currentAmount = 0;
+  const limitSemJuros = 3;
+  const minimoParcela = 5;
+
+  if (float < minimoParcela) {
+    return <ParcelBox parcel={currentParcel} amount={floatToReal(float)} />;
+  }
+
+  for (let i = 1; i <= limitSemJuros; i += 1) {
+    const current = float / i;
+    if (current < minimoParcela) {
+      break;
+    }
+    currentParcel = i;
+    currentAmount = current;
+  }
+
+  return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />;
+}
+
+const ParcelBox = ({ parcel, amount }) => (
+  <div className={styles.productComplement}>
+    <span>ou {parcel}x de</span>
+    <span className={styles.currency}>R$</span>
+    <span className={styles.amount}>{amount}</span>
+    <span>Sem Juros</span>
+  </div>
+);
+
+ParcelBox.propTypes = {
+  parcel: PropTypes.number.isRequired,
+  amount: PropTypes.string.isRequired
+};
+
+
+const stringToDesconto = (value, desconto) => {
+  const float = toFloat(value);
+  const factor = (100 - desconto) * 0.01
+
+  return floatToReal(factor * float)
+
+}
+
+
+const ProductDetail = ({ product, bredcrumbs }) => (
   <div className={styles.productDetails}>
-    <h1 className={styles.productTitle}>{data.name}</h1>
+    <h1 className={styles.productTitle}>{product.PS_PRODUTO}</h1>
     <p className={styles.productHeader}>
-      <span className={styles.rating}>
+      {/* <span className={styles.rating}>
         <span className={styles.stars}>
           <span className={styles.star}>
             <i className="ion-ios-star" />
@@ -60,32 +124,25 @@ const ProductDetail = () => (
           </span>
         </span>
         <a href="#" className={styles.ratingLink}>6 Avaliações</a>
-      </span>
+      </span> */}
       <span className={styles.sku}>
         <i className="ion-ios-grid-view-outline" />
-        <span>1234</span>
+        <span>{product.PS_ID_PRODUTO}</span>
       </span>
       <span className={styles.tags}>
         <i className="ion-ios-pricetag-outline" />
-        <a href="#" className={styles.tag}>Moderno</a>
-        <a href="#" className={styles.tag}>Geek</a>
+        <Link route={bredcrumbs[2].route}><a className={styles.tag}>{bredcrumbs[2].title}</a></Link>
       </span>
     </p>
-    <p className={styles.productDescriptionShort}>{data.description_short}</p>
+    <p className={styles.productDescriptionShort}>{product.PS_DESCRICAO_VENDA}</p>
     <div className={styles.productBlock}>
       <div className={styles.productPriceCol}>
         <p className={styles.productPrice}>
           <span className={styles.text}>Por</span>
           <span className={styles.currency}>R$</span>
-          <span className={styles.amount}>170,40</span>
+          <span className={styles.amount}>{StringToReal(product.PS_VALOR_DE_VENDA)}</span>
         </p>
-        <p className={styles.productPricePagseguro}>
-          <span>ou 6x de</span>
-          <span className={styles.currency}>R$</span>
-          <span className={styles.amount}>28,00</span>
-          <span>sem Juros</span>
-          <a href="#">Ver Parcelas</a>
-        </p>
+        {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
       </div>
       <div className={styles.productPriceCol}>
         <div className={styles.productButtons}>
@@ -98,8 +155,8 @@ const ProductDetail = () => (
     </div>
     <p className={styles.productPriceBoleto}>
       <span className={styles.currency}>R$</span>
-      <span className={styles.amount}>158,00</span>
-      <span className="text">7% de Desconco no Boleto ou Transferencia</span>
+      <span className={styles.amount}>{stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}</span>
+      <span className={styles.text}>7% de Desconco no Boleto ou Transferencia</span>
     </p>
     <div className={styles.productMore}>
       <div className={styles.productCorreioCalc}>

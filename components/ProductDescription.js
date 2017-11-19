@@ -1,12 +1,15 @@
-import React from 'react';
-// import classNames from 'classnames';
+import React from 'react'
 
-// import styles from '../assets/scss/App.scss';
+import BlockInfo from './BlockInfo'
 
-import BlockInfo from './BlockInfo';
+const ProductDescription = ({ product }) => {
+  if (!product.PS_DETALHES_PRODUTO.length) {
+    return null
+  }
 
-const ProductDescription = () => (
-  <BlockInfo />
-);
+  return (
+    <BlockInfo content={product.PS_DETALHES_PRODUTO} />
+  )
+}
 
 export default ProductDescription;

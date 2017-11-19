@@ -14,7 +14,7 @@
       display: flex;
       .galleryThumb {
         flex: 1;
-
+        max-width: 100px;
       }
     }
     img {

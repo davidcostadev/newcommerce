@@ -1,7 +1,22 @@
 import React from 'react';
+import { bindActionCreators } from 'redux'
+import withRedux from 'next-redux-wrapper'
+import Head from 'next/head'
 import classNames from 'classnames';
 
+import { initStore, setCategories } from '../store'
+
 import styles from '../assets/scss/App.scss';
+
+import ApiCategories from '../api/Categories'
+import ApiUrl from '../api/Url'
+import ApiProduct from '../api/Product'
+
+import HeaderPage from '../components/HeaderPage';
+import FooterPage from '../components/FooterPage';
+import Sitemap from '../components/Sitemap';
+import Copy from '../components/Copy';
+
 import ProductDetails from '../components/ProductDetails';
 import ProductsCarrocel from '../components/ProductsCarrocel';
 import ProductDescription from '../components/ProductDescription';
@@ -41,46 +56,131 @@ const data = {
   ]
 };
 
-const Product = () => (
-  <div>
-    <main id="product-page">
-      <div className={`container ${styles.container}`}>
-        <Breadcrumbs />
-        {/* <breadcrumb></breadcrumb> */}
-        <div className={styles.productLanding}>
-          <div className="row">
-            <div className="col-lg-4">
-              <div className={styles.gallery}>
-                <picture className={classNames([styles.galleryFeature, 'galleryImage'])}><img src={data.images[0].original} alt="name product" /></picture>
-                <div className={styles.galleryThumbs}>
-                  {/* <tiner> */}
-                  {
-                    data.images.map(image => (
-                      <picture className={styles.galleryThumb}>
-                        <img src={image.thumb} alt="product name" />
-                      </picture>
-                    ))
-                  }
+class Product extends React.Component {
+  static async getInitialProps ({ store, query }) {
 
-                  {/* </tiner> */}
+    const urlMeta = await ApiUrl(query)
+    // console.log(urlMeta)
+
+    const productPage = await ApiProduct(urlMeta.PS_ID_PRODUTO)
+
+
+    const state = store.getState()
+
+    if (!state.categories.length) {
+      const categories = await ApiCategories()
+      store.dispatch(setCategories(categories))
+    }
+    return {
+      urlMeta,
+      product: productPage.product,
+      images: productPage.images,
+      products: productPage.products,
+    }
+  }
+
+  breadCrumbsProps() {
+    const itens = []
+
+    const family = this.props.categories.find((element) => {
+      if (element.ID_FAMILIA === parseInt(this.props.product.PS_ID_FAMILIA, 10)) {
+        return true
+      }
+    })
+
+    // console.log(family)
+    const group = family.TABLE_GRUPO.find((element) => {
+      if (element.ID_GRUPO === parseInt(this.props.product.PS_ID_GRUPO, 10)) {
+        return true
+      }
+    })
+    const subgroup = group.TABLE_SUBGRUPO.find((element) => {
+      if (element.ID_SUBGRUPO === parseInt(this.props.product.PS_ID_SUBGRUPO, 10)) {
+        return true
+      }
+    })
+
+
+    itens.push({
+      route: `/category/${family.PATH_PAGE_FAMILIA}`,
+      title: family.FAMILIA
+    })
+    itens.push({
+      route: `/category/${group.PATH_PAGE_GRUPO}`,
+      title: group.GRUPO
+    })
+    itens.push({
+      route: `/category/${subgroup.PATH_PAGE_SUBGRUPO}`,
+      title: subgroup.SUBGRUPO
+    })
+    itens.push({
+      route: `/product/${this.props.product.PS_PATH_PAGE}`,
+      title: this.props.product.PS_PRODUTO
+    })
+    // console.log(itens)
+    return itens
+  }
+
+  render() {
+    // console.log(this.props.product)
+    console.log(this.props.images)
+    return (
+      <div id="page">
+        <Head>
+          <title>{this.props.urlMeta.PS_TITLE}</title>
+          <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
+        </Head>
+        <HeaderPage />
+        <main id="product-page">
+          <div className={`container ${styles.container}`}>
+            <Breadcrumbs itens={this.breadCrumbsProps()} />
+            <div className={styles.productLanding}>
+              <div className="row">
+                <div className="col-lg-4">
+                  <div className={styles.gallery}>
+                    <picture className={classNames([styles.galleryFeature, 'galleryImage'])}>
+                      <img src={this.props.images[0].PS_PATH_IMAGEM_400} alt={this.props.urlMeta.PS_TITLE} />
+                    </picture>
+                    <div className={styles.galleryThumbs}>
+                      {this.props.images.map(image => (
+                        <picture className={styles.galleryThumb}>
+                          <img src={image.PS_PATH_IMAGEM_400} alt={this.props.urlMeta.PS_TITLE} />
+                        </picture>
+                      ))}
+                    </div>
+                  </div>
                 </div>
+                <div className="col-lg-8">
+                  <ProductDetails product={this.props.product} bredcrumbs={this.breadCrumbsProps()} />
+                </div>
+
               </div>
             </div>
-            <div className="col-lg-8">
-              <ProductDetails />
-            </div>
 
+            <ProductDescription product={this.props.product} />
+            <ProductsCarrocel title="Relacionados" products={this.props.products.slice(0, 4)}/>
           </div>
-          {/* <product-description></product-description> */}
-          {/* <product-table></product-table> */}
-          {/* <products-carrocel title="Relacionados"></products-carrocel> */}
-        </div>
-
-        <ProductDescription />
-        <ProductsCarrocel title="Relacionados" />
+        </main>
+        <FooterPage>
+          <Sitemap />
+          <Copy />
+        </FooterPage>
       </div>
-    </main>
-  </div>
-);
+    );
+  }
+}
 
-export default Product;
+const mapState = (state) => {
+  return {
+    categories: state.categories
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCategories: bindActionCreators(setCategories, dispatch),
+  }
+}
+
+export default withRedux(initStore, mapState, mapDispatchToProps)(Product)
+

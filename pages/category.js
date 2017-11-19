@@ -1,15 +1,16 @@
 import React from 'react';
 import { bindActionCreators} from 'redux'
-import { initStore, setCategories } from '../store'
 import withRedux from 'next-redux-wrapper'
+import classNames from 'classnames';
 import Head from 'next/head'
 
+import { initStore, setCategories } from '../store'
 import { Link } from '../routes'
+
 import ApiCategories from '../api/Categories'
 import ApiUrl from '../api/Url'
 import ApiCategory from '../api/Category'
 
-import classNames from 'classnames';
 import styles from '../assets/scss/App.scss';
 
 import HeaderPage from '../components/HeaderPage';
@@ -29,7 +30,7 @@ class Category extends React.Component {
   static async getInitialProps ({ store, query }) {
 
     const urlMeta = await ApiUrl(query)
-    console.log(query)
+    // console.log(query)
     const page = query.page ? query.page : 1
 
     const resultCategory = await ApiCategory({
@@ -65,9 +66,9 @@ class Category extends React.Component {
       prefix.push(this.props.url.query.subGroup)
     }
 
-
     return prefix.join('/')
-  }
+ }
+
   suffixGerate() {
     const sufix = []
 
@@ -86,7 +87,7 @@ class Category extends React.Component {
 
   render() {
 
-    // console.log(this.props)
+    console.log(this.props)
     // console.log('pagination', this.props.pagination)
     return (
       <div id="page">
@@ -105,10 +106,10 @@ class Category extends React.Component {
                 </div>
                 <div className="col col-lg-9">
                   <div id="example-content">
-                    <TitleSection />
+                    <TitleSection title={this.props.urlMeta.PS_TITLE} />
                     <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
                       <div className="col">
-                        1066 Produtos
+                        {this.props.pagination.total} Produtos
                       </div>
                       <div className="col">
                         <form className="form-inline justify-content-end">

@@ -14,6 +14,9 @@ async function Url(query) {
   if (query.subgroup) {
     slug.push(query.subgroup)
   }
+  if (query.slug) {
+    slug.push(query.slug)
+  }
 
   const data = JSON.stringify({
     PE_PASSKEY: 'c9b3c80c2ed263f967a4b455c6eb7d51',
@@ -23,8 +26,7 @@ async function Url(query) {
     PE_PAGENAME: slug.join('/')
   });
 
-  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_website_url_sel', data);
-
+  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_website_url_sel', data)
   return response.data.result[0].PS_TABELA_INFO[0]
 }
 

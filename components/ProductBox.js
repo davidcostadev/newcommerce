@@ -19,7 +19,7 @@ function StringToReal(number) {
 function parcelado(number) {
   const float = toFloat(number);
 
-  let currentParcel = 0;
+  let currentParcel = 1;
   let currentAmount = 0;
   const limitSemJuros = 3;
   const minimoParcela = 5;

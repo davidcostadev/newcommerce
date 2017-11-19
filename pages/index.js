@@ -1,7 +1,9 @@
 import React from 'react'
-import { bindActionCreators} from 'redux'
-import { initStore, setCategories } from '../store'
+import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
+import Head from 'next/head'
+
+import { initStore, setCategories } from '../store'
 
 import styles from '../assets/scss/App.scss';
 
@@ -34,8 +36,12 @@ class Home extends React.Component {
   render () {
     return (
       <div id="page">
+        <Head>
+          <title>Mundial Megastore é a Maior Loja de Informática e Importados de Ribeirão Preto</title>
+          <meta name="description" content="Agilize sua vida Comprando Online e receba na comodidade do seu endereço produtos eletrônicos, Informática, celulares, notebooks, perfumes importados, relógios e etc. Tudo o que você precisa para estar conectado com o mundo." />
+        </Head>
         <HeaderPage />
-        <div className="page-home">
+        <main className="page-home">
           <BannerMosaico />
           <div className={`container ${styles.container}`}>
             <ProdutosEmDestaque />
@@ -45,11 +51,11 @@ class Home extends React.Component {
             <ProdutosVendidos />
             <InfoBlocks />
           </div>
-          <FooterPage>
-            <Sitemap />
-            <Copy />
-          </FooterPage>
-        </div>
+        </main>
+        <FooterPage>
+          <Sitemap />
+          <Copy />
+        </FooterPage>
       </div>
     )
   }
