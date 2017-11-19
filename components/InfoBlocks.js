@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 
 const Block = props => (
@@ -10,13 +10,13 @@ const Block = props => (
     <div className={styles.infoTitle}>{props.title}</div>
     <div className={styles.infoContent}>{props.description}</div>
   </div>
-);
+)
 
 Block.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
-};
+  description: PropTypes.string.isRequired,
+}
 
 
 const InfoBlocks = () => (
@@ -45,6 +45,6 @@ const InfoBlocks = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default InfoBlocks;
+export default InfoBlocks

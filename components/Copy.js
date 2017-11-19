@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 // import PropTypes from 'prop-types';
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 const Copy = () => (
   <div className={styles.copy}>
@@ -17,6 +17,6 @@ const Copy = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default Copy;
+export default Copy

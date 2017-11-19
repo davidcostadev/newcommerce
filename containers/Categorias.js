@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
-import NavBar from '../components/Navbar';
+import NavBar from '../components/Navbar'
 
 class CategoriasContainer extends React.Component {
 
@@ -18,6 +18,6 @@ class CategoriasContainer extends React.Component {
   }
 }
 
-const mapState = (state) => state
+const mapState = state => state
 
-export default connect(mapState)(CategoriasContainer);
+export default connect(mapState)(CategoriasContainer)

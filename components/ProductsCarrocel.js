@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import ProductBox from './ProductBox';
-import styles from '../assets/scss/App.scss';
+import ProductBox from './ProductBox'
+import styles from '../assets/scss/App.scss'
 
 // console.log(styles);
 
@@ -15,15 +15,15 @@ const ProductsCarrocel = props => (
       ))}
     </div>
   </div>
-);
+)
 
 ProductsCarrocel.propTypes = {
   title: PropTypes.string.isRequired,
-  products: PropTypes.array
-};
+  products: PropTypes.array,
+}
 
 ProductsCarrocel.defaultProps = {
-  products: []
-};
+  products: [],
+}
 
-export default ProductsCarrocel;
+export default ProductsCarrocel

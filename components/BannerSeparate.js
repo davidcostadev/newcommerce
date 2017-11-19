@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from '../assets/scss/App.scss';
+import React from 'react'
+import Link from 'next/link'
+import styles from '../assets/scss/App.scss'
 
 const BannerSeparate = () => (
   <div className={styles.bannerSeparateGrid}>
@@ -27,6 +27,6 @@ const BannerSeparate = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default BannerSeparate;
+export default BannerSeparate

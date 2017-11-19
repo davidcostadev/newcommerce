@@ -1,43 +1,43 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from '../routes'
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 function toFloat(number) {
-  return parseFloat(number.replace(',', '.'), 10);
+  return parseFloat(number.replace(',', '.'), 10)
 }
 
 function floatToReal(float) {
-  const float2Decimal = Math.round(float * 100) / 100;
-  return float2Decimal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+  const float2Decimal = Math.round(float * 100) / 100
+  return float2Decimal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
 }
 function StringToReal(number) {
-  const float = toFloat(number);
-  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+  const float = toFloat(number)
+  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
 }
 
 function parcelado(number) {
-  const float = toFloat(number);
+  const float = toFloat(number)
 
-  let currentParcel = 1;
-  let currentAmount = 0;
-  const limitSemJuros = 3;
-  const minimoParcela = 5;
+  let currentParcel = 1
+  let currentAmount = 0
+  const limitSemJuros = 3
+  const minimoParcela = 5
 
   if (float < minimoParcela) {
-    return <ParcelBox parcel={currentParcel} amount={floatToReal(float)} />;
+    return <ParcelBox parcel={currentParcel} amount={floatToReal(float)} />
   }
 
   for (let i = 1; i <= limitSemJuros; i += 1) {
-    const current = float / i;
+    const current = float / i
     if (current < minimoParcela) {
-      break;
+      break
     }
-    currentParcel = i;
-    currentAmount = current;
+    currentParcel = i
+    currentAmount = current
   }
 
-  return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />;
+  return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />
 }
 
 const ParcelBox = ({ parcel, amount }) => (
@@ -47,12 +47,12 @@ const ParcelBox = ({ parcel, amount }) => (
     <span className={styles.amount}>{amount}</span>
     <strong>Sem Juros</strong>
   </div>
-);
+)
 
 ParcelBox.propTypes = {
   parcel: PropTypes.number.isRequired,
   amount: PropTypes.string.isRequired
-};
+}
 
 
 const ProductBox = ({ product }) => (
@@ -75,11 +75,11 @@ const ProductBox = ({ product }) => (
       </Link>
     </div>
   </div>
-);
+)
 
 ProductBox.propTypes = {
   product: PropTypes.object.isRequired
-};
+}
 
 
-export default ProductBox;
+export default ProductBox

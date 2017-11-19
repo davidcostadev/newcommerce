@@ -1,26 +1,15 @@
-import React from 'react';
-import axios from 'axios';
-import ProductsCarrocel from '../components/ProductsCarrocel';
-
-
-// import { Container, Header } from 'semantic-ui-react';
-// import Helmet from 'react-helmet';
-
-// import styles from '../assets/scss/App.scss';
-// // import TopMenu from '../components/TopMenu';
-// import ProductsCarrocel from '../components/ProductsCarrocel';
-// import BannerMosaico from '../components/BannerMosaico';
-// import BannerSeparate from '../components/BannerSeparate';
-// import InfoBlocks from '../components/InfoBlocks';
+import React from 'react'
+import axios from 'axios'
+import ProductsCarrocel from '../components/ProductsCarrocel'
 
 
 class ProdutosEmDestaqueContainer extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      products: []
-    };
+      products: [],
+    }
   }
 
   componentDidMount() {
@@ -33,32 +22,26 @@ class ProdutosEmDestaqueContainer extends React.Component {
       PE_QUANT_REGISTROS: 4,
       PE_PAGINA_ID: 0,
       PE_COLUNA_ID: 2,
-      PE_COLUNA_ORDER: 2
-    });
+      PE_COLUNA_ORDER: 2,
+    })
+
     axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_web_busca_maisvendidos_sel', data).then((response) => {
       this.setState({
-        products: response.data.result[0].PS_TABELA_PRODUTO
-      });
-    });
-
-    // setTimeout(() => {
-    //   this.setState({
-    //     info: 'depois'
-    //   });
-    // }, 5000
-    // );
+        products: response.data.result[0].PS_TABELA_PRODUTO,
+      })
+    })
   }
 
   render() {
     if (this.state.products.length === 0) {
-      return null;
+      return null
     }
 
     return (
       <ProductsCarrocel title="Os mais Vendidos" products={this.state.products} />
-    );
+    )
   }
 }
 
 
-export default ProdutosEmDestaqueContainer;
+export default ProdutosEmDestaqueContainer

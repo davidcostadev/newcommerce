@@ -1,47 +1,45 @@
-import React from 'react';
-import { bindActionCreators} from 'redux'
+import React from 'react'
+import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
-import classNames from 'classnames';
+import classNames from 'classnames'
 import Head from 'next/head'
 
 import { initStore, setCategories } from '../store'
-import { Link } from '../routes'
+// import { Link } from '../routes'
 
 import ApiCategories from '../api/Categories'
 import ApiUrl from '../api/Url'
 import ApiCategory from '../api/Category'
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
-import HeaderPage from '../components/HeaderPage';
-import FooterPage from '../components/FooterPage';
-import Sitemap from '../components/Sitemap';
-import Copy from '../components/Copy';
+import HeaderPage from '../components/HeaderPage'
+import FooterPage from '../components/FooterPage'
+import Sitemap from '../components/Sitemap'
+import Copy from '../components/Copy'
 
 
-import ProdutosCategoriaContainer from '../containers/ProdutosCategoria';
-import ProductBox from '../components/ProductBox';
-import TitleSection from '../components/TitleSection';
-import WidgetFilter from '../components/WidgetFilter';
-import WidgetCategory from '../components/WidgetCategory';
-import Pagination from '../components/Pagination';
+import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
+// import ProductBox from '../components/ProductBox'
+import TitleSection from '../components/TitleSection'
+import WidgetFilter from '../components/WidgetFilter'
+import WidgetCategory from '../components/WidgetCategory'
+import Pagination from '../components/Pagination'
 
 class Category extends React.Component {
-  static async getInitialProps ({ store, query }) {
-
+  static async getInitialProps({ store, query }) {
     const urlMeta = await ApiUrl(query)
-    // console.log(query)
     const page = query.page ? query.page : 1
 
     const resultCategory = await ApiCategory({
       familyId: urlMeta.PS_ID_FAMILIA,
       groupId: urlMeta.PS_ID_GRUPO,
       subGroupId: urlMeta.PS_ID_SUBGRUPO,
-      page
+      page,
     })
 
-    const products = resultCategory.products
-    const pagination = resultCategory.pagination
+    const { products } = resultCategory
+    const { pagination } = resultCategory
 
     const state = store.getState()
 
@@ -53,7 +51,7 @@ class Category extends React.Component {
     return { products, pagination, urlMeta }
   }
 
- prefixGerate() {
+  prefixGerate() {
     const prefix = [this.props.url.pathname]
 
     if (this.props.url.query.family) {
@@ -67,7 +65,7 @@ class Category extends React.Component {
     }
 
     return prefix.join('/')
- }
+  }
 
   suffixGerate() {
     const sufix = []
@@ -86,7 +84,6 @@ class Category extends React.Component {
   }
 
   render() {
-
     console.log(this.props)
     // console.log('pagination', this.props.pagination)
     return (
@@ -215,16 +212,12 @@ class Category extends React.Component {
 //   match: PropTypes.object.isRequired
 // };
 
-const mapState = (state) => {
-  return {
+const mapState = (state) => ({
     categories: state.categories
-  }
-}
+  })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     setCategories: bindActionCreators(setCategories, dispatch),
-  }
-}
+  })
 
 export default withRedux(initStore, mapState, mapDispatchToProps)(Category)

@@ -12,4 +12,4 @@ const ProductDescription = ({ product }) => {
   )
 }
 
-export default ProductDescription;
+export default ProductDescription

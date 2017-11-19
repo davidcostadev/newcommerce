@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from '../assets/scss/App.scss';
+import React from 'react'
+import Link from 'next/link'
+import styles from '../assets/scss/App.scss'
 
 const BannerMosaico = () => (
   <div className={styles.bannerMosaicoGrid}>
@@ -36,6 +36,6 @@ const BannerMosaico = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default BannerMosaico;
+export default BannerMosaico

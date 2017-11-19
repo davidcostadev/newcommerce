@@ -10,25 +10,23 @@ const parsePagination = (page, total, quant) => {
 
   const oldLimit = (current - show) > 1 ? (current - show) : 2
 
-
-
   if (current > 1) {
   //   console.log('inicio', 1)
     listPages.push({
       page: 1,
       begin: true,
       current: false,
-      end: false
+      end: false,
     })
   }
 
-  for(let i = oldLimit; i < current; i++) {
+  for (let i = oldLimit; i < current; i++) {
   //   console.log(`for old ${i}`)
     listPages.push({
       page: i,
       begin: false,
       current: false,
-      end: false
+      end: false,
     })
   }
 
@@ -37,7 +35,7 @@ const parsePagination = (page, total, quant) => {
     page: current,
     begin: false,
     current: true,
-    end: false
+    end: false,
   })
 
   // console.log(`current ${current}`)
@@ -45,13 +43,13 @@ const parsePagination = (page, total, quant) => {
   const maxLimit = current + (show + 1) < pages ? current + (show + 1) : pages
 
 
-  for(let i = current + 1; i < maxLimit; i++) {
+  for (let i = current + 1; i < maxLimit; i += 1) {
   //   console.log(`for new ${i}`)
     listPages.push({
       page: i,
       begin: false,
       current: false,
-      end: false
+      end: false,
     })
   }
 
@@ -61,7 +59,7 @@ const parsePagination = (page, total, quant) => {
       page: pages,
       begin: false,
       current: false,
-      end: true
+      end: true,
     })
   }
 
@@ -70,12 +68,13 @@ const parsePagination = (page, total, quant) => {
     total,
     current,
     pages,
-    quant
+    quant,
   }
 }
 
-async function Category (props) {
-  console.log(new Date(), 'Api Category');
+async function Category(props) {
+  console.log(new Date(), 'Api Category')
+
   const quant = props.quant ? props.quant : 21
   const page = props.page ? props.page - 1 : 0
 
@@ -90,7 +89,7 @@ async function Category (props) {
     PE_QUANT_REGISTROS: quant,
     PE_PAGINA_ID: page,
     PE_COLUNA_ID: 2,
-    PE_COLUNA_ORDER: 2
+    PE_COLUNA_ORDER: 2,
   })
 
 

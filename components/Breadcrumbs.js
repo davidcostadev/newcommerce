@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { Link } from '../routes'
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 const BreadcrumbItemLink = ({ item }) => (
   <li className={classNames([styles.breadcrumbItem, 'breadcrumb-item'])}>
@@ -22,11 +22,11 @@ const Breadcrumbs = ({ itens }) => (
       console.log(itens.length - 1 === index)
       if (itens.length - 1 === index) {
         return <BreadcrumbItemCurrent item={item} key={index}/>
-      } else {
-        return <BreadcrumbItemLink item={item} key={index}/>
       }
+
+      return <BreadcrumbItemLink item={item} key={index} />
     })}
   </ol>
-);
+)
 
-export default Breadcrumbs;
+export default Breadcrumbs

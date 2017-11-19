@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 // import PropTypes from 'prop-types';
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 const Sitemap = () => (
   <div className={styles.sitemaps}>
@@ -68,6 +68,6 @@ const Sitemap = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export default Sitemap;
+export default Sitemap

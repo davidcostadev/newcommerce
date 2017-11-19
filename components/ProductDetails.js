@@ -1,80 +1,80 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '../routes'
 import classNames from 'classnames'
+import { Link } from '../routes'
 
 import styles from '../assets/scss/App.scss'
 
-const data = {
-  name: 'Gabinete Raidmax Gamer EXO Pto/Verde S/Fonte 108bg',
-  price: 170.40,
-  description: '<h2>Descrição</h2><p>Características:</p><p>– Marca: Raidmax</p><p>– Modelo: EXO 108BG</p><p>Especificações:</p><p>– Unidades externas (baias): 2x 5.25″</p><p>– Unidades internas (baias): 3x 3.5″ HD / 3x 2.5″ SSD</p><p>– Sistema Board: Micro ATX / ATX / Mini-ITX</p><p>– Slots de expansão: 7 Slots</p><p>– I/O Ports: 1x USB 3.0 + 1x USB 2.0 / 2x HD Áudio</p><p>– Dimensões: 445 x 185 x 420 mm</p><p>Sistema de resfriamento:</p><p>– Frontal: 1x 120mm LED fan</p><p>– Lateral: 2x 120mm fan (não incluso)</p><p>– Traseiro: 1x 80mm (não incluso)</p><p>Conteúdo da embalagem:</p><p>– 01 Gabinete Raidmax</p>',
-  description_short: 'Lorem inpur amet doin',
-  sky: '10968',
-  images: [
-    {
-      original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1.jpg',
-      thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1-150x150.jpg'
-    },
-    {
-      original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1.jpg',
-      thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1-150x150.jpg'
-    },
-    {
-      original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1.jpg',
-      thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1-150x150.jpg'
-    },
-    {
-      original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1.jpg',
-      thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1-150x150.jpg'
-    },
-    {
-      original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1.jpg',
-      thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1-150x150.jpg'
-    },
-    {
-      original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1.jpg',
-      thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1-150x150.jpg'
-    }
-  ]
-};
+// const data = {
+//   name: 'Gabinete Raidmax Gamer EXO Pto/Verde S/Fonte 108bg',
+//   price: 170.40,
+//   description: '<h2>Descrição</h2><p>Características:</p><p>– Marca: Raidmax</p><p>– Modelo: EXO 108BG</p><p>Especificações:</p><p>– Unidades externas (baias): 2x 5.25″</p><p>– Unidades internas (baias): 3x 3.5″ HD / 3x 2.5″ SSD</p><p>– Sistema Board: Micro ATX / ATX / Mini-ITX</p><p>– Slots de expansão: 7 Slots</p><p>– I/O Ports: 1x USB 3.0 + 1x USB 2.0 / 2x HD Áudio</p><p>– Dimensões: 445 x 185 x 420 mm</p><p>Sistema de resfriamento:</p><p>– Frontal: 1x 120mm LED fan</p><p>– Lateral: 2x 120mm fan (não incluso)</p><p>– Traseiro: 1x 80mm (não incluso)</p><p>Conteúdo da embalagem:</p><p>– 01 Gabinete Raidmax</p>',
+//   description_short: 'Lorem inpur amet doin',
+//   sky: '10968',
+//   images: [
+//     {
+//       original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1.jpg',
+//       thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1-150x150.jpg'
+//     },
+//     {
+//       original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1.jpg',
+//       thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1-150x150.jpg'
+//     },
+//     {
+//       original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1.jpg',
+//       thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1-150x150.jpg'
+//     },
+//     {
+//       original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1.jpg',
+//       thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13722-1-150x150.jpg'
+//     },
+//     {
+//       original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1.jpg',
+//       thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13724-1-150x150.jpg'
+//     },
+//     {
+//       original: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1.jpg',
+//       thumb: 'https://www.raicrom.com.br/wp-content/uploads/2016/12/gabinete-raidmax-gamer-exo-pto-verde-s-fonte-108bg-10968-2000-13723-1-150x150.jpg'
+//     }
+//   ]
+// }
 
 function toFloat(number) {
-  return parseFloat(number.replace(',', '.'), 10);
+  return parseFloat(number.replace(',', '.'), 10)
 }
 
 function floatToReal(float) {
-  const float2Decimal = Math.round(float * 100) / 100;
-  return float2Decimal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+  const float2Decimal = Math.round(float * 100) / 100
+  return float2Decimal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
 }
 function StringToReal(number) {
-  const float = toFloat(number);
-  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+  const float = toFloat(number)
+  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
 }
 
 
 function parcelado(number) {
-  const float = toFloat(number);
+  const float = toFloat(number)
 
-  let currentParcel = 0;
-  let currentAmount = 0;
-  const limitSemJuros = 3;
-  const minimoParcela = 5;
+  let currentParcel = 0
+  let currentAmount = 0
+  const limitSemJuros = 3
+  const minimoParcela = 5
 
   if (float < minimoParcela) {
-    return <ParcelBox parcel={currentParcel} amount={floatToReal(float)} />;
+    return <ParcelBox parcel={currentParcel} amount={floatToReal(float)} />
   }
 
   for (let i = 1; i <= limitSemJuros; i += 1) {
-    const current = float / i;
+    const current = float / i
     if (current < minimoParcela) {
-      break;
+      break
     }
-    currentParcel = i;
-    currentAmount = current;
+    currentParcel = i
+    currentAmount = current
   }
 
-  return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />;
+  return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />
 }
 
 const ParcelBox = ({ parcel, amount }) => (
@@ -84,16 +84,16 @@ const ParcelBox = ({ parcel, amount }) => (
     <span className={styles.amount}>{amount}</span>
     <span>Sem Juros</span>
   </div>
-);
+)
 
 ParcelBox.propTypes = {
   parcel: PropTypes.number.isRequired,
-  amount: PropTypes.string.isRequired
-};
+  amount: PropTypes.string.isRequired,
+}
 
 
 const stringToDesconto = (value, desconto) => {
-  const float = toFloat(value);
+  const float = toFloat(value)
   const factor = (100 - desconto) * 0.01
 
   return floatToReal(factor * float)
@@ -176,6 +176,6 @@ const ProductDetail = ({ product, bredcrumbs }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default ProductDetail;
+export default ProductDetail

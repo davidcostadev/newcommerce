@@ -1,6 +1,6 @@
-import React from 'react';
-import classNames from 'classnames';
-import styles from '../assets/scss/App.scss';
+import React from 'react'
+import classNames from 'classnames'
+import styles from '../assets/scss/App.scss'
 
 const WidgetFilter = () => (
   <div className={classNames([styles.widget, styles.widgetFilter])}>
@@ -43,6 +43,6 @@ const WidgetFilter = () => (
 
     </form>
   </div>
-);
+)
 
-export default WidgetFilter;
+export default WidgetFilter

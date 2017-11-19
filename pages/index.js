@@ -5,25 +5,25 @@ import Head from 'next/head'
 
 import { initStore, setCategories } from '../store'
 
-import styles from '../assets/scss/App.scss';
+import styles from '../assets/scss/App.scss'
 
 import ApiCategories from '../api/Categories'
 
-import HeaderPage from '../components/HeaderPage';
-import FooterPage from '../components/FooterPage';
-import Sitemap from '../components/Sitemap';
-import Copy from '../components/Copy';
+import HeaderPage from '../components/HeaderPage'
+import FooterPage from '../components/FooterPage'
+import Sitemap from '../components/Sitemap'
+import Copy from '../components/Copy'
 
-import ProdutosEmDestaque from '../containers/ProdutosEmDestaque';
-import ProdutosNovos from '../containers/ProdutosNovos';
-import ProdutosVendidos from '../containers/ProdutosVendidos';
-import ProdutosVisitatos from '../containers/ProdutosVisitatos';
-import BannerMosaico from '../components/BannerMosaico';
-import BannerSeparate from '../components/BannerSeparate';
-import InfoBlocks from '../components/InfoBlocks';
+import ProdutosEmDestaque from '../containers/ProdutosEmDestaque'
+import ProdutosNovos from '../containers/ProdutosNovos'
+import ProdutosVendidos from '../containers/ProdutosVendidos'
+import ProdutosVisitatos from '../containers/ProdutosVisitatos'
+import BannerMosaico from '../components/BannerMosaico'
+import BannerSeparate from '../components/BannerSeparate'
+import InfoBlocks from '../components/InfoBlocks'
 
 class Home extends React.Component {
- static async getInitialProps ({ store }) {
+  static async getInitialProps({ store }) {
     const state = store.getState()
 
     if (!state.categories.length) {
@@ -31,9 +31,9 @@ class Home extends React.Component {
       store.dispatch(setCategories(categories))
     }
     return { }
- }
+  }
 
-  render () {
+  render() {
     return (
       <div id="page">
         <Head>
@@ -61,16 +61,12 @@ class Home extends React.Component {
   }
 }
 
-const mapState = (state) => {
-  return {
-    categories: state.categories
-  }
-}
+const mapState = state => ({
+  categories: state.categories,
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setCategories: bindActionCreators(setCategories, dispatch),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  setCategories: bindActionCreators(setCategories, dispatch),
+})
 
 export default withRedux(initStore, mapState, mapDispatchToProps)(Home)

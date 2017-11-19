@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from '../routes'
 
-
-
 const Item = ({ page, suffix, prefix, current, begin, end }) => {
-
   const newSuffix = []
+
   newSuffix.push(`page=${page}`)
 
   if (suffix.length) {
