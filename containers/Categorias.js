@@ -19,7 +19,6 @@ class CategoriasContainer extends React.Component {
 }
 
 const mapState = state => {
-  console.log(state)
   return state
 }
 

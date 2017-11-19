@@ -18,7 +18,7 @@ const BreadcrumbItemCurrent = ({ item }) => (
 const Breadcrumbs = ({ itens }) => (
   <ol className={classNames([styles.breadcrumb, 'breadcrumb'])}>
     {itens.map((item, index) => {
-      console.log(itens.length - 1 === index)
+      // console.log(itens.length - 1 === index)
       if (itens.length - 1 === index) {
         return <BreadcrumbItemCurrent item={item} key={index} />
       }

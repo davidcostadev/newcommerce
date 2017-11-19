@@ -73,7 +73,6 @@ class WidgetCategoryFeature extends React.Component {
 }
 
 const mapState = state => {
-  console.log('widget', state)
   return state
 }
 

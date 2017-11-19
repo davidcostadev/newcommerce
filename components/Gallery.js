@@ -1,0 +1,28 @@
+import React from 'react'
+import classNames from 'classnames'
+import styles from '../assets/scss/App.scss'
+
+const Thumbs = ({ images }) => {
+  if (!images || !images.length) return null
+
+  return images.map(image => (
+    <picture className={styles.galleryThumb}>
+      <img src={image.PS_PATH_IMAGEM_400} alt={urlMeta.PS_TITLE} />
+    </picture>
+  ))
+}
+
+const Gallery = ({ image, images, urlMeta }) => {
+  return (
+    <div className={styles.gallery}>
+      <picture className={classNames([styles.galleryFeature, 'galleryImage'])}>
+        <img src={image} alt={urlMeta.PS_TITLE} />
+      </picture>
+      <div className={styles.galleryThumbs}>
+        <Thumbs images={images} />
+      </div>
+    </div>
+  )
+}
+
+export default Gallery

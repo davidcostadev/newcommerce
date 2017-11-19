@@ -41,16 +41,12 @@ const Item = ({ page, suffix, prefix, current, begin, end }) => {
   )
 }
 
-const Pagination = ({ list, total, prefix, suffix }) => {
-  console.log(`total ${total}`)
-
-  return (
-    <nav aria-label="Page navigation example">
-      <ul className="pagination justify-content-center">
-        {list.map(item => <Item key={item.page} prefix={prefix} suffix={suffix} {...item} />)}
-      </ul>
-    </nav>
-  )
-}
+const Pagination = ({ list, total, prefix, suffix }) => (
+  <nav aria-label="Page navigation example">
+    <ul className="pagination justify-content-center">
+      {list.map(item => <Item key={item.page} prefix={prefix} suffix={suffix} {...item} />)}
+    </ul>
+  </nav>
+)
 
 export default Pagination

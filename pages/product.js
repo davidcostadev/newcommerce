@@ -18,6 +18,7 @@ import Sitemap from '../components/Sitemap'
 import Copy from '../components/Copy'
 
 import ProductDetails from '../components/ProductDetails'
+import Gallery from '../components/Gallery'
 import ProductsCarrocel from '../components/ProductsCarrocel'
 import ProductDescription from '../components/ProductDescription'
 import Breadcrumbs from '../components/Breadcrumbs'
@@ -107,7 +108,7 @@ class Product extends React.Component {
 
   render() {
     // console.log(this.props.product)
-    console.log(this.props.images)
+    // console.log(this.props)
     return (
       <div id="page">
         <Head>
@@ -121,18 +122,7 @@ class Product extends React.Component {
             <div className={styles.productLanding}>
               <div className="row">
                 <div className="col-lg-4">
-                  <div className={styles.gallery}>
-                    <picture className={classNames([styles.galleryFeature, 'galleryImage'])}>
-                      <img src={this.props.images[0].PS_PATH_IMAGEM_400} alt={this.props.urlMeta.PS_TITLE} />
-                    </picture>
-                    <div className={styles.galleryThumbs}>
-                      {this.props.images.map(image => (
-                        <picture className={styles.galleryThumb}>
-                          <img src={image.PS_PATH_IMAGEM_400} alt={this.props.urlMeta.PS_TITLE} />
-                        </picture>
-                      ))}
-                    </div>
-                  </div>
+                  <Gallery image={this.props.product.PS_PATH_IMAGEM_400} images={this.props.images} urlMeta={this.props.urlMeta} />
                 </div>
                 <div className="col-lg-8">
                   <ProductDetails product={this.props.product} bredcrumbs={this.breadCrumbsProps()} />

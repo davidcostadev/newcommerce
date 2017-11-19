@@ -15,7 +15,7 @@ export const actionTypes = {
 
 
 export const categories = (state = categoriesInitialState.categories, { type, payload }) => {
-  console.log('categories', state)
+  // console.log('categories', state)
   switch (type) {
     case actionTypes.CATEGORIES_FULL:
       return payload
@@ -25,7 +25,7 @@ export const categories = (state = categoriesInitialState.categories, { type, pa
 }
 
 export const familyId = (state = categoriesInitialState.familyId, { type, payload }) => {
-  console.log('familyId', state)
+  // console.log('familyId', state)
   switch (type) {
     case actionTypes.SET_FAMILY_ID:
       return payload
