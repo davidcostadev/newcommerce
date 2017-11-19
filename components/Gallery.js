@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import styles from '../assets/scss/App.scss'
 
-const Thumbs = ({ images }) => {
+const Thumbs = ({ images, urlMeta }) => {
   if (!images || !images.length) return null
 
   return images.map(image => (
@@ -19,7 +19,7 @@ const Gallery = ({ image, images, urlMeta }) => {
         <img src={image} alt={urlMeta.PS_TITLE} />
       </picture>
       <div className={styles.galleryThumbs}>
-        <Thumbs images={images} />
+        <Thumbs images={images} urlMeta={urlMeta} />
       </div>
     </div>
   )
