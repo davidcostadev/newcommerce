@@ -4,7 +4,7 @@ import withRedux from 'next-redux-wrapper'
 import classNames from 'classnames'
 import Head from 'next/head'
 
-import { initStore, setCategories } from '../store'
+import { initStore, setCategories, setFamilyIds } from '../store'
 // import { Link } from '../routes'
 
 import ApiCategories from '../api/Categories'
@@ -20,10 +20,12 @@ import Copy from '../components/Copy'
 
 
 import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
-// import ProductBox from '../components/ProductBox'
+import WidgetCategoryFeature from '../containers/WidgetCategoryFeature'
+import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
+
 import TitleSection from '../components/TitleSection'
-import WidgetFilter from '../components/WidgetFilter'
-import WidgetCategory from '../components/WidgetCategory'
+// import WidgetFilter from '../components/WidgetFilter'
+// import WidgetCategory from '../components/WidgetCategory'
 import Pagination from '../components/Pagination'
 
 class Category extends React.Component {
@@ -40,6 +42,7 @@ class Category extends React.Component {
 
     const { products } = resultCategory
     const { pagination } = resultCategory
+    const familyId = urlMeta.PS_ID_FAMILIA
 
     const state = store.getState()
 
@@ -47,6 +50,8 @@ class Category extends React.Component {
       const categories = await ApiCategories()
       store.dispatch(setCategories(categories))
     }
+
+    store.dispatch(setFamilyIds(familyId))
 
     return { products, pagination, urlMeta }
   }
@@ -84,8 +89,6 @@ class Category extends React.Component {
   }
 
   render() {
-    console.log(this.props)
-    // console.log('pagination', this.props.pagination)
     return (
       <div id="page">
         <Head>
@@ -98,8 +101,9 @@ class Category extends React.Component {
             <div className={styles.categoryPage}>
               <div className="row">
                 <div className={classNames(styles.sidebar, 'col-md-3')}>
-                  <WidgetFilter />
-                  <WidgetCategory />
+                  {/* <WidgetFilter /> */}
+                  <WidgetCategoryFeature />
+                  <WidgetCategoryContainer />
                 </div>
                 <div className="col col-lg-9">
                   <div id="example-content">
@@ -130,9 +134,7 @@ class Category extends React.Component {
 
                     <div className="row-block">
                       <Pagination prefix={this.prefixGerate()} suffix={this.suffixGerate()} {...this.props.pagination} />
-
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -148,76 +150,15 @@ class Category extends React.Component {
   }
 }
 
-// const Category = ({ match }) => (
-//   <div>
-//     <Helmet
-//       title="Category"
-//     />
-//     <div className={`container ${styles.container}`}>
-//       <div className={styles.categoryPage}>
-//         <div className="row">
-//           <div className={classNames(styles.sidebar, 'col-md-3')}>
-//             <WidgetFilter />
-//             <WidgetCategory />
-//           </div>
-//           <div className="col col-lg-9">
-//             <div id="example-content">
-//               <TitleSection />
-//               <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
-//                 <div className="col">
-//                   1066 Produtos
-//                 </div>
-//                 <div className="col">
-//                   <form className="form-inline justify-content-end">
-//                     <label htmlFor="order" className="col-sm-2 col-form-label">Filtrar</label>
-//                     <select id="order" className="form-control">
-//                       <option>Mais Vendidos</option>
-//                       <option>Mais Visitados</option>
-//                       <option>Maior Preço</option>
-//                       <option>Menor Preço</option>
-//                       <option>Nome A-Z</option>
-//                       <option>Nome Z-A</option>
-//                     </select>
-//                   </form>
-//                 </div>
-//               </div>
-//               <div className={styles.productsSection}>
-//                 <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-//                   <ProdutosCategoriaContainer slug={match.params.slug} />
-//                 </div>
-//               </div>
 
-//               <div className="row-block">
-//                 <nav aria-label="Page navigation example">
-//                   <ul className="pagination justify-content-center">
-//                     <li className="page-item"><Link to="/category" className="page-link">Anterior</Link></li>
-//                     <li className="page-item"><Link to="/category" className="page-link">1</Link></li>
-//                     <li className="page-item"><Link to="/category" className="page-link">2</Link></li>
-//                     <li className="page-item"><Link to="/category" className="page-link">3</Link></li>
-//                     <li className="page-item"><Link to="/category" className="page-link">Próximo</Link></li>
-//                   </ul>
-//                 </nav>
-//               </div>
+const mapState = state => ({
+  categories: state.categories,
+  familyId: state.familyId,
+})
 
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-
-//   </div>
-// );
-
-// Category.propTypes = {
-//   match: PropTypes.object.isRequired
-// };
-
-const mapState = (state) => ({
-    categories: state.categories
-  })
-
-const mapDispatchToProps = (dispatch) => ({
-    setCategories: bindActionCreators(setCategories, dispatch),
-  })
+const mapDispatchToProps = dispatch => ({
+  setCategories: bindActionCreators(setCategories, dispatch),
+  setFamilyIds: bindActionCreators(setFamilyIds, dispatch),
+})
 
 export default withRedux(initStore, mapState, mapDispatchToProps)(Category)

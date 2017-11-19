@@ -3,14 +3,14 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import styles from '../assets/scss/App.scss'
 
-const LinkItem = ({ menu }) => (
+const LinkItem = ({ item }) => (
   <li className={styles.productCategory}>
-    <a href={menu.path}>{menu.title}</a>
+    <a href={item.path}>{item.title}</a>
   </li>
 )
 
 LinkItem.propTypes = {
-  menu: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 }
 
 const menus = [
@@ -48,12 +48,12 @@ const menus = [
   },
 ]
 
-const WidgetCategory = () => (
+const WidgetCategory = ({ title, menu }) => (
   <div className={classNames(styles.widget, styles.widgetCategory)}>
-    <h3 className={classNames(styles.widgetTitle)}>Categorias</h3>
+    <h3 className={classNames(styles.widgetTitle)}>{title}</h3>
     <ul className={styles.productCategories}>
-      {menus.map(menu => (
-        <LinkItem menu={menu} />
+      {menu.map(item => (
+        <LinkItem item={item} />
       ))}
     </ul>
   </div>

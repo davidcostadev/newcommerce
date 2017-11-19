@@ -18,6 +18,9 @@ class CategoriasContainer extends React.Component {
   }
 }
 
-const mapState = state => state
+const mapState = state => {
+  console.log(state)
+  return state
+}
 
 export default connect(mapState)(CategoriasContainer)

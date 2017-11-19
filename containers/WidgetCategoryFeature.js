@@ -45,27 +45,37 @@ const familyFeature = (categories, familyId) => {
 }
 
 
-class WidgetCategoryContainer extends React.Component {
+class WidgetCategoryFeature extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      newCategories: organizeFamily(props.categories),
+      familyFeature: familyFeature(props.categories, props.familyId),
     }
   }
 
+  componentWillReceiveProps() {
+    this.setState({
+      familyFeature: familyFeature(this.props.categories, this.props.familyId),
+    })
+  }
+
+
   render() {
-    if (!this.state.newCategories.length) {
+    if (!this.state.familyFeature) {
       return <div>vazio</div>
     }
 
     return (
-      <WidgetCategory title="categorias" menu={this.state.newCategories} />
+      <WidgetCategory title={this.state.familyFeature.title} menu={this.state.familyFeature.children} />
     )
   }
 }
 
-const mapState = state => state
+const mapState = state => {
+  console.log('widget', state)
+  return state
+}
 
-export default connect(mapState)(WidgetCategoryContainer)
+export default connect(mapState)(WidgetCategoryFeature)
 
