@@ -1,5 +1,0 @@
-{
-    "verbose": true,
-    "watch": ["server/"],
-    "ignore": ["server/render.jsx"]
-}

@@ -1,7 +1,0 @@
-{
-  "name": "React Router SSR HMR",
-  "description": "An example of hot reloading universal React/Express App",
-  "repository": "https://github.com/malixsys/react-router-server-render-hotreload-example",
-  "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png",
-  "keywords": ["react","ssr","express","hot-reload","react-router","webpack"]
-}
