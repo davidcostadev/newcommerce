@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from '../assets/scss/App.scss'
 
@@ -8,5 +9,8 @@ const TitleSection = ({ title }) => (
   </div>
 )
 
+TitleSection.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export default TitleSection

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <ProductBox /> <ProductBox /> 1`] = `
+<div
+  className="App__product___3XoPp"
+>
+  <picture
+    className="App__productImage___1aQF8"
+  >
+    <img
+      alt="Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo"
+      src="http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-250-193420.jpg"
+    />
+  </picture>
+  <div
+    className="App__productTitle___3wgab"
+  >
+    Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
+  </div>
+  <div
+    className="App__productPrice___ZoumY"
+  >
+    <span
+      className="App__currency___2-n_1"
+    >
+      R$
+    </span>
+    <span
+      className="App__amount___25x4z"
+    >
+      284,00
+    </span>
+  </div>
+  <div
+    className="App__productComplement___3_X5C"
+  >
+    ou 
+    3
+    x de
+    <span
+      className="App__currency___2-n_1"
+    >
+      R$
+    </span>
+    <span
+      className="App__amount___25x4z"
+    >
+      94,67
+    </span>
+    <strong>
+      Sem Juros
+    </strong>
+  </div>
+  <div
+    className="App__productButtons___2Y3pI"
+  >
+    <a
+      className="btn App__btn___1w-MS App__btnDetail___13UmL"
+      href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
+      onClick={[Function]}
+    >
+      Ver Detalhes
+    </a>
+    <a
+      className="btn App__btn___1w-MS App__btnBuy___2ICLf"
+      href="/product"
+      onClick={[Function]}
+    >
+      Comprar
+    </a>
+  </div>
+</div>
+`;
