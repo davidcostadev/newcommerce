@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <BlockInfo /> <BlockInfo /> 1`] = `
+<section
+  className="App__blockInfo___292Je"
+>
+  <header
+    className="App__blockInfoHeader___1TAq-"
+  >
+    <h2>
+      Informações do Produto
+    </h2>
+  </header>
+  <div
+    className="App__blockInfoContent___3WDCW"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "
+  <strong>strong</strong>
+",
+      }
+    }
+  />
+</section>
+`;
