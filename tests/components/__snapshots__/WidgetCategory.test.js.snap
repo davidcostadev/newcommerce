@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <WidgetCategory /> <LinkItem /> 1`] = `
+<li>
+  <a
+    href="#"
+  >
+    title
+  </a>
+</li>
+`;
+
+exports[`Component <WidgetCategory /> <WidgetCategory /> 1`] = `
+<div
+  className="App__widget___2Eq6_ App__widgetCategory___jvKGt"
+>
+  <h3
+    className="App__widgetTitle___1Bh00"
+  >
+    Titulo Widget
+  </h3>
+  <ul
+    className="App__productCategories___1KjfY"
+  >
+    <li>
+      <a
+        href="#1"
+      >
+        title 1
+      </a>
+    </li>
+    <li>
+      <a
+        href="#2"
+      >
+        title 2
+      </a>
+    </li>
+  </ul>
+</div>
+`;
