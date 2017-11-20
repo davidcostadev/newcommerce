@@ -22,18 +22,8 @@ const organizeGroup = (groups) => {
     ...group,
   }))
 }
-const organizeFamily = (families) => {
-  if (families && !families.length) return []
 
-  return families.map(family => ({
-    path: `/category/${family.PATH_PAGE_FAMILIA}`,
-    title: family.FAMILIA,
-    children: organizeGroup(family.TABLE_GRUPO),
-    ...family,
-  }))
-}
-
-const familyFeature = (categories, familyId) => {
+const familyFeatureMount = (categories, familyId) => {
   const categoryFind = categories.find(category => category.ID_FAMILIA === familyId)
 
   return {
@@ -45,36 +35,20 @@ const familyFeature = (categories, familyId) => {
 }
 
 
-class WidgetCategoryFeature extends React.Component {
-  constructor(props) {
-    super(props)
+const WidgetCategoryFeature = (props) => {
+  const familyFeature = familyFeatureMount(this.props.categories, this.props.familyId)
 
-    this.state = {
-      familyFeature: familyFeature(props.categories, props.familyId),
-    }
+  if (!familyFeature) {
+    return <div>vazio</div>
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      familyFeature: familyFeature(this.props.categories, this.props.familyId),
-    })
-  }
-
-
-  render() {
-    if (!this.state.familyFeature) {
-      return <div>vazio</div>
-    }
-
-    return (
-      <WidgetCategory title={this.state.familyFeature.title} menu={this.state.familyFeature.children} />
-    )
-  }
+  return (
+    <WidgetCategory title={familyFeature.title} menu={familyFeature.children} />
+  )
 }
 
-const mapState = state => {
-  return state
-}
+
+const mapState = state => state
 
 export default connect(mapState)(WidgetCategoryFeature)
 
