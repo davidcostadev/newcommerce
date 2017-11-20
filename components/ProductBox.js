@@ -2,19 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '../routes'
 import styles from '../assets/scss/App.scss'
+import { toFloat, floatToReal, StringToReal } from '../utils/money'
 
-function toFloat(number) {
-  return parseFloat(number.replace(',', '.'), 10)
-}
-
-function floatToReal(float) {
-  const float2Decimal = Math.round(float * 100) / 100
-  return float2Decimal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
-}
-function StringToReal(number) {
-  const float = toFloat(number)
-  return float.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
-}
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -51,7 +40,7 @@ const ParcelBox = ({ parcel, amount }) => (
 
 ParcelBox.propTypes = {
   parcel: PropTypes.number.isRequired,
-  amount: PropTypes.string.isRequired
+  amount: PropTypes.string.isRequired,
 }
 
 
@@ -78,7 +67,7 @@ const ProductBox = ({ product }) => (
 )
 
 ProductBox.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 }
 
 

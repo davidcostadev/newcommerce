@@ -1,8 +1,6 @@
-import Intl from 'intl'
+/* eslint no-undef: "off" */
 
-global.Intl = Intl
-
-import { toFloat, floatToReal, StringToReal } from '../../utils/money'
+import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../../utils/money'
 
 
 test('toFloat', () => {
@@ -27,4 +25,10 @@ test('StringToReal', () => {
   expect(StringToReal('243,8')).toBe('243,80')
   expect(StringToReal('4509,3')).toBe('4.509,30')
   expect(StringToReal('11')).toBe('11,00')
+})
+
+test('stringToDesconto', () => {
+  expect(stringToDesconto('100,50', 10)).toBe('90,45')
+  expect(stringToDesconto('100', 10)).toBe('90,00')
+  expect(stringToDesconto('100', 10)).toBe('90,00')
 })
