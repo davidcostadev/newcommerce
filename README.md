@@ -1,5 +1,7 @@
 # Newcommerce
 
+<a href="https://travis-ci.org/davidcostadev/newcommerce"><img src="https://api.travis-ci.org/davidcostadev/newcommerce.svg?branch=master" alt="Build Status"></a>
+
 Just more an open source Ecommerce Project, build with React
 
 ### Dev
