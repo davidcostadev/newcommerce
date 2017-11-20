@@ -36,7 +36,7 @@ const familyFeatureMount = (categories, familyId) => {
 
 
 const WidgetCategoryFeature = (props) => {
-  const familyFeature = familyFeatureMount(this.props.categories, this.props.familyId)
+  const familyFeature = familyFeatureMount(props.categories, props.familyId)
 
   if (!familyFeature) {
     return <div>vazio</div>
