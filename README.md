@@ -1,6 +1,6 @@
 # Newcommerce
 
-<a href="https://travis-ci.org/davidcostadev/newcommerce"><img src="https://api.travis-ci.org/davidcostadev/newcommerce.svg?branch=master" alt="Build Status"></a>
+[![Build Status](https://travis-ci.org/davidcostadev/newcommerce.svg?branch=master&style=flat-square)](https://travis-ci.org/davidcostadev/newcommerce) [![GitHub license](https://img.shields.io/github/license/davidcostadev/newcommerce.svg?style=flat-square)](https://github.com/davidcostadev/newcommerce/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/davidcostadev/newcommerce.svg?style=flat-square)](https://github.com/davidcostadev/newcommerce/stargazers) [![GitHub issues](https://img.shields.io/github/issues/davidcostadev/newcommerce.svg?style=flat-square)](https://github.com/davidcostadev/newcommerce/issues)
 
 Just more an open source Ecommerce Project, build with React
 
@@ -8,7 +8,10 @@ Just more an open source Ecommerce Project, build with React
 
 ```
 npm run dev
+npm run test
 ```
+
+
 
 
 ### PROD
