@@ -1,8 +1,8 @@
 import axios from 'axios'
 import parsePagination from '../utils/pagination'
 
-async function Category(props) {
-  console.log(new Date(), 'Api Category')
+async function Search(props) {
+  console.log(new Date(), 'Api Search')
 
   const quant = props.quant ? props.quant : 21
   const page = props.page ? props.page - 1 : 0
@@ -12,9 +12,8 @@ async function Category(props) {
     PE_IP: '127.0.0.1',
     PE_SESSAO: 'asdfgh',
     PE_ID_CLIENTE: null,
-    PE_ID_FAMILIA: props.familyId,
-    PE_ID_GRUPO: props.groupId ? props.groupId : null,
-    PE_ID_SUBGRUPO: props.subGroupId ? props.subGroupId : null,
+    PE_PRODUTO: props.search,
+    PE_ESTOQUE: 0,
     PE_QUANT_REGISTROS: quant,
     PE_PAGINA_ID: page,
     PE_COLUNA_ID: 2,
@@ -22,12 +21,12 @@ async function Category(props) {
   })
 
 
-  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_web_busca_vertical_sel', data);
-  console.log(response.data)
+  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebprodutos/sp_web_busca_horizontal_sel', data);
+
   return {
     products: response.data.result[0].PS_TABELA_INFO,
     pagination: parsePagination(page, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant)
   }
 }
 
-export default Category
+export default Search

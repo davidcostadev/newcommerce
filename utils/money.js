@@ -1,4 +1,5 @@
 import Intl from 'intl'
+import 'intl/locale-data/jsonp/pt-BR'
 
 global.Intl = Intl
 
