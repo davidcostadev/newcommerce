@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import BlockInfo from './BlockInfo'
 
 const ProductDescription = ({ product }) => {
@@ -10,6 +10,10 @@ const ProductDescription = ({ product }) => {
   return (
     <BlockInfo content={product.PS_DETALHES_PRODUTO} />
   )
+}
+
+ProductDescription.propTypes = {
+  product: PropTypes.object.isRequired,
 }
 
 export default ProductDescription
