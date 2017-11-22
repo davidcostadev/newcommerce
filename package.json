@@ -2,7 +2,7 @@
   "name": "newcommerce",
   "description": "Agilize sua vida Comprando Online e receba na comodidade do seu endereço produtos eletrônicos, Informática, celulares, notebooks, perfumes importados, relógios e etc. Tudo o que você precisa para estar conectado com o mundo.",
   "version": "1.0.0",
-  "main": "server/index.js",
+  "main": "pages/index.js",
   "author": "David Costa <davidcostadev@gmail.com>",
   "keywords": [
     "react",
@@ -12,7 +12,7 @@
     "react-router",
     "webpack"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
     "babel-eslint": "^8.0.2",
@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
+    "codecov": "^3.0.0",
     "jest": "^21.2.1",
     "react-test-renderer": "^16.1.1"
   },
@@ -59,7 +60,7 @@
     "build": "next build",
     "build:prod": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
-    "test": "jest",
+    "test": "jest && CODECOV_TOKEN='84b169e6-2b3f-4641-b41d-64308c4c43f3' codecov",
     "jest:update": "jest --updateSnapshot"
   },
   "jest": {}
