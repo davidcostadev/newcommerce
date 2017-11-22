@@ -20,12 +20,14 @@ async function Search(props) {
     PE_COLUNA_ORDER: 2,
   })
 
-
-  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebprodutos/sp_web_busca_horizontal_sel', data);
-
-  return {
-    products: response.data.result[0].PS_TABELA_INFO,
-    pagination: parsePagination(page, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant)
+  try {
+    const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebprodutos/sp_web_busca_horizontal_sel', data);
+    return {
+      products: response.data.result[0].PS_TABELA_INFO,
+      pagination: parsePagination(page, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant),
+    }
+  } catch (e) {
+    throw new Error('invalid request')
   }
 }
 
