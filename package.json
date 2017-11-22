@@ -63,5 +63,8 @@
     "test": "jest && CODECOV_TOKEN='84b169e6-2b3f-4641-b41d-64308c4c43f3' codecov",
     "jest:update": "jest --updateSnapshot"
   },
-  "jest": {}
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }
