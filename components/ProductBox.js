@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from '../routes'
 import styles from '../assets/scss/App.scss'
 import { toFloat, floatToReal, StringToReal } from '../utils/money'
-
+import SquareBox from './SquareBox'
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -46,9 +46,10 @@ ParcelBox.propTypes = {
 
 const ProductBox = ({ product }) => (
   <div className={styles.product}>
-    <picture className={styles.productImage}>
+    <SquareBox image={product.PS_PATH_IMAGEM_250} />
+    {/* <picture className={styles.productImage}>
       <img src={product.PS_PATH_IMAGEM_250} alt={product.PS_PRODUTO} />
-    </picture>
+    </picture> */}
     <div className={styles.productTitle}>{product.PS_PRODUTO}</div>
     <div className={styles.productPrice}>
       <span className={styles.currency}>R$</span>

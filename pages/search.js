@@ -46,7 +46,7 @@ class Search extends React.Component {
       store.dispatch(setCategories(categories))
     }
 
-    console.log(products)
+    // console.log(products)
 
     return { products, pagination, urlMeta }
   }

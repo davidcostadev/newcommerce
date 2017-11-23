@@ -2,24 +2,22 @@ import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 // import { initStore, setCategories } from '../store'
 // import withRedux from 'next-redux-wrapper'
-import flush from 'styled-jsx/server'
+import { ServerStyleSheet } from 'styled-components'
 // import { ServerStyleSheet } from 'styled-components'
 
 class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
-    // console.log('MyDocument')
-
-    const { html, head, errorHtml, chunks } = renderPage()
-    const styles = flush()
-
-    return { html, head, errorHtml, chunks, styles }
+  static getInitialProps({ renderPage }) {
+    const sheet = new ServerStyleSheet()
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const styleTags = sheet.getStyleElement()
+    return { ...page, styleTags }
   }
 
 
   render() {
     // console.log(this.props)
     return (
-      <html>
+      <html lang="pt-BR">
         <Head>
           <title>My page</title>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css" />

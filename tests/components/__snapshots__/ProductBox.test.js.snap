@@ -5,11 +5,10 @@ exports[`Component <ProductBox /> <ProductBox /> 1`] = `
   className="App__product___3XoPp"
 >
   <picture
-    className="App__productImage___1aQF8"
+    className="SquareBox__BoxSquare-hl450s-0 jLcvmP"
   >
-    <img
-      alt="Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo"
-      src="http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-250-193420.jpg"
+    <div
+      className="SquareBox__BoxSquareInner-hl450s-1 eelxeG"
     />
   </picture>
   <div
