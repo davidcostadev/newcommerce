@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
 import NProgress from 'nprogress'
@@ -14,7 +15,7 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const HeaderPage = () => (
+const HeaderPage = ({ query }) => (
   <div id={styles.headerPageOne}>
     <header className={`navbar-top ${styles.navbarSpaced} ${styles.navbarInverse}`}>
       <div className={`container ${styles.container}`}>
@@ -28,7 +29,7 @@ const HeaderPage = () => (
             </Link>
           </div>
           <div className={`col ${styles.colSearch}`}>
-            <SearchForm />
+            <SearchForm query={query} />
           </div>
           <div className={`col col-md-8 col-lg-3 ${styles.menu} ${styles.menuRight}`}>
             <div className={`${styles.menuItem} ${styles.onlyDesktop}`}>
@@ -54,5 +55,13 @@ const HeaderPage = () => (
     <CategoriasContainer />
   </div>
 )
+
+HeaderPage.defaultProps = {
+  query: '',
+}
+
+HeaderPage.propTypes = {
+  query: PropTypes.string,
+}
 
 export default HeaderPage

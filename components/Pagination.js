@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from '../routes'
 
 const Item = ({ page, suffix, prefix, current, begin, end }) => {
@@ -41,12 +42,40 @@ const Item = ({ page, suffix, prefix, current, begin, end }) => {
   )
 }
 
-const Pagination = ({ list, total, prefix, suffix }) => (
-  <nav aria-label="Page navigation example">
-    <ul className="pagination justify-content-center">
-      {list.map(item => <Item key={item.page} prefix={prefix} suffix={suffix} {...item} />)}
-    </ul>
-  </nav>
-)
+Item.propTypes = {
+  page: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired,
+  suffix: PropTypes.array.isRequired,
+  prefix: PropTypes.array.isRequired,
+  begin: PropTypes.bool.isRequired,
+  end: PropTypes.bool.isRequired,
+}
+
+
+const Pagination = (props) => {
+  if (!props.list.length || !props.total) return null
+
+  return (
+    <nav aria-label="Page navigation example">
+      <ul className="pagination justify-content-center">
+        {props.list.map(item => (
+          <Item key={item.page} prefix={props.prefix} suffix={props.suffix} {...item} />
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+Pagination.propTypes = {
+  list: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+  prefix: PropTypes.array,
+  suffix: PropTypes.array,
+}
+
+Pagination.defaultProps = {
+  prefix: [],
+  suffix: [],
+}
 
 export default Pagination

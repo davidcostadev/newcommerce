@@ -46,6 +46,7 @@ class Search extends React.Component {
       store.dispatch(setCategories(categories))
     }
 
+    console.log(products)
 
     return { products, pagination, urlMeta }
   }
@@ -67,7 +68,7 @@ class Search extends React.Component {
           <title>{this.props.urlMeta.PS_TITLE}</title>
           <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
         </Head>
-        <HeaderPage />
+        <HeaderPage query={this.props.url.query.q} />
         <div className="page-home">
           <div className={`container ${styles.container}`}>
             <div className={styles.categoryPage}>

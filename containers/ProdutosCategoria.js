@@ -6,7 +6,7 @@ import ProductBox from '../components/ProductBox'
 class ProdutosCategoriaContainer extends React.Component {
   render() {
     if (this.props.products.length === 0) {
-      return null
+      return <p>Nenhum produto encontrado.</p>
     }
 
     return this.props.products.map(product => (
@@ -14,5 +14,10 @@ class ProdutosCategoriaContainer extends React.Component {
     ))
   }
 }
+
+ProdutosCategoriaContainer.propTypes = {
+  products: PropTypes.array.isRequired,
+}
+
 
 export default ProdutosCategoriaContainer

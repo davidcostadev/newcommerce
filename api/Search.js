@@ -22,6 +22,17 @@ async function Search(props) {
 
   try {
     const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebprodutos/sp_web_busca_horizontal_sel', data);
+
+    if (response.data.result[0].PS_ALERTA === 206) {
+      return {
+        products: [],
+        pagination: {
+          total: 0,
+          list: [],
+        },
+      }
+    }
+
     return {
       products: response.data.result[0].PS_TABELA_INFO,
       pagination: parsePagination(page, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant),
