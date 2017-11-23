@@ -1,7 +1,9 @@
 import Intl from 'intl'
 import 'intl/locale-data/jsonp/pt-BR'
 
-global.Intl = Intl
+if (typeof window === 'undefined') {
+  global.Intl = Intl
+}
 
 export const toFloat = number => parseFloat(number.replace(',', '.'), 10)
 
