@@ -29,7 +29,7 @@ function parcelado(number) {
   return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />
 }
 
-const ParcelBox = ({ parcel, amount }) => (
+export const ParcelBox = ({ parcel, amount }) => (
   <div className={styles.productComplement}>
     ou {parcel}x de
     <span className={styles.currency}>R$</span>
@@ -44,7 +44,7 @@ ParcelBox.propTypes = {
 }
 
 
-const ProductBox = ({ product }) => (
+export const ProductBox = ({ product }) => (
   <div className={styles.product}>
     <SquareBox image={product.PS_PATH_IMAGEM_250} />
     {/* <picture className={styles.productImage}>

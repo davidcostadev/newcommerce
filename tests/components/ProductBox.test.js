@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 import React from 'react'
 import renderer from 'react-test-renderer'
-import ProductBox from '../../components/ProductBox'
+import { ParcelBox, ProductBox } from '../../components/ProductBox'
 
 const product = {
   PS_REGISTROS_COUNT: '5027',
@@ -59,7 +59,16 @@ const product = {
   PS_LINK_TITLE: 'Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH em Ribeirão Preto',
 }
 
-describe('Component <ProductBox />', () => {
+describe('Test File ProductBox', () => {
+  it('<ParcelBox />', () => {
+    const tree = renderer.create((
+      <ParcelBox
+        parcel={3}
+        amount="35,01"
+      />
+    )).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
   it('<ProductBox />', () => {
     const tree = renderer.create((
       <ProductBox
