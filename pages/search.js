@@ -21,6 +21,7 @@ import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
 import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
 
 import TitleSection from '../components/TitleSection'
+import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
 
 class Search extends React.Component {
@@ -29,6 +30,7 @@ class Search extends React.Component {
 
     const resultCategory = await ApiSearch({
       search: query.q,
+      sort: query.sort,
       page,
     })
 
@@ -46,19 +48,11 @@ class Search extends React.Component {
       store.dispatch(setCategories(categories))
     }
 
-    // console.log(products)
-
     return { products, pagination, urlMeta }
   }
 
-  suffixGerate() {
-    const sufix = []
-
-    if (this.props.url.query.q) {
-      sufix.push(`q=${this.props.url.query.q}`)
-    }
-
-    return sufix
+  prefixGerate() {
+    return this.props.url.pathname
   }
 
   render() {
@@ -84,17 +78,7 @@ class Search extends React.Component {
                         {this.props.pagination.total} Produtos
                       </div>
                       <div className="col">
-                        <form className="form-inline justify-content-end">
-                          <label htmlFor="order" className="col-sm-2 col-form-label">Filtrar</label>
-                          <select id="order" className="form-control">
-                            <option>Mais Vendidos</option>
-                            <option>Mais Visitados</option>
-                            <option>Maior Preço</option>
-                            <option>Menor Preço</option>
-                            <option>Nome A-Z</option>
-                            <option>Nome Z-A</option>
-                          </select>
-                        </form>
+                        <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                       </div>
                     </div>
                     <div className={styles.productsSection}>
@@ -104,7 +88,7 @@ class Search extends React.Component {
                     </div>
 
                     <div className="row-block">
-                      <Pagination prefix={[]} suffix={this.suffixGerate()} {...this.props.pagination} />
+                      <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                     </div>
                   </div>
                 </div>

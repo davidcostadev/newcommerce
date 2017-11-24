@@ -1,4 +1,37 @@
-const parsePagination = (page, total, quant) => {
+
+export const suffixToString = query => Object.keys(query)
+  .map(item => `${item}=${query[item]}`)
+  .join('&')
+
+export const getColumn = (column) => {
+  console.log(column)
+  switch (column) {
+    case 'best_sellers':
+      return 4
+    case 'more_popular':
+      return 5
+    case 'stock':
+      return 13
+    case 'biggest_price':
+    case 'lowert_price':
+      return 6
+    case 'name':
+    default:
+      return 2
+  }
+}
+
+export const getSort = (sort) => {
+  switch (sort) {
+    case 'desc':
+      return 2
+    case 'asc':
+    default:
+      return 1
+  }
+}
+
+export const parsePagination = (page, total, quant) => {
   if (typeof page === 'undefined' || typeof total === 'undefined' || typeof quant === 'undefined') {
     throw new Error('Missing arguments')
   }

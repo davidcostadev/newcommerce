@@ -1,17 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '../routes'
+import { suffixToString } from '../utils/pagination'
 
-const Item = ({ page, suffix, prefix, current, begin, end }) => {
-  const newSuffix = []
+const Item = ({ page, prefix, query, current, begin, end }) => {
+  const queryNew = JSON.parse(JSON.stringify(query))
+  queryNew.page = page
 
-  newSuffix.push(`page=${page}`)
-
-  if (suffix.length) {
-    newSuffix.push(suffix.join('&'))
-  }
-
-  const route = `${prefix}?${newSuffix.join('&')}`
+  const route = `${prefix}?${suffixToString(queryNew)}`
 
   let content = (
     <Link route={route}>
@@ -44,13 +40,12 @@ const Item = ({ page, suffix, prefix, current, begin, end }) => {
 
 Item.propTypes = {
   page: PropTypes.number.isRequired,
-  current: PropTypes.number.isRequired,
-  suffix: PropTypes.array.isRequired,
-  prefix: PropTypes.array.isRequired,
+  current: PropTypes.bool.isRequired,
+  query: PropTypes.object.isRequired,
+  prefix: PropTypes.string.isRequired,
   begin: PropTypes.bool.isRequired,
   end: PropTypes.bool.isRequired,
 }
-
 
 const Pagination = (props) => {
   if (!props.list.length || !props.total) return null
@@ -59,7 +54,7 @@ const Pagination = (props) => {
     <nav aria-label="Page navigation example">
       <ul className="pagination justify-content-center">
         {props.list.map(item => (
-          <Item key={item.page} prefix={props.prefix} suffix={props.suffix} {...item} />
+          <Item key={item.page} prefix={props.prefix} query={props.query} {...item} />
         ))}
       </ul>
     </nav>
@@ -69,8 +64,8 @@ const Pagination = (props) => {
 Pagination.propTypes = {
   list: PropTypes.array.isRequired,
   total: PropTypes.number.isRequired,
-  prefix: PropTypes.array,
-  suffix: PropTypes.array,
+  prefix: PropTypes.string.isRequired,
+  query: PropTypes.object.isRequired,
 }
 
 Pagination.defaultProps = {

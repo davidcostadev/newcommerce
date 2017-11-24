@@ -5,22 +5,24 @@ import themes from './theme'
 
 
 const BoxSquare = styled.picture`
-  background: red;
-  display: flex;
-  flex-grow: 10;
+  background: white;
   border-bottom: 3px solid ${themes.main};
+  flex: 1;
+  position: relative;
 
   &:after {
     content: "";
     display: block;
-    padding-bottom: 75%;
+    padding-bottom: 100%;
   }
 `
 
 const BoxSquareInner = styled.div`
   background-image: url(${props => props.image});
   background-size: cover;
-  flex-grow: 10;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 `
 
 const SquareBox = ({ image }) => (

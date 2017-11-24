@@ -24,8 +24,7 @@ import WidgetCategoryFeature from '../containers/WidgetCategoryFeature'
 import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
 
 import TitleSection from '../components/TitleSection'
-// import WidgetFilter from '../components/WidgetFilter'
-// import WidgetCategory from '../components/WidgetCategory'
+import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
 
 class Category extends React.Component {
@@ -37,6 +36,7 @@ class Category extends React.Component {
       familyId: urlMeta.PS_ID_FAMILIA,
       groupId: urlMeta.PS_ID_GRUPO,
       subGroupId: urlMeta.PS_ID_SUBGRUPO,
+      sort: query.sort,
       page,
     })
 
@@ -72,22 +72,6 @@ class Category extends React.Component {
     return prefix.join('/')
   }
 
-  suffixGerate() {
-    const sufix = []
-
-    if (this.props.url.query.familyId) {
-      sufix.push(`familyId=${this.props.url.query.familyId}`)
-    }
-    if (this.props.url.query.groupId) {
-      sufix.push(`groupId=${this.props.url.query.groupId}`)
-    }
-    if (this.props.url.query.subGroupId) {
-      sufix.push(`subGroupId=${this.props.url.query.subGroupId}`)
-    }
-
-    return sufix
-  }
-
   render() {
     return (
       <div id="page">
@@ -101,7 +85,6 @@ class Category extends React.Component {
             <div className={styles.categoryPage}>
               <div className="row">
                 <div className={classNames(styles.sidebar, 'col-md-3')}>
-                  {/* <WidgetFilter /> */}
                   <WidgetCategoryFeature />
                   <WidgetCategoryContainer />
                 </div>
@@ -113,17 +96,7 @@ class Category extends React.Component {
                         {this.props.pagination.total} Produtos
                       </div>
                       <div className="col">
-                        <form className="form-inline justify-content-end">
-                          <label htmlFor="order" className="col-sm-2 col-form-label">Filtrar</label>
-                          <select id="order" className="form-control">
-                            <option>Mais Vendidos</option>
-                            <option>Mais Visitados</option>
-                            <option>Maior Preço</option>
-                            <option>Menor Preço</option>
-                            <option>Nome A-Z</option>
-                            <option>Nome Z-A</option>
-                          </select>
-                        </form>
+                        <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                       </div>
                     </div>
                     <div className={styles.productsSection}>
@@ -133,7 +106,7 @@ class Category extends React.Component {
                     </div>
 
                     <div className="row-block">
-                      <Pagination prefix={this.prefixGerate()} suffix={this.suffixGerate()} {...this.props.pagination} />
+                      <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                     </div>
                   </div>
                 </div>
