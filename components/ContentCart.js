@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { floatToReal } from '../utils/money'
 import Table from '../layout/Table'
-
+import theme from '../layout/theme'
 
 const products = [
   {
@@ -46,9 +46,8 @@ Product.propTypes = {
 }
 
 const CheckoutRow = styled.div`
-  background: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   .card {
     width: 100%;
@@ -61,6 +60,15 @@ const CheckoutRow = styled.div`
   button {
     width: 100%;
   }
+
+`
+
+const CalcShipping = styled.div`
+  background: white;
+  border: 1px solid ${theme.border};
+  padding: 15px 20px;
+  border-radius: 4px;
+  max-width: 500px;
 
 `
 
@@ -87,10 +95,39 @@ const ContentCart = () => (
     </Table>
 
     <CheckoutRow>
+      <CalcShipping>
+        <p>Consulte o prazo de entrega e o frete para seu CEP:</p>
+        <div className="form-group">
+          <div className="input-group">
+            <input type="text" className="form-control" placeholder="00000-000" />
+            <span className="input-group-btn">
+              <button className="btn btn-default">Calcular</button>
+            </span>
+          </div>
+        </div>
+        <div className="form-check">
+          <label htmlFor="" className="form-check-label">
+            <input type="radio" className="form-check-input" />
+            Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
+          </label>
+          <label htmlFor="" className="form-check-label">
+            <input type="radio" className="form-check-input" />
+            Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
+          </label>
+          <label htmlFor="" className="form-check-label">
+            <input type="radio" className="form-check-input" />
+            Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
+          </label>
+        </div>
+      </CalcShipping>
       <div className="card">
         <div className="card-body">
           <p className="card-text">
             <span>Subtotal</span>
+            <span>R$ {floatToReal(284)}</span>
+          </p>
+          <p className="card-text">
+            <span>Frete</span>
             <span>R$ {floatToReal(284)}</span>
           </p>
           <p className="card-text">
