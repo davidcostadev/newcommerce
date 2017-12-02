@@ -1,0 +1,3 @@
+export const CATEGORIES_FULL = 'CATEGORIES_FULL'
+export const SET_FAMILY_ID = 'SET_FAMILY_ID'
+export const SET_SESSION = 'SET_SESSION'

@@ -2,32 +2,27 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
-const categoriesInitialState = {
+import { CATEGORIES_FULL, SET_FAMILY_ID } from './flux/type'
+import sessionId, { initialStateUser } from './flux/user/reducers'
+
+const initialStateAll = {
   categories: [],
   familyId: 0,
-}
-// const familyIdInitialState = 0
-
-export const actionTypes = {
-  CATEGORIES_FULL: 'CATEGORIES_FULL',
-  SET_FAMILY_ID: 'SET_FAMILY_ID',
+  sessionId: initialStateUser,
 }
 
-
-export const categories = (state = categoriesInitialState.categories, { type, payload }) => {
-  // console.log('categories', state)
+export const categories = (state = initialStateAll.categories, { type, payload }) => {
   switch (type) {
-    case actionTypes.CATEGORIES_FULL:
+    case CATEGORIES_FULL:
       return payload
     default:
       return state
   }
 }
 
-export const familyId = (state = categoriesInitialState.familyId, { type, payload }) => {
-  // console.log('familyId', state)
+export const familyId = (state = initialStateAll.familyId, { type, payload }) => {
   switch (type) {
-    case actionTypes.SET_FAMILY_ID:
+    case SET_FAMILY_ID:
       return payload
     default:
       return state
@@ -37,12 +32,12 @@ export const familyId = (state = categoriesInitialState.familyId, { type, payloa
 
 // actions
 export const categoriesFull = categories => ({
-  type: actionTypes.CATEGORIES_FULL,
+  type: CATEGORIES_FULL,
   payload: categories,
 })
 
 export const familyIdFull = familyIda => ({
-  type: actionTypes.SET_FAMILY_ID,
+  type: SET_FAMILY_ID,
   payload: familyIda,
 })
 
@@ -52,11 +47,12 @@ export const setCategories = info => dispatch => dispatch(categoriesFull(info))
 export const setFamilyIds = info => dispatch => dispatch(familyIdFull(info))
 
 
-export const initStore = (initialState = categoriesInitialState) => (
+export const initStore = (initialState = initialStateAll) => (
   createStore(
     combineReducers({
       categories,
       familyId,
+      sessionId,
     }),
     initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware)),
