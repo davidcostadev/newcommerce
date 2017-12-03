@@ -76,7 +76,6 @@ const CalcShipping = styled.div`
 const ContentCart = () => (
   <Page>
     <Title>Carrinho</Title>
-
     <Table>
       <thead>
         <tr>

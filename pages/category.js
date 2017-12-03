@@ -2,33 +2,22 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import classNames from 'classnames'
-import Head from 'next/head'
-
-import { initStore, setCategories, setFamilyIds } from '../store'
-// import { Link } from '../routes'
-
-import ApiCategories from '../api/Categories'
+import Page from '../containers/PageHOF'
+import { initStore, setFamilyIds } from '../store'
 import ApiUrl from '../api/Url'
 import ApiCategory from '../api/Category'
-
 import styles from '../assets/scss/App.scss'
-
-import HeaderPage from '../components/HeaderPage'
-import FooterPage from '../components/FooterPage'
-import Sitemap from '../components/Sitemap'
-import Copy from '../components/Copy'
-
-
 import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
 import WidgetCategoryFeature from '../containers/WidgetCategoryFeature'
 import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
-
 import TitleSection from '../components/TitleSection'
 import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
 
 class Category extends React.Component {
-  static async getInitialProps({ store, query }) {
+  static async getInitialProps({ req, store, isServer, query }) {
+    const { sessionId } = Page.getInitialProps(store, req, isServer)
+
     const urlMeta = await ApiUrl(query)
     const page = query.page ? query.page : 1
 
@@ -44,16 +33,15 @@ class Category extends React.Component {
     const { pagination } = resultCategory
     const familyId = urlMeta.PS_ID_FAMILIA
 
-    const state = store.getState()
-
-    if (!state.categories.length) {
-      const categories = await ApiCategories()
-      store.dispatch(setCategories(categories))
-    }
 
     store.dispatch(setFamilyIds(familyId))
 
-    return { products, pagination, urlMeta }
+    return {
+      sessionId,
+      urlMeta,
+      products,
+      pagination,
+    }
   }
 
   prefixGerate() {
@@ -74,63 +62,48 @@ class Category extends React.Component {
 
   render() {
     return (
-      <div id="page">
-        <Head>
-          <title>{this.props.urlMeta.PS_TITLE}</title>
-          <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
-        </Head>
-        <HeaderPage />
-        <div className="page-home">
-          <div className={`container ${styles.container}`}>
-            <div className={styles.categoryPage}>
-              <div className="row">
-                <div className={classNames(styles.sidebar, 'col-md-3')}>
-                  <WidgetCategoryFeature />
-                  <WidgetCategoryContainer />
-                </div>
-                <div className="col col-lg-9">
-                  <div id="example-content">
-                    <TitleSection title={this.props.urlMeta.PS_TITLE} />
-                    <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
-                      <div className="col">
-                        {this.props.pagination.total} Produtos
-                      </div>
-                      <div className="col">
-                        <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
-                      </div>
+      <Page {...this.props}>
+        <div className={`container ${styles.container}`}>
+          <div className={styles.categoryPage}>
+            <div className="row">
+              <div className={classNames(styles.sidebar, 'col-md-3')}>
+                <WidgetCategoryFeature />
+                <WidgetCategoryContainer />
+              </div>
+              <div className="col col-lg-9">
+                <div id="example-content">
+                  <TitleSection title={this.props.urlMeta.PS_TITLE} />
+                  <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
+                    <div className="col">
+                      {this.props.pagination.total} Produtos
                     </div>
-                    <div className={styles.productsSection}>
-                      <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                        <ProdutosCategoriaContainer products={this.props.products} />
-                      </div>
+                    <div className="col">
+                      <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                     </div>
+                  </div>
+                  <div className={styles.productsSection}>
+                    <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
+                      <ProdutosCategoriaContainer products={this.props.products} />
+                    </div>
+                  </div>
 
-                    <div className="row-block">
-                      <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
-                    </div>
+                  <div className="row-block">
+                    <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <FooterPage>
-            <Sitemap />
-            <Copy />
-          </FooterPage>
         </div>
-      </div>
+      </Page>
     )
   }
 }
 
 
-const mapState = state => ({
-  categories: state.categories,
-  familyId: state.familyId,
-})
+const mapState = state => state
 
 const mapDispatchToProps = dispatch => ({
-  setCategories: bindActionCreators(setCategories, dispatch),
   setFamilyIds: bindActionCreators(setFamilyIds, dispatch),
 })
 

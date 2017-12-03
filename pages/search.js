@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import classNames from 'classnames'
+import Page from '../containers/PageHOF'
 import Head from 'next/head'
 
 import { initStore, setCategories, setFamilyIds } from '../store'
@@ -25,7 +26,9 @@ import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
 
 class Search extends React.Component {
-  static async getInitialProps({ store, query }) {
+  static async getInitialProps({ req, store, isServer, query }) {
+    const { sessionId } = await Page.getInitialProps(store, req, isServer)
+
     const page = query.page ? query.page : 1
 
     const resultCategory = await ApiSearch({
@@ -41,14 +44,12 @@ class Search extends React.Component {
     urlMeta.PS_TITLE = `Pesquisa de produto "${query.q}"`
     urlMeta.PS_DESCRIPTION = `Pesquisa de produto "${query.q}"`
 
-    const state = store.getState()
-
-    if (!state.categories.length) {
-      const categories = await ApiCategories()
-      store.dispatch(setCategories(categories))
+    return {
+      sessionId,
+      urlMeta,
+      products,
+      pagination,
     }
-
-    return { products, pagination, urlMeta }
   }
 
   prefixGerate() {
@@ -57,50 +58,39 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div id="page">
-        <Head>
-          <title>{this.props.urlMeta.PS_TITLE}</title>
-          <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
-        </Head>
-        <HeaderPage query={this.props.url.query.q} />
-        <div className="page-home">
-          <div className={`container ${styles.container}`}>
-            <div className={styles.categoryPage}>
-              <div className="row">
-                <div className={classNames(styles.sidebar, 'col-md-3')}>
-                  <WidgetCategoryContainer />
-                </div>
-                <div className="col col-lg-9">
-                  <div id="example-content">
-                    <TitleSection title={this.props.urlMeta.PS_TITLE} />
-                    <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
-                      <div className="col">
-                        {this.props.pagination.total} Produtos
-                      </div>
-                      <div className="col">
-                        <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
-                      </div>
+      <Page {...this.props}>
+        <div className={`container ${styles.container}`}>
+          <div className={styles.categoryPage}>
+            <div className="row">
+              <div className={classNames(styles.sidebar, 'col-md-3')}>
+                <WidgetCategoryContainer />
+              </div>
+              <div className="col col-lg-9">
+                <div id="example-content">
+                  <TitleSection title={this.props.urlMeta.PS_TITLE} />
+                  <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
+                    <div className="col">
+                      {this.props.pagination.total} Produtos
                     </div>
-                    <div className={styles.productsSection}>
-                      <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                        <ProdutosCategoriaContainer products={this.props.products} />
-                      </div>
+                    <div className="col">
+                      <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                     </div>
+                  </div>
+                  <div className={styles.productsSection}>
+                    <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
+                      <ProdutosCategoriaContainer products={this.props.products} />
+                    </div>
+                  </div>
 
-                    <div className="row-block">
-                      <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
-                    </div>
+                  <div className="row-block">
+                    <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <FooterPage>
-            <Sitemap />
-            <Copy />
-          </FooterPage>
         </div>
-      </div>
+      </Page>
     )
   }
 }

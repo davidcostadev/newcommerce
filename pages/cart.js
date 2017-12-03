@@ -1,65 +1,37 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
-
-import Head from 'next/head'
-
-import { initStore, setCategories, setFamilyIds } from '../store'
-
-import ApiCategories from '../api/Categories'
-
+import { initStore } from '../store'
+import Page from '../containers/PageHOF'
 import styles from '../assets/scss/App.scss'
-
-import HeaderPage from '../components/HeaderPage'
-import FooterPage from '../components/FooterPage'
-import Sitemap from '../components/Sitemap'
-import Copy from '../components/Copy'
 import ContentCart from '../components/ContentCart'
 
+class Cart extends React.Component {
+  static async getInitialProps({ req, store, isServer }) {
+    const { sessionId } = await Page.getInitialProps(store, req, isServer)
 
-class Search extends React.Component {
-  static async getInitialProps({ store }) {
-    const state = store.getState()
-
-    if (!state.categories.length) {
-      const categories = await ApiCategories()
-      store.dispatch(setCategories(categories))
+    const urlMeta = {
+      PS_TITLE: 'Carrinho',
+      PS_DESCRIPTION: 'Carrinho de Compra',
     }
 
-    return { }
+    return {
+      sessionId,
+      urlMeta,
+    }
   }
 
   render() {
     return (
-      <div id="page">
-        <Head>
-          <title>Carrinho</title>
-          <meta name="description" content="carrinho de compra" />
-        </Head>
-        <HeaderPage />
-        <div className="page-cart">
-          <div className={`container ${styles.container}`}>
-            <ContentCart />
-          </div>
-          <FooterPage>
-            <Sitemap />
-            <Copy />
-          </FooterPage>
+      <Page {...this.props}>
+        <div className={`container ${styles.container}`}>
+          <ContentCart />
         </div>
-      </div>
+      </Page>
     )
   }
 }
 
 
-const mapState = state => ({
-  categories: state.categories,
-  familyId: state.familyId,
-})
+const mapState = state => state
 
-const mapDispatchToProps = dispatch => ({
-  setCategories: bindActionCreators(setCategories, dispatch),
-  setFamilyIds: bindActionCreators(setFamilyIds, dispatch),
-})
-
-export default withRedux(initStore, mapState, mapDispatchToProps)(Search)
+export default withRedux(initStore, mapState)(Cart)

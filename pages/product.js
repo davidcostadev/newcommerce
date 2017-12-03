@@ -1,18 +1,10 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
-// import Head from 'next/head'
-// import classNames from 'classnames'
-
-import { initStore, setCategories } from '../store'
+import { initStore } from '../store'
 import Page from '../containers/PageHOF'
-
-
 import styles from '../assets/scss/App.scss'
-
 import ApiUrl from '../api/Url'
 import ApiProduct from '../api/Product'
-
 import ProductDetails from '../components/ProductDetails'
 import Gallery from '../components/Gallery'
 import ProductsCarrocel from '../components/ProductsCarrocel'
@@ -21,7 +13,7 @@ import Breadcrumbs from '../components/Breadcrumbs'
 
 class Product extends React.Component {
   static async getInitialProps({ req, query, store, isServer }) {
-    const { sessionId } = Page.getInitialProps(store, req, isServer)
+    const { sessionId } = await Page.getInitialProps(store, req, isServer)
 
     const urlMeta = await ApiUrl(query)
     const productPage = await ApiProduct(urlMeta.PS_ID_PRODUTO)
@@ -91,10 +83,5 @@ class Product extends React.Component {
 
 const mapState = state => state
 
-
-const mapDispatchToProps = dispatch => ({
-  setCategories: bindActionCreators(setCategories, dispatch),
-})
-
-export default withRedux(initStore, mapState, mapDispatchToProps)(Product)
+export default withRedux(initStore, mapState)(Product)
 

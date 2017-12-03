@@ -1,6 +1,4 @@
 import React from 'react'
-// import { bindActionCreators } from 'redux'
-// import { connect } from 'react-redux'
 import Head from 'next/head'
 import { setCategories } from '../store'
 import { setSessionId } from '../flux/user/actions'
@@ -12,7 +10,7 @@ import Copy from '../components/Copy'
 
 class Page extends React.Component {
   static async getInitialProps(store, req, isServer) {
-    Page.getCategories(store)
+    await Page.getCategories(store)
 
     const sessionId = Page.getSession(store, req, isServer)
 
@@ -42,14 +40,19 @@ class Page extends React.Component {
     return state.sessionId
   }
 
+  componentWillMount() {
+    // console.log(this.props)
+  }
+
   render() {
+    console.log('render PAGEHOF')
     return (
       <div id="page">
         <Head>
           <title>{this.props.urlMeta.PS_TITLE}</title>
           <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
         </Head>
-        <HeaderPage />
+        <HeaderPage query={this.props.url.query.q}/>
         <main id="page-content">
           <h1>{this.props.sessionId}</h1>
           {this.props.children}
