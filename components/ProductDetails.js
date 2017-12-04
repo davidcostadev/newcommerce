@@ -43,11 +43,7 @@ ParcelBox.propTypes = {
   amount: PropTypes.string.isRequired,
 }
 
-const addProductCart = async (product) => {
-  console.log(product)
-}
-
-const ProductDetail = ({ product, bredcrumbs }) => (
+const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
   <div className={styles.productDetails}>
     <h1 className={styles.productTitle}>{product.PS_PRODUTO}</h1>
     <p className={styles.productHeader}>
@@ -92,7 +88,7 @@ const ProductDetail = ({ product, bredcrumbs }) => (
       </div>
       <div className={styles.productPriceCol}>
         <div className={styles.productButtons}>
-          <button className="btn btn-lg btn-primary btn-buy" onClick={() => addProductCart(product)}> Comprar</button>
+          <button className="btn btn-lg btn-primary btn-buy" onClick={() => addProductCart(product.PS_ID_PRODUTO)}> Comprar</button>
           <button className="btn btn-lg btn-danger btn-favorite">
             <i className="ion-ios-heart" />
           </button>

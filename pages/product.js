@@ -1,10 +1,13 @@
 import React from 'react'
 import withRedux from 'next-redux-wrapper'
+import { bindActionCreators } from 'redux'
 import { initStore } from '../store'
 import Page from '../containers/PageHOF'
 import styles from '../assets/scss/App.scss'
 import ApiUrl from '../api/Url'
 import ApiProduct from '../api/Product'
+import { AddProduct } from '../api/Cart'
+import { setCart, setCartItens } from '../flux/cart/cartActions'
 import ProductDetails from '../components/ProductDetails'
 import Gallery from '../components/Gallery'
 import ProductsCarrocel from '../components/ProductsCarrocel'
@@ -56,6 +59,19 @@ class Product extends React.Component {
     return itens
   }
 
+  async addProductCart(productId) {
+    const cartId = this.props.cart.PS_ID_CARRINHO || null
+
+    const { cart, cartItens } = await AddProduct({
+      productId,
+      cartId,
+      sessionId: this.props.sessionId + new Date().getTime(),
+    })
+
+    this.props.setCart(cart)
+    this.props.setCartItens(cartItens)
+  }
+
   render() {
     return (
       <Page {...this.props}>
@@ -67,7 +83,7 @@ class Product extends React.Component {
                 <Gallery image={this.props.product.PS_PATH_IMAGEM_400} images={this.props.images} urlMeta={this.props.urlMeta} />
               </div>
               <div className="col-lg-8">
-                <ProductDetails product={this.props.product} bredcrumbs={this.breadCrumbsProps()} />
+                <ProductDetails product={this.props.product} bredcrumbs={this.breadCrumbsProps()} addProductCart={this.addProductCart.bind(this)} />
               </div>
 
             </div>
@@ -83,5 +99,11 @@ class Product extends React.Component {
 
 const mapState = state => state
 
-export default withRedux(initStore, mapState)(Product)
+
+const mapDispatchToProps = dispatch => ({
+  setCart: bindActionCreators(setCart, dispatch),
+  setCartItens: bindActionCreators(setCartItens, dispatch),
+})
+
+export default withRedux(initStore, mapState, mapDispatchToProps)(Product)
 
