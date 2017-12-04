@@ -4,11 +4,13 @@ import thunkMiddleware from 'redux-thunk'
 
 import { CATEGORIES_FULL, SET_FAMILY_ID } from './flux/type'
 import sessionId, { initialStateUser } from './flux/user/reducers'
+import cart, { initialStateCart } from './flux/user/reducers'
 
 const initialStateAll = {
   categories: [],
   familyId: 0,
   sessionId: initialStateUser,
+  cart: initialStateCart,
 }
 
 export const categories = (state = initialStateAll.categories, { type, payload }) => {
@@ -53,6 +55,7 @@ export const initStore = (initialState = initialStateAll) => (
       categories,
       familyId,
       sessionId,
+      cart,
     }),
     initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware)),
