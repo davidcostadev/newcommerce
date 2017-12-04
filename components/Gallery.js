@@ -6,7 +6,7 @@ const Thumbs = ({ images, urlMeta }) => {
   if (!images || !images.length) return null
 
   return images.map(image => (
-    <picture className={styles.galleryThumb}>
+    <picture key={image.PS_ID_ARQUIVO} className={styles.galleryThumb}>
       <img src={image.PS_PATH_IMAGEM_400} alt={urlMeta.PS_TITLE} />
     </picture>
   ))
