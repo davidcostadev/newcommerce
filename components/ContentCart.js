@@ -1,32 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { floatToReal, StringToReal } from '../utils/money'
 import Table from '../layout/Table'
-import theme from '../layout/theme'
+import * as Cart from '../layout/Cart'
 
-const products = [
-  {
-    id: 1,
-    image: 'http://www.winerp.com.br/images/mundial/products/45093-60-193420.jpg',
-    title: '45093-Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo',
-    price: 284,
-    quant: 2,
-  },
-]
-
-const Page = styled.div`
-  padding-top: 20px;
-  padding-bottom: 50px;
-`
-
-
-const Title = styled.h1`
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
-`
-const getUrlImage = url => url.replace('mundialsystem.com.br/images/products', 'winerp.com.br/images/mundial/products')
+const getUrlImage = url => url
+  .replace('mundialsystem.com.br/images', 'winerp.com.br/images/mundial')
 
 const Product = ({ product }) => (
   <tr>
@@ -46,32 +25,6 @@ Product.propTypes = {
   product: PropTypes.object.isRequired,
 }
 
-const CheckoutRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  .card {
-    width: 100%;
-    max-width: 250px;
-  }
-  .card-text {
-    display: flex;
-    justify-content: space-between;
-  }
-  button {
-    width: 100%;
-  }
-
-`
-
-const CalcShipping = styled.div`
-  background: white;
-  border: 1px solid ${theme.border};
-  padding: 15px 20px;
-  border-radius: 4px;
-  max-width: 500px;
-
-`
 
 const Products = ({ products }) => {
   if (!products.length) {
@@ -91,8 +44,8 @@ const Checkout = ({ cart, cartItens }) => {
   }
 
   return (
-    <CheckoutRow>
-      <CalcShipping>
+    <Cart.CheckoutRow>
+      <Cart.CalcShipping>
         <p>Consulte o prazo de entrega e o frete para seu CEP:</p>
         <div className="form-group">
           <div className="input-group">
@@ -116,7 +69,7 @@ const Checkout = ({ cart, cartItens }) => {
             Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
         </label>
         </div>
-      </CalcShipping>
+      </Cart.CalcShipping>
       <div className="card">
         <div className="card-body">
           <p className="card-text">
@@ -134,9 +87,8 @@ const Checkout = ({ cart, cartItens }) => {
           <button className="btn btn-primary">Finalizar Comprar</button>
         </div>
       </div>
-      </CheckoutRow>
+    </Cart.CheckoutRow>
   )
-
 }
 
 
@@ -144,8 +96,8 @@ const ContentCart = ({ cart, cartItens }) => {
   console.log(cart)
   console.log(cartItens)
   return (
-    <Page>
-      <Title>Carrinho</Title>
+    <Cart.Page>
+      <Cart.Title>Carrinho</Cart.Title>
       <Table>
         <thead>
           <tr>
@@ -163,7 +115,7 @@ const ContentCart = ({ cart, cartItens }) => {
 
       <Checkout cart={cart} cartItens={cartItens} />
 
-    </Page>
+    </Cart.Page>
   )
 }
 
