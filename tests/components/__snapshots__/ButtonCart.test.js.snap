@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test component ButtonCart should do be 0 1`] = `
+<a
+  className="App__menuLink___2Z78l"
+  href="/cart"
+  onClick={[Function]}
+>
+  <i
+    className="ion-ios-cart-outline"
+  />
+  <span
+    className="badge App__badge___ueEbL"
+  >
+    0
+  </span>
+</a>
+`;
+
+exports[`Test component ButtonCart should do be 5 1`] = `
+<a
+  className="App__menuLink___2Z78l"
+  href="/cart"
+  onClick={[Function]}
+>
+  <i
+    className="ion-ios-cart-outline"
+  />
+  <span
+    className="badge App__badge___ueEbL"
+  >
+    5
+  </span>
+</a>
+`;

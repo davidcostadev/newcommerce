@@ -6,6 +6,7 @@ import { Link } from '../routes'
 import styles from '../assets/scss/App.scss'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
+import ButtonCart from '../components/ButtonCart'
 
 
 Router.onRouteChangeStart = (url) => {
@@ -41,9 +42,7 @@ const HeaderPage = ({ query }) => (
               </button>
             </div>
             <div className={`${styles.menuItem} ${styles.cartItem}`}>
-              <Link route="/cart">
-                <a className={styles.menuLink}><i className="ion-ios-cart-outline" /> <span className={`badge ${styles.badge}`}>1</span></a>
-              </Link>
+              <ButtonCart />
             </div>
             <div className={`${styles.menuItem} ${styles.onlyMobile}`}>
               <button className={styles.menuLink}><i className="ion-navicon" /></button>
