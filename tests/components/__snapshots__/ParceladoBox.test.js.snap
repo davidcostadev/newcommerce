@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test File ProductBox should show minimo value 1`] = `
+<div
+  className="App__productComplement___3_X5C"
+>
+  ou 
+  3
+  x de
+  <span
+    className="App__currency___2-n_1"
+  >
+    R$
+  </span>
+  <span
+    className="App__amount___25x4z"
+  >
+    4
+  </span>
+  <strong>
+    Sem Juros
+  </strong>
+</div>
+`;
+
+exports[`Test File ProductBox should show value parcel 1`] = `
+<div
+  className="App__productComplement___3_X5C"
+>
+  ou 
+  3
+  x de
+  <span
+    className="App__currency___2-n_1"
+  >
+    R$
+  </span>
+  <span
+    className="App__amount___25x4z"
+  >
+    35,01
+  </span>
+  <strong>
+    Sem Juros
+  </strong>
+</div>
+`;
+
+exports[`Test File ProductBox test with value below of minimunm 1`] = `
+<div
+  className="App__productComplement___3_X5C"
+>
+  ou 
+  2
+  x de
+  <span
+    className="App__currency___2-n_1"
+  >
+    R$
+  </span>
+  <span
+    className="App__amount___25x4z"
+  >
+    5,00
+  </span>
+  <strong>
+    Sem Juros
+  </strong>
+</div>
+`;
+
+exports[`Test File ProductBox test with value below of minimunm 2`] = `
+<div
+  className="App__productComplement___3_X5C"
+>
+  ou 
+  1
+  x de
+  <span
+    className="App__currency___2-n_1"
+  >
+    R$
+  </span>
+  <span
+    className="App__amount___25x4z"
+  >
+    4,00
+  </span>
+  <strong>
+    Sem Juros
+  </strong>
+</div>
+`;

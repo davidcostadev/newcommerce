@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component <ProductDescription /> <ProductDescription /> 1`] = `
+exports[`Component <ProductDescription /> with empty text 1`] = `null`;
+
+exports[`Component <ProductDescription /> with some text 1`] = `
 <section
   className="App__blockInfo___292Je"
 >

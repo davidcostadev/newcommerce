@@ -60,15 +60,6 @@ const product = {
 }
 
 describe('Test File ProductBox', () => {
-  it('<ParcelBox />', () => {
-    const tree = renderer.create((
-      <ParcelBox
-        parcel={3}
-        amount="35,01"
-      />
-    )).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
   it('<ProductBox />', () => {
     const tree = renderer.create((
       <ProductBox

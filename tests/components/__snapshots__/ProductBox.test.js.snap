@@ -1,28 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test File ProductBox <ParcelBox /> 1`] = `
-<div
-  className="App__productComplement___3_X5C"
->
-  ou 
-  3
-  x de
-  <span
-    className="App__currency___2-n_1"
-  >
-    R$
-  </span>
-  <span
-    className="App__amount___25x4z"
-  >
-    35,01
-  </span>
-  <strong>
-    Sem Juros
-  </strong>
-</div>
-`;
-
 exports[`Test File ProductBox <ProductBox /> 1`] = `
 <div
   className="App__product___3XoPp"

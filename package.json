@@ -65,7 +65,9 @@
     "start": "NODE_ENV=production node server.js",
     "test": "jest && codecov",
     "jest": "jest",
-    "jest:update": "jest --updateSnapshot"
+    "jest:update": "jest --updateSnapshot",
+    "jest:coverage": "jest --coverage",
+    "coverage": "http-server ./coverage/lcov-report -o"
   },
   "jest": {
     "coverageDirectory": "./coverage/",

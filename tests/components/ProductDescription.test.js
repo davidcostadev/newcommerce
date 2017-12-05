@@ -66,10 +66,20 @@ const product = {
 }
 
 describe('Component <ProductDescription />', () => {
-  it('<ProductDescription />', () => {
+  it('with some text', () => {
     const tree = renderer.create((
       <ProductDescription
         product={product}
+      />
+    )).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  it('with empty text', () => {
+    const tree = renderer.create((
+      <ProductDescription
+        product={{
+          PS_DETALHES_PRODUTO: '',
+        }}
       />
     )).toJSON()
     expect(tree).toMatchSnapshot()
