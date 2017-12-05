@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import jsCookie from 'js-cookie'
 import { setCategories } from '../store'
 import { setSessionId } from '../flux/user/actions'
 import ApiCategories from '../api/Categories'
@@ -45,9 +46,12 @@ class Page extends React.Component {
       return req.cookies.cartId || null
     }
 
-    const state = store.getState()
+    return jsCookie.get('cartId') || null
 
-    return state.cart.PS_ID_CARRINHO || null
+
+    // const state = store.getState()
+
+    // return state.cart.PS_ID_CARRINHO || null
   }
 
   componentWillMount() {
@@ -64,7 +68,6 @@ class Page extends React.Component {
         </Head>
         <HeaderPage query={this.props.url.query.q}/>
         <main id="page-content">
-          <h1>{this.props.sessionId}</h1>
           {this.props.children}
         </main>
         <FooterPage>
