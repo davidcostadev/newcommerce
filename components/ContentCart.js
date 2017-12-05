@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { floatToReal } from '../utils/money'
+import { floatToReal, StringToReal } from '../utils/money'
 import Table from '../layout/Table'
 import theme from '../layout/theme'
 
@@ -26,18 +26,19 @@ const Title = styled.h1`
   margin-top: 20px;
   margin-bottom: 30px;
 `
+const getUrlImage = url => url.replace('mundialsystem.com.br/images/products', 'winerp.com.br/images/mundial/products')
 
 const Product = ({ product }) => (
   <tr>
     <td>
-      <img src={product.image} alt={product.title} />
+      <img src={getUrlImage(product.PS_PATH_IMAGEM_60)} alt={product.PS_DESCRICAO} />
     </td>
-    <td>{product.title}</td>
-    <td>R$ {floatToReal(product.price)}</td>
+    <td>{product.PS_DESCRICAO}</td>
+    <td>R$ {StringToReal(product.PS_VL_UNITARIO)}</td>
     <td>
-      <input className="form-control" value={product.quant} />
+      <input className="form-control" value={product.PS_QT} />
     </td>
-    <td>R$ {floatToReal(product.quant * product.price)}</td>
+    <td>R$ {StringToReal(product.PS_VALOR_TOTAL)}</td>
   </tr>
 )
 
@@ -72,27 +73,24 @@ const CalcShipping = styled.div`
 
 `
 
+const Products = ({ products }) => {
+  if (!products.length) {
+    return (
+      <tr><td colSpan="5">Nenhum produto no carrinho</td></tr>
+    )
+  }
 
-const ContentCart = () => (
-  <Page>
-    <Title>Carrinho</Title>
-    <Table>
-      <thead>
-        <tr>
-          <th />
-          <th>Produto</th>
-          <th>Preço Unit.</th>
-          <th>Quantidade</th>
-          <th>Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map(product => (
-          <Product key={product.id} product={product} />
-        ))}
-      </tbody>
-    </Table>
+  return products.map(product => (
+    <Product key={product.id} product={product} />
+  ))
+}
 
+const Checkout = ({ cart, cartItens }) => {
+  if (!cartItens.length) {
+    return null
+  }
+
+  return (
     <CheckoutRow>
       <CalcShipping>
         <p>Consulte o prazo de entrega e o frete para seu CEP:</p>
@@ -108,36 +106,65 @@ const ContentCart = () => (
           <label htmlFor="" className="form-check-label">
             <input type="radio" className="form-check-input" />
             Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
-          </label>
+        </label>
           <label htmlFor="" className="form-check-label">
             <input type="radio" className="form-check-input" />
             Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
-          </label>
+        </label>
           <label htmlFor="" className="form-check-label">
             <input type="radio" className="form-check-input" />
             Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
-          </label>
+        </label>
         </div>
       </CalcShipping>
       <div className="card">
         <div className="card-body">
           <p className="card-text">
             <span>Subtotal</span>
-            <span>R$ {floatToReal(284)}</span>
+            <span>R$ {StringToReal(cart.PS_VL_SUBTOTAL)}</span>
           </p>
           <p className="card-text">
             <span>Frete</span>
-            <span>R$ {floatToReal(284)}</span>
+            <span>R$ {floatToReal(0)}</span>
           </p>
           <p className="card-text">
             <span><strong>Total</strong></span>
-            <span>R$ {floatToReal(284)}</span>
+            <span>R$ {StringToReal(cart.PS_VL_TOTAL_GERAL)}</span>
           </p>
           <button className="btn btn-primary">Finalizar Comprar</button>
         </div>
       </div>
-    </CheckoutRow>
-  </Page>
-)
+      </CheckoutRow>
+  )
+
+}
+
+
+const ContentCart = ({ cart, cartItens }) => {
+  console.log(cart)
+  console.log(cartItens)
+  return (
+    <Page>
+      <Title>Carrinho</Title>
+      <Table>
+        <thead>
+          <tr>
+            <th />
+            <th>Produto</th>
+            <th>Preço Unit.</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Products products={cartItens} />
+        </tbody>
+      </Table>
+
+      <Checkout cart={cart} cartItens={cartItens} />
+
+    </Page>
+  )
+}
 
 export default ContentCart

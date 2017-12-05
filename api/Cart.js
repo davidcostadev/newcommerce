@@ -26,12 +26,18 @@ export async function AddProduct(params) {
     PE_CEP: cep || null,
   })
 
-  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_produto_ins', data)
+  const resultData = axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_produto_ins', data)
+    .then((response) => {
+      if (response.data.result[0].PS_ALERTA === 206) {
+        return { cart: {}, cartItens: [] }
+      }
+      return {
+        cart: response.data.result[0].PS_TABELA_CARRINHO[0],
+        cartItens: response.data.result[0].PS_TABELA_ITENS,
+      }
+    })
 
-  return {
-    cart: response.data.result[0].PS_TABELA_CARRINHO[0],
-    cartItens: response.data.result[0].PS_TABELA_ITENS,
-  }
+  return resultData
 }
 
 export async function getCart(params) {
@@ -50,14 +56,16 @@ export async function getCart(params) {
     PE_ID_CLIENTE: null,
   })
 
-  console.log('data', data)
+  const resultData = await axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_sel', data)
+    .then((response) => {
+      if (response.data.result[0].PS_ALERTA === 206) {
+        return { cart: {}, cartItens: [] }
+      }
+      return {
+        cart: response.data.result[0].PS_TABELA_CARRINHO[0],
+        cartItens: response.data.result[0].PS_TABELA_ITENS,
+      }
+    })
 
-  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_sel', data)
-
-  console.log('data', response)
-  // return {
-  //   product: response.data.result[0].PS_TABELA_INFO[0],
-  //   images: response.data.result[0].PS_IMAGENS_PRODUTO,
-  //   products: response.data.result[0].PS_PRODUTOS_RELACIONADOS,
-  // }
+  return resultData
 }

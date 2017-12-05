@@ -40,6 +40,16 @@ class Page extends React.Component {
     return state.sessionId
   }
 
+  static getCartId(store, req, isServer) {
+    if (isServer) {
+      return req.cookies.cartId || null
+    }
+
+    const state = store.getState()
+
+    return state.cart.PS_ID_CARRINHO || null
+  }
+
   componentWillMount() {
     // console.log(this.props)
   }

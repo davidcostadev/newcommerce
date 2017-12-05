@@ -1,6 +1,7 @@
 import React from 'react'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
+import jsCookie from 'js-cookie'
 import { initStore } from '../store'
 import Page from '../containers/PageHOF'
 import styles from '../assets/scss/App.scss'
@@ -21,9 +22,11 @@ class Product extends React.Component {
     const urlMeta = await ApiUrl(query)
     const productPage = await ApiProduct(urlMeta.PS_ID_PRODUTO)
 
+    const cartId = Page.getCartId(store, req, isServer)
 
     return {
       sessionId,
+      cartId,
       urlMeta,
       product: productPage.product,
       images: productPage.images,
@@ -60,13 +63,15 @@ class Product extends React.Component {
   }
 
   async addProductCart(productId) {
-    const cartId = this.props.cart.PS_ID_CARRINHO || null
+    console.log('addProductCart')
+    const cartId = this.props.cartId || null
 
     const { cart, cartItens } = await AddProduct({
       productId,
       cartId,
-      sessionId: this.props.sessionId + new Date().getTime(),
+      sessionId: this.props.sessionId,
     })
+    jsCookie.set('cartId', cart.PS_ID_CARRINHO, { expires: 7 })
 
     this.props.setCart(cart)
     this.props.setCartItens(cartItens)
