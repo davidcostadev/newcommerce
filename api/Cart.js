@@ -59,8 +59,17 @@ export async function getCart(params) {
   const resultData = await axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_sel', data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
-        throw new Error(response.data.result[0].PS_FEEDBACK)
+        switch (response.data.result[0].PS_ID_ERRO) {
+          case 0:
+            return {
+              cart: {},
+              cartItens: [],
+            }
+          default:
+            throw new Error(response.data.result[0].PS_FEEDBACK)
+        }
       }
+
       return {
         cart: response.data.result[0].PS_TABELA_CARRINHO[0],
         cartItens: response.data.result[0].PS_TABELA_ITENS,
