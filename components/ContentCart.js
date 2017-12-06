@@ -1,32 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { floatToReal, StringToReal } from '../utils/money'
+import ProductCart from '../components/ProductCart'
 import Table from '../layout/Table'
 import * as Cart from '../layout/Cart'
 
-const getUrlImage = url => url
-  .replace('mundialsystem.com.br/images', 'winerp.com.br/images/mundial')
-
-const Product = ({ product }) => (
-  <tr>
-    <td>
-      <img src={getUrlImage(product.PS_PATH_IMAGEM_60)} alt={product.PS_DESCRICAO} />
-    </td>
-    <td>{product.PS_DESCRICAO}</td>
-    <td>R$ {StringToReal(product.PS_VL_UNITARIO)}</td>
-    <td>
-      <input className="form-control" value={product.PS_QT} />
-    </td>
-    <td>R$ {StringToReal(product.PS_VALOR_TOTAL)}</td>
-  </tr>
-)
-
-Product.propTypes = {
-  product: PropTypes.object.isRequired,
-}
-
-
-const Products = ({ products }) => {
+const Products = ({ products, changeQuant }) => {
   if (!products.length) {
     return (
       <tr><td colSpan="5">Nenhum produto no carrinho</td></tr>
@@ -34,7 +13,7 @@ const Products = ({ products }) => {
   }
 
   return products.map(product => (
-    <Product key={product.id} product={product} />
+    <ProductCart key={product.PS_ID_PRODUTO} product={product} changeQuant={changeQuant} />
   ))
 }
 
@@ -92,9 +71,7 @@ const Checkout = ({ cart, cartItens }) => {
 }
 
 
-const ContentCart = ({ cart, cartItens }) => {
-  console.log(cart)
-  console.log(cartItens)
+const ContentCart = ({ cart, cartItens, changeQuant }) => {
   return (
     <Cart.Page>
       <Cart.Title>Carrinho</Cart.Title>
@@ -109,12 +86,10 @@ const ContentCart = ({ cart, cartItens }) => {
           </tr>
         </thead>
         <tbody>
-          <Products products={cartItens} />
+          <Products products={cartItens} changeQuant={changeQuant} />
         </tbody>
       </Table>
-
       <Checkout cart={cart} cartItens={cartItens} />
-
     </Cart.Page>
   )
 }

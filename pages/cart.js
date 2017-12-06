@@ -2,7 +2,7 @@ import React from 'react'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import { initStore } from '../store'
-import { getCart } from '../api/Cart'
+import { getCart, changeQuant } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import Page from '../containers/PageHOF'
 import styles from '../assets/scss/App.scss'
@@ -26,6 +26,8 @@ class Cart extends React.Component {
       urlMeta,
       cart,
       cartItens,
+      setCart,
+      setCartItens,
     }
   }
 
@@ -55,11 +57,33 @@ class Cart extends React.Component {
     }
   }
 
+  async changeQuant(movimentCartId, productId, quant) {
+    console.log('changeQuant', movimentCartId, productId)
+    console.log(this)
+
+    const { cart, cartItens } = await changeQuant({
+      cartId: this.props.cartId,
+      sessionId: this.props.sessionId,
+      movimentCartId,
+      productId,
+      quant,
+    })
+
+    console.log(cart, cartItens)
+
+    this.props.setCart(cart)
+    this.props.setCartItens(cartItens)
+  }
+
   render() {
     return (
       <Page {...this.props}>
         <div className={`container ${styles.container}`}>
-          <ContentCart cart={this.props.cart} cartItens={this.props.cartItens} />
+          <ContentCart
+            cart={this.props.cart}
+            cartItens={this.props.cartItens}
+            changeQuant={this.changeQuant.bind(this)}
+          />
         </div>
       </Page>
     )

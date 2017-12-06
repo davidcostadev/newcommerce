@@ -34,6 +34,14 @@ class Product extends React.Component {
     }
   }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      cartId: props.cartId,
+    }
+  }
+
   breadCrumbsProps() {
     const itens = []
 
@@ -64,17 +72,24 @@ class Product extends React.Component {
 
   async addProductCart(productId) {
     console.log('addProductCart')
-    const cartId = this.props.cartId || null
+    const cartId = this.state.cartId || null
+    // console.log(cartId)
 
-    const { cart, cartItens } = await AddProduct({
-      productId,
-      cartId,
-      sessionId: this.props.sessionId,
-    })
-    jsCookie.set('cartId', cart.PS_ID_CARRINHO, { expires: 7 })
+    try {
+      const { cart, cartItens } = await AddProduct({
+        productId,
+        cartId,
+        sessionId: this.props.sessionId,
+      })
+      jsCookie.set('cartId', cart.PS_ID_CARRINHO, { expires: 7 })
 
-    this.props.setCart(cart)
-    this.props.setCartItens(cartItens)
+      this.setState({ cartId: cart.PS_ID_CARRINHO })
+
+      this.props.setCart(cart)
+      this.props.setCartItens(cartItens)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   render() {
