@@ -100,6 +100,10 @@ export const MenuRight = `
   }
 `
 
+const MenuVertical = `
+  flex-direction: column;
+`
+
 export const Menu = styled.div`
   display: flex;
   justify-content: space-between;
@@ -110,6 +114,8 @@ export const Menu = styled.div`
   list-style: none;
 
   ${props => props.right ? MenuRight : ''}
+
+  ${props => props.vertical ? MenuVertical : ''}
 `
 
 export const MenuLink = styled.a`
