@@ -1,15 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-import styles from '../assets/scss/App.scss'
-
-const FooterPage = props => (
-  <div id={styles.footePage}>{props.children}</div>
-)
+import styled from 'styled-components'
+import theme from '../layout/theme'
 
 
-FooterPage.propTypes = {
-  children: PropTypes.node.isRequired
-}
+const FooterPage = styled.div`
+  background-color: ${theme.gray900};
+  color: ${theme.gray50};
+  padding-top: 40px;
+`
 
 export default FooterPage

@@ -1,22 +1,35 @@
 import React from 'react'
-// import PropTypes from 'prop-types';
+import styled from 'styled-components'
+import theme from '../layout/theme'
+import { Container } from '../layout/Header'
 
-import styles from '../assets/scss/App.scss'
+const CopyWrapper = styled.div`
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid ${theme.gray700};
+  font-size: 14px;
+
+  & ${Container} {
+    display: flex;
+    justify-content: space-between;
+  }
+`
 
 const Copy = () => (
-  <div className={styles.copy}>
-    <div className={`container ${styles.container}`}>
-      <div className={styles.copyCol}>
+  <CopyWrapper>
+    <Container>
+      <div>
         2017 Todos os Direitos Reservados
       </div>
-      <div className={styles.copyCol}>
+      <div>
         <a href="#">newCommerce</a> Os produtos que você curte e o melhor serviço da internet.
       </div>
-      <div className={styles.copyCol}>
+      <div>
         Desenvolvidor por<a href="#"> davidcosta.com.br</a>
       </div>
-    </div>
-  </div>
+    </Container>
+  </CopyWrapper>
 )
 
 export default Copy
