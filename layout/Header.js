@@ -114,7 +114,6 @@ export const Menu = styled.div`
   list-style: none;
 
   ${props => props.right ? MenuRight : ''}
-
   ${props => props.vertical ? MenuVertical : ''}
 `
 

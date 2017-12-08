@@ -9,6 +9,7 @@ const colors = {
   gray700: '#616161',
   gray800: '#424242',
   gray900: '#212121',
+  white: '#FFFFFF',
   blue: '#2196F3',
   red: '#F44336',
   deeppurpledark: '#673AB7',
