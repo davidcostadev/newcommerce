@@ -17,6 +17,7 @@ const CopyWrapper = styled.div`
   }
 `
 
+
 const Copy = () => (
   <CopyWrapper>
     <Container>
