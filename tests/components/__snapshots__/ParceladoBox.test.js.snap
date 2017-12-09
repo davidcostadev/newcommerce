@@ -2,18 +2,18 @@
 
 exports[`Test File ProductBox should show minimo value 1`] = `
 <div
-  className="App__productComplement___3_X5C"
+  className={undefined}
 >
   ou 
   3
   x de
   <span
-    className="App__currency___2-n_1"
+    className={undefined}
   >
     R$
   </span>
   <span
-    className="App__amount___25x4z"
+    className={undefined}
   >
     4
   </span>
@@ -25,18 +25,18 @@ exports[`Test File ProductBox should show minimo value 1`] = `
 
 exports[`Test File ProductBox should show value parcel 1`] = `
 <div
-  className="App__productComplement___3_X5C"
+  className={undefined}
 >
   ou 
   3
   x de
   <span
-    className="App__currency___2-n_1"
+    className={undefined}
   >
     R$
   </span>
   <span
-    className="App__amount___25x4z"
+    className={undefined}
   >
     35,01
   </span>
@@ -48,18 +48,18 @@ exports[`Test File ProductBox should show value parcel 1`] = `
 
 exports[`Test File ProductBox test with value below of minimunm 1`] = `
 <div
-  className="App__productComplement___3_X5C"
+  className={undefined}
 >
   ou 
   2
   x de
   <span
-    className="App__currency___2-n_1"
+    className={undefined}
   >
     R$
   </span>
   <span
-    className="App__amount___25x4z"
+    className={undefined}
   >
     5,00
   </span>
@@ -71,18 +71,18 @@ exports[`Test File ProductBox test with value below of minimunm 1`] = `
 
 exports[`Test File ProductBox test with value below of minimunm 2`] = `
 <div
-  className="App__productComplement___3_X5C"
+  className={undefined}
 >
   ou 
   1
   x de
   <span
-    className="App__currency___2-n_1"
+    className={undefined}
   >
     R$
   </span>
   <span
-    className="App__amount___25x4z"
+    className={undefined}
   >
     4,00
   </span>

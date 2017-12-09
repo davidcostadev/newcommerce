@@ -2,7 +2,7 @@
 
 exports[`Test File ProductBox <ProductBox /> 1`] = `
 <div
-  className="App__product___3XoPp"
+  className={undefined}
 >
   <picture
     className="SquareBox__BoxSquare-s7lvzn-0 gcTDzr"
@@ -12,37 +12,37 @@ exports[`Test File ProductBox <ProductBox /> 1`] = `
     />
   </picture>
   <div
-    className="App__productTitle___3wgab"
+    className={undefined}
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
   <div
-    className="App__productPrice___ZoumY"
+    className={undefined}
   >
     <span
-      className="App__currency___2-n_1"
+      className={undefined}
     >
       R$
     </span>
     <span
-      className="App__amount___25x4z"
+      className={undefined}
     >
       284,00
     </span>
   </div>
   <div
-    className="App__productComplement___3_X5C"
+    className={undefined}
   >
     ou 
     3
     x de
     <span
-      className="App__currency___2-n_1"
+      className={undefined}
     >
       R$
     </span>
     <span
-      className="App__amount___25x4z"
+      className={undefined}
     >
       94,67
     </span>
@@ -51,17 +51,17 @@ exports[`Test File ProductBox <ProductBox /> 1`] = `
     </strong>
   </div>
   <div
-    className="App__productButtons___2Y3pI"
+    className={undefined}
   >
     <a
-      className="btn App__btn___1w-MS App__btnDetail___13UmL"
+      className="btn undefined undefined"
       href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
       onClick={[Function]}
     >
       Ver Detalhes
     </a>
     <a
-      className="btn App__btn___1w-MS App__btnBuy___2ICLf"
+      className="btn undefined undefined"
       href="/product"
       onClick={[Function]}
     >
