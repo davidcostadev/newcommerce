@@ -111,33 +111,33 @@ const BannerMosaicoItem = styled.div`
 
 const BannerMosaico = () => (
   <BannerMosaicoGrid>
-    <BannerMosaicoCol className={styles.bannerMosaicoCol}>
-      <BannerMosaicoRow className={styles.bannerMosaicoRow}>
-        <BannerMosaicoItem center className={`${styles.bannerMosaico} ${styles.bannerMosaicoCenter}`} style={{ backgroundImage: 'url(\'/static/img/phone.jpg\')' }}>
-          <BannerText1 className={styles.bannerText1}>Celulares</BannerText1>
-          <BannerText2 className={styles.bannerText2}>Tecnologia de Ponta</BannerText2>
+    <BannerMosaicoCol>
+      <BannerMosaicoRow>
+        <BannerMosaicoItem center style={{ backgroundImage: 'url(\'/static/img/phone.jpg\')' }}>
+          <BannerText1>Celulares</BannerText1>
+          <BannerText2>Tecnologia de Ponta</BannerText2>
           <Link href="/product">
-            <BannerBtn className={styles.bannerBtn}>Ver Ofertas</BannerBtn>
+            <BannerBtn>Ver Ofertas</BannerBtn>
           </Link>
         </BannerMosaicoItem>
       </BannerMosaicoRow>
     </BannerMosaicoCol>
-    <BannerMosaicoCol className={styles.bannerMosaicoCol}>
-      <BannerMosaicoRow className={styles.bannerMosaicoRow}>
-        <BannerMosaicoItem left className={`${styles.bannerMosaico} ${styles.bannerMosaicoLeft}`} style={{ backgroundImage: 'url(\'/static/img/notebook.jpg\')' }}>
-          <BannerText1 className={styles.bannerText1}>Notebook</BannerText1>
-          <BannerText2 className={styles.bannerText2}>Ultima Geração</BannerText2>
+    <BannerMosaicoCol>
+      <BannerMosaicoRow>
+        <BannerMosaicoItem left style={{ backgroundImage: 'url(\'/static/img/notebook.jpg\')' }}>
+          <BannerText1>Notebook</BannerText1>
+          <BannerText2>Ultima Geração</BannerText2>
           <Link href="/product">
-            <BannerBtn className={styles.bannerBtn}>Ver Ofertas</BannerBtn>
+            <BannerBtn>Ver Ofertas</BannerBtn>
           </Link>
         </BannerMosaicoItem>
       </BannerMosaicoRow>
-      <BannerMosaicoRow className={styles.bannerMosaicoRow}>
-        <BannerMosaicoItem right className={`${styles.bannerMosaico} ${styles.bannerMosaicoRight}`} style={{ backgroundImage: 'url(\'/static/img/perfume.jpg\')' }}>
-          <BannerText1 className={styles.bannerText1}>Perfumes</BannerText1>
-          <BannerText2 className={styles.bannerText2}>Melhores Marcas</BannerText2>
+      <BannerMosaicoRow>
+        <BannerMosaicoItem right style={{ backgroundImage: 'url(\'/static/img/perfume.jpg\')' }}>
+          <BannerText1>Perfumes</BannerText1>
+          <BannerText2>Melhores Marcas</BannerText2>
           <Link href="/product">
-            <BannerBtn className={styles.bannerBtn}>Ver Ofertas</BannerBtn>
+            <BannerBtn>Ver Ofertas</BannerBtn>
           </Link>
         </BannerMosaicoItem>
       </BannerMosaicoRow>
