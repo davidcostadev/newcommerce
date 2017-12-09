@@ -9,15 +9,7 @@ export const SiteMapTitle = styled.h3`
 `
 
 export const SiteMap = styled.div`
-  a {
-    color: ${theme.colorSecond} !important;
-    &:hover {
-      color: ${theme.colorSecond} !important;
-    }
-    &:active {
-      color: ${theme.colorSecond} !important;
-    }
-  }
+
 `
 
 export const Social = styled.div`

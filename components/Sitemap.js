@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from '../layout/Html'
 
 import {
   Menu,
@@ -19,31 +20,31 @@ const Sitemap = () => (
         <div className="col-md-3">
           <SiteMapTitle>Informações</SiteMapTitle>
           <Menu vertical>
-            <MenuItem><a>Sobre Nós</a></MenuItem>
-            <MenuItem><a>Serviço ao Cliente</a></MenuItem>
-            <MenuItem><a>Política de Privacidade</a></MenuItem>
-            <MenuItem><a>Pedidos e Retornos</a></MenuItem>
-            <MenuItem><a>Fale conosco</a></MenuItem>
+            <MenuItem><Link>Sobre Nós</Link></MenuItem>
+            <MenuItem><Link>Serviço ao Cliente</Link></MenuItem>
+            <MenuItem><Link>Política de Privacidade</Link></MenuItem>
+            <MenuItem><Link>Pedidos e Retornos</Link></MenuItem>
+            <MenuItem><Link>Fale conosco</Link></MenuItem>
           </Menu>
         </div>
         <div className="col-md-3">
           <SiteMapTitle>Porque Comprar Conosco?</SiteMapTitle>
           <Menu vertical>
-            <MenuItem><a>Entrega e Delivery</a></MenuItem>
-            <MenuItem><a>Compra Segura</a></MenuItem>
-            <MenuItem><a>Afiliados</a></MenuItem>
-            <MenuItem><a>Atacado</a></MenuItem>
+            <MenuItem><Link>Entrega e Delivery</Link></MenuItem>
+            <MenuItem><Link>Compra Segura</Link></MenuItem>
+            <MenuItem><Link>Afiliados</Link></MenuItem>
+            <MenuItem><Link>Atacado</Link></MenuItem>
           </Menu>
         </div>
         <div className="col-md-3">
           <SiteMapTitle>Minha Conta</SiteMapTitle>
           <Menu vertical>
-            <MenuItem><a>Entrar</a></MenuItem>
-            <MenuItem><a>Ver Carrinho</a></MenuItem>
-            <MenuItem><a>Lista de Desejo</a></MenuItem>
-            <MenuItem><a>Rastrear Entrega</a></MenuItem>
-            <MenuItem><a>Meus Pedidos</a></MenuItem>
-            <MenuItem><a>Ajuda</a></MenuItem>
+            <MenuItem><Link>Entrar</Link></MenuItem>
+            <MenuItem><Link>Ver Carrinho</Link></MenuItem>
+            <MenuItem><Link>Lista de Desejo</Link></MenuItem>
+            <MenuItem><Link>Rastrear Entrega</Link></MenuItem>
+            <MenuItem><Link>Meus Pedidos</Link></MenuItem>
+            <MenuItem><Link>Ajuda</Link></MenuItem>
           </Menu>
         </div>
         <div className="col-md-3">

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from '../layout/theme'
 import { Container } from '../layout/Header'
+import { Link } from '../layout/Html'
 
 const CopyWrapper = styled.div`
   margin-top: 20px;
@@ -23,10 +24,10 @@ const Copy = () => (
         2017 Todos os Direitos Reservados
       </div>
       <div>
-        <a href="#">newCommerce</a> Os produtos que você curte e o melhor serviço da internet.
+        <Link href="#">newCommerce</Link> Os produtos que você curte e o melhor serviço da internet.
       </div>
       <div>
-        Desenvolvidor por<a href="#"> davidcosta.com.br</a>
+        Desenvolvidor por<Link href="#"> davidcosta.com.br</Link>
       </div>
     </Container>
   </CopyWrapper>
