@@ -2,92 +2,92 @@
 
 exports[`Test File ProductBox should show minimo value 1`] = `
 <div
-  className={undefined}
+  className="ParceladoBox__ProductComplement-s1lix42y-0 jOBnpY"
 >
   ou 
   3
   x de
   <span
-    className={undefined}
+    className="Product__ProductCurrency-gpte6w-3 bUKhEa"
   >
     R$
   </span>
   <span
-    className={undefined}
+    className="Product__ProductAmount-gpte6w-4 likLHK"
   >
     4
   </span>
   <strong>
-    Sem Juros
+    sem juros
   </strong>
 </div>
 `;
 
 exports[`Test File ProductBox should show value parcel 1`] = `
 <div
-  className={undefined}
+  className="ParceladoBox__ProductComplement-s1lix42y-0 jOBnpY"
 >
   ou 
   3
   x de
   <span
-    className={undefined}
+    className="Product__ProductCurrency-gpte6w-3 bUKhEa"
   >
     R$
   </span>
   <span
-    className={undefined}
+    className="Product__ProductAmount-gpte6w-4 likLHK"
   >
     35,01
   </span>
   <strong>
-    Sem Juros
+    sem juros
   </strong>
 </div>
 `;
 
 exports[`Test File ProductBox test with value below of minimunm 1`] = `
 <div
-  className={undefined}
+  className="ParceladoBox__ProductComplement-s1lix42y-0 jOBnpY"
 >
   ou 
   2
   x de
   <span
-    className={undefined}
+    className="Product__ProductCurrency-gpte6w-3 bUKhEa"
   >
     R$
   </span>
   <span
-    className={undefined}
+    className="Product__ProductAmount-gpte6w-4 likLHK"
   >
     5,00
   </span>
   <strong>
-    Sem Juros
+    sem juros
   </strong>
 </div>
 `;
 
 exports[`Test File ProductBox test with value below of minimunm 2`] = `
 <div
-  className={undefined}
+  className="ParceladoBox__ProductComplement-s1lix42y-0 jOBnpY"
 >
   ou 
   1
   x de
   <span
-    className={undefined}
+    className="Product__ProductCurrency-gpte6w-3 bUKhEa"
   >
     R$
   </span>
   <span
-    className={undefined}
+    className="Product__ProductAmount-gpte6w-4 likLHK"
   >
     4,00
   </span>
   <strong>
-    Sem Juros
+    sem juros
   </strong>
 </div>
 `;

@@ -2,71 +2,69 @@
 
 exports[`Test File ProductBox <ProductBox /> 1`] = `
 <div
-  className={undefined}
+  className="Product__ProductItem-gpte6w-0 jxNdGT"
 >
   <picture
-    className="SquareBox__BoxSquare-s7lvzn-0 gcTDzr"
+    className="SquareBox__BoxSquare-s1pdakhw-0 edNYXE"
   >
     <div
-      className="SquareBox__BoxSquareInner-s7lvzn-1 UfKUk"
+      className="SquareBox__BoxSquareInner-s1pdakhw-1 gdOhjI"
     />
   </picture>
   <div
-    className={undefined}
+    className="Product__ProductTitle-gpte6w-1 fzgmSF"
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
   <div
-    className={undefined}
+    className="Product__ProductPrice-gpte6w-2 hCMZwh"
   >
     <span
-      className={undefined}
+      className="Product__ProductCurrency-gpte6w-3 bUKhEa"
     >
       R$
     </span>
     <span
-      className={undefined}
+      className="Product__ProductAmount-gpte6w-4 likLHK"
     >
       284,00
     </span>
   </div>
   <div
-    className={undefined}
+    className="ParceladoBox__ProductComplement-s1lix42y-0 jOBnpY"
   >
     ou 
     3
     x de
     <span
-      className={undefined}
+      className="Product__ProductCurrency-gpte6w-3 bUKhEa"
     >
       R$
     </span>
     <span
-      className={undefined}
+      className="Product__ProductAmount-gpte6w-4 likLHK"
     >
       94,67
     </span>
     <strong>
-      Sem Juros
+      sem juros
     </strong>
   </div>
   <div
-    className={undefined}
+    className="Product__ProductButtons-gpte6w-5 fKpnsU"
   >
     <a
-      className="btn undefined undefined"
-      href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
+      className="Product__ProductBtnDetails-gpte6w-6 bXPITq"
       onClick={[Function]}
     >
       Ver Detalhes
     </a>
-    <a
-      className="btn undefined undefined"
-      href="/product"
+    <button
+      className="Product__ProductBtnBuy-gpte6w-7 fhgfZc"
       onClick={[Function]}
     >
       Comprar
-    </a>
+    </button>
   </div>
 </div>
 `;

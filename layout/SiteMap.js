@@ -29,12 +29,12 @@ export const SocialIcon = styled.div`
   &:hover {
     border-color: ${theme.colorPrimary};
     background-color: ${theme.colorPrimary};
-    color: $color-gray900;
+    color: ${theme.gray900};
   }
   &:active {
     border-color: ${theme.colorPrimary};
     background-color: ${theme.colorPrimary};
-    color: $color-gray900;
+    color: ${theme.gray900};
   }
 
   i {

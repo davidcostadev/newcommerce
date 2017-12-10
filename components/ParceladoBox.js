@@ -1,15 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import theme from '../layout/theme'
+import { ProductCurrency, ProductAmount } from '../layout/Product'
 import { toFloat, floatToReal } from '../utils/money'
-import styles from '../assets/scss/App.scss'
+
+
+const ProductComplement = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  align-items: baseline;
+
+  ${ProductCurrency} {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+  ${ProductAmount} {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  strong {
+    color: ${theme.colorSecond};
+  }
+`
+
 
 export const ParcelBox = ({ parcel, amount }) => (
-  <div className={styles.productComplement}>
+  <ProductComplement>
     ou {parcel}x de
-    <span className={styles.currency}>R$</span>
-    <span className={styles.amount}>{amount}</span>
-    <strong>Sem Juros</strong>
-  </div>
+    <ProductCurrency>R$</ProductCurrency>
+    <ProductAmount>{amount}</ProductAmount>
+    <strong>sem juros</strong>
+  </ProductComplement>
 )
 
 ParcelBox.propTypes = {
@@ -40,5 +66,3 @@ export function parcelado(number) {
 
   return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />
 }
-
-

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import styles from '../assets/scss/App.scss'
+// import styles from '../assets/scss/App.scss'
 import theme from '../layout/theme'
 
 const BannerMosaicoGrid = styled.div`
@@ -53,7 +53,7 @@ const BannerBtn = styled.a`
   transition: transform 0.6s ease;
 
   &:hover {
-    background-color: ${theme.colorPrimary}
+    background-color: ${theme.colorPrimary};
   }
 `
 
@@ -93,7 +93,7 @@ const BannerMosaicoItem = styled.div`
   padding: 40px 60px;
   transition: transform 0.4s ease;
 
-    &:hover {
+  &:hover {
     transform: scale(1.1);
 
     ${BannerText1},

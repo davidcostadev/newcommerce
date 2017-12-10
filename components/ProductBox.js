@@ -1,38 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '../routes'
-import styles from '../assets/scss/App.scss'
+import * as Product from '../layout/Product'
 import { StringToReal } from '../utils/money'
 import SquareBox from './SquareBox'
 import { parcelado } from './ParceladoBox'
 
-
 export const ProductBox = ({ product }) => (
-  <div className={styles.product}>
+  <Product.ProductItem>
     <SquareBox image={product.PS_PATH_IMAGEM_250} />
-    {/* <picture className={styles.productImage}>
-      <img src={product.PS_PATH_IMAGEM_250} alt={product.PS_PRODUTO} />
-    </picture> */}
-    <div className={styles.productTitle}>{product.PS_PRODUTO}</div>
-    <div className={styles.productPrice}>
-      <span className={styles.currency}>R$</span>
-      <span className={styles.amount}>{StringToReal(product.PS_VALOR_DE_VENDA)}</span>
-    </div>
+    <Product.ProductTitle>{product.PS_PRODUTO}</Product.ProductTitle>
+    <Product.ProductPrice>
+      <Product.ProductCurrency>R$</Product.ProductCurrency>
+      <Product.ProductAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</Product.ProductAmount>
+    </Product.ProductPrice>
     {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
-    <div className={styles.productButtons}>
+    <Product.ProductButtons>
       <Link route={`/product/${product.PS_PATH_PAGE}`}>
-        <a className={`btn ${styles.btn} ${styles.btnDetail}`}>Ver Detalhes</a>
+        <Product.ProductBtnDetails>Ver Detalhes</Product.ProductBtnDetails>
       </Link>
       <Link route="/product">
-        <a className={`btn ${styles.btn} ${styles.btnBuy}`}>Comprar</a>
+        <Product.ProductBtnBuy>Comprar</Product.ProductBtnBuy>
       </Link>
-    </div>
-  </div>
+    </Product.ProductButtons>
+  </Product.ProductItem>
 )
 
 ProductBox.propTypes = {
   product: PropTypes.object.isRequired,
 }
-
 
 export default ProductBox

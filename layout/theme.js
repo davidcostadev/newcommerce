@@ -31,14 +31,22 @@ const colors = {
 }
 
 
+const fonts = {
+  fontBody: '\'Oxygen\', sans-serif',
+}
+
 const theme = {
   ...colors,
+  ...fonts,
+
   border: colors.gray300,
   gray: colors.gray500,
   text: colors.gray900,
 
   colorPrimary: colors.indigo500,
   colorSecond: colors.black,
+  bodyBg: colors.gray100,
+
   navbarInverse: colors.deeppurpledark,
   buttonDefault: colors.gray200,
   buttonDefaultHover: colors.gray400,
