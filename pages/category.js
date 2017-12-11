@@ -7,6 +7,7 @@ import { initStore, setFamilyIds } from '../store'
 import ApiUrl from '../api/Url'
 import ApiCategory from '../api/Category'
 import styles from '../assets/scss/App.scss'
+import { CategoriesPage, Container } from '../layout/Pages'
 import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
 import WidgetCategoryFeature from '../containers/WidgetCategoryFeature'
 import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
@@ -63,8 +64,8 @@ class Category extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <div className={`container ${styles.container}`}>
-          <div className={styles.categoryPage}>
+        <Container>
+          <CategoriesPage>
             <div className="row">
               <div className={classNames(styles.sidebar, 'col-md-3')}>
                 <WidgetCategoryFeature />
@@ -93,8 +94,8 @@ class Category extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </CategoriesPage>
+        </Container>
       </Page>
     )
   }

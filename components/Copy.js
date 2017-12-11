@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import theme from '../layout/theme'
-import { Container } from '../layout/Header'
+import { Container } from '../layout/Pages'
 import { Link } from '../layout/Html'
 
 const CopyWrapper = styled.div`

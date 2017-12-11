@@ -6,11 +6,11 @@ import { Link } from '../routes'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
 import ButtonCart from '../components/ButtonCart'
+import { Container } from '../layout/Pages'
 
 import {
   HeaderPageOne,
   Header,
-  Container,
   Brand,
   BrandImage,
   ColSearch,

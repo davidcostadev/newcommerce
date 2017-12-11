@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from '../routes'
 import theme from '../layout/theme'
-import styles from '../assets/scss/App.scss'
-import { Container } from '../layout/Header'
+import { Container } from '../layout/Pages'
 
 const CategoriesFirst = ({ categories }) => {
   const links = []

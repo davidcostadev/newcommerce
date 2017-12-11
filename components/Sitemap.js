@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from '../layout/Html'
+import { Container } from '../layout/Pages'
 
 import {
   Menu,
   MenuItem,
-  Container,
 } from '../layout/Header'
 import {
   SiteMap,
