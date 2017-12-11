@@ -2,6 +2,14 @@ import React from 'react'
 import classNames from 'classnames'
 import styles from '../assets/scss/App.scss'
 
+
+
+  // .widgetFilter {
+  //   span {
+  //     font-size: 14px;
+  //   }
+  // }
+
 const WidgetFilter = () => (
   <div className={classNames([styles.widget, styles.widgetFilter])}>
     <h3 className={styles.widgetTitle}>Filtrar</h3>
