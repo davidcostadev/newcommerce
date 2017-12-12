@@ -2,7 +2,7 @@
 
 exports[`Test File ProductBox <ProductBox /> 1`] = `
 <div
-  className="Product__ProductItem-gpte6w-0 jxNdGT"
+  className="Product__ProductItem-s1tvs15m-0 bljenO"
 >
   <picture
     className="SquareBox__BoxSquare-s1pdakhw-0 edNYXE"
@@ -12,37 +12,37 @@ exports[`Test File ProductBox <ProductBox /> 1`] = `
     />
   </picture>
   <div
-    className="Product__ProductTitle-gpte6w-1 fzgmSF"
+    className="Product__ProductTitle-s1tvs15m-1 jWmPaW"
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
   <div
-    className="Product__ProductPrice-gpte6w-2 hCMZwh"
+    className="Product__ProductPrice-s1tvs15m-2 jeEbDK"
   >
     <span
-      className="Product__ProductCurrency-gpte6w-3 bUKhEa"
+      className="Product__ProductCurrency-s1tvs15m-3 dNglJO"
     >
       R$
     </span>
     <span
-      className="Product__ProductAmount-gpte6w-4 likLHK"
+      className="Product__ProductAmount-s1tvs15m-4 grKfvO"
     >
       284,00
     </span>
   </div>
   <div
-    className="ParceladoBox__ProductComplement-s1lix42y-0 jOBnpY"
+    className="ParceladoBox__ProductComplement-s1lix42y-0 kmsNiN"
   >
     ou 
     3
     x de
     <span
-      className="Product__ProductCurrency-gpte6w-3 bUKhEa"
+      className="Product__ProductCurrency-s1tvs15m-3 dNglJO"
     >
       R$
     </span>
     <span
-      className="Product__ProductAmount-gpte6w-4 likLHK"
+      className="Product__ProductAmount-s1tvs15m-4 grKfvO"
     >
       94,67
     </span>
@@ -51,16 +51,16 @@ exports[`Test File ProductBox <ProductBox /> 1`] = `
     </strong>
   </div>
   <div
-    className="Product__ProductButtons-gpte6w-5 fKpnsU"
+    className="Product__ProductButtons-s1tvs15m-5 iYFrTK"
   >
     <a
-      className="Product__ProductBtnDetails-gpte6w-6 bXPITq"
+      className="Product__ProductBtnDetails-s1tvs15m-6 klVbXx"
       onClick={[Function]}
     >
       Ver Detalhes
     </a>
     <button
-      className="Product__ProductBtnBuy-gpte6w-7 fhgfZc"
+      className="Product__ProductBtnBuy-s1tvs15m-7 gDzoM"
       onClick={[Function]}
     >
       Comprar

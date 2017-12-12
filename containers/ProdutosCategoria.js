@@ -1,23 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ProductBox from '../components/ProductBox'
+import ProductsCarrocel from '../components/ProductsCarrocel'
 
-
-class ProdutosCategoriaContainer extends React.Component {
-  render() {
-    if (this.props.products.length === 0) {
-      return <p>Nenhum produto encontrado.</p>
-    }
-
-    return this.props.products.map(product => (
-      <ProductBox product={product} key={product.PS_ID_PRODUTO} />
-    ))
+const ProductsContainer = ({ products }) => {
+  if (products.length === 0) {
+    return <p>Nenhum produto encontrado.</p>
   }
+
+  return <ProductsCarrocel products={products} columns={3} />
 }
 
-ProdutosCategoriaContainer.propTypes = {
+ProductsContainer.propTypes = {
   products: PropTypes.array.isRequired,
 }
 
 
-export default ProdutosCategoriaContainer
+export default ProductsContainer

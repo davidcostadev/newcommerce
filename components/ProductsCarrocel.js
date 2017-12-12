@@ -1,66 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ProductsSection, ProductsSectionTitle, ProductsSectionRow } from '../layout/Products'
+import Product from './ProductBox'
 
-import styled from 'styled-components'
-import theme from '../layout/theme'
-import ProductBox from './ProductBox'
-import * as Product from '../layout/Product'
-// import * as Product from './ProductBox'
+const CarrocelTitle = ({ title }) => {
+  if (!title.length) return null
 
+  return (
+    <ProductsSectionTitle>{title}</ProductsSectionTitle>
+  )
+}
 
-const ProductsSection = styled.div`
-  padding-bottom: 60px;
-
-  &+& {
-    border-top: 1px solid ${theme.gray300};
-    padding-top: 20px;
-    margin-top: 20px;
-  }
-`
-const ProductsSectionTitle = styled.h2`
-  color: ${theme.colorSecond};
-  font-size: 2.2rem;
-  margin-top: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-`
-
-
-const ProductsSectionRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -5px;
-  margin-right: -5px;
-`
-
-// ${props => props.columns3 ? `
-//   @media (min-width: 767px) {
-//     ${Product.ProductItem} {
-//       flex: 1 1 calc(33.3333% - 10px);
-//       max-width: calc(33.3333% - 10px);
-//     }
-//   }
-// ` : ''}
-
-const ProductsCarrocel = props => (
+const ProductsCarrocel = ({ products, columns, title }) => (
   <ProductsSection>
-    <ProductsSectionTitle>{props.title}</ProductsSectionTitle>
+    <CarrocelTitle title={title} />
     <ProductsSectionRow columns4>
-      {props.products.map(product => (
-        <ProductBox product={product} key={product.PS_ID_PRODUTO} />
+      {products.map(product => (
+        <Product product={product} key={product.PS_ID_PRODUTO} columns={columns} />
       ))}
     </ProductsSectionRow>
   </ProductsSection>
 )
 
 ProductsCarrocel.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   products: PropTypes.array,
+  columns: PropTypes.number,
 }
 
 ProductsCarrocel.defaultProps = {
+  title: '',
   products: [],
+  columns: 4,
 }
 
 export default ProductsCarrocel

@@ -72,25 +72,22 @@ class Category extends React.Component {
                 <WidgetCategoryContainer />
               </div>
               <div className="col col-lg-9">
-                <div id="example-content">
-                  <TitleSection title={this.props.urlMeta.PS_TITLE} />
-                  <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
-                    <div className="col">
-                      {this.props.pagination.total} Produtos
-                    </div>
-                    <div className="col">
-                      <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
-                    </div>
+                <TitleSection title={this.props.urlMeta.PS_TITLE} />
+                <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
+                  <div className="col">
+                    {this.props.pagination.total} Produtos
                   </div>
-                  <div className={styles.productsSection}>
-                    <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                      <ProdutosCategoriaContainer products={this.props.products} />
-                    </div>
+                  <div className="col">
+                    <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                   </div>
-
-                  <div className="row-block">
-                    <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
+                </div>
+                <div className={styles.productsSection}>
+                  <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
+                    <ProdutosCategoriaContainer products={this.props.products} />
                   </div>
+                </div>
+                <div className="row-block">
+                  <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                 </div>
               </div>
             </div>

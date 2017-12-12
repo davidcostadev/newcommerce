@@ -1,6 +1,55 @@
 import styled from 'styled-components'
 import theme from './theme'
 
+
+const Column4 = (media) => {
+  switch (media) {
+    case 992:
+    case 767:
+      return `
+      flex: 1 1 calc(25% - 10px);
+      max-width: calc(25% - 10px);
+      `
+    case 540:
+    default:
+      return `
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+      `
+  }
+}
+const Column3 = (media) => {
+  switch (media) {
+    case 992:
+      return `
+      flex: 1 1 calc(33.3333% - 10px);
+      max-width: calc(33.3333% - 10px);
+      `
+    case 767:
+      return `
+      flex: 1 1 calc(50% - 10px);
+      max-width: calc(50% - 10px);
+      `
+    case 540:
+    default:
+      return `
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+      `
+  }
+}
+
+const Columns = (number = 4, media) => {
+  switch (number) {
+    case 3:
+      return Column3(media)
+    case 4:
+    default:
+      return Column4(media)
+  }
+}
+
+
 export const ProductItem = styled.div`
   flex: 1 1 calc(100% - 10px);
   max-width: calc(100% - 10px);
@@ -13,17 +62,20 @@ export const ProductItem = styled.div`
   transition: background-color 0.4s ease-in-out;
   margin-left: 5px;
   margin-right: 5px;
+
   &:hover {
     background-color: white;
   }
 
+
   @media (min-width: 540px) {
-    flex: 1 1 calc(50% - 10px);
-    max-width: calc(50% - 10px);
+    ${props => Columns(props.columns, 540)}
   }
   @media (min-width: 767px) {
-    flex: 1 1 calc(25% - 10px);
-    max-width: calc(25% - 10px);
+    ${props => Columns(props.columns, 767)}
+  }
+  @media (min-width: 992px) {
+    ${props => Columns(props.columns, 992)}
   }
 
 `

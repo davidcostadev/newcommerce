@@ -6,8 +6,8 @@ import { StringToReal } from '../utils/money'
 import SquareBox from './SquareBox'
 import { parcelado } from './ParceladoBox'
 
-export const ProductBox = ({ product }) => (
-  <Product.ProductItem>
+export const ProductBox = ({ product, columns }) => (
+  <Product.ProductItem columns={columns}>
     <SquareBox image={product.PS_PATH_IMAGEM_250} />
     <Product.ProductTitle>{product.PS_PRODUTO}</Product.ProductTitle>
     <Product.ProductPrice>
@@ -23,8 +23,9 @@ export const ProductBox = ({ product }) => (
         <Product.ProductBtnBuy>Comprar</Product.ProductBtnBuy>
       </Link>
     </Product.ProductButtons>
-  </Product.ProductItem>
+  </Product.ProductItem >
 )
+
 
 ProductBox.propTypes = {
   product: PropTypes.object.isRequired,
