@@ -5,6 +5,7 @@ import jsCookie from 'js-cookie'
 import { initStore } from '../store'
 import Page from '../containers/PageHOF'
 import styles from '../assets/scss/App.scss'
+import { Container } from '../layout/Pages'
 import ApiUrl from '../api/Url'
 import ApiProduct from '../api/Product'
 import { AddProduct } from '../api/Cart'
@@ -95,7 +96,7 @@ class Product extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <div className={`container ${styles.container}`}>
+        <Container>
           <Breadcrumbs itens={this.breadCrumbsProps()} />
           <div className={styles.productLanding}>
             <div className="row">
@@ -111,7 +112,7 @@ class Product extends React.Component {
 
           <ProductDescription product={this.props.product} />
           <ProductsCarrocel title="Relacionados" products={this.props.products.slice(0, 4)} />
-        </div>
+        </Container>
       </Page>
     )
   }
