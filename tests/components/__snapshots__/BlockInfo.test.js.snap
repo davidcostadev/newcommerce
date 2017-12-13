@@ -2,15 +2,15 @@
 
 exports[`Component <BlockInfo /> <BlockInfo /> 1`] = `
 <div
-  className="BlockInfo__BlockInfoBlock-s1ic9tj6-0 heEdAU"
+  className="BlockInfo__BlockInfoBlock-s1tu1dzf-0 hidNGe"
 >
   <h2
-    className="BlockInfo__BlockInfoHeader-s1ic9tj6-1 jvrLfg"
+    className="BlockInfo__BlockInfoHeader-s1tu1dzf-1 caASNh"
   >
     Informações do Produto
   </h2>
   <div
-    className="BlockInfo__BlockInfoContent-s1ic9tj6-2 cCIJPS"
+    className="BlockInfo__BlockInfoContent-s1tu1dzf-2 eSfKQl"
     dangerouslySetInnerHTML={
       Object {
         "__html": "

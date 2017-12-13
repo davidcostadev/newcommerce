@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from '../routes'
-import styles from '../assets/scss/App.scss'
 import theme from '../layout/theme'
 
 const Badge = styled.span`
@@ -47,7 +46,7 @@ export const ButtonCart = ({ quant }) => (
   <Link route="/cart">
     <ButtonCartWrap>
       <i className="ion-ios-cart-outline" />
-      <Badge className={`badge ${styles.badge}`}>{quant}</Badge>
+      <Badge className="badge">{quant}</Badge>
     </ButtonCartWrap>
   </Link>
 )

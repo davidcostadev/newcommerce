@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import theme from '../layout/theme'
-import styles from '../assets/scss/App.scss'
 
 
 const BannerSeparateGrid = styled.div`

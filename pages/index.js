@@ -2,7 +2,6 @@ import React from 'react'
 import withRedux from 'next-redux-wrapper'
 import Page from '../containers/PageHOF'
 import { initStore } from '../store'
-import styles from '../assets/scss/App.scss'
 import ProdutosEmDestaque from '../containers/ProdutosEmDestaque'
 import ProdutosNovos from '../containers/ProdutosNovos'
 import ProdutosVendidos from '../containers/ProdutosVendidos'
@@ -10,6 +9,7 @@ import ProdutosVisitatos from '../containers/ProdutosVisitatos'
 import BannerMosaico from '../components/BannerMosaico'
 import BannerSeparate from '../components/BannerSeparate'
 import InfoBlocks from '../components/InfoBlocks'
+import { Container } from '../layout/Pages'
 
 class Home extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
@@ -30,7 +30,7 @@ class Home extends React.Component {
     return (
       <Page {...this.props}>
         <BannerMosaico />
-        <div className={`container ${styles.container}`}>
+        <Container>
           <ProdutosEmDestaque />
           <ProdutosNovos />
           <BannerSeparate />

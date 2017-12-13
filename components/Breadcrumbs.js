@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import styled from 'styled-components'
 import { Link } from '../routes'
 
-import styles from '../assets/scss/App.scss'
 
 const Breadcrumb = styled.ul`
   margin-top: 10px;

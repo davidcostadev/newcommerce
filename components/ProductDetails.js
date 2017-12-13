@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Link } from '../routes'
 import theme from '../layout/theme'
 import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
-import styles from '../assets/scss/App.scss'
 
 
 function parcelado(number) {

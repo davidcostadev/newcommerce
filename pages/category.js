@@ -6,7 +6,6 @@ import Page from '../containers/PageHOF'
 import { initStore, setFamilyIds } from '../store'
 import ApiUrl from '../api/Url'
 import ApiCategory from '../api/Category'
-import styles from '../assets/scss/App.scss'
 import { CategoriesPage, Container } from '../layout/Pages'
 import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
 import WidgetCategoryFeature from '../containers/WidgetCategoryFeature'
@@ -67,13 +66,13 @@ class Category extends React.Component {
         <Container>
           <CategoriesPage>
             <div className="row">
-              <div className={classNames(styles.sidebar, 'col-md-3')}>
+              <div className={classNames('col-md-3')}>
                 <WidgetCategoryFeature />
                 <WidgetCategoryContainer />
               </div>
               <div className="col col-lg-9">
                 <TitleSection title={this.props.urlMeta.PS_TITLE} />
-                <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
+                <div className={classNames('row', 'align-items-center')}>
                   <div className="col">
                     {this.props.pagination.total} Produtos
                   </div>
@@ -81,8 +80,8 @@ class Category extends React.Component {
                     <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                   </div>
                 </div>
-                <div className={styles.productsSection}>
-                  <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
+                <div>
+                  <div>
                     <ProdutosCategoriaContainer products={this.props.products} />
                   </div>
                 </div>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Router } from '../routes'
 import theme from '../layout/theme'
-import styles from '../assets/scss/App.scss'
 
 const Field = styled.div`
   display: flex;
@@ -76,9 +75,9 @@ class SearchForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <Field className={styles.field}>
-          <Input type="text" className={`input ${styles.input} is-large`} value={this.state.query} onChange={this.handleChange} placeholder="O que você está produrando?" />
-          <Button type="submit" className={`button ${styles.button} is-info`}><i className="ion-ios-search" /></Button>
+        <Field>
+          <Input type="text" className="input is-large" value={this.state.query} onChange={this.handleChange} placeholder="O que você está produrando?" />
+          <Button type="submit" className="button is-info"><i className="ion-ios-search" /></Button>
         </Field>
       </form>
     )

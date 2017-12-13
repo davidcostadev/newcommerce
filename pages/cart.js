@@ -5,8 +5,8 @@ import { initStore } from '../store'
 import { getCart, changeQuant } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import Page from '../containers/PageHOF'
-import styles from '../assets/scss/App.scss'
 import ContentCart from '../components/ContentCart'
+import { Container } from '../layout/pages'
 
 class Cart extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
@@ -78,7 +78,7 @@ class Cart extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <div className={`container ${styles.container}`}>
+        <Container>
           <ContentCart
             cart={this.props.cart}
             cartItens={this.props.cartItens}

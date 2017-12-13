@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-// import styles from '../assets/scss/App.scss'
 import theme from '../layout/theme'
 
 const BannerMosaicoGrid = styled.div`

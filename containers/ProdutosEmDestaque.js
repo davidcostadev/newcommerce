@@ -3,17 +3,6 @@ import axios from 'axios'
 import ProductsCarrocel from '../components/ProductsCarrocel'
 
 
-// import { Container, Header } from 'semantic-ui-react';
-// import Helmet from 'react-helmet';
-
-// import styles from '../assets/scss/App.scss';
-// // import TopMenu from '../components/TopMenu';
-// import ProductsCarrocel from '../components/ProductsCarrocel';
-// import BannerMosaico from '../components/BannerMosaico';
-// import BannerSeparate from '../components/BannerSeparate';
-// import InfoBlocks from '../components/InfoBlocks';
-
-
 class ProdutosEmDestaqueContainer extends React.Component {
   constructor(props) {
     super(props)
