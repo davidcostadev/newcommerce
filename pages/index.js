@@ -37,7 +37,7 @@ class Home extends React.Component {
           <ProdutosVisitatos />
           <ProdutosVendidos />
           <InfoBlocks />
-        </div>
+        </Container>
       </Page>
     )
   }
