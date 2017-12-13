@@ -35,9 +35,37 @@ const fonts = {
   fontBody: '\'Oxygen\', sans-serif',
 }
 
+const minXs = 540
+const minSm = 768
+const minMd = 992
+const minLg = 1200
+
+const maxXs = minXs - 1
+const maxSm = minSm - 1
+const maxMd = minMd - 1
+const maxLg = minLg - 1
+
+
+const width = {
+  minXs,
+  minSm,
+  minMd,
+  minLg,
+  maxXs,
+  maxSm,
+  maxMd,
+  maxLg,
+}
+
+Object.entries(width)
+  .forEach(([key, value]) => {
+    width[key] = `${value}px`
+  })
+
 const theme = {
   ...colors,
   ...fonts,
+  ...width,
 
   border: colors.gray300,
   gray: colors.gray500,
