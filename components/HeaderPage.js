@@ -12,13 +12,13 @@ import {
   HeaderPageOne,
   Header,
   Brand,
-  BrandImage,
   ColSearch,
   Menu,
   MenuItem,
   MenuLink,
   MenuButton,
 } from '../layout/Header'
+import Logo from '../layout/Logo'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -36,16 +36,7 @@ const HeaderPage = ({ query }) => (
           <Brand className="col col-md-4">
             <Link route="/">
               <a>
-                <BrandImage
-                  onlyDesktop
-                  src="/static/img/logo-atacadoribeirao.svg"
-                  alt="Atacado Ribeirão"
-                />
-                <BrandImage
-                  onlyMobile
-                  src="/static/img/logo-atacadoribeirao-white.svg"
-                  alt="Atacado Ribeirão"
-                />
+                <Logo />
               </a>
             </Link>
           </Brand>
