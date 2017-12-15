@@ -6,7 +6,7 @@ import { getCart, changeQuant } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import Page from '../containers/PageHOF'
 import ContentCart from '../components/ContentCart'
-import { Container } from '../layout/pages'
+import { Container } from '../layout/Pages'
 
 class Cart extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
@@ -84,7 +84,7 @@ class Cart extends React.Component {
             cartItens={this.props.cartItens}
             changeQuant={this.changeQuant.bind(this)}
           />
-        </div>
+        </Container>
       </Page>
     )
   }
