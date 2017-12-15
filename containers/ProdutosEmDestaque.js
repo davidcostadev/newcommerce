@@ -14,7 +14,7 @@ class ProdutosEmDestaqueContainer extends React.Component {
 
   componentDidMount() {
     const data = JSON.stringify({
-      PE_PASSKEY: 'c9b3c80c2ed263f967a4b455c6eb7d51',
+      PE_PASSKEY: process.env.PASSKEY,
       PE_IP: '127.0.0.1',
       PE_SESSAO: 'asdfgh',
       PE_ID_CLIENTE: 0,
@@ -23,7 +23,7 @@ class ProdutosEmDestaqueContainer extends React.Component {
       PE_COLUNA_ID: 2,
       PE_COLUNA_ORDER: 2,
     })
-    axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_web_busca_home_sel', data).then((response) => {
+    axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_home_sel`, data).then((response) => {
       this.setState({
         products: response.data.result[0].PS_TABELA_INFO,
       })

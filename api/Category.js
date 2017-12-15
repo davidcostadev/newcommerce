@@ -23,7 +23,7 @@ async function Category(props) {
   const { sort, column } = filterPropSort(props.sort)
 
   const data = JSON.stringify({
-    PE_PASSKEY: 'c9b3c80c2ed263f967a4b455c6eb7d51',
+    PE_PASSKEY: process.env.PASSKEY,
     PE_IP: '127.0.0.1',
     PE_SESSAO: 'asdfgh',
     PE_ID_CLIENTE: null,
@@ -37,7 +37,7 @@ async function Category(props) {
   })
 
 
-  const response = await axios.post('http://186.202.64.106:8000/datasnap/rest/Tsvmwebsite/sp_web_busca_vertical_sel', data);
+  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_vertical_sel`, data);
 
   return {
     products: response.data.result[0].PS_TABELA_INFO,

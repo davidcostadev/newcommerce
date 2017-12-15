@@ -16,8 +16,8 @@ class Home extends React.Component {
     const { sessionId } = await Page.getInitialProps(store, req, isServer)
 
     const urlMeta = {
-      PS_TITLE: 'Mundial Megastore é a Maior Loja de Informática e Importados de Ribeirão Preto',
-      PS_DESCRIPTION: 'Agilize sua vida Comprando Online e receba na comodidade do seu endereço produtos eletrônicos, Informática, celulares, notebooks, perfumes importados, relógios e etc. Tudo o que você precisa para estar conectado com o mundo.',
+      PS_TITLE: process.env.BUSSNESS_TITLE,
+      PS_DESCRIPTION: process.env.BUSSNESS_DESCRIPTION,
     }
 
     return {
