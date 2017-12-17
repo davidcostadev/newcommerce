@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import styled from 'styled-components'
+import theme from '../layout/theme'
 import { Link } from '../routes'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
@@ -27,6 +29,25 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
+const DescriptionLogo = styled.p`
+  margin-bottom: 0;
+  color: ${theme.gray700};
+
+  @media(max-width: ${theme.maxMd}) {
+    display: none;
+  }
+`
+
+const SubTitle = () => {
+  if (!process.env.BUSSNESS_LOGO_DESCRIPTION.length) {
+    return null
+  }
+
+  return (
+    <DescriptionLogo>{process.env.BUSSNESS_LOGO_DESCRIPTION}</DescriptionLogo>
+  )
+}
+console.log('process.env.BUSSNESS_ENABLE_CART', typeof process.env.BUSSNESS_ENABLE_CART)
 
 const HeaderPage = ({ query }) => (
   <HeaderPageOne>
@@ -39,25 +60,34 @@ const HeaderPage = ({ query }) => (
                 <Logo />
               </a>
             </Link>
+            <SubTitle />
           </Brand>
           <ColSearch className="col">
             <SearchForm query={query} />
           </ColSearch>
           <div className="col col-md-8 col-lg-3">
             <Menu right>
-              <MenuItem onlyDesktop>
-                <Link route="/dashboard/orders">
-                  <MenuLink>Meus Pedidos</MenuLink>
-                </Link>
-              </MenuItem>
+              {
+                process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+                  <MenuItem onlyDesktop>
+                    <Link route="/dashboard/orders">
+                      <MenuLink>Meus Pedidos</MenuLink>
+                    </Link>
+                  </MenuItem>
+                ) : ''
+              }
               <MenuItem onlyMobile>
                 <MenuButton>
                   <i className="ion-ios-search" />
                 </MenuButton>
               </MenuItem>
-              <MenuItem onlyDesktop>
-                <ButtonCart />
-              </MenuItem>
+              {
+                process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+                  <MenuItem onlyDesktop>
+                    <ButtonCart />
+                  </MenuItem>
+                ) : ''
+              }
               <MenuItem onlyMobile>
                 <MenuButton>
                   <i className="ion-navicon" />

@@ -16,40 +16,8 @@ exports[`Test File ProductBox <ProductBox /> 1`] = `
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
-  <div
-    className="Product__ProductPrice-s1tvs15m-2 jeEbDK"
-  >
-    <span
-      className="Product__ProductCurrency-s1tvs15m-3 dNglJO"
-    >
-      R$
-    </span>
-    <span
-      className="Product__ProductAmount-s1tvs15m-4 grKfvO"
-    >
-      284,00
-    </span>
-  </div>
-  <div
-    className="ParceladoBox__ProductComplement-s1lix42y-0 kmsNiN"
-  >
-    ou 
-    3
-    x de
-    <span
-      className="Product__ProductCurrency-s1tvs15m-3 dNglJO"
-    >
-      R$
-    </span>
-    <span
-      className="Product__ProductAmount-s1tvs15m-4 grKfvO"
-    >
-      94,67
-    </span>
-    <strong>
-      sem juros
-    </strong>
-  </div>
+  
+  
   <div
     className="Product__ProductButtons-s1tvs15m-5 iYFrTK"
   >
@@ -59,12 +27,7 @@ exports[`Test File ProductBox <ProductBox /> 1`] = `
     >
       Ver Detalhes
     </a>
-    <button
-      className="Product__ProductBtnBuy-s1tvs15m-7 gDzoM"
-      onClick={[Function]}
-    >
-      Comprar
-    </button>
+    
   </div>
 </div>
 `;

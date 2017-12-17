@@ -31,7 +31,7 @@ function parcelado(number) {
 }
 
 
-const productComplement = styled.p`
+const ProductComplement = styled.p`
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -49,8 +49,8 @@ const productComplement = styled.p`
   }
 `
 
-const productComplementCurrent = styled.span``
-const productComplementAmount = styled.span`
+const ProductComplementCurrent = styled.span``
+const ProductComplementAmount = styled.span`
   margin-left: 0;
 `
 
@@ -224,44 +224,64 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
     </ProductHeader>
     <p>{product.PS_DESCRICAO_VENDA}</p>
     <ProductBlock>
-      <ProductPriceCol>
-        <ProducPrice>
-          <ProducText>Por</ProducText>
-          <ProducCurrency>R$</ProducCurrency>
-          <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
-        </ProducPrice>
-        {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
-      </ProductPriceCol>
+      {
+        process.env.BUSSNESS_ENABLE_PRICE === 'true' ? (
+          <ProductPriceCol>
+            <ProducPrice>
+              <ProducText>Por</ProducText>
+              <ProducCurrency>R$</ProducCurrency>
+              <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
+            </ProducPrice>
+            {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
+          </ProductPriceCol>
+        ) : ''
+      }
+
       <div>
         <div>
-          <button className="btn btn-lg btn-primary btn-buy" onClick={() => addProductCart(product.PS_ID_PRODUTO)}> Comprar</button>
+          {
+            process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+              <button className="btn btn-lg btn-primary btn-buy" onClick={() => addProductCart(product.PS_ID_PRODUTO)}> Comprar</button>
+            ) : ''
+          }
+{/*
           <BtnFavorite className="btn btn-lg btn-danger btn-favorite">
             <i className="ion-ios-heart" />
-          </BtnFavorite>
+          </BtnFavorite> */}
         </div>
       </div>
     </ProductBlock>
-    <ProductPriceBoleto>
-      <ProductPriceBoletoCurrency>R$</ProductPriceBoletoCurrency>
-      <ProductPriceBoletoAmount>{stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}</ProductPriceBoletoAmount>
-      <ProductPriceBoletoText>7% de Desconco no Boleto ou Transferencia</ProductPriceBoletoText>
-    </ProductPriceBoleto>
+      {
+        process.env.BUSSNESS_ENABLE_PRICE === 'true' ? (
+          <ProductPriceBoleto>
+            <ProductPriceBoletoCurrency>R$</ProductPriceBoletoCurrency>
+            <ProductPriceBoletoAmount>{stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}</ProductPriceBoletoAmount>
+            <ProductPriceBoletoText>7% de Desconco no Boleto ou Transferencia</ProductPriceBoletoText>
+          </ProductPriceBoleto>
+        ) : ''
+      }
+
     <ProductMore>
-      <ProductCorreioCalc>
-        <span>
-          <i className="ion-ios-location" />
-          <span>Digite seu CEP para calcular o frete</span>
-        </span>
-        <InputGroup className="input-group">
-          <input type="text" className="form-control" placeholder="00000-000" />
-          <span className="input-group-btn">
-            <button className="btn btn-primary">Calcular</button>
-          </span>
-        </InputGroup>
-      </ProductCorreioCalc>
-      <div>
+      {
+        process.env.BUSSNESS_ENABLE_FRETE === 'true' ? (
+          <ProductCorreioCalc>
+            <span>
+              <i className="ion-ios-location" />
+              <span>Digite seu CEP para calcular o frete</span>
+            </span>
+            <InputGroup className="input-group">
+              <input type="text" className="form-control" placeholder="00000-000" />
+              <span className="input-group-btn">
+                <button className="btn btn-primary">Calcular</button>
+              </span>
+            </InputGroup>
+          </ProductCorreioCalc>
+        ) : ''
+      }
+
+      {/* <div>
         <button className="btn btn-default">Achou preço melhor?</button>
-      </div>
+      </div> */}
     </ProductMore>
   </ProductDetailBox>
 )

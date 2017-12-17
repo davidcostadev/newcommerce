@@ -28,16 +28,25 @@ CategoriesFirst.propTypes = {
   categories: PropTypes.array.isRequired,
 }
 
+const NavbarNav = styled.ul`
+  width: 100%;
+`
+
+const NavbarNavItem = styled.li`
+  flex: 1;
+  text-align: center;
+`
+
 const Menu = ({ links }) => (
-  <ul className="navbar-nav">
+  <NavbarNav className="navbar-nav">
     {links.map(link => (
-      <li key={link.id} className="nav-item">
+      <NavbarNavItem key={link.id} className="nav-item">
         <Link route={link.to}>
           <NavBarLink className={classNames(['nav-link'])} title={link.title}>{link.title}</NavBarLink>
         </Link>
-      </li>
+      </NavbarNavItem>
     ))}
-  </ul>
+  </NavbarNav>
 )
 
 Menu.propTypes = {
@@ -54,6 +63,7 @@ const NavBarLink = styled.a`
   text-transform: capitalize;
   transition: all .4s cubic-bezier(0.39, 0.575, 0.565, 1);
   padding: .5rem 1.5rem;
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -66,13 +76,13 @@ const Navbar = ({ categories }) => (
   <NavbarBlock className={classNames(['navbar', 'navbar-light', 'navbar-toggleable-md', 'bg-faded', 'navbar-expand-lg'])}>
     <Container className="container">
       <CategoriesFirst categories={categories} />
-      <ul className="navbar-nav ml-auto onlyDesktopBig">
+      {/* <ul className="navbar-nav ml-auto onlyDesktopBig">
         <li className="nav-item">
           <Link href="/">
             <NavBarLink className={classNames(['nav-link'])}>Minha Conta</NavBarLink>
           </Link>
         </li>
-      </ul>
+      </ul> */}
     </Container>
   </NavbarBlock>
 )
