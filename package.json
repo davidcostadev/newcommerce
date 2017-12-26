@@ -13,6 +13,17 @@
     "webpack"
   ],
   "license": "MIT",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "build:prod": "NODE_ENV=production next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "jest && codecov",
+    "jest": "jest",
+    "jest:update": "jest --updateSnapshot",
+    "jest:coverage": "jest --coverage",
+    "coverage": "http-server ./coverage/lcov-report -o"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-eslint": "^8.0.3",
@@ -57,18 +68,6 @@
     "codecov": "^3.0.0",
     "jest": "^21.2.1",
     "react-test-renderer": "^16.2.0"
-  },
-  "scripts": {
-    "dev": "next",
-    "dev2": "node server.js",
-    "build": "next build",
-    "build:prod": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production node server.js",
-    "test": "jest && codecov",
-    "jest": "jest",
-    "jest:update": "jest --updateSnapshot",
-    "jest:coverage": "jest --coverage",
-    "coverage": "http-server ./coverage/lcov-report -o"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
