@@ -30,10 +30,10 @@ CategoriesFirst.propTypes = {
 
 const NavbarNav = styled.ul`
   width: 100%;
+  justify-content: space-between;
 `
 
 const NavbarNavItem = styled.li`
-  flex: 1;
   text-align: center;
 `
 
