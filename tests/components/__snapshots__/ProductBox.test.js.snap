@@ -2,71 +2,32 @@
 
 exports[`Test File ProductBox <ProductBox /> 1`] = `
 <div
-  className="App__product___3XoPp"
+  className="Product__ProductItem-s1fzb5ed-0 gkCshv"
 >
   <picture
-    className="SquareBox__BoxSquare-s7lvzn-0 gcTDzr"
+    className="SquareBox__BoxSquare-buzb9n-0 csFNBJ"
   >
     <div
-      className="SquareBox__BoxSquareInner-s7lvzn-1 UfKUk"
+      className="SquareBox__BoxSquareInner-buzb9n-1 bKSLwB"
     />
   </picture>
   <div
-    className="App__productTitle___3wgab"
+    className="Product__ProductTitle-s1fzb5ed-1 cuXePX"
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
+  
+  
   <div
-    className="App__productPrice___ZoumY"
-  >
-    <span
-      className="App__currency___2-n_1"
-    >
-      R$
-    </span>
-    <span
-      className="App__amount___25x4z"
-    >
-      284,00
-    </span>
-  </div>
-  <div
-    className="App__productComplement___3_X5C"
-  >
-    ou 
-    3
-    x de
-    <span
-      className="App__currency___2-n_1"
-    >
-      R$
-    </span>
-    <span
-      className="App__amount___25x4z"
-    >
-      94,67
-    </span>
-    <strong>
-      Sem Juros
-    </strong>
-  </div>
-  <div
-    className="App__productButtons___2Y3pI"
+    className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
-      className="btn App__btn___1w-MS App__btnDetail___13UmL"
-      href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
+      className="Product__ProductBtnDetails-s1fzb5ed-6 hkDLkT"
       onClick={[Function]}
     >
       Ver Detalhes
     </a>
-    <a
-      className="btn App__btn___1w-MS App__btnBuy___2ICLf"
-      href="/product"
-      onClick={[Function]}
-    >
-      Comprar
-    </a>
+    
   </div>
 </div>
 `;

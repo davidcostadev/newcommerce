@@ -2,9 +2,10 @@ import React from 'react'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import jsCookie from 'js-cookie'
+import styled from 'styled-components'
 import { initStore } from '../store'
 import Page from '../containers/PageHOF'
-import styles from '../assets/scss/App.scss'
+import { Container } from '../layout/Pages'
 import ApiUrl from '../api/Url'
 import ApiProduct from '../api/Product'
 import { AddProduct } from '../api/Cart'
@@ -14,6 +15,10 @@ import Gallery from '../components/Gallery'
 import ProductsCarrocel from '../components/ProductsCarrocel'
 import ProductDescription from '../components/ProductDescription'
 import Breadcrumbs from '../components/Breadcrumbs'
+
+const ProductPageBox = styled.div`
+  margin-bottom: 20px;
+`
 
 class Product extends React.Component {
   static async getInitialProps({ req, query, store, isServer }) {
@@ -95,9 +100,9 @@ class Product extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <div className={`container ${styles.container}`}>
+        <Container>
           <Breadcrumbs itens={this.breadCrumbsProps()} />
-          <div className={styles.productLanding}>
+          <ProductPageBox>
             <div className="row">
               <div className="col-lg-4">
                 <Gallery image={this.props.product.PS_PATH_IMAGEM_400} images={this.props.images} urlMeta={this.props.urlMeta} />
@@ -107,11 +112,11 @@ class Product extends React.Component {
               </div>
 
             </div>
-          </div>
+          </ProductPageBox>
 
           <ProductDescription product={this.props.product} />
           <ProductsCarrocel title="Relacionados" products={this.props.products.slice(0, 4)} />
-        </div>
+        </Container>
       </Page>
     )
   }

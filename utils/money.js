@@ -13,6 +13,7 @@ export const floatToReal = (float) => {
 }
 
 export const StringToReal = (number) => {
+  if (typeof number === 'undefined') return 0
   const float = toFloat(number)
   return floatToReal(float)
 }

@@ -1,17 +1,60 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { Link } from '../routes'
-import styles from '../assets/scss/App.scss'
+import theme from '../layout/theme'
+
+const Badge = styled.span`
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  padding: 5px 0px;
+  background: ${theme.colorSecond};
+  border-radius: 50%;
+  font-size: 12px;
+  vertical-align: super;
+  color: white;
+  transform: translate(4px, -8px);
+`
+
+const ButtonCartWrap = styled.a`
+  display: flex;
+  align-items: center;
+  color: ${theme.colorPrimary} !important;
+  background-color: white;
+  border-radius: 3px;
+  border-width: 0;
+  padding: 0 10px;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    background-color: ${theme.buttonDefault} !important;
+    color: green;
+  }
+  &:active {
+    background-color: ${theme.buttonDefaultHover} !important;
+  }
+  i {
+    font-size: 32px;
+    vertical-align: middle;
+  }
+`
 
 export const ButtonCart = ({ quant }) => (
   <Link route="/cart">
-    <a className={styles.menuLink}>
+    <ButtonCartWrap>
       <i className="ion-ios-cart-outline" />
-      <span className={`badge ${styles.badge}`}>{quant}</span>
-    </a>
+      <Badge className="badge">{quant}</Badge>
+    </ButtonCartWrap>
   </Link>
 )
+
+const ButtonCartStyled = styled(ButtonCart)`
+
+`
+
 
 ButtonCart.propTypes = {
   quant: PropTypes.number,
@@ -25,4 +68,4 @@ const mapState = state => ({
   quant: state.cartItens.length,
 })
 
-export default connect(mapState)(ButtonCart)
+export default connect(mapState)(ButtonCartStyled)

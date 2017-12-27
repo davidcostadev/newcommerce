@@ -3,18 +3,16 @@
 exports[`Component <ProductDescription /> with empty text 1`] = `null`;
 
 exports[`Component <ProductDescription /> with some text 1`] = `
-<section
-  className="App__blockInfo___292Je"
+<div
+  className="BlockInfo__BlockInfoBlock-rlo975-0 jWRQfy"
 >
-  <header
-    className="App__blockInfoHeader___1TAq-"
+  <h2
+    className="BlockInfo__BlockInfoHeader-rlo975-1 cMOymq"
   >
-    <h2>
-      Informações do Produto
-    </h2>
-  </header>
+    Informações do Produto
+  </h2>
   <div
-    className="App__blockInfoContent___3WDCW"
+    className="BlockInfo__BlockInfoContent-rlo975-2 dkDtOI"
     dangerouslySetInnerHTML={
       Object {
         "__html": "<p>Especifica&ccedil;&otilde;es T&eacute;cnicas<br />Caracter&iacute;sticas:<br />Gabinete em formato SLIM<br />Fonte SFX 200W inclusa<br />1 entrada USB 2.0<br />1 entrada USB 3.0<br />Entrada de &Aacute;udio HD<br />Suporta Placa Micro ATX<br />Cabo de For&ccedil;a n&atilde;o incluso</p>
@@ -22,5 +20,5 @@ exports[`Component <ProductDescription /> with some text 1`] = `
       }
     }
   />
-</section>
+</div>
 `;

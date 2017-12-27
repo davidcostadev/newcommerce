@@ -2,12 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import styled from 'styled-components'
+import theme from '../layout/theme'
 import { Link } from '../routes'
-import styles from '../assets/scss/App.scss'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
 import ButtonCart from '../components/ButtonCart'
+import { Container } from '../layout/Pages'
 
+import {
+  HeaderPageOne,
+  Header,
+  Brand,
+  ColSearch,
+  Menu,
+  MenuItem,
+  MenuLink,
+  MenuButton,
+} from '../layout/Header'
+import Logo from '../layout/Logo'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -16,43 +29,77 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
+const DescriptionLogo = styled.p`
+  margin-bottom: 0;
+  color: ${theme.gray700};
+
+  @media(max-width: ${theme.maxMd}) {
+    display: none;
+  }
+`
+
+const SubTitle = () => {
+  if (!process.env.BUSSNESS_LOGO_DESCRIPTION.length) {
+    return null
+  }
+
+  return (
+    <DescriptionLogo>{process.env.BUSSNESS_LOGO_DESCRIPTION}</DescriptionLogo>
+  )
+}
+console.log('process.env.BUSSNESS_ENABLE_CART', typeof process.env.BUSSNESS_ENABLE_CART)
+
 const HeaderPage = ({ query }) => (
-  <div id={styles.headerPageOne}>
-    <header className={`navbar-top ${styles.navbarSpaced} ${styles.navbarInverse}`}>
-      <div className={`container ${styles.container}`}>
+  <HeaderPageOne>
+    <Header className="navbar-top">
+      <Container>
         <div className="row align-items-center">
-          <div className={`col col-md-4 ${styles.brand}`}>
+          <Brand className="col col-md-4">
             <Link route="/">
-              <a className="brand-link">
-                <img className={styles.logoDesktop} src="/static/img/logo-atacadoribeirao.svg" alt="Atacado Ribeirão" />
-                <img className={styles.logoMobile} src="/static/img/logo-atacadoribeirao-white.svg" alt="Atacado Ribeirão" />
+              <a>
+                <Logo />
               </a>
             </Link>
-          </div>
-          <div className={`col ${styles.colSearch}`}>
+            <SubTitle />
+          </Brand>
+          <ColSearch className="col">
             <SearchForm query={query} />
-          </div>
-          <div className={`col col-md-8 col-lg-3 ${styles.menu} ${styles.menuRight}`}>
-            <div className={`${styles.menuItem} ${styles.onlyDesktop}`}>
-              <Link route="/dashboard/orders"><a className={styles.menuLink}>Meus Pedidos</a></Link>
-            </div>
-            <div className={`${styles.menuItem} ${styles.onlyMobile}`}>
-              <button className={styles.menuButton}>
-                <i className="ion-ios-search" />
-              </button>
-            </div>
-            <div className={`${styles.menuItem} ${styles.cartItem}`}>
-              <ButtonCart />
-            </div>
-            <div className={`${styles.menuItem} ${styles.onlyMobile}`}>
-              <button className={styles.menuLink}><i className="ion-navicon" /></button>
-            </div>
+          </ColSearch>
+          <div className="col col-md-8 col-lg-3">
+            <Menu right>
+              {
+                process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+                  <MenuItem onlyDesktop>
+                    <Link route="/dashboard/orders">
+                      <MenuLink>Meus Pedidos</MenuLink>
+                    </Link>
+                  </MenuItem>
+                ) : ''
+              }
+              <MenuItem onlyMobile>
+                <MenuButton>
+                  <i className="ion-ios-search" />
+                </MenuButton>
+              </MenuItem>
+              {
+                process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+                  <MenuItem onlyDesktop>
+                    <ButtonCart />
+                  </MenuItem>
+                ) : ''
+              }
+              <MenuItem onlyMobile>
+                <MenuButton>
+                  <i className="ion-navicon" />
+                </MenuButton>
+              </MenuItem>
+            </Menu>
           </div>
         </div>
-      </div>
-    </header>
+      </Container>
+    </Header>
     <CategoriasContainer />
-  </div>
+  </HeaderPageOne>
 )
 
 HeaderPage.defaultProps = {

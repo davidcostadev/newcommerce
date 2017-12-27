@@ -6,7 +6,7 @@ import Page from '../containers/PageHOF'
 import { initStore, setFamilyIds } from '../store'
 import ApiUrl from '../api/Url'
 import ApiCategory from '../api/Category'
-import styles from '../assets/scss/App.scss'
+import { CategoriesPage, Container } from '../layout/Pages'
 import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
 import WidgetCategoryFeature from '../containers/WidgetCategoryFeature'
 import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
@@ -63,38 +63,35 @@ class Category extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <div className={`container ${styles.container}`}>
-          <div className={styles.categoryPage}>
+        <Container>
+          <CategoriesPage>
             <div className="row">
-              <div className={classNames(styles.sidebar, 'col-md-3')}>
+              <div className={classNames('col-md-3')}>
                 <WidgetCategoryFeature />
                 <WidgetCategoryContainer />
               </div>
               <div className="col col-lg-9">
-                <div id="example-content">
-                  <TitleSection title={this.props.urlMeta.PS_TITLE} />
-                  <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
-                    <div className="col">
-                      {this.props.pagination.total} Produtos
-                    </div>
-                    <div className="col">
-                      <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
-                    </div>
+                <TitleSection title={this.props.urlMeta.PS_TITLE} />
+                <div className={classNames('row', 'align-items-center')}>
+                  <div className="col">
+                    {this.props.pagination.total} Produtos
                   </div>
-                  <div className={styles.productsSection}>
-                    <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                      <ProdutosCategoriaContainer products={this.props.products} />
-                    </div>
+                  <div className="col">
+                    <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                   </div>
-
-                  <div className="row-block">
-                    <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
+                </div>
+                <div>
+                  <div>
+                    <ProdutosCategoriaContainer products={this.props.products} />
                   </div>
+                </div>
+                <div className="row-block">
+                  <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </CategoriesPage>
+        </Container>
       </Page>
     )
   }

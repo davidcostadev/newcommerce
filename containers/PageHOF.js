@@ -59,7 +59,6 @@ class Page extends React.Component {
   }
 
   render() {
-    console.log('render PAGEHOF')
     return (
       <div id="page">
         <Head>

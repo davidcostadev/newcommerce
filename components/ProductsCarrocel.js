@@ -1,29 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ProductsSection, ProductsSectionTitle, ProductsSectionRow } from '../layout/Products'
+import Product from './ProductBox'
 
-import ProductBox from './ProductBox'
-import styles from '../assets/scss/App.scss'
+const CarrocelTitle = ({ title }) => {
+  if (!title.length) return null
 
-// console.log(styles);
+  return (
+    <ProductsSectionTitle>{title}</ProductsSectionTitle>
+  )
+}
 
-const ProductsCarrocel = props => (
-  <div className={styles.productsSection}>
-    <h2 className={styles.productsSectionTitle}>{props.title}</h2>
-    <div className={`${styles.productsSectionRow} ${styles.columns4} products`}>
-      {props.products.map(product => (
-        <ProductBox product={product} key={product.PS_ID_PRODUTO} />
+const ProductsCarrocel = ({ products, columns, title }) => (
+  <ProductsSection>
+    <CarrocelTitle title={title} />
+    <ProductsSectionRow columns4>
+      {products.map(product => (
+        <Product product={product} key={product.PS_ID_PRODUTO} columns={columns} />
       ))}
-    </div>
-  </div>
+    </ProductsSectionRow>
+  </ProductsSection>
 )
 
 ProductsCarrocel.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   products: PropTypes.array,
+  columns: PropTypes.number,
 }
 
 ProductsCarrocel.defaultProps = {
+  title: '',
   products: [],
+  columns: 4,
 }
 
 export default ProductsCarrocel

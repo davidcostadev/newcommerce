@@ -1,11 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
-import styles from '../assets/scss/App.scss'
 
 const WidgetFilter = () => (
-  <div className={classNames([styles.widget, styles.widgetFilter])}>
-    <h3 className={styles.widgetTitle}>Filtrar</h3>
-    <form className={styles.widgetContent}>
+  <div>
+    <h3>Filtrar</h3>
+    <form>
       <span>Preço</span>
       <div className="form-row align-items-center">
         <div className="col-6">

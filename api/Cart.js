@@ -14,7 +14,7 @@ export async function AddProduct(params) {
 
 
   const data = JSON.stringify({
-    PE_PASSKEY: 'c9b3c80c2ed263f967a4b455c6eb7d51',
+    PE_PASSKEY: process.env.PASSKEY,
     PE_IP: '127.0.0.1',
     PE_SESSAO: sessionId,
     PE_ID_CARRINHO: cartId || null,
@@ -26,7 +26,7 @@ export async function AddProduct(params) {
     PE_CEP: cep || null,
   })
 
-  const resultData = axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_produto_ins', data)
+  const resultData = axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_ins`, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         throw new Error(response.data.result[0].PS_FEEDBACK)
@@ -49,14 +49,14 @@ export async function getCart(params) {
   } = params
 
   const data = JSON.stringify({
-    PE_PASSKEY: 'c9b3c80c2ed263f967a4b455c6eb7d51',
+    PE_PASSKEY: process.env.PASSKEY,
     PE_IP: '127.0.0.1',
     PE_SESSAO: sessionId,
     PE_ID_CARRINHO: cartId || null,
     PE_ID_CLIENTE: null,
   })
 
-  const resultData = await axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_sel', data)
+  const resultData = await axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_sel`, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         switch (response.data.result[0].PS_ID_ERRO) {
@@ -92,7 +92,7 @@ export async function changeQuant(params) {
   } = params
 
   const data = JSON.stringify({
-    PE_PASSKEY: 'c9b3c80c2ed263f967a4b455c6eb7d51',
+    PE_PASSKEY: process.env.PASSKEY,
     PE_IP: '127.0.0.1',
     PE_SESSAO: sessionId,
     PE_ID_CARRINHO: cartId || null,
@@ -103,7 +103,7 @@ export async function changeQuant(params) {
     PE_QT: quant,
   })
 
-  const resultData = await axios.post('http://186.202.64.106:8000/datasnap/rest/TSvmCarrinho/sp_web_carrinho_produto_qtd', data)
+  const resultData = await axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_qtd`, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         throw new Error(response.data.result[0].PS_FEEDBACK)

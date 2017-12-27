@@ -2,6 +2,9 @@ node_modules
 coverage
 dist
 static/css
+static/img/logo.js
+static/img/logo.vsg
+.env
 .next
 .build
 .idea

@@ -3,24 +3,11 @@ import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import classNames from 'classnames'
 import Page from '../containers/PageHOF'
-import Head from 'next/head'
-
 import { initStore, setCategories, setFamilyIds } from '../store'
-
-import ApiCategories from '../api/Categories'
 import ApiSearch from '../api/Search'
-
-import styles from '../assets/scss/App.scss'
-
-import HeaderPage from '../components/HeaderPage'
-import FooterPage from '../components/FooterPage'
-import Sitemap from '../components/Sitemap'
-import Copy from '../components/Copy'
-
-
+import { CategoriesPage, Container } from '../layout/Pages'
 import ProdutosCategoriaContainer from '../containers/ProdutosCategoria'
 import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
-
 import TitleSection from '../components/TitleSection'
 import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
@@ -59,37 +46,31 @@ class Search extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <div className={`container ${styles.container}`}>
-          <div className={styles.categoryPage}>
+        <Container>
+          <CategoriesPage>
             <div className="row">
-              <div className={classNames(styles.sidebar, 'col-md-3')}>
+              <div className={classNames('col-md-3')}>
                 <WidgetCategoryContainer />
               </div>
               <div className="col col-lg-9">
-                <div id="example-content">
-                  <TitleSection title={this.props.urlMeta.PS_TITLE} />
-                  <div className={classNames('row', styles.rowBlock, 'align-items-center')}>
-                    <div className="col">
-                      {this.props.pagination.total} Produtos
-                    </div>
-                    <div className="col">
-                      <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
-                    </div>
+                <TitleSection title={this.props.urlMeta.PS_TITLE} />
+                <div className={classNames('row', 'align-items-center')}>
+                  <div className="col">
+                    {this.props.pagination.total} Produtos
                   </div>
-                  <div className={styles.productsSection}>
-                    <div className={classNames([styles.productsSectionRow, styles.products, styles.columns3])}>
-                      <ProdutosCategoriaContainer products={this.props.products} />
-                    </div>
+                  <div className="col">
+                    <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
                   </div>
+                </div>
+                <ProdutosCategoriaContainer products={this.props.products} />
 
-                  <div className="row-block">
-                    <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
-                  </div>
+                <div className="row-block">
+                  <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </CategoriesPage>
+        </Container>
       </Page>
     )
   }

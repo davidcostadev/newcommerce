@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import themes from './theme'
+import theme from '../layout/theme'
 
 
 const BoxSquare = styled.picture`
   background: white;
-  border-bottom: 3px solid ${themes.main};
+  border-bottom: 3px solid ${theme.colorPrimary};
   flex: 1;
   position: relative;
 
