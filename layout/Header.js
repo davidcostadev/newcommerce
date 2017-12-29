@@ -117,17 +117,18 @@ export const MenuLink = styled.a`
   /* max-md */
   @media (max-width: 991px) {
     background-color: transparent;
-    color: white;
+    color: white !important;
     transition: background-color 0.4s ease;
 
 
     &:focus,
     &:hover {
-      background-color: $button-default-inverse-hover;
+      background-color: ${theme.linkHoverInverse};
+      color: black !important;
     }
 
     &:active {
-      background-color: $button-default-inverse-active;
+      background-color: ${theme.linkActiveInverse};
     }
   }
 `
