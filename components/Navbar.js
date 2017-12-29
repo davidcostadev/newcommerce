@@ -80,22 +80,18 @@ const NavBarLink = styled.a`
 
 `
 
-const Navbar = ({ categories, menuMobile }) => {
-  const menu = {
-    menuMobile,
-  }
+const Navbar = ({ categories, menuMobile }) => (
+  <NavbarBlock className={classNames(['navbar', 'navbar-light', 'navbar-toggleable-md', 'bg-faded', 'navbar-expand-lg'])} menu={menuMobile}>
+    <Container className="container">
+      <CategoriesFirst categories={categories} />
+    </Container>
+  </NavbarBlock>
+)
 
-  return (
-    <NavbarBlock className={classNames(['navbar', 'navbar-light', 'navbar-toggleable-md', 'bg-faded', 'navbar-expand-lg'])} menu={menuMobile}>
-      <Container className="container">
-        <CategoriesFirst categories={categories} />
-      </Container>
-    </NavbarBlock>
-  )
-}
 
 Navbar.propTypes = {
   categories: PropTypes.array.isRequired,
+  menuMobile: PropTypes.bool.isRequired,
 }
 
 const mapState = state => state
