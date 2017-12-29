@@ -5,6 +5,7 @@ import thunkMiddleware from 'redux-thunk'
 import { CATEGORIES_FULL, SET_FAMILY_ID } from './flux/type'
 import sessionId, { initialStateUser } from './flux/user/reducers'
 import * as cart from './flux/cart/cartReducers'
+import { menuMobile } from './flux/config/configReducers'
 
 const initialStateAll = {
   categories: [],
@@ -56,6 +57,7 @@ export const initStore = (initialState = initialStateAll) => (
       categories,
       familyId,
       sessionId,
+      menuMobile,
       cart: cart.cart,
       cartItens: cart.cartItens,
     }),
