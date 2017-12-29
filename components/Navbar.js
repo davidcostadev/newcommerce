@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -56,6 +57,12 @@ Menu.propTypes = {
 const NavbarBlock = styled.nav`
   padding: 0;
   background-color: ${theme.gray200};
+
+  @media (max-width: ${theme.minMd}) {
+    display: none;
+    ${props => (props.menu ? 'display: flex;' : '')}
+  }
+
 `
 
 const NavBarLink = styled.a`
@@ -70,25 +77,27 @@ const NavBarLink = styled.a`
     background-color: ${theme.colorPrimary};
     color: ${theme.white} !important;
   }
+
 `
 
-const Navbar = ({ categories }) => (
-  <NavbarBlock className={classNames(['navbar', 'navbar-light', 'navbar-toggleable-md', 'bg-faded', 'navbar-expand-lg'])}>
-    <Container className="container">
-      <CategoriesFirst categories={categories} />
-      {/* <ul className="navbar-nav ml-auto onlyDesktopBig">
-        <li className="nav-item">
-          <Link href="/">
-            <NavBarLink className={classNames(['nav-link'])}>Minha Conta</NavBarLink>
-          </Link>
-        </li>
-      </ul> */}
-    </Container>
-  </NavbarBlock>
-)
+const Navbar = ({ categories, menuMobile }) => {
+  const menu = {
+    menuMobile,
+  }
+
+  return (
+    <NavbarBlock className={classNames(['navbar', 'navbar-light', 'navbar-toggleable-md', 'bg-faded', 'navbar-expand-lg'])} menu={menuMobile}>
+      <Container className="container">
+        <CategoriesFirst categories={categories} />
+      </Container>
+    </NavbarBlock>
+  )
+}
 
 Navbar.propTypes = {
   categories: PropTypes.array.isRequired,
 }
 
-export default Navbar
+const mapState = state => state
+
+export default connect(mapState)(Navbar)

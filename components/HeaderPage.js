@@ -21,6 +21,7 @@ import {
   MenuButton,
 } from '../layout/Header'
 import Logo from '../layout/Logo'
+import BtnNavigation from './ButtonNavigation'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -89,9 +90,7 @@ const HeaderPage = ({ query }) => (
                 ) : ''
               }
               <MenuItem onlyMobile>
-                <MenuButton>
-                  <i className="ion-navicon" />
-                </MenuButton>
+                <BtnNavigation />
               </MenuItem>
             </Menu>
           </div>
