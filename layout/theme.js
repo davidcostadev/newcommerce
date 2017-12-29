@@ -76,7 +76,7 @@ const theme = {
   bodyBg: colors.gray100,
   borderColor: colors.gray200,
 
-  navbarInverse: colors.deeppurpledark,
+  navbarInverse: colors.indigo500,
   buttonDefault: colors.gray200,
   buttonDefaultHover: colors.gray400,
   buttonDefaultActive: colors.gray600,
