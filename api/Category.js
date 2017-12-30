@@ -41,7 +41,7 @@ async function Category(props) {
 
   return {
     products: response.data.result[0].PS_TABELA_INFO,
-    pagination: parsePagination(page, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant)
+    pagination: parsePagination(page + 1, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant)
   }
 }
 
