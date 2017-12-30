@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from '../routes'
 import { suffixToString } from '../utils/pagination'
 
-const Item = ({ page, prefix, query, current, begin, end }) => {
+const Item = ({ page, prefix, query, is_begin, is_end, last_page, current }) => {
   const queryNew = JSON.parse(JSON.stringify(query))
   queryNew.page = page
 
@@ -15,23 +15,14 @@ const Item = ({ page, prefix, query, current, begin, end }) => {
     </Link>
   )
 
-  if (current) {
-    content = (
-      <span className="page-link">{page}</span>
-    )
-  } else if (begin) {
-    content = (
-      <Link route={route}>
-        <a className="page-link">Início</a>
-      </Link>
-    )
-  } else if (end) {
-    content = (
-      <Link route={route}>
-        <a className="page-link">Final</a>
-      </Link>
+  if (current === page) {
+    return (
+      <li className="page-item active">
+        <span className="page-link">{page}</span>
+      </li>
     )
   }
+
 
   return (
     <li className="page-item">{content}</li>
@@ -54,7 +45,16 @@ const Pagination = (props) => {
     <nav aria-label="Page navigation example">
       <ul className="pagination justify-content-center">
         {props.list.map(item => (
-          <Item key={item.page} prefix={props.prefix} query={props.query} {...item} />
+          <Item
+            key={parseInt(item, 10)}
+            prefix={props.prefix}
+            query={props.query}
+            page={parseInt(item, 10)}
+            current={props.current_page}
+            is_begin={props.is_begin}
+            is_end={props.is_end}
+            last_page={props.last_page}
+          />
         ))}
       </ul>
     </nav>

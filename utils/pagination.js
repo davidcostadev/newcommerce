@@ -3,8 +3,8 @@ export const suffixToString = query => Object.keys(query)
   .map(item => `${item}=${query[item]}`)
   .join('&')
 
+
 export const getColumn = (column) => {
-  console.log(column)
   switch (column) {
     case 'best_sellers':
       return 4
@@ -31,70 +31,64 @@ export const getSort = (sort) => {
   }
 }
 
+export const getMaximiumPage = (page, pages, limit) => {
+  if (pages <= limit) {
+    return pages
+  }
+
+  const limitSub = limit
+  const limitWithPage = page + limitSub
+
+  if (limitWithPage >= pages) {
+    return pages
+  }
+
+  return limitWithPage
+}
+
+export const getMinimumPages = (page, pages, limit) => {
+  if (page <= limit) {
+    return 1
+  }
+
+  return page - limit
+}
+
+export const getListPages = (page, pages) => {
+  const limit = 5
+  const list = []
+
+  for (let newI = page; newI <= getMaximiumPage(page, pages, limit); newI += 1) {
+    list.push(newI.toString())
+  }
+
+  return list
+}
+
+
 export const parsePagination = (page, total, quant) => {
-  if (typeof page === 'undefined' || typeof total === 'undefined' || typeof quant === 'undefined') {
-    throw new Error('Missing arguments')
-  }
-
   const pages = Math.ceil(total / quant)
-  const current = page > 0 ? page + 1 : 1
-  const show = 5
+  const limit = 5
   const listPages = []
-  const oldLimit = (current - show) > 1 ? (current - show) : 2
+  const begin = page === 1
+  const end = page === pages
 
-  if (current > 1) {
-    listPages.push({
-      page: 1,
-      begin: true,
-      current: false,
-      end: false,
-    })
+  const minimum = getMinimumPages(page, pages, limit)
+  const maximium = getMaximiumPage(page, pages, limit)
+
+  for (let i = minimum; i <= maximium; i += 1) {
+    listPages.push(i.toString())
   }
 
-  for (let i = oldLimit; i < current; i += 1) {
-    listPages.push({
-      page: i,
-      begin: false,
-      current: false,
-      end: false,
-    })
-  }
-
-  listPages.push({
-    page: current,
-    begin: false,
-    current: true,
-    end: false,
-  })
-
-
-  const maxLimit = current + (show + 1) < pages ? current + (show + 1) : pages
-
-
-  for (let i = current + 1; i < maxLimit; i += 1) {
-    listPages.push({
-      page: i,
-      begin: false,
-      current: false,
-      end: false,
-    })
-  }
-
-  if (current < pages) {
-    listPages.push({
-      page: pages,
-      begin: false,
-      current: false,
-      end: true,
-    })
-  }
 
   return {
     list: listPages,
     total,
-    current,
-    pages,
-    quant,
+    per_page: quant,
+    current_page: page,
+    last_page: pages,
+    is_begin: begin,
+    is_end: end,
   }
 }
 
