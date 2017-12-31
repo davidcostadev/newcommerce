@@ -72,5 +72,8 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
+  },
+  "quokka": {
+    "babel": true
   }
 }
