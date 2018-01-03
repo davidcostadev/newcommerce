@@ -1,10 +1,12 @@
+import md5 from 'md5'
+
 async function login(env, fetch, { email, password }) {
   const data = JSON.stringify({
     PE_PASSKEY: env.PASSKEY,
     PE_IP: '127.0.0.1',
     PE_SESSAO: 'asdfgh',
     PE_EMAIL_DE_LOGIN: email,
-    PE_SENHA: password,
+    PE_SENHA: md5(password),
   })
 
   try {
