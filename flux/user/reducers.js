@@ -1,4 +1,4 @@
-import { SET_SESSION } from '../type'
+import { SET_SESSION, SET_AUTHENTICATION } from '../type'
 
 export const initialState = ''
 
@@ -11,4 +11,12 @@ export const sessionId = (state = initialState, { type, payload }) => {
   }
 }
 
-export default sessionId
+export const authentication = (state = false, { type, payload }) => {
+  switch (type) {
+    case SET_AUTHENTICATION:
+      return payload
+    default:
+      return state
+  }
+}
+
