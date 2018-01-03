@@ -3,13 +3,23 @@ import PropTypes from 'prop-types'
 import { Link } from '../routes'
 import { suffixToString } from '../utils/pagination'
 
-const Item = ({ page, prefix, query, is_begin, is_end, last_page, current }) => {
+const Item = (props) => {
+  const {
+    page,
+    prefix,
+    query,
+    // is_begin,
+    // is_end,
+    // last_page,
+    current,
+  } = props
+
   const queryNew = JSON.parse(JSON.stringify(query))
   queryNew.page = page
 
   const route = `${prefix}?${suffixToString(queryNew)}`
 
-  let content = (
+  const content = (
     <Link route={route}>
       <a className="page-link">{page}</a>
     </Link>
@@ -31,11 +41,12 @@ const Item = ({ page, prefix, query, is_begin, is_end, last_page, current }) => 
 
 Item.propTypes = {
   page: PropTypes.number.isRequired,
-  current: PropTypes.bool.isRequired,
+  current: PropTypes.number.isRequired,
   query: PropTypes.object.isRequired,
   prefix: PropTypes.string.isRequired,
-  begin: PropTypes.bool.isRequired,
-  end: PropTypes.bool.isRequired,
+  // is_begin: PropTypes.bool.isRequired,
+  // is_end: PropTypes.bool.isRequired,
+  // last_page: PropTypes.number.is Required,
 }
 
 const Pagination = (props) => {
@@ -66,7 +77,12 @@ Pagination.propTypes = {
   total: PropTypes.number.isRequired,
   prefix: PropTypes.string.isRequired,
   query: PropTypes.object.isRequired,
+  is_begin: PropTypes.bool.isRequired,
+  is_end: PropTypes.bool.isRequired,
+  last_page: PropTypes.number.isRequired,
+  current_page: PropTypes.number.isRequired,
 }
+
 
 Pagination.defaultProps = {
   prefix: [],
