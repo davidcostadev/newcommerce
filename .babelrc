@@ -11,14 +11,5 @@
       "regenerator": true
     }],
     ["styled-components", { "ssr": true, "displayName": true, "preprocess": false } ],
-    [
-      "css-modules-transform", {
-        "extensions": [".css", ".scss"],
-        "append": [ "postcss-cssnext" ],
-        "extractCss": "./static/css/bundle.css",
-        "preprocessCss": "./pre-processor.js",
-        "devMode": true
-      }
-    ]
   ]
 }
