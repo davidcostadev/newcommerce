@@ -7,6 +7,7 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
     'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/label-has-for': 'off',
     'react/forbid-prop-types': 'off'
   },
   "env": {
