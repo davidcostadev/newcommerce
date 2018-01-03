@@ -1,4 +1,4 @@
-import Url from '../../api/Url'
+import Cart from '../../api/Cart'
 
 xdescribe('', () => {
   it('', () => {})
