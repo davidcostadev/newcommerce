@@ -48,7 +48,6 @@ const SubTitle = () => {
     <DescriptionLogo>{process.env.BUSSNESS_LOGO_DESCRIPTION}</DescriptionLogo>
   )
 }
-console.log('process.env.BUSSNESS_ENABLE_CART', typeof process.env.BUSSNESS_ENABLE_CART)
 
 const HeaderPage = ({ query }) => (
   <HeaderPageOne>
@@ -77,6 +76,11 @@ const HeaderPage = ({ query }) => (
                   </MenuItem>
                 ) : ''
               }
+              <MenuItem onlyDesktop>
+                <Link route="/login">
+                  <MenuLink>Entrar</MenuLink>
+                </Link>
+              </MenuItem>
               <MenuItem onlyMobile>
                 <MenuButton>
                   <i className="ion-ios-search" />
