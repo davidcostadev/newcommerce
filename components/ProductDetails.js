@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Link } from '../routes'
 import theme from '../layout/theme'
 import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
-
+import ShowPrice from './permissions/ShowPrice'
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -55,12 +55,12 @@ const ProductComplementAmount = styled.span`
 `
 
 const ParcelBox = ({ parcel, amount }) => (
-  <productComplement>
+  <ProductComplement>
     <span>ou {parcel}x de</span>
-    <productComplementCurrent>R$</productComplementCurrent>
-    <productComplementAmount>{amount}</productComplementAmount>
+    <ProductComplementCurrent>R$</ProductComplementCurrent>
+    <ProductComplementAmount>{amount}</ProductComplementAmount>
     <span>Sem Juros</span>
-  </productComplement>
+  </ProductComplement>
 )
 
 ParcelBox.propTypes = {
@@ -224,18 +224,16 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
     </ProductHeader>
     <p>{product.PS_DESCRICAO_VENDA}</p>
     <ProductBlock>
-      {
-        process.env.BUSSNESS_ENABLE_PRICE === 'true' ? (
-          <ProductPriceCol>
-            <ProducPrice>
-              <ProducText>Por</ProducText>
-              <ProducCurrency>R$</ProducCurrency>
-              <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
-            </ProducPrice>
-            {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
-          </ProductPriceCol>
-        ) : ''
-      }
+      <ShowPrice>
+        <ProductPriceCol>
+          <ProducPrice>
+            <ProducText>Por</ProducText>
+            <ProducCurrency>R$</ProducCurrency>
+            <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
+          </ProducPrice>
+          {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
+        </ProductPriceCol>
+      </ShowPrice>
 
       <div>
         <div>
