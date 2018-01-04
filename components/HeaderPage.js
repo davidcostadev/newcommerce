@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
@@ -9,6 +11,7 @@ import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
 import ButtonCart from '../components/ButtonCart'
 import { Container } from '../layout/Pages'
+import { setAuthentication } from '../flux/user/actions'
 
 import {
   HeaderPageOne,
@@ -49,7 +52,7 @@ const SubTitle = () => {
   )
 }
 
-const HeaderPage = ({ query }) => (
+const HeaderPage = ({ query, authentication, Logout }) => (
   <HeaderPageOne>
     <Header className="navbar-top">
       <Container>
@@ -77,9 +80,15 @@ const HeaderPage = ({ query }) => (
                 ) : ''
               }
               <MenuItem onlyDesktop>
-                <Link route="/login">
-                  <MenuLink>Entrar</MenuLink>
-                </Link>
+                {
+                  authentication ? (
+                    <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
+                  ) : (
+                    <Link route="/login">
+                      <MenuLink>Entrar</MenuLink>
+                    </Link>
+                  )
+                }
               </MenuItem>
               <MenuItem onlyMobile>
                 <MenuButton>
@@ -111,6 +120,17 @@ HeaderPage.defaultProps = {
 
 HeaderPage.propTypes = {
   query: PropTypes.string,
+  authentication: PropTypes.bool.isRequired,
+  Logout: PropTypes.func.isRequired,
 }
 
-export default HeaderPage
+const mapStateToProps = ({ authentication }) => ({
+  authentication,
+})
+
+const mapDispatchToProps = dispatch => ({
+  Logout(payload) {
+    dispatch(setAuthentication(payload))
+  },
+})
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderPage)
