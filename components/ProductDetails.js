@@ -232,6 +232,9 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
             <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
           </ProducPrice>
           {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
+          <p>
+            {StringToReal(product.PS_VL_VENDA_CCDEBITO)} no cartão de débito
+          </p>
         </ProductPriceCol>
       </ShowPrice>
 
