@@ -156,3 +156,11 @@ export const ProductBtnBuy = styled.button`
     color: ${theme.white};
   }
 `
+
+export const Status = styled.div`
+  font-size: 14px;
+  text-align: center;
+
+  ${prop => (prop.red ? 'color: red;' : '')}
+  ${prop => (prop.green ? 'color: green;' : '')}
+`

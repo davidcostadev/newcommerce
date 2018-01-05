@@ -16,7 +16,8 @@ export const ProductBox = ({ product, columns }) => (
         <Product.ProductCurrency>R$</Product.ProductCurrency>
         <Product.ProductAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</Product.ProductAmount>
       </Product.ProductPrice>
-      {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
+      {/* parcelado(product.PS_VL_VENDA_CCCREDITO3X) */}
+      <Product.Status red green={parseInt(product.PS_FLAG_DISPONIBILIDADE, 10)}>{product.PS_DISPONIBILIDADE}</Product.Status>
     </ShowPrice>
     <Product.ProductButtons>
       <Link route={`/product/${product.PS_PATH_PAGE}`}>
