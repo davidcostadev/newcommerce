@@ -2,25 +2,25 @@
 
 exports[`Test File ProductBox <ProductBox /> 1`] = `
 <div
-  className="Product__ProductItem-s1isgjy1-0 ymdQf"
+  className="Product__ProductItem-s1fzb5ed-0 gkCshv"
 >
   <picture
-    className="SquareBox__BoxSquare-s1pdakhw-0 edNYXE"
+    className="SquareBox__BoxSquare-buzb9n-0 csFNBJ"
   >
     <div
-      className="SquareBox__BoxSquareInner-s1pdakhw-1 gdOhjI"
+      className="SquareBox__BoxSquareInner-buzb9n-1 bKSLwB"
     />
   </picture>
   <div
-    className="Product__ProductTitle-s1isgjy1-1 RRZFe"
+    className="Product__ProductTitle-s1fzb5ed-1 cuXePX"
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
   <div
-    className="Product__ProductButtons-s1isgjy1-5 ctefIK"
+    className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
-      className="Product__ProductBtnDetails-s1isgjy1-6 eHbYaZ"
+      className="Product__ProductBtnDetails-s1fzb5ed-6 hkDLkT"
       onClick={[Function]}
     >
       Ver Detalhes

@@ -2,10 +2,10 @@
 
 exports[`Component <TitleSection /> <TitleSection /> 1`] = `
 <div
-  className="TitleSection__Section-pgjamv-0 faWVqV"
+  className="TitleSection__Section-rwjvuv-0 eqNSwj"
 >
   <h1
-    className="TitleSection__Title-pgjamv-1 bNsMwL"
+    className="TitleSection__Title-rwjvuv-1 iBIslN"
   >
     Titulo da Section
   </h1>
