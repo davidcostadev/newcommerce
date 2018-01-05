@@ -91,6 +91,21 @@ const HeaderPage = ({ query, authentication, Logout }) => (
                 }
               </MenuItem>
               <MenuItem onlyMobile>
+                {
+                  authentication ? (
+                    <MenuLink onClick={() => Logout(false)}>
+                      <i className="ion-ios-upload-outline" />
+                    </MenuLink>
+                  ) : (
+                    <Link route="/login">
+                      <MenuButton>
+                        <i className="ion-ios-person" />
+                      </MenuButton>
+                    </Link>
+                  )
+                }
+              </MenuItem>
+              <MenuItem onlyMobile>
                 <MenuButton>
                   <i className="ion-ios-search" />
                 </MenuButton>
