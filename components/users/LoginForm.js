@@ -76,6 +76,7 @@ class LoginForm extends React.Component {
             />
             <Input
               id="password"
+              type="password"
               label="Senha"
               placeholder="Sua Senha"
               onChange={this.handle}
