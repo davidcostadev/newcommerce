@@ -34,7 +34,6 @@ export const ParcelBox = ({ parcel, amount }) => (
     ou {parcel}x de
     <ProductCurrency>R$</ProductCurrency>
     <ProductAmount>{amount}</ProductAmount>
-    <strong>sem juros</strong>
   </ProductComplement>
 )
 

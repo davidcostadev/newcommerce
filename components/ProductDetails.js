@@ -59,7 +59,6 @@ const ParcelBox = ({ parcel, amount }) => (
     <span>ou {parcel}x de</span>
     <ProductComplementCurrent>R$</ProductComplementCurrent>
     <ProductComplementAmount>{amount}</ProductComplementAmount>
-    <span>Sem Juros</span>
   </ProductComplement>
 )
 

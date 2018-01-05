@@ -2,92 +2,80 @@
 
 exports[`Test File ProductBox should show minimo value 1`] = `
 <div
-  className="ParceladoBox__ProductComplement-s41i0vs-0 clnbdj"
+  className="ParceladoBox__ProductComplement-s1mks8c0-0 iXBiKn"
 >
   ou 
   3
   x de
   <span
-    className="Product__ProductCurrency-s1fzb5ed-3 gRgDZn"
+    className="Product__ProductCurrency-s1isgjy1-3 ctRAfa"
   >
     R$
   </span>
   <span
-    className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
+    className="Product__ProductAmount-s1isgjy1-4 cVKpxW"
   >
     4
   </span>
-  <strong>
-    sem juros
-  </strong>
 </div>
 `;
 
 exports[`Test File ProductBox should show value parcel 1`] = `
 <div
-  className="ParceladoBox__ProductComplement-s41i0vs-0 clnbdj"
+  className="ParceladoBox__ProductComplement-s1mks8c0-0 iXBiKn"
 >
   ou 
   3
   x de
   <span
-    className="Product__ProductCurrency-s1fzb5ed-3 gRgDZn"
+    className="Product__ProductCurrency-s1isgjy1-3 ctRAfa"
   >
     R$
   </span>
   <span
-    className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
+    className="Product__ProductAmount-s1isgjy1-4 cVKpxW"
   >
     35,01
   </span>
-  <strong>
-    sem juros
-  </strong>
 </div>
 `;
 
 exports[`Test File ProductBox test with value below of minimunm 1`] = `
 <div
-  className="ParceladoBox__ProductComplement-s41i0vs-0 clnbdj"
+  className="ParceladoBox__ProductComplement-s1mks8c0-0 iXBiKn"
 >
   ou 
   2
   x de
   <span
-    className="Product__ProductCurrency-s1fzb5ed-3 gRgDZn"
+    className="Product__ProductCurrency-s1isgjy1-3 ctRAfa"
   >
     R$
   </span>
   <span
-    className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
+    className="Product__ProductAmount-s1isgjy1-4 cVKpxW"
   >
     5,00
   </span>
-  <strong>
-    sem juros
-  </strong>
 </div>
 `;
 
 exports[`Test File ProductBox test with value below of minimunm 2`] = `
 <div
-  className="ParceladoBox__ProductComplement-s41i0vs-0 clnbdj"
+  className="ParceladoBox__ProductComplement-s1mks8c0-0 iXBiKn"
 >
   ou 
   1
   x de
   <span
-    className="Product__ProductCurrency-s1fzb5ed-3 gRgDZn"
+    className="Product__ProductCurrency-s1isgjy1-3 ctRAfa"
   >
     R$
   </span>
   <span
-    className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
+    className="Product__ProductAmount-s1isgjy1-4 cVKpxW"
   >
     4,00
   </span>
-  <strong>
-    sem juros
-  </strong>
 </div>
 `;

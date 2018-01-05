@@ -2,14 +2,14 @@
 
 exports[`Test component ButtonCart should do be 0 1`] = `
 <a
-  className="ButtonCart__ButtonCartWrap-r17uok-1 jHjfei"
+  className="ButtonCart__ButtonCartWrap-r8pccs-1 lmdnfT"
   onClick={[Function]}
 >
   <i
     className="ion-ios-cart-outline"
   />
   <span
-    className="badge ButtonCart__Badge-r17uok-0 VTnGa"
+    className="badge ButtonCart__Badge-r8pccs-0 eyPHvw"
   >
     0
   </span>
@@ -18,14 +18,14 @@ exports[`Test component ButtonCart should do be 0 1`] = `
 
 exports[`Test component ButtonCart should do be 5 1`] = `
 <a
-  className="ButtonCart__ButtonCartWrap-r17uok-1 jHjfei"
+  className="ButtonCart__ButtonCartWrap-r8pccs-1 lmdnfT"
   onClick={[Function]}
 >
   <i
     className="ion-ios-cart-outline"
   />
   <span
-    className="badge ButtonCart__Badge-r17uok-0 VTnGa"
+    className="badge ButtonCart__Badge-r8pccs-0 eyPHvw"
   >
     5
   </span>

@@ -1,6 +1,7 @@
 /* eslint no-undef: "off" */
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { Provider } from 'react-redux'
 import { ParcelBox, ProductBox } from '../../components/ProductBox'
 
 const product = {
@@ -61,10 +62,26 @@ const product = {
 
 describe('Test File ProductBox', () => {
   it('<ProductBox />', () => {
+    const create = () => {
+      const store = {
+        getState: jest.fn(() => ({})),
+        dispatch: jest.fn(),
+        subscribe: jest.fn(),
+      }
+      const next = jest.fn()
+
+      const invoke = action => thunk(store)(next)(action)
+
+      return { store, next, invoke }
+    }
+    const { store } = create()
+
     const tree = renderer.create((
-      <ProductBox
-        product={product}
-      />
+      <Provider store={store}>
+        <ProductBox
+          product={product}
+        />
+      </Provider>
     )).toJSON()
     expect(tree).toMatchSnapshot()
   })

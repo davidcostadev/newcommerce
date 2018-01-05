@@ -12,15 +12,15 @@ exports[`Component <WidgetCategory /> <LinkItem /> 1`] = `
 
 exports[`Component <WidgetCategory /> <WidgetCategory /> 1`] = `
 <div
-  className="WidgetCategory__Widget-s128reo4-0 cYFCku"
+  className="WidgetCategory__Widget-s7sa3mi-0 hLfuzK"
 >
   <h3
-    className="WidgetCategory__WidgetTitle-s128reo4-1 bLNQPT"
+    className="WidgetCategory__WidgetTitle-s7sa3mi-1 kHkFYp"
   >
     Titulo Widget
   </h3>
   <ul
-    className="WidgetCategory__WidgetCategories-s128reo4-2 eQnVzC"
+    className="WidgetCategory__WidgetCategories-s7sa3mi-2 dKwjNk"
   >
     <li>
       <a
