@@ -12,12 +12,13 @@ import CategoriasContainer from '../containers/Categorias'
 import ButtonCart from '../components/ButtonCart'
 import { Container } from '../layout/Pages'
 import { setAuthentication } from '../flux/user/actions'
-
+import SubTitle from './page/Subtitle'
 import {
   HeaderPageOne,
   Header,
   Brand,
   ColSearch,
+  ColSearchMobile,
   Menu,
   MenuItem,
   MenuLink,
@@ -33,101 +34,107 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const DescriptionLogo = styled.p`
-  margin-bottom: 0;
-  color: ${theme.gray700};
 
-  @media(max-width: ${theme.maxMd}) {
-    display: none;
-  }
-`
+class HeaderPage extends React.Component {
+  constructor(props) {
+    super(props)
 
-const SubTitle = () => {
-  if (!process.env.BUSSNESS_LOGO_DESCRIPTION.length) {
-    return null
+    this.toggleSearch = this.toggleSearch.bind(this)
+
+    this.state = {
+      openSearch: false,
+    }
   }
 
-  return (
-    <DescriptionLogo>{process.env.BUSSNESS_LOGO_DESCRIPTION}</DescriptionLogo>
-  )
+  toggleSearch() {
+    this.setState({ openSearch: !this.state.openSearch })
+  }
+
+  render() {
+    const { query, authentication, Logout } = this.props
+    const { openSearch } = this.state
+
+    return (
+      <HeaderPageOne>
+        <Header className="navbar-top">
+          <Container>
+            <div className="row align-items-center">
+              <Brand className="col col-md-4">
+                <Link route="/">
+                  <a>
+                    <Logo />
+                  </a>
+                </Link>
+                <SubTitle />
+              </Brand>
+              <ColSearch className="col">
+                <SearchForm query={query} />
+              </ColSearch>
+              <div className="col col-md-8 col-lg-3">
+                <Menu right>
+                  {
+                    process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+                      <MenuItem onlyDesktop>
+                        <Link route="/dashboard/orders">
+                          <MenuLink>Meus Pedidos</MenuLink>
+                        </Link>
+                      </MenuItem>
+                    ) : ''
+                  }
+                  <MenuItem onlyDesktop>
+                    {
+                      authentication ? (
+                        <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
+                      ) : (
+                          <Link route="/login">
+                            <MenuLink>Entrar</MenuLink>
+                          </Link>
+                        )
+                    }
+                  </MenuItem>
+                  <MenuItem onlyMobile>
+                    {
+                      authentication ? (
+                        <MenuLink onClick={() => Logout(false)}>
+                          <i className="ion-ios-upload-outline" />
+                        </MenuLink>
+                      ) : (
+                          <Link route="/login">
+                            <MenuButton>
+                              <i className="ion-ios-person" />
+                            </MenuButton>
+                          </Link>
+                        )
+                    }
+                  </MenuItem>
+                  <MenuItem onlyMobile>
+                    <MenuButton onClick={this.toggleSearch}>
+                      <i className={`ion-ios-${openSearch ? 'close-empty' : 'search'}`} />
+                    </MenuButton>
+                  </MenuItem>
+                  {
+                    process.env.BUSSNESS_ENABLE_CART === 'true' ? (
+                      <MenuItem onlyDesktop>
+                        <ButtonCart />
+                      </MenuItem>
+                    ) : ''
+                  }
+                  <MenuItem onlyMobile>
+                    <BtnNavigation />
+                  </MenuItem>
+                </Menu>
+              </div>
+            </div>
+          </Container>
+        </Header>
+        <ColSearchMobile open={openSearch}>
+          <SearchForm query={query} />
+        </ColSearchMobile>
+        <CategoriasContainer />
+      </HeaderPageOne >
+    )
+  }
 }
-
-const HeaderPage = ({ query, authentication, Logout }) => (
-  <HeaderPageOne>
-    <Header className="navbar-top">
-      <Container>
-        <div className="row align-items-center">
-          <Brand className="col col-md-4">
-            <Link route="/">
-              <a>
-                <Logo />
-              </a>
-            </Link>
-            <SubTitle />
-          </Brand>
-          <ColSearch className="col">
-            <SearchForm query={query} />
-          </ColSearch>
-          <div className="col col-md-8 col-lg-3">
-            <Menu right>
-              {
-                process.env.BUSSNESS_ENABLE_CART === 'true' ? (
-                  <MenuItem onlyDesktop>
-                    <Link route="/dashboard/orders">
-                      <MenuLink>Meus Pedidos</MenuLink>
-                    </Link>
-                  </MenuItem>
-                ) : ''
-              }
-              <MenuItem onlyDesktop>
-                {
-                  authentication ? (
-                    <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
-                  ) : (
-                    <Link route="/login">
-                      <MenuLink>Entrar</MenuLink>
-                    </Link>
-                  )
-                }
-              </MenuItem>
-              <MenuItem onlyMobile>
-                {
-                  authentication ? (
-                    <MenuLink onClick={() => Logout(false)}>
-                      <i className="ion-ios-upload-outline" />
-                    </MenuLink>
-                  ) : (
-                    <Link route="/login">
-                      <MenuButton>
-                        <i className="ion-ios-person" />
-                      </MenuButton>
-                    </Link>
-                  )
-                }
-              </MenuItem>
-              <MenuItem onlyMobile>
-                <MenuButton>
-                  <i className="ion-ios-search" />
-                </MenuButton>
-              </MenuItem>
-              {
-                process.env.BUSSNESS_ENABLE_CART === 'true' ? (
-                  <MenuItem onlyDesktop>
-                    <ButtonCart />
-                  </MenuItem>
-                ) : ''
-              }
-              <MenuItem onlyMobile>
-                <BtnNavigation />
-              </MenuItem>
-            </Menu>
-          </div>
-        </div>
-      </Container>
-    </Header>
-    <CategoriasContainer />
-  </HeaderPageOne>
-)
 
 HeaderPage.defaultProps = {
   query: '',
