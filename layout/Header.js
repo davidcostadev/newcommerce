@@ -30,12 +30,24 @@ export const Brand = styled.div`
     max-width: 100%;
     max-height: 24px
   }
+
+  @media (max-width: ${theme.minMd}) {
+    svg {
+      width: 100%;
+    }
+  }
 `
 
 export const ColSearch = styled.div`
   @media (max-width: 991px) {
     display: none;
   }
+`
+
+export const ColSearchMobile = styled.div`
+  display: none;
+
+  ${props => (props.open ? 'display: block;' : '')}
 `
 
 
@@ -138,4 +150,13 @@ export const MenuButton = MenuLink.withComponent('button')
 export const BrandImage = styled.img`
   ${props => props.onlyMobile ? OnlyMobile : ''}
   ${props => props.onlyDesktop ? OnlyDesktop : ''}
+`
+
+export const DescriptionLogo = styled.p`
+  margin-bottom: 0;
+  color: ${theme.gray700};
+
+  @media(max-width: ${theme.maxMd}) {
+    display: none;
+  }
 `
