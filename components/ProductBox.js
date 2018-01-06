@@ -4,7 +4,7 @@ import { Link } from '../routes'
 import * as Product from '../layout/Product'
 import { StringToReal } from '../utils/money'
 import SquareBox from './SquareBox'
-import { parcelado } from './ParceladoBox'
+// import { parcelado } from './ParceladoBox'
 import ShowPrice from './permissions/ShowPrice'
 
 export const ProductBox = ({ product, columns }) => (
@@ -17,7 +17,9 @@ export const ProductBox = ({ product, columns }) => (
         <Product.ProductAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</Product.ProductAmount>
       </Product.ProductPrice>
       {/* parcelado(product.PS_VL_VENDA_CCCREDITO3X) */}
-      <Product.Status red green={parseInt(product.PS_FLAG_DISPONIBILIDADE, 10)}>{product.PS_DISPONIBILIDADE}</Product.Status>
+      <Product.Status red green={parseInt(product.PS_FLAG_DISPONIBILIDADE, 10)}>
+        {product.PS_DISPONIBILIDADE}
+      </Product.Status>
     </ShowPrice>
     <Product.ProductButtons>
       <Link route={`/product/${product.PS_PATH_PAGE}`}>
@@ -37,6 +39,7 @@ export const ProductBox = ({ product, columns }) => (
 
 ProductBox.propTypes = {
   product: PropTypes.object.isRequired,
+  columns: PropTypes.number.isRequired,
 }
 
 export default ProductBox

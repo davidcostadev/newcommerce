@@ -60,26 +60,39 @@ const product = {
   PS_LINK_TITLE: 'Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH em Ribeirão Preto',
 }
 
+const create = () => {
+  const store = {
+    getState: jest.fn(() => ({})),
+    dispatch: jest.fn(),
+    subscribe: jest.fn(),
+  }
+  const next = jest.fn()
+
+  const invoke = action => thunk(store)(next)(action)
+
+  return { store, next, invoke }
+}
+const { store } = create()
+
 describe('Test File ProductBox', () => {
-  it('<ProductBox />', () => {
-    const create = () => {
-      const store = {
-        getState: jest.fn(() => ({})),
-        dispatch: jest.fn(),
-        subscribe: jest.fn(),
-      }
-      const next = jest.fn()
-
-      const invoke = action => thunk(store)(next)(action)
-
-      return { store, next, invoke }
-    }
-    const { store } = create()
-
+  it('ProductBox with 4 column', () => {
     const tree = renderer.create((
       <Provider store={store}>
         <ProductBox
           product={product}
+          columns={4}
+        />
+      </Provider>
+    )).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('ProductBox with 3 column', () => {
+    const tree = renderer.create((
+      <Provider store={store}>
+        <ProductBox
+          product={product}
+          columns={3}
         />
       </Provider>
     )).toJSON()
