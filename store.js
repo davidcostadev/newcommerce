@@ -6,6 +6,7 @@ import { CATEGORIES_FULL, SET_FAMILY_ID } from './flux/type'
 import { sessionId, initialStateUser, authentication } from './flux/user/reducers'
 import * as cart from './flux/cart/cartReducers'
 import { menuMobile } from './flux/config/configReducers'
+import flashMessage from './flux/page/flashMessageReducers'
 
 const initialStateAll = {
   categories: [],
@@ -52,7 +53,7 @@ export const setCategories = info => dispatch => dispatch(categoriesFull(info))
 export const setFamilyIds = info => dispatch => dispatch(familyIdFull(info))
 
 
-export const initStore = (initialState = initialStateAll) => (
+export const initStore = () => (
   createStore(
     combineReducers({
       categories,
@@ -62,8 +63,8 @@ export const initStore = (initialState = initialStateAll) => (
       authentication,
       cart: cart.cart,
       cartItens: cart.cartItens,
+      flashMessage,
     }),
-    initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware)),
   )
 )

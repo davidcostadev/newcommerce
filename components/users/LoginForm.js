@@ -8,6 +8,7 @@ import Router from 'next/router'
 import Input from '../form/Input'
 import User from '../../api/User'
 import { setAuthentication } from '../../flux/user/actions'
+import { addFlashMessage } from '../../flux/page/flashMessageActions'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -34,31 +35,36 @@ class LoginForm extends React.Component {
   async save(e) {
     e.preventDefault()
 
-    const { email, password } = this.state
+    this.props.addFlashMessage({
+      type: 'success',
+      message: 'foi uma alerta',
+    })
 
-    this.setState({ isLoading: true })
+    // const { email, password } = this.state
 
-    if (email.length && password.length) {
-      try {
-        const env = {
-          PASSKEY: process.env.PASSKEY,
-          DOMAIN_API: process.env.DOMAIN_API,
-        }
+    // this.setState({ isLoading: true })
 
-        const user = await User.login(env, axios.post, { email, password })
+    // if (email.length && password.length) {
+    //   try {
+    //     const env = {
+    //       PASSKEY: process.env.PASSKEY,
+    //       DOMAIN_API: process.env.DOMAIN_API,
+    //     }
 
-        console.log(user)
+    //     const user = await User.login(env, axios.post, { email, password })
 
-        jsCookie.set('logged', true, { expires: 7 })
+    //     console.log(user)
 
-        this.props.setAuthentication(true)
+    //     jsCookie.set('logged', true, { expires: 7 })
 
-        Router.replace('/')
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    this.setState({ isLoading: false })
+    //     this.props.setAuthentication(true)
+
+    //     Router.replace('/')
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // }
+    // this.setState({ isLoading: false })
   }
 
   render() {
@@ -93,11 +99,13 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   setAuthentication: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     setAuthentication,
+    addFlashMessage,
   }, dispatch)
 )
 
