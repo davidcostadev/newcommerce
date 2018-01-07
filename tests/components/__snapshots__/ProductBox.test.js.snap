@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test File ProductBox ProductBox with 4 column 1`] = `
+exports[`Test File ProductBox ProductBox with 3 column 1`] = `
 <div
-  className="Product__ProductItem-s1fzb5ed-0 gkCshv"
+  className="Product__ProductItem-s1fzb5ed-0 kAOMey"
 >
   <picture
     className="SquareBox__BoxSquare-buzb9n-0 csFNBJ"
@@ -30,9 +30,9 @@ exports[`Test File ProductBox ProductBox with 4 column 1`] = `
 </div>
 `;
 
-exports[`Test File ProductBox ProductBox with 43 column 1`] = `
+exports[`Test File ProductBox ProductBox with 4 column 1`] = `
 <div
-  className="Product__ProductItem-s1fzb5ed-0 kAOMey"
+  className="Product__ProductItem-s1fzb5ed-0 gkCshv"
 >
   <picture
     className="SquareBox__BoxSquare-buzb9n-0 csFNBJ"
