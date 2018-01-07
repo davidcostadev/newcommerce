@@ -43,6 +43,10 @@ const withAuth = (ComposedComponent) => {
       if (loggedIn) {
         redirect(context, '/')
       }
+
+      const props = await ComposedComponent.getInitialProps(context)
+      console.log(props)
+      return props
     }
 
     componentWillMount() {
@@ -58,8 +62,8 @@ const withAuth = (ComposedComponent) => {
     isAuthenticated: PropTypes.bool.isRequired,
   }
 
-  const mapStateToProps = () => ({
-    isAuthenticated: false,
+  const mapStateToProps = ({ authentication }) => ({
+    isAuthenticated: authentication,
   })
 
 
