@@ -77,7 +77,7 @@ class Page extends React.Component {
           <title>{this.props.urlMeta.PS_TITLE}</title>
           <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
         </Head>
-        <HeaderPage query={this.props.url.query.q}/>
+        <HeaderPage query={this.props.url.query.q} />
         <main id="page-content">
           {this.props.children}
         </main>
