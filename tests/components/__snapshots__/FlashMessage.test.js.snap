@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component <FlashMessages /> With list erros 1`] = `
+Array [
+  <div
+    className="alert alert-success"
+  >
+    message 01
+  </div>,
+  <div
+    className="alert alert-danger"
+  >
+    message 02
+  </div>,
+  <div
+    className="alert alert-info"
+  >
+    message 03
+  </div>,
+  <div
+    className="alert alert-warning"
+  >
+    message 04
+  </div>,
+]
+`;
+
+exports[`Component <FlashMessages /> With no list erros 1`] = `null`;
