@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import jsCookie from 'js-cookie'
+import shortid from 'shortid'
 import Router from 'next/router'
 import Input from '../form/Input'
 import User from '../../api/User'
 import { setAuthentication } from '../../flux/user/actions'
-import { addFlashMessage } from '../../flux/page/flashMessageActions'
+// import { addFlashMessage } from '../../flux/page/flashMessageActions'
+import { FlashMessages } from '../page/FlashMessage'
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-
-    console.log(props)
 
     this.save = this.save.bind(this)
     this.handle = this.handle.bind(this)
@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
       email: '',
       password: '',
       isLoading: false,
+      errors: [],
     }
   }
 
@@ -35,45 +36,73 @@ class LoginForm extends React.Component {
   async save(e) {
     e.preventDefault()
 
-    this.props.addFlashMessage({
-      type: 'success',
-      message: 'foi uma alerta',
+    // this.props.addFlashMessage({
+    //   type: 'success',
+    //   message: 'foi uma alerta',
+    // })
+
+    const { email, password } = this.state
+
+    this.setState({ isLoading: true })
+
+    if (email.length && password.length) {
+      try {
+        const env = {
+          PASSKEY: process.env.PASSKEY,
+          DOMAIN_API: process.env.DOMAIN_API,
+        }
+
+        await User.login(env, axios.post, { email, password })
+
+        jsCookie.set('logged', true, { expires: 7 })
+
+        this.props.setAuthentication(true)
+
+        Router.replace('/')
+      } catch (error) {
+        if (error.PS_TABELA_INFO[0].PS_ID_ERRO === '5') {
+          this.addErrors({
+            type: 'danger',
+            message: 'Usuários e Senha inválidos',
+          })
+        } else {
+          console.error(error)
+
+          this.addErrors({
+            type: 'danger',
+            message: 'Não foi possivel fazer o login',
+          })
+        }
+      }
+    } else {
+      this.addErrors({
+        type: 'danger',
+        message: 'Por favor preencha seu email e senha',
+      })
+    }
+    this.setState({ isLoading: false })
+  }
+
+  addErrors({ type, message }) {
+    this.setState({
+      errors: [
+        {
+          id: shortid.generate(),
+          type,
+          message,
+        },
+      ],
     })
-
-    // const { email, password } = this.state
-
-    // this.setState({ isLoading: true })
-
-    // if (email.length && password.length) {
-    //   try {
-    //     const env = {
-    //       PASSKEY: process.env.PASSKEY,
-    //       DOMAIN_API: process.env.DOMAIN_API,
-    //     }
-
-    //     const user = await User.login(env, axios.post, { email, password })
-
-    //     console.log(user)
-
-    //     jsCookie.set('logged', true, { expires: 7 })
-
-    //     this.props.setAuthentication(true)
-
-    //     Router.replace('/')
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // }
-    // this.setState({ isLoading: false })
   }
 
   render() {
-    const { isLoading } = this.state
+    const { isLoading, errors } = this.state
 
     return (
       <div className="row justify-content-sm-center">
         <div className="col-sm-4">
           <form className="form" onSubmit={this.save}>
+            <FlashMessages msgs={errors} />
             <Input
               id="email"
               label="Email"
@@ -99,13 +128,13 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   setAuthentication: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired,
+  // addFlashMessage: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     setAuthentication,
-    addFlashMessage,
+    // addFlashMessage,
   }, dispatch)
 )
 
