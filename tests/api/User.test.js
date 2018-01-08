@@ -43,7 +43,8 @@ const fakeFetchLoginError = () => Promise.resolve({
       {
         PS_TABELA_INFO: [
           {
-            PS_FEEDBACK: 'QUANTIDADE DE CARACTER INVÁLIDO',
+            PS_FEEDBACK: 'USUÁRIO E SENHA INVÁLIDO ',
+            PS_ID_ERRO: '5',
           },
         ],
         PS_ALERTA: 206,
@@ -75,7 +76,15 @@ describe('', () => {
     User.login(fakeProcess.env, fakeFetchLoginError, data)
       .catch((err) => {
         expect(err)
-          .toEqual(expect.any(Error))
+          .toEqual({
+            PS_ALERTA: 206,
+            PS_TABELA_INFO: [
+              {
+                PS_FEEDBACK: 'USUÁRIO E SENHA INVÁLIDO ',
+                PS_ID_ERRO: '5',
+              },
+            ],
+          })
         done()
       })
   })

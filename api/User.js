@@ -13,7 +13,7 @@ async function login(env, fetch, { email, password }) {
     const response = await fetch(`${env.DOMAIN_API}/Tsvmwebsite/sp_web_login_frontend_sel`, data)
 
     if (response.data.result[0].PS_ALERTA !== 7) {
-      throw new Error(response.data.result[0].PS_TABELA_INFO[0].PS_FEEDBACK)
+      throw response.data.result[0]
     }
 
     return response.data.result[0].PS_TABELA_INFO[0]
