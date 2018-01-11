@@ -17,12 +17,20 @@ const FormContent = styled.div`
 `
 
 class Login extends React.Component {
-  static async getInitialProps(context) {
-    const { sessionId } = await Page.getInitialProps(context.store, context.req, context.isServer)
-
+  static auth() {
     return {
-      sessionId,
+      rules: {
+        guest: true,
+      },
     }
+  }
+
+  static async getInitialProps(context) {
+    const props = await Page.getInitialProps(context.store, context.req, context.isServer)
+
+    console.log(props)
+
+    return props
   }
 
   render() {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import jsCookie from 'js-cookie'
 import { setCategories } from '../store'
-import { setSessionId, setAuthentication } from '../flux/user/actions'
+import { setSessionId, setAuthentication, setUser } from '../flux/user/actions'
 import ApiCategories from '../api/Categories'
 import HeaderPage from '../components/HeaderPage'
 import FooterPage from '../components/FooterPage'
@@ -26,9 +26,11 @@ class Page extends React.Component {
 
   static initialStore(context) {
     const logged = cookie('logged', context)
+    const user = cookie('user', context)
 
     if (logged === 'true') {
       context.store.dispatch(setAuthentication(true))
+      context.store.dispatch(setUser(JSON.parse(user)))
     }
   }
 
@@ -48,9 +50,19 @@ class Page extends React.Component {
       req.session.userSessionId = req.session.id
 
       store.dispatch(setSessionId(req.session.id))
+
+      return {
+        session: req.session.id,
+        user: state.user,
+        authentication: state.authentication,
+      }
     }
 
-    return state.sessionId
+    return {
+      session: state.sessionId,
+      authentication: state.authentication,
+      user: state.user,
+    }
   }
 
   static getCartId(store, req, isServer) {

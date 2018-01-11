@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Router from 'next/router'
+import { authSession, redirect } from './user'
+import isRedirect from '../utils/auth'
+// import Router from 'next/router'
 // import PropTypes from 'prop-types'
 // import Head from 'next/head'
-import jsCookie from 'js-cookie'
+// import jsCookie from 'js-cookie'
 // import { setCategories } from '../store'
 // import { setSessionId } from '../flux/user/actions'
 // import ApiCategories from '../api/Categories'
@@ -13,39 +15,30 @@ import jsCookie from 'js-cookie'
 // import Sitemap from '../components/Sitemap'
 // import Copy from '../components/Copy'
 
-const redirect = (context, target) => {
-  if (context.isServer) {
-    // server
-    // 303: "See other"
-    context.res.redirect(target)
-    context.res.finished = true
-    context.res.end()
-  } else {
-    // In the browser, we just pretend like this never even happened ;)
-    Router.replace(target)
-  }
-}
-
-const authSession = ({ isServer, req }) => {
-  if (isServer) {
-    return req.cookies.logged === 'true' || null
-  }
-
-  return jsCookie.get('logged') === 'true' || null
-}
-
 
 const withAuth = (ComposedComponent) => {
   class Auth extends React.Component {
     static async getInitialProps(context) {
       const loggedIn = authSession(context)
+      let auth = {
+        rules: {
+          guest: false,
+        },
+      }
 
-      if (loggedIn) {
+      if (typeof ComposedComponent.auth !== 'undefined') {
+        auth = ComposedComponent.auth()
+      }
+
+      if (isRedirect(loggedIn, auth.rules)) {
+        // console.log('redirect', true)
         redirect(context, '/')
+      } else {
+        // console.log('redirect', false)
       }
 
       const props = await ComposedComponent.getInitialProps(context)
-      console.log(props)
+
       return props
     }
 
@@ -60,10 +53,12 @@ const withAuth = (ComposedComponent) => {
 
   Auth.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
   }
 
-  const mapStateToProps = ({ authentication }) => ({
+  const mapStateToProps = ({ authentication, user }) => ({
     isAuthenticated: authentication,
+    user,
   })
 
 
@@ -72,36 +67,3 @@ const withAuth = (ComposedComponent) => {
 
 
 export default withAuth
-
-// Page.propTypes = {
-//   urlMeta: PropTypes.shape({
-//     PS_TITLE: PropTypes.string.isRequired,
-//     PS_DESCRIPTION: PropTypes.string.isRequired,
-//   }).isRequired,
-//   url: PropTypes.shape({
-//     query: PropTypes.shape({
-//       q: PropTypes.string,
-//     }),
-//   }),
-//   children: PropTypes.any.isRequired,
-// }
-
-// Page.defaultProps = {
-//   url: PropTypes.shape({
-//     query: {
-//       q: '',
-//     },
-//   }),
-// }
-
-
-
-// const mapToState = state => ({
-//   categories: state.categories,
-// })
-
-// const mapDispatchToProps = dispatch => ({
-//   setCategories: bindActionCreators(setCategories, dispatch),
-// })
-
-// export default connect(mapToState, mapDispatchToProps)(Page)
