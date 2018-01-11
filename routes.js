@@ -6,6 +6,7 @@ routes
   .add('product', '/product/:slug')
   .add('search')
   .add('cart')
+  .add('cart/address')
   .add('login')
   .add('dashboard')
   .add('dashboard/orders')

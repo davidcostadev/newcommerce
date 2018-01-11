@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import * as Form from '~layout/Form'
 
 class Input extends React.Component {
   constructor(props) {
@@ -21,19 +20,17 @@ class Input extends React.Component {
   }
 
   render() {
-    const { id, label, ...otherProps } = this.props
+    const { id, ...otherProps } = this.props
 
     return (
-      <div className="form-group">
-        <label htmlFor={id} className="control-label">{label}</label>
-        <input
-          className="form-control"
-          {...otherProps}
-          id={id}
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-      </div>
+      <input
+        className="form-control"
+        type="text"
+        {...otherProps}
+        id={id}
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
     )
   }
 }
@@ -41,7 +38,6 @@ class Input extends React.Component {
 Input.propTypes = {
   value: PropTypes.any,
   id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 }
 

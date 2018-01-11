@@ -39,3 +39,7 @@ export const CalcShipping = styled.div`
   max-width: 500px;
 
 `
+
+export const Box = styled.div`
+  margin-bottom: 30px;
+`

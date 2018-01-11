@@ -1,9 +1,11 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
+import Router from 'next/router'
 import { floatToReal, StringToReal } from '../utils/money'
 import ProductCart from '../components/ProductCart'
 import Table from '../layout/Table'
 import * as Cart from '../layout/Cart'
+import { Link } from '../routes'
 
 const Products = ({ products, changeQuant }) => {
   if (!products.length) {
@@ -63,6 +65,7 @@ const Checkout = ({ cart, cartItens }) => {
             <span><strong>Total</strong></span>
             <span>R$ {StringToReal(cart.PS_VL_TOTAL_GERAL)}</span>
           </p>
+          <Link route="/cart/address">Address</Link>
           <button className="btn btn-primary">Finalizar Comprar</button>
         </div>
       </div>

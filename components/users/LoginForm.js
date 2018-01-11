@@ -6,6 +6,7 @@ import axios from 'axios'
 import jsCookie from 'js-cookie'
 import shortid from 'shortid'
 import Router from 'next/router'
+import FormGroup from '../form/FormGroup'
 import Input from '../form/Input'
 import User from '../../api/User'
 import { setAuthentication } from '../../flux/user/actions'
@@ -52,9 +53,10 @@ class LoginForm extends React.Component {
           DOMAIN_API: process.env.DOMAIN_API,
         }
 
-        await User.login(env, axios.post, { email, password })
+        const user = await User.login(env, axios.post, { email, password })
 
         jsCookie.set('logged', true, { expires: 7 })
+        jsCookie.set('user', user, { expires: 30 })
 
         this.props.setAuthentication(true)
 
@@ -103,20 +105,26 @@ class LoginForm extends React.Component {
         <div className="col-sm-4">
           <form className="form" onSubmit={this.save}>
             <FlashMessages msgs={errors} />
-            <Input
-              id="email"
-              label="Email"
-              placeholder="Seu email"
-              onChange={this.handle}
-            />
-            <Input
-              id="password"
-              type="password"
-              label="Senha"
-              placeholder="Sua Senha"
-              onChange={this.handle}
-            />
-            <div className="text-center'">
+            <FormGroup>
+              <label htmlFor="email" className="control-label">Email</label>
+              <Input
+                id="email"
+                label="Email"
+                placeholder="Seu email"
+                onChange={this.handle}
+              />
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="password" className="control-label">Sua Senha</label>
+              <Input
+                id="password"
+                type="password"
+                label="Senha"
+                placeholder="Sua Senha"
+                onChange={this.handle}
+              />
+            </FormGroup>
+            <div className="text-center">
               <button className="btn btn-primary" disabled={isLoading}>Entrar</button>
             </div>
           </form>
