@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import theme from '../layout/theme'
+import sortAlphabetfrom from '../utils/sort'
 
 export const LinkItem = ({ item }) => (
   <li>
@@ -63,7 +64,7 @@ export const WidgetCategory = ({ title, menu }) => (
   <Widget>
     <WidgetTitle>{title}</WidgetTitle>
     <WidgetCategories>
-      {menu.map(item => (
+      {menu.sort(sortAlphabetfrom).map(item => (
         <LinkItem key={item.path} item={item} />
       ))}
     </WidgetCategories>
