@@ -24,8 +24,8 @@ describe('pagination functions', () => {
     expect(getColumn('stock')).toBe(13)
     expect(getColumn('biggest_price')).toBe(6)
     expect(getColumn('lowert_price')).toBe(6)
-    expect(getColumn('name')).toBe(2)
-    expect(getColumn('other')).toBe(2)
+    expect(getColumn('name')).toBe(3)
+    expect(getColumn('other')).toBe(3)
   })
   it('should to get sort names ', () => {
     expect(getSort('desc')).toBe(2)
