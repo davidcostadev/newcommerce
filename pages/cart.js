@@ -2,7 +2,7 @@ import React from 'react'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import { initStore } from '../store'
-import { getCart, changeQuant } from '../api/Cart'
+import { changeQuant } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import Page from '../containers/PageHOF'
 import ContentCart from '../components/ContentCart'
@@ -10,10 +10,9 @@ import { Container } from '../layout/Pages'
 
 class Cart extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
-    const { sessionId } = await Page.getInitialProps(store, req, isServer)
+    const { sessionId, cartId } = await Page.getInitialProps(store, req, isServer)
 
-    const cartId = Page.getCartId(store, req, isServer)
-    const { cart, cartItens } = await Cart.getCart(store, cartId, sessionId)
+    const { cart, cartItens } = store.getState()
 
     const urlMeta = {
       PS_TITLE: 'Carrinho',
@@ -31,35 +30,8 @@ class Cart extends React.Component {
     }
   }
 
-  static async getCart(store, cartId, sessionId) {
-    console.log('getCart')
-    const state = store.getState()
-
-    if (state.cartItens.length) {
-      return {
-        cart: state.cart,
-        cartItens: state.cartItens,
-      }
-    }
-
-
-    const { cart, cartItens } = await getCart({
-      cartId,
-      sessionId,
-    })
-
-    store.dispatch(setCart(cart))
-    store.dispatch(setCartItens(cartItens))
-
-    return {
-      cart,
-      cartItens,
-    }
-  }
-
   async changeQuant(movimentCartId, productId, quant) {
     console.log('changeQuant', movimentCartId, productId)
-    console.log(this)
 
     const { cart, cartItens } = await changeQuant({
       cartId: this.props.cartId,
@@ -68,8 +40,6 @@ class Cart extends React.Component {
       productId,
       quant,
     })
-
-    console.log(cart, cartItens)
 
     this.props.setCart(cart)
     this.props.setCartItens(cartItens)

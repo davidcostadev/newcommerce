@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import jsCookie from 'js-cookie'
+import { getCart } from '../api/Cart'
+import { setCart, setCartItens } from '../flux/cart/cartActions'
 import { setCategories } from '../store'
 import { setSessionId, setAuthentication, setUser } from '../flux/user/actions'
 import ApiCategories from '../api/Categories'
@@ -18,9 +20,11 @@ class Page extends React.Component {
     await Page.getCategories(store)
 
     const sessionId = Page.getSession(store, req, isServer)
+    const cartId = await Page.getCartId(store, req, isServer, sessionId)
 
     return {
       sessionId,
+      cartId,
     }
   }
 
@@ -65,17 +69,48 @@ class Page extends React.Component {
     }
   }
 
-  static getCartId(store, req, isServer) {
+  static async getCartId(store, req, isServer, sessionId) {
+    let cartId = null
+
     if (isServer) {
-      return req.cookies.cartId || null
+      cartId = req.cookies.cartId || null
+    } else {
+      cartId = jsCookie.get('cartId') || null
     }
 
-    return jsCookie.get('cartId') || null
+    if (cartId) {
+      await Page.getCart(store, cartId, sessionId)
+    }
 
 
     // const state = store.getState()
 
     // return state.cart.PS_ID_CARRINHO || null
+  }
+
+  static async getCart(store, cartId, sessionId) {
+    console.log('getCart')
+    const state = store.getState()
+
+    if (state.cartItens.length) {
+      return {
+        cart: state.cart,
+        cartItens: state.cartItens,
+      }
+    }
+
+
+    const { cart, cartItens } = await getCart({
+      cartId,
+      sessionId,
+    })
+
+    // console.log(cart, cartItens)
+
+    store.dispatch(setCart(cart))
+    store.dispatch(setCartItens(cartItens))
+
+    return cartId
   }
 
   componentWillMount() {
