@@ -16,8 +16,10 @@ export const getColumn = (column) => {
     case 'lowert_price':
       return 6
     case 'name':
+      return 3
+    case 'product_id':
     default:
-      return 2
+      return 3
   }
 }
 

@@ -5,8 +5,8 @@ import { getSort, getColumn, parsePagination } from '../utils/pagination'
 const filterPropSort = (sort) => {
   if (typeof sort === 'undefined') {
     return {
-      sort: getSort('desc'),
-      column: getColumn('stock'),
+      sort: getSort('asc'),
+      column: getColumn('name'),
     }
   }
 
@@ -37,11 +37,11 @@ async function Category(props) {
   })
 
 
-  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_vertical_sel`, data);
+  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_vertical_sel`, data)
 
   return {
     products: response.data.result[0].PS_TABELA_INFO,
-    pagination: parsePagination(page + 1, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant)
+    pagination: parsePagination(page + 1, response.data.result[0].PS_QUANT_TOTAL_REGISTRO, quant),
   }
 }
 
