@@ -33,7 +33,7 @@ const states = {
 
 const StateList = (props) => {
   const options = Object.entries(states).map(([sigle, name]) => (
-    <option value={sigle}>{name}</option>
+    <option key={sigle} value={sigle}>{name}</option>
   ))
 
   return (
