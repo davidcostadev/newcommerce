@@ -1,5 +1,7 @@
 import React from 'react'
 import withRedux from 'next-redux-wrapper'
+import axios from 'axios'
+import User from '../../api/User'
 import { initStore } from '../../store'
 import Page from '../../containers/PageHOF'
 import { Container } from '../../layout/Pages'
@@ -7,13 +9,15 @@ import * as Cart from '../../layout/Cart'
 import FormGroup from '../../components/form/FormGroup'
 import Input from '../../components/form/Input'
 import withAuth from '../../utils/withAuth'
+import StateSelect from '../../components/form/StateList'
 
 class CartAddress extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
     const { sessionId } = await Page.getInitialProps(store, req, isServer)
 
-    // const cartId = Page.getCartId(store, req, isServer)
-    // const { cart, cartItens } = await Cart.getCart(store, cartId, sessionId)
+    const { user } = store.getState()
+
+    const userData = await CartAddress.getUser(user.PS_ID_CADASTRO)
 
     const urlMeta = {
       PS_TITLE: 'Carrinho: Endereço',
@@ -22,6 +26,7 @@ class CartAddress extends React.Component {
 
     return {
       // cartId,
+      userData,
       sessionId,
       urlMeta,
       // cart,
@@ -31,22 +36,36 @@ class CartAddress extends React.Component {
     }
   }
 
+  static async getUser(userId) {
+    const env = {
+      PASSKEY: process.env.PASSKEY,
+      DOMAIN_API: process.env.DOMAIN_API,
+    }
+
+    const user = await User.get(env, axios.post, userId)
+
+    return user
+  }
+
   constructor(props) {
     super(props)
 
     this.save = this.save.bind(this)
     this.handle = this.handle.bind(this)
 
+    const { userData } = props
+
+
     this.state = {
-      fullname: 'David Santana Costa',
-      phone: '',
-      cep: '',
-      address: '',
-      number: '',
-      complement: '',
-      neighborhood: '',
-      city: '',
-      state: '',
+      fullname: userData.PS_NOME,
+      phone: userData.PS_FONE_PRINCIPAL,
+      cep: userData.PS_CEP,
+      address: userData.PS_ENDERECO,
+      number: userData.PS_ENDERECO_NUMERO,
+      complement: userData.PS_COMPLEMENTO,
+      neighborhood: userData.PS_BAIRRO,
+      city: userData.PS_CIDADE,
+      state: userData.PS_UF,
       isLoading: false,
       errors: [],
     }
@@ -64,53 +83,17 @@ class CartAddress extends React.Component {
     console.log(this.state)
   }
 
-  // static async getCart(store, cartId, sessionId) {
-  //   // console.log('getCart')
-  //   // const state = store.getState()
-
-  //   // if (state.cartItens.length) {
-  //   //   return {
-  //   //     cart: state.cart,
-  //   //     cartItens: state.cartItens,
-  //   //   }
-  //   // }
-
-
-  //   // const { cart, cartItens } = await getCart({
-  //   //   cartId,
-  //   //   sessionId,
-  //   // })
-
-  //   // store.dispatch(setCart(cart))
-  //   // store.dispatch(setCartItens(cartItens))
-
-  //   return {
-  //     // cart,
-  //     // cartItens,
-  //   }
-  // }
-
-  // async changeQuant(movimentCartId, productId, quant) {
-  //   // console.log('changeQuant', movimentCartId, productId)
-  //   // console.log(this)
-
-  //   // const { cart, cartItens } = await changeQuant({
-  //   //   cartId: this.props.cartId,
-  //   //   sessionId: this.props.sessionId,
-  //   //   movimentCartId,
-  //   //   productId,
-  //   //   quant,
-  //   // })
-
-  //   // console.log(cart, cartItens)
-
-  //   // this.props.setCart(cart)
-  //   // this.props.setCartItens(cartItens)
-  // }
-
   render() {
     const {
       fullname,
+      phone,
+      cep,
+      address,
+      number,
+      complement,
+      neighborhood,
+      city,
+      state,
     } = this.state
 
     return (
@@ -139,6 +122,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="phone"
+                          value={phone}
                           placeholder="Seu Celular"
                           onChange={this.handle}
                         />
@@ -154,6 +138,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="cep"
+                          value={cep}
                           placeholder="000-00000"
                           onChange={this.handle}
                         />
@@ -164,6 +149,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="address"
+                          value={address}
                           placeholder="Seu Endereço"
                           onChange={this.handle}
                         />
@@ -174,6 +160,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="number"
+                          value={number}
                           placeholder="Número do endereço"
                           onChange={this.handle}
                         />
@@ -184,6 +171,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="complement"
+                          value={complement}
                           placeholder="Complemento"
                           onChange={this.handle}
                         />
@@ -194,6 +182,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="neighborhood"
+                          value={neighborhood}
                           placeholder="Bairro"
                           onChange={this.handle}
                         />
@@ -204,6 +193,7 @@ class CartAddress extends React.Component {
                       <div className="col-sm-9">
                         <Input
                           id="city"
+                          value={city}
                           placeholder="Cidade"
                           onChange={this.handle}
                         />
@@ -212,7 +202,11 @@ class CartAddress extends React.Component {
                     <div className="form-group row">
                       <label htmlFor="state" className="col-sm-3 col-form-label">Estado*</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" id="state" placeholder="Estado" />
+                        <StateSelect
+                          id="state"
+                          value={state}
+                          onChange={this.handle}
+                        />
                       </div>
                     </div>
                   </div>
@@ -223,9 +217,6 @@ class CartAddress extends React.Component {
               </form>
             </div>
           </div>
-
-
-
         </Container>
       </Page>
     )
