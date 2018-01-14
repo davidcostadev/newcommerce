@@ -1,6 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import axios from 'axios'
+import Router from 'next/router'
 import User from '../../api/User'
 import { initStore } from '../../store'
 import Page from '../../containers/PageHOF'
@@ -25,14 +27,9 @@ class CartAddress extends React.Component {
     }
 
     return {
-      // cartId,
       userData,
       sessionId,
       urlMeta,
-      // cart,
-      // cartItens,
-      // setCart,
-      // setCartItens,
     }
   }
 
@@ -55,19 +52,19 @@ class CartAddress extends React.Component {
 
     const { userData } = props
 
-
     this.state = {
-      fullname: userData.PS_NOME,
-      phone: userData.PS_FONE_PRINCIPAL,
-      cep: userData.PS_CEP,
-      address: userData.PS_ENDERECO,
-      number: userData.PS_ENDERECO_NUMERO,
-      complement: userData.PS_COMPLEMENTO,
-      neighborhood: userData.PS_BAIRRO,
-      city: userData.PS_CIDADE,
-      state: userData.PS_UF,
+      name: userData.name,
+      phoneMobile: userData.phone_mobile,
+      cep: userData.cep,
+      address: userData.address,
+      number: userData.address_number,
+      complement: userData.address_complement,
+      neighborhood: userData.address_neighborhood,
+      city: userData.address_city,
+      state: userData.address_state,
+      userData,
       isLoading: false,
-      errors: [],
+      // errors: [],
     }
   }
 
@@ -80,13 +77,41 @@ class CartAddress extends React.Component {
   async save(e) {
     e.preventDefault()
 
-    console.log(this.state)
+    this.setState({ isLoading: true })
+
+    try {
+      const env = {
+        PASSKEY: process.env.PASSKEY,
+        DOMAIN_API: process.env.DOMAIN_API,
+      }
+
+      const userUpdated = {
+        ...this.state.userData,
+        name: this.state.name,
+        phone_mobile: this.state.phoneMobile,
+        cep: this.state.cep,
+        address: this.state.address,
+        address_number: this.state.number,
+        address_complement: this.state.complement,
+        address_neighborhood: this.state.neighborhood,
+        address_city: this.state.city,
+        address_state: this.state.state,
+      }
+
+      await User.update(env, axios.post, userUpdated)
+
+      Router.replace('/cart/payment')
+    } catch (error) {
+      console.error(error)
+    }
+
+    this.setState({ isLoading: false })
   }
 
   render() {
     const {
-      fullname,
-      phone,
+      name,
+      phoneMobile,
       cep,
       address,
       number,
@@ -94,6 +119,7 @@ class CartAddress extends React.Component {
       neighborhood,
       city,
       state,
+      isLoading,
     } = this.state
 
     return (
@@ -107,22 +133,32 @@ class CartAddress extends React.Component {
                   <div className="card-body">
                     <h5 className="card-title">Dados Pessoais</h5>
                     <FormGroup row>
-                      <label htmlFor="fullname" className="col-sm-3 col-form-label">Nome Completo*</label>
+                      <label
+                        htmlFor="name"
+                        className="col-sm-3 col-form-label"
+                      >
+                        Nome Completo*
+                      </label>
                       <div className="col-sm-9">
                         <Input
-                          id="fullname"
+                          id="name"
                           placeholder="Seu Nome"
-                          value={fullname}
+                          value={name}
                           onChange={this.handle}
                         />
                       </div>
                     </FormGroup>
                     <FormGroup row>
-                      <label htmlFor="phone" className="col-sm-3 col-form-label">Celular*</label>
+                      <label
+                        htmlFor="phoneMobile"
+                        className="col-sm-3 col-form-label"
+                      >
+                        Celular*
+                      </label>
                       <div className="col-sm-9">
                         <Input
-                          id="phone"
-                          value={phone}
+                          id="phoneMobile"
+                          value={phoneMobile}
                           placeholder="Seu Celular"
                           onChange={this.handle}
                         />
@@ -167,7 +203,12 @@ class CartAddress extends React.Component {
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label htmlFor="complemento" className="col-sm-3 col-form-label">Complemento*</label>
+                      <label
+                        htmlFor="complemento"
+                        className="col-sm-3 col-form-label"
+                      >
+                        Complemento*
+                      </label>
                       <div className="col-sm-9">
                         <Input
                           id="complement"
@@ -212,7 +253,7 @@ class CartAddress extends React.Component {
                   </div>
                 </Cart.Box>
                 <p className="text-center">
-                  <button className="btn btn-primary btn-lg">Continuar</button>
+                  <button className="btn btn-primary btn-lg" disabled={isLoading}>Continuar</button>
                 </p>
               </form>
             </div>
@@ -223,6 +264,9 @@ class CartAddress extends React.Component {
   }
 }
 
+CartAddress.propTypes = {
+  userData: PropTypes.object.isRequired,
+}
 
 const mapState = state => state
 
