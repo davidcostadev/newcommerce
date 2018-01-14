@@ -65,8 +65,9 @@ const Checkout = ({ cart, cartItens }) => {
             <span><strong>Total</strong></span>
             <span>R$ {StringToReal(cart.PS_VL_TOTAL_GERAL)}</span>
           </p>
-          <Link route="/cart/address">Address</Link>
-          <button className="btn btn-primary">Finalizar Comprar</button>
+          <Link route="/cart/address">
+            <button className="btn btn-primary">Finalizar Comprar</button>
+          </Link>
         </div>
       </div>
     </Cart.CheckoutRow>
