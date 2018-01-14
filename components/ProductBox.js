@@ -23,7 +23,7 @@ export const ProductBox = ({ product, columns }) => (
     </ShowPrice>
     <Product.ProductButtons>
       <Link route={`/product/${product.PS_PATH_PAGE}`}>
-        <Product.ProductBtnDetails>Ver Detalhes</Product.ProductBtnDetails>
+        <Product.ProductBtnDetails href={`/product/${product.PS_PATH_PAGE}`}>Ver Detalhes</Product.ProductBtnDetails>
       </Link>
       {
         process.env.BUSSNESS_ENABLE_CART === 'true' ? (

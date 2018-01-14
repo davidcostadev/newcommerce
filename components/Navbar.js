@@ -43,7 +43,7 @@ const Menu = ({ links }) => (
     {links.map(link => (
       <NavbarNavItem key={link.id} className="nav-item">
         <Link route={link.to}>
-          <NavBarLink className={classNames(['nav-link'])} title={link.title}>{link.title}</NavBarLink>
+          <NavBarLink href={link.to} className={classNames(['nav-link'])} title={link.title}>{link.title}</NavBarLink>
         </Link>
       </NavbarNavItem>
     ))}
