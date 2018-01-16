@@ -26,8 +26,17 @@ async function Url(query) {
     PE_PAGENAME: slug.join('/'),
   })
 
-  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_website_url_sel`, data)
-  return response.data.result[0].PS_TABELA_INFO[0]
+  try {
+    const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_website_url_sel`, data)
+
+    if (response.data.result[0].PS_ALERTA !== 7) {
+      throw response.data.result[0]
+    }
+
+    return response.data.result[0].PS_TABELA_INFO[0]
+  } catch (e) {
+    throw e
+  }
 }
 
 export default Url
