@@ -53,7 +53,11 @@ const withAuth = (ComposedComponent) => {
 
   Auth.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    user: PropTypes.object.isRequired,
+    user: PropTypes.object,
+  }
+
+  Auth.defaultProps = {
+    user: {},
   }
 
   const mapStateToProps = ({ authentication, user }) => ({
