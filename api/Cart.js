@@ -117,3 +117,50 @@ export async function changeQuant(params) {
   return resultData
 }
 
+export async function closeCart(params) {
+  console.log(new Date(), 'Api Cart closeCart')
+
+  const {
+    sessionId,
+    paymentId,
+    cartId,
+    deliveryId,
+    userId,
+    // cep,
+  } = params
+
+  const data = JSON.stringify({
+    PE_PASSKEY: process.env.PASSKEY,
+    PE_IP: '127.0.0.1',
+    PE_SESSAO: sessionId || 'asdfg',
+    PE_ID_CARRINHO: parseInt(cartId, 10) || null,
+    PE_ID_CLIENTE: parseInt(userId, 10) || null,
+    PE_ID_VENDEDOR: null,
+    PE_ID_PG_FORMA: paymentId || 1,
+    PE_ID_TIPO_FRETE: deliveryId || 1,
+    PE_QT_VOLUME: 1,
+    PE_VL_FRETE: 0,
+    PE_PRAZO_ENTREGA_DIA: 0,
+    PE_CODIGOP: null,
+    PE_VL_DESCONTO: null,
+    PE_TX_DESCONTO_CODP: null,
+    PE_QT_PARCELA: null,
+    PE_VL_PARCELA: null,
+    PE_VL_TOTAL_PARCELADO: null,
+    PE_ANOTACOES: null,
+  })
+
+  // console.log(JSON.parse(data))
+
+  const resultData = await axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_fcr`, data)
+    .then((response) => {
+      if (response.data.result[0].PS_ALERTA === 206) {
+        throw new Error(response.data.result[0].PS_FEEDBACK)
+      }
+
+      return response.data.result[0].PS_TABELA_INFO[0]
+    })
+
+  return resultData
+}
+

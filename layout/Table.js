@@ -21,6 +21,10 @@ const Table = styled.table`
     vertical-align: middle;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 8px 12px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `
 

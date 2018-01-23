@@ -7,6 +7,8 @@ routes
   .add('search')
   .add('cart')
   .add('cart/address')
+  .add('cart/payment')
+  .add('cart/end', '/cart/end/:orderId')
   .add('login')
   .add('dashboard')
   .add('dashboard/orders')

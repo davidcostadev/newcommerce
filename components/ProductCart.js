@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StringToReal } from '../utils/money'
+import { getUrlImage } from '../utils/media'
 
-const getUrlImage = url => url
-  .replace('mundialsystem.com.br/images', 'winerp.com.br/images/mundial')
 
 class Product extends React.Component {
   constructor(props) {
