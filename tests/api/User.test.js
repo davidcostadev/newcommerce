@@ -1,9 +1,10 @@
 import User from '../../api/User'
+import UserMock from './__mocks__/User.test.mocks'
 
 const fakeProcess = {
   env: {
-    PASSKEY: 'f13f8b23c630b4c00737fcafe70a489c',
-    DOMAIN_API: 'http://186.202.64.106:8000/datasnap/rest',
+    PASSKEY: 'key12345',
+    DOMAIN_API: 'http://api.domain.com/v1/',
   },
 }
 
@@ -53,8 +54,16 @@ const fakeFetchLoginError = () => Promise.resolve({
   },
 })
 
+const fakeFetchGetSuccess = () => Promise.resolve({
+  data: UserMock.get,
+})
 
-describe('', () => {
+const fakeFetchGetFall = () => Promise.resolve({
+  data: UserMock.getDontFind,
+})
+
+
+describe('should test all function of user api', () => {
   it('should do login with email and password it\'s corrent', (done) => {
     const data = {
       email: 'usename@email.com',
@@ -85,6 +94,27 @@ describe('', () => {
               },
             ],
           })
+        done()
+      })
+  })
+
+  it('should get a user with a id', (done) => {
+    const userId = 1
+
+    User.get(fakeProcess.env, fakeFetchGetSuccess, userId)
+      .then((response) => {
+        expect(response)
+          .toEqual(UserMock.getResult)
+        done()
+      })
+  })
+  it('should fall when dont find user', (done) => {
+    const userId = 99999
+
+    User.get(fakeProcess.env, fakeFetchGetFall, userId)
+      .catch((err) => {
+        expect(err)
+          .toEqual(UserMock.getDontFindResult)
         done()
       })
   })
