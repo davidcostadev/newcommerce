@@ -13,6 +13,7 @@ import ButtonCart from '../components/ButtonCart'
 import { Container } from '../layout/Pages'
 import { setAuthentication } from '../flux/user/actions'
 import SubTitle from './page/Subtitle'
+import ShowCart from './permissions/ShowCart'
 import {
   HeaderPageOne,
   Header,
@@ -112,13 +113,11 @@ class HeaderPage extends React.Component {
                       <i className={`ion-ios-${openSearch ? 'close-empty' : 'search'}`} />
                     </MenuButton>
                   </MenuItem>
-                  {
-                    process.env.BUSSNESS_ENABLE_CART === 'true' ? (
-                      <MenuItem onlyDesktop>
-                        <ButtonCart />
-                      </MenuItem>
-                    ) : ''
-                  }
+                  <ShowCart>
+                    <MenuItem onlyDesktop>
+                      <ButtonCart />
+                    </MenuItem>
+                  </ShowCart>
                   <MenuItem onlyMobile>
                     <BtnNavigation />
                   </MenuItem>

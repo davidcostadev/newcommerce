@@ -6,6 +6,7 @@ import { StringToReal } from '../utils/money'
 import SquareBox from './SquareBox'
 // import { parcelado } from './ParceladoBox'
 import ShowPrice from './permissions/ShowPrice'
+import ShowCart from './permissions/ShowCart'
 
 export const ProductBox = ({ product, columns }) => (
   <Product.ProductItem columns={columns}>
@@ -25,13 +26,11 @@ export const ProductBox = ({ product, columns }) => (
       <Link route={`/product/${product.PS_PATH_PAGE}`}>
         <Product.ProductBtnDetails href={`/product/${product.PS_PATH_PAGE}`}>Ver Detalhes</Product.ProductBtnDetails>
       </Link>
-      {
-        process.env.BUSSNESS_ENABLE_CART === 'true' ? (
-          <Link route="/product">
-            <Product.ProductBtnBuy>Comprar</Product.ProductBtnBuy>
-          </Link>
-        ) : ''
-      }
+      <ShowCart>
+        <Link route="/product">
+          <Product.ProductBtnBuy>Comprar</Product.ProductBtnBuy>
+        </Link>
+      </ShowCart>
     </Product.ProductButtons>
   </Product.ProductItem >
 )

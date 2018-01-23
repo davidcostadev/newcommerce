@@ -5,6 +5,7 @@ import { Link } from '../routes'
 import theme from '../layout/theme'
 import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
 import ShowPrice from './permissions/ShowPrice'
+import ShowCart from './permissions/ShowCart'
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -239,12 +240,15 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
 
       <div>
         <div>
-          {
-            process.env.BUSSNESS_ENABLE_CART === 'true' ? (
-              <button className="btn btn-lg btn-primary btn-buy" onClick={() => addProductCart(product.PS_ID_PRODUTO)}> Comprar</button>
-            ) : ''
-          }
-{/*
+          <ShowCart>
+            <button
+              className="btn btn-lg btn-primary btn-buy"
+              onClick={() => addProductCart(product.PS_ID_PRODUTO)}
+            >
+              Comprar
+            </button>
+          </ShowCart>
+        {/*
           <BtnFavorite className="btn btn-lg btn-danger btn-favorite">
             <i className="ion-ios-heart" />
           </BtnFavorite> */}
