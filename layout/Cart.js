@@ -15,7 +15,7 @@ export const Title = styled.h1`
 
 export const CheckoutRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   .card {
     width: 100%;

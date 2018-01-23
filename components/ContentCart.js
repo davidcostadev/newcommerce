@@ -26,7 +26,7 @@ const Checkout = ({ cart, cartItens }) => {
 
   return (
     <Cart.CheckoutRow>
-      <Cart.CalcShipping>
+      {/* <Cart.CalcShipping>
         <p>Consulte o prazo de entrega e o frete para seu CEP:</p>
         <div className="form-group">
           <div className="input-group">
@@ -50,7 +50,7 @@ const Checkout = ({ cart, cartItens }) => {
             Retirar da loja(sem frete) - Em Média 0 dia(s) úteis - R$ 0,00
         </label>
         </div>
-      </Cart.CalcShipping>
+      </Cart.CalcShipping> */}
       <div className="card">
         <div className="card-body">
           <p className="card-text">
