@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from '../layout/Html'
 import { Container } from '../layout/Pages'
+import ShowToGuest from './permissions/ShowToGuest'
+import ShowToUser from './permissions/ShowToUser'
 
 import {
   Menu,
@@ -30,6 +32,7 @@ const Sitemap = () => (
         <div className="col-md-3">
           <SiteMapTitle>Porque Comprar Conosco?</SiteMapTitle>
           <Menu vertical>
+
             <MenuItem><Link>Entrega e Delivery</Link></MenuItem>
             <MenuItem><Link>Compra Segura</Link></MenuItem>
             <MenuItem><Link>Afiliados</Link></MenuItem>
@@ -39,8 +42,13 @@ const Sitemap = () => (
         <div className="col-md-3">
           <SiteMapTitle>Minha Conta</SiteMapTitle>
           <Menu vertical>
-            <MenuItem><Link>Entrar</Link></MenuItem>
-            <MenuItem><Link>Ver Carrinho</Link></MenuItem>
+            <ShowToGuest>
+              <MenuItem><Link route="login"><a>Entrar</a></Link></MenuItem>
+            </ShowToGuest>
+            <ShowToUser>
+              <MenuItem><Link route="dashboard"><a>Minha Conta</a></Link></MenuItem>
+            </ShowToUser>
+            <MenuItem><Link route="cart"><a>Ver Carrinho</a></Link></MenuItem>
             <MenuItem><Link>Lista de Desejo</Link></MenuItem>
             <MenuItem><Link>Rastrear Entrega</Link></MenuItem>
             <MenuItem><Link>Meus Pedidos</Link></MenuItem>
