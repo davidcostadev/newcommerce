@@ -4,20 +4,22 @@ export const CategoriesPage = styled.div`
   padding-top: 15px;
   padding-bottom: 30px;
 `
-// export const SearchPage = CategoriesPage.extend``
 
+export const PageContent = styled.div`
+  padding-top: 30px;
+  padding-bottom: 60px;
+`
 
-// export const rowBox = styled.div`
-//   margin-bottom: 15px;
-// `
+export const PageContentInner = styled.div`
+  padding-top: 20px;
+  padding-bottom: 30px;
+`
 
-// export const SidebarBox = styled.div`
-//   display: none;
-//   @media (min-width: 992px) {
-//     display: block;
-//   }
-// `
-
+export const Card = styled.div`
+  &+& {
+    margin-top: 30px;
+  }
+`
 
 export const Container = styled.div`
   width: 100%;

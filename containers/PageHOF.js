@@ -19,11 +19,11 @@ class Page extends React.Component {
     Page.initialStore({ store, req, isServer })
     await Page.getCategories(store)
 
-    const sessionId = Page.getSession(store, req, isServer)
-    const cartId = await Page.getCartId(store, req, isServer, sessionId)
+    const session = Page.getSession(store, req, isServer)
+    const cartId = await Page.getCartId(store, req, isServer, session.sessionId)
 
     return {
-      sessionId,
+      ...session,
       cartId,
     }
   }
@@ -56,7 +56,7 @@ class Page extends React.Component {
       store.dispatch(setSessionId(req.session.id))
 
       return {
-        session: req.session.id,
+        sessionId: req.session.id,
         user: state.user,
         authentication: state.authentication,
       }

@@ -11,5 +11,7 @@ routes
   .add('cart/end', '/cart/end/:orderId')
   .add('login')
   .add('dashboard')
-  .add('dashboard/orders')
+  .add('dashboard/order', '/dashboard/order/:orderId')
+  .add('dashboard/password')
+  .add('dashboard/logout')
 

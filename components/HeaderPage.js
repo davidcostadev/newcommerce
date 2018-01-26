@@ -14,6 +14,8 @@ import { Container } from '../layout/Pages'
 import { setAuthentication } from '../flux/user/actions'
 import SubTitle from './page/Subtitle'
 import ShowCart from './permissions/ShowCart'
+import ShowToGuest from './permissions/ShowToGuest'
+import ShowToUser from './permissions/ShowToUser'
 import {
   HeaderPageOne,
   Header,
@@ -83,30 +85,36 @@ class HeaderPage extends React.Component {
                     ) : ''
                   }
                   <MenuItem onlyDesktop>
-                    {
-                      authentication ? (
-                        <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
-                      ) : (
-                          <Link route="/login">
-                            <MenuLink>Entrar</MenuLink>
-                          </Link>
-                        )
-                    }
+                    <ShowToGuest>
+                      <Link route="login">
+                        <MenuLink>Entrar</MenuLink>
+                      </Link>
+                    </ShowToGuest>
+                    <ShowToUser>
+                      <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
+                      <Link route="dashboard">
+                        <MenuLink>Meus Pedidos</MenuLink>
+                      </Link>
+                    </ShowToUser>
                   </MenuItem>
                   <MenuItem onlyMobile>
-                    {
-                      authentication ? (
-                        <MenuLink onClick={() => Logout(false)}>
-                          <i className="ion-ios-upload-outline" />
-                        </MenuLink>
-                      ) : (
-                          <Link route="/login">
-                            <MenuButton>
-                              <i className="ion-ios-person" />
-                            </MenuButton>
-                          </Link>
-                        )
-                    }
+                    <ShowToGuest>
+                      <Link route="/login">
+                        <MenuButton>
+                          <i className="ion-ios-person" />
+                        </MenuButton>
+                      </Link>
+                    </ShowToGuest>
+                    <ShowToUser>
+                      <MenuLink onClick={() => Logout(false)}>
+                        <i className="ion-ios-upload-outline" />
+                      </MenuLink>
+                      <Link route="dashboard">
+                        <MenuButton>
+                          <i className="ion-ios-person" />
+                        </MenuButton>
+                      </Link>
+                    </ShowToUser>
                   </MenuItem>
                   <MenuItem onlyMobile>
                     <MenuButton onClick={this.toggleSearch}>
