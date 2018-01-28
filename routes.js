@@ -10,6 +10,7 @@ routes
   .add('cart/payment')
   .add('cart/end', '/cart/end/:orderId')
   .add('login')
+  .add('password')
   .add('dashboard')
   .add('dashboard/order', '/dashboard/order/:orderId')
   .add('dashboard/password')

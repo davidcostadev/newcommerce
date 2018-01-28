@@ -6,11 +6,11 @@ import axios from 'axios'
 import jsCookie from 'js-cookie'
 import shortid from 'shortid'
 import Router from 'next/router'
+import { Link } from '../../layout/Html'
 import FormGroup from '../form/FormGroup'
 import Input from '../form/Input'
 import User from '../../api/User'
 import { setAuthentication } from '../../flux/user/actions'
-// import { addFlashMessage } from '../../flux/page/flashMessageActions'
 import { FlashMessages } from '../page/FlashMessage'
 
 class LoginForm extends React.Component {
@@ -124,7 +124,10 @@ class LoginForm extends React.Component {
                 onChange={this.handle}
               />
             </FormGroup>
-            <div className="text-center">
+            <div className="d-flex justify-content-between">
+              <Link route="password">
+                <a>Esqueci a senha</a>
+              </Link>
               <button className="btn btn-primary" disabled={isLoading}>Entrar</button>
             </div>
           </form>
