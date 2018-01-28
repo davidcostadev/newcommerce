@@ -62,6 +62,24 @@ const fakeFetchGetFall = () => Promise.resolve({
   data: UserMock.getDontFind,
 })
 
+const fakeFetchResetPassword = () => Promise.resolve({
+  data: {
+    result: [
+      {
+        PS_TABELA_INFO: [UserMock.getResetPassword],
+        PS_ALERTA: 7,
+        PS_FEEDBACK: 'Processo de altera\u00e7\u00e3o de senha iniciado',
+      },
+    ],
+  },
+})
+
+const fakeFetchResetPasswordFall = () => Promise.resolve({
+  data: {
+    result: [UserMock.getDontFindResetPassword],
+  },
+})
+
 
 describe('should test all function of user api', () => {
   it('should do login with email and password it\'s corrent', (done) => {
@@ -108,6 +126,7 @@ describe('should test all function of user api', () => {
         done()
       })
   })
+
   it('should fall when dont find user', (done) => {
     const userId = 99999
 
@@ -115,6 +134,28 @@ describe('should test all function of user api', () => {
       .catch((err) => {
         expect(err)
           .toEqual(UserMock.getDontFindResult)
+        done()
+      })
+  })
+
+  it('should get fall on get email', (done) => {
+    const userId = 'email@gmail.com'
+
+    User.resetPassword(fakeProcess.env, fakeFetchResetPasswordFall, userId)
+      .catch((err) => {
+        expect(err)
+          .toEqual(UserMock.getDontFindResetPassword)
+        done()
+      })
+  })
+
+  it('should get success on get email', (done) => {
+    const userId = 'email@gmail.com'
+
+    User.resetPassword(fakeProcess.env, fakeFetchResetPassword, userId)
+      .then((response) => {
+        expect(response)
+          .toEqual(UserMock.getResetPassword)
         done()
       })
   })

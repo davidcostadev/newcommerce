@@ -176,9 +176,21 @@ const getDontFindResult = {
   PS_FEEDBACK: 'Não encontrado',
 }
 
+const getDontFindResetPassword = {
+  PS_ALERTA: 206,
+  PS_FEEDBACK: 'Informa\u00e7\u00e3o do usu\u00e1rio inv\u00e1lida',
+}
+
+const getResetPassword = {
+  PS_ID_PESSOA: 6738,
+  PS_NOME: 'JANAINA',
+}
+
 export default {
   get,
   getResult,
+  getResetPassword,
   getDontFind,
   getDontFindResult,
+  getDontFindResetPassword,
 }
