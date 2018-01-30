@@ -1,6 +1,7 @@
 // server.js
 const next = require('next')
-const cookieParser = require('cookie-parser');
+const qs = require('querystring')
+const cookieParser = require('cookie-parser')
 const routes = require('./routes')
 require('dotenv').config({
   path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env',
@@ -16,7 +17,7 @@ const express = require('express')
 const session = require('express-session')
 
 app.prepare().then(() => {
-  express()
+  const server = express()
     .use(cookieParser())
     .use(session({
       secret: 'keyboard cat',
@@ -24,8 +25,17 @@ app.prepare().then(() => {
       saveUninitialized: false,
       cookie: { maxAge: 60 * 60 * 24 * 7 * 1000 },
     }))
-    .use(handler)
-    .listen(process.env.PORT || 3000)
+
+
+  server.get('/redefinir-senha', (req, res) => {
+    const { query } = req
+
+    res.redirect(301, `/password?${qs.stringify(query)}`)
+  })
+
+  server.use(handler)
+
+  server.listen(process.env.PORT || 3000)
 })
 
 // Without express
