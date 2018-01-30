@@ -186,6 +186,16 @@ const getResetPassword = {
   PS_NOME: 'JANAINA',
 }
 
+const checkHash = {
+  PS_ID_PESSOA: 9529,
+  PS_NOME: 'David Santana (testecompra)',
+}
+
+const checkHashFall = {
+  PS_ALERTA: 206,
+  PS_FEEDBACK: 'Chave inv\u00e1lida',
+}
+
 export default {
   get,
   getResult,
@@ -193,4 +203,6 @@ export default {
   getDontFind,
   getDontFindResult,
   getDontFindResetPassword,
+  checkHash,
+  checkHashFall,
 }

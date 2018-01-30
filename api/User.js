@@ -219,10 +219,32 @@ async function resetPassword(env, fetch, email) {
   }
 }
 
+async function checkHash(env, fetch, hash) {
+  const data = JSON.stringify({
+    PE_PASSKEY: env.PASSKEY,
+    PE_IP: '127.0.0.1',
+    PE_SESSAO: 'asdfgh',
+    PE_CHAVEDERESET: hash,
+  })
+
+  try {
+    const response = await fetch(`${env.DOMAIN_API}/TSvmLogin/sp_login_web_val_keypsw_sel`, data)
+
+    if (response.data.result[0].PS_ALERTA !== 7) {
+      throw response.data.result[0]
+    }
+
+    return response.data.result[0].PS_TABELA_INFO[0]
+  } catch (e) {
+    throw e
+  }
+}
+
 
 export default {
   login,
   get,
   update,
   resetPassword,
+  checkHash,
 }

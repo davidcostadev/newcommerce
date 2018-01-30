@@ -80,6 +80,24 @@ const fakeFetchResetPasswordFall = () => Promise.resolve({
   },
 })
 
+const fakeFetchCheckHash = () => Promise.resolve({
+  data: {
+    result: [
+      {
+        PS_TABELA_INFO: [UserMock.checkHash],
+        PS_ALERTA: 7,
+        PS_FEEDBACK: 'Valida\u00e7\u00e3o da chave efetuado com sucesso',
+      },
+    ],
+  },
+})
+
+const fakeFetchCheckHashFall = () => Promise.resolve({
+  data: {
+    result: [UserMock.checkHashFall],
+  },
+})
+
 
 describe('should test all function of user api', () => {
   it('should do login with email and password it\'s corrent', (done) => {
@@ -156,6 +174,28 @@ describe('should test all function of user api', () => {
       .then((response) => {
         expect(response)
           .toEqual(UserMock.getResetPassword)
+        done()
+      })
+  })
+
+  it('should get success check hash', (done) => {
+    const hash = '123456'
+
+    User.checkHash(fakeProcess.env, fakeFetchCheckHash, hash)
+      .then((response) => {
+        expect(response)
+          .toEqual(UserMock.checkHash)
+        done()
+      })
+  })
+
+  it('should get fall check hash', (done) => {
+    const hash = '123456'
+
+    User.checkHash(fakeProcess.env, fakeFetchCheckHashFall, hash)
+      .catch((response) => {
+        expect(response)
+          .toEqual(UserMock.checkHashFall)
         done()
       })
   })
