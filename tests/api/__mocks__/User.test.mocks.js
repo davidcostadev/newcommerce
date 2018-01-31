@@ -196,6 +196,16 @@ const checkHashFall = {
   PS_FEEDBACK: 'Chave inv\u00e1lida',
 }
 
+const passwordChange = {
+  PS_ID_PESSOA: 9529,
+  PS_NOME: 'David Santana (testecompra)',
+}
+
+const passwordChangeFallUser = {
+  PS_ALERTA: 206,
+  PS_FEEDBACK: 'Usuário Não Indentificado',
+}
+
 export default {
   get,
   getResult,
@@ -205,4 +215,6 @@ export default {
   getDontFindResetPassword,
   checkHash,
   checkHashFall,
+  passwordChange,
+  passwordChangeFallUser,
 }

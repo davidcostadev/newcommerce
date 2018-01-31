@@ -98,6 +98,24 @@ const fakeFetchCheckHashFall = () => Promise.resolve({
   },
 })
 
+const fakeFetchChangePassword = () => Promise.resolve({
+  data: {
+    result: [
+      {
+        PS_TABELA_INFO: [UserMock.passwordChange],
+        PS_ALERTA: 7,
+        PS_FEEDBACK: 'Senha Alterada com sucesso',
+      },
+    ],
+  },
+})
+
+const fakeFetchChangePasswordFall = () => Promise.resolve({
+  data: {
+    result: [UserMock.passwordChangeFallUser],
+  },
+})
+
 
 describe('should test all function of user api', () => {
   it('should do login with email and password it\'s corrent', (done) => {
@@ -196,6 +214,34 @@ describe('should test all function of user api', () => {
       .catch((response) => {
         expect(response)
           .toEqual(UserMock.checkHashFall)
+        done()
+      })
+  })
+
+  it('should get success in change password user', (done) => {
+    const data = {
+      userId: 1234,
+      password: '1234',
+    }
+
+    User.changePassword(fakeProcess.env, fakeFetchChangePassword, data)
+      .then((response) => {
+        expect(response)
+          .toEqual(UserMock.passwordChange)
+        done()
+      }).catch(err => console.log(err))
+  })
+
+  it('should get fall in change password user', (done) => {
+    const data = {
+      userId: 1234,
+      password: '1234',
+    }
+
+    User.changePassword(fakeProcess.env, fakeFetchChangePasswordFall, data)
+      .catch((response) => {
+        expect(response)
+          .toEqual(UserMock.passwordChangeFallUser)
         done()
       })
   })
