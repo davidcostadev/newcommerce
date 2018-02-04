@@ -246,7 +246,7 @@ async function changePassword(env, fetch, { userId, password }) {
     PE_IP: '127.0.0.1',
     PE_SESSAO: 'asdfgh',
     PE_ID_USUARIO: userId,
-    PE_SENHA: password,
+    PE_SENHA: md5(password),
   })
 
   try {
