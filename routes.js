@@ -1,4 +1,6 @@
-const routes = module.exports = require('next-routes')()
+const nextRoutes = require('next-routes')
+
+const routes = nextRoutes()
 
 routes
   .add('index')
@@ -15,4 +17,6 @@ routes
   .add('dashboard/order', '/dashboard/order/:orderId')
   .add('dashboard/password')
   .add('dashboard/logout')
+
+module.exports = routes
 
