@@ -8,3 +8,5 @@ export const menuMobile = (state = false, { type }) => {
       return state
   }
 }
+
+export default menuMobile

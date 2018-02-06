@@ -61,6 +61,7 @@ class Product extends React.Component {
 
 Product.propTypes = {
   product: PropTypes.object.isRequired,
+  changeQuant: PropTypes.func.isRequired,
 }
 
 export default Product

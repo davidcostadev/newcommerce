@@ -36,8 +36,9 @@ async function Category(props) {
     PE_COLUNA_ORDER: sort,
   })
 
+  const url = `${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_vertical_sel`
 
-  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_vertical_sel`, data)
+  const response = await axios.post(url, data)
 
   return {
     products: response.data.result[0].PS_TABELA_INFO,

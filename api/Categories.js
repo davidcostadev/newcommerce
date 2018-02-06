@@ -9,7 +9,10 @@ async function fun() {
     PE_SESSAO: 'asdfgh',
   })
 
-  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_website_menu_sel`, data);
+  const url = `${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_website_menu_sel`
+
+  const response = await axios.post(url, data)
+
   return response.data.result[0].PS_TABELA_INFO[0].TABLE_FAMILIA
 }
 

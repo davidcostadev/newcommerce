@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import WidgetCategory from '../components/WidgetCategory'
+import { WidgetCategory } from '../components/WidgetCategory'
 
 const organizeSubGroup = (subGroups) => {
   if (subGroups && !subGroups.length) return []
@@ -33,16 +34,16 @@ const organizeFamily = (families) => {
   }))
 }
 
-const familyFeature = (categories, familyId) => {
-  const categoryFind = categories.find(category => category.ID_FAMILIA === familyId)
+// const familyFeature = (categories, familyId) => {
+//   const categoryFind = categories.find(category => category.ID_FAMILIA === familyId)
 
-  return {
-    path: `/category/${categoryFind.PATH_PAGE_FAMILIA}`,
-    title: categoryFind.FAMILIA,
-    children: organizeGroup(categoryFind.TABLE_GRUPO),
-    ...categoryFind,
-  }
-}
+//   return {
+//     path: `/category/${categoryFind.PATH_PAGE_FAMILIA}`,
+//     title: categoryFind.FAMILIA,
+//     children: organizeGroup(categoryFind.TABLE_GRUPO),
+//     ...categoryFind,
+//   }
+// }
 
 
 class WidgetCategoryContainer extends React.Component {
@@ -63,6 +64,10 @@ class WidgetCategoryContainer extends React.Component {
       <WidgetCategory title="categorias" menu={this.state.newCategories} />
     )
   }
+}
+
+WidgetCategoryContainer.propTypes = {
+  categories: PropTypes.array.isRequired,
 }
 
 const mapState = state => state

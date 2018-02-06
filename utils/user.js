@@ -1,3 +1,5 @@
+/* eslint no-param-reassign: "off" */
+
 import jsCookie from 'js-cookie'
 import Router from 'next/router'
 

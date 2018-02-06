@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import axios from 'axios'
 import withRedux from 'next-redux-wrapper'
 import Page from '../containers/PageHOF'
@@ -25,7 +26,7 @@ class Password extends React.Component {
 
     const urlMeta = {
       PS_TITLE: 'password',
-      PS_DESCRIPTION: 'If you dont remember anymore of your password, you can reset it in this page',
+      PS_DESCRIPTION: 'If you dont remember of your password, you can reset it in this page',
     }
 
     return {
@@ -41,6 +42,13 @@ class Password extends React.Component {
     let passwordValid = false
     let userId = null
 
+    if (!key.length) {
+      return {
+        passwordValid,
+        userId,
+      }
+    }
+
     try {
       const env = {
         PASSKEY: process.env.PASSKEY,
@@ -53,7 +61,7 @@ class Password extends React.Component {
         userId = parseInt(response.PS_ID_PESSOA, 10)
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
 
     return {
@@ -165,6 +173,19 @@ class Password extends React.Component {
       </Page>
     )
   }
+}
+
+Password.propTypes = {
+  passwordValid: PropTypes.bool.isRequired,
+  query: PropTypes.shape({
+    chave: PropTypes.string.isRequired,
+  }),
+}
+
+Password.defaultProps = {
+  query: {
+    chave: '',
+  },
 }
 
 const mapState = state => state

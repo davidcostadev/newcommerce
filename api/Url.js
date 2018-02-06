@@ -27,7 +27,9 @@ async function Url(query) {
   })
 
   try {
-    const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_website_url_sel`, data)
+    const url = `${process.env.DOMAIN_API}/Tsvmwebsite/sp_website_url_sel`
+
+    const response = await axios.post(url, data)
 
     if (response.data.result[0].PS_ALERTA !== 7) {
       throw response.data.result[0]

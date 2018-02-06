@@ -24,7 +24,11 @@ export const ProductBox = ({ product, columns }) => (
     </ShowPrice>
     <Product.ProductButtons>
       <Link route={`/product/${product.PS_PATH_PAGE}`}>
-        <Product.ProductBtnDetails href={`/product/${product.PS_PATH_PAGE}`}>Ver Detalhes</Product.ProductBtnDetails>
+        <Product.ProductBtnDetails
+          href={`/product/${product.PS_PATH_PAGE}`}
+        >
+          Ver Detalhes
+        </Product.ProductBtnDetails>
       </Link>
       <ShowCart>
         <Link route="/product">

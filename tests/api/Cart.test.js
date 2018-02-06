@@ -1,5 +1,5 @@
 import Cart from '../../api/Cart'
 
 xdescribe('', () => {
-  it('', () => {})
+  it('', () => Cart)
 })

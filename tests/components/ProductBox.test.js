@@ -2,7 +2,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
-import { ParcelBox, ProductBox } from '../../components/ProductBox'
+import { ProductBox } from '../../components/ProductBox'
 
 const product = {
   PS_REGISTROS_COUNT: '5027',
@@ -52,8 +52,8 @@ const product = {
   PS_DESCRICAO_VENDA: 'Característica:\r\n\r\nMarca: C3 Tech\r\nModelo: DT-100BK',
   PS_GARANTIA: '12 MESES',
   PS_ID_IMAGEM: '193420',
-  PS_PATH_IMAGEM_150: 'http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-150-193420.jpg',
-  PS_PATH_IMAGEM_250: 'http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-250-193420.jpg',
+  PS_PATH_IMAGEM_150: 'http://www.winerp.com.br/images/mundial/products/gab--45093-150-193420.jpg',
+  PS_PATH_IMAGEM_250: 'http://www.winerp.com.br/images/mundial/products/gab--45093-250-193420.jpg',
   PS_IMAGEM_TXT_ALT: '',
   PS_IMAGEM_TXT_TITLE: '',
   PS_PATH_PAGE: 'gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech',

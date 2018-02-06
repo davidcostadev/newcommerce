@@ -24,7 +24,9 @@ class ProdutosNovosContainer extends React.Component {
       PE_COLUNA_ORDER: 2,
     })
 
-    axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_maisvisitados_sel`, data).then((response) => {
+    const url = `${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_maisvisitados_sel`
+
+    axios.post(url, data).then((response) => {
       this.setState({
         products: response.data.result[0].PS_TABELA_PRODUTO,
       })

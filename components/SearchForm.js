@@ -76,7 +76,13 @@ class SearchForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <Field>
-          <Input type="text" className="input is-large" value={this.state.query} onChange={this.handleChange} placeholder="O que você está produrando?" />
+          <Input
+            type="text"
+            className="input is-large"
+            value={this.state.query}
+            onChange={this.handleChange}
+            placeholder="O que você está produrando?"
+          />
           <Button type="submit" className="button is-info"><i className="ion-ios-search" /></Button>
         </Field>
       </form>

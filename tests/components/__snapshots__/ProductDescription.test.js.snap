@@ -15,8 +15,7 @@ exports[`Component <ProductDescription /> with some text 1`] = `
     className="BlockInfo__BlockInfoContent-rlo975-2 dkDtOI"
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<p>Especifica&ccedil;&otilde;es T&eacute;cnicas<br />Caracter&iacute;sticas:<br />Gabinete em formato SLIM<br />Fonte SFX 200W inclusa<br />1 entrada USB 2.0<br />1 entrada USB 3.0<br />Entrada de &Aacute;udio HD<br />Suporta Placa Micro ATX<br />Cabo de For&ccedil;a n&atilde;o incluso</p>
-<p>Outros<br />Descri&ccedil;&atilde;o: GAB DESKTOP DT-100BK C/FTE PS-200SFX C3T<br />Altura: 30,00 cm<br />Largura: 10,00 cm<br />Comprimento: 41,50 cm<br />Peso: 2,98 g</p>",
+        "__html": "<p>Especifica&ccedil;&otilde;es T&eacute;cng</p>",
       }
     }
   />

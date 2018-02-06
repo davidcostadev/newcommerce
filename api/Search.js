@@ -21,7 +21,9 @@ async function Search(props) {
   })
 
   try {
-    const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebprodutos/sp_web_busca_horizontal_sel`, data);
+    const url = `${process.env.DOMAIN_API}/Tsvmwebprodutos/sp_web_busca_horizontal_sel`
+
+    const response = await axios.post(url, data)
 
     if (response.data.result[0].PS_ALERTA === 206) {
       return {

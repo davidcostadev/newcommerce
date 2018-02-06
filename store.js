@@ -36,9 +36,9 @@ export const familyId = (state = initialStateAll.familyId, { type, payload }) =>
 
 
 // actions
-export const categoriesFull = categories => ({
+export const categoriesFull = categoriesAction => ({
   type: CATEGORIES_FULL,
-  payload: categories,
+  payload: categoriesAction,
 })
 
 export const familyIdFull = familyIda => ({

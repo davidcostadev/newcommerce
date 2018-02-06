@@ -74,8 +74,8 @@ export const MenuItem = styled.div`
   margin-bottom: 4px;
 
 
-  ${props => props.onlyMobile ? OnlyMobile : ''}
-  ${props => props.onlyDesktop ? OnlyDesktop : ''}
+  ${props => (props.onlyMobile ? OnlyMobile : '')}
+  ${props => (props.onlyDesktop ? OnlyDesktop : '')}
 `
 
 
@@ -100,8 +100,8 @@ export const Menu = styled.div`
   padding-left: 0;
   list-style: none;
 
-  ${props => props.right ? MenuRight : ''}
-  ${props => props.vertical ? MenuVertical : ''}
+  ${props => (props.right ? MenuRight : '')}
+  ${props => (props.vertical ? MenuVertical : '')}
 `
 
 export const MenuLink = styled.a`
@@ -148,8 +148,8 @@ export const MenuLink = styled.a`
 export const MenuButton = MenuLink.withComponent('button')
 
 export const BrandImage = styled.img`
-  ${props => props.onlyMobile ? OnlyMobile : ''}
-  ${props => props.onlyDesktop ? OnlyDesktop : ''}
+  ${props => (props.onlyMobile ? OnlyMobile : '')}
+  ${props => (props.onlyDesktop ? OnlyDesktop : '')}
 `
 
 export const DescriptionLogo = styled.p`

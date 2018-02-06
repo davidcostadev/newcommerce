@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import jsCookie from 'js-cookie'
@@ -21,7 +22,13 @@ const ProductPageBox = styled.div`
 `
 
 class Product extends React.Component {
-  static async getInitialProps({ req, query, store, isServer }) {
+  static async getInitialProps(props) {
+    const {
+      req,
+      query,
+      store,
+      isServer,
+    } = props
     const { sessionId } = await Page.getInitialProps(store, req, isServer)
 
     const urlMeta = await ApiUrl(query)
@@ -42,6 +49,8 @@ class Product extends React.Component {
   constructor(props) {
     super(props)
 
+    this.addProductCart = this.addProductCart.bind(this)
+
     this.state = {
       cartId: props.cartId,
     }
@@ -50,9 +59,14 @@ class Product extends React.Component {
   breadCrumbsProps() {
     const itens = []
 
-    const family = this.props.categories.find(element => element.ID_FAMILIA === parseInt(this.props.product.PS_ID_FAMILIA, 10))
-    const group = family.TABLE_GRUPO.find(element => element.ID_GRUPO === parseInt(this.props.product.PS_ID_GRUPO, 10))
-    const subgroup = group.TABLE_SUBGRUPO.find(element => element.ID_SUBGRUPO === parseInt(this.props.product.PS_ID_SUBGRUPO, 10))
+    const family = this.props.categories
+      .find(element => element.ID_FAMILIA === parseInt(this.props.product.PS_ID_FAMILIA, 10))
+
+    const group = family.TABLE_GRUPO
+      .find(element => element.ID_GRUPO === parseInt(this.props.product.PS_ID_GRUPO, 10))
+
+    const subgroup = group.TABLE_SUBGRUPO
+      .find(element => element.ID_SUBGRUPO === parseInt(this.props.product.PS_ID_SUBGRUPO, 10))
 
 
     itens.push({
@@ -76,7 +90,6 @@ class Product extends React.Component {
   }
 
   async addProductCart(productId) {
-    console.log('addProductCart')
     const cartId = this.state.cartId || null
     // console.log(cartId)
 
@@ -105,10 +118,18 @@ class Product extends React.Component {
           <ProductPageBox>
             <div className="row">
               <div className="col-lg-4">
-                <Gallery image={this.props.product.PS_PATH_IMAGEM_400} images={this.props.images} urlMeta={this.props.urlMeta} />
+                <Gallery
+                  image={this.props.product.PS_PATH_IMAGEM_400}
+                  images={this.props.images}
+                  urlMeta={this.props.urlMeta}
+                />
               </div>
               <div className="col-lg-8">
-                <ProductDetails product={this.props.product} bredcrumbs={this.breadCrumbsProps()} addProductCart={this.addProductCart.bind(this)} />
+                <ProductDetails
+                  product={this.props.product}
+                  bredcrumbs={this.breadCrumbsProps()}
+                  addProductCart={this.addProductCart}
+                />
               </div>
 
             </div>
@@ -122,8 +143,30 @@ class Product extends React.Component {
   }
 }
 
-const mapState = state => state
+Product.propTypes = {
+  urlMeta: PropTypes.shape({
+    PS_TITLE: PropTypes.string.isRequired,
+    PS_DESCRIPTION: PropTypes.string.isRequired,
+  }).isRequired,
+  product: PropTypes.shape({
+    PS_PATH_IMAGEM_400: PropTypes.string.isRequired,
+    PS_ID_FAMILIA: PropTypes.string.isRequired,
+    PS_ID_GRUPO: PropTypes.string.isRequired,
+    PS_ID_SUBGRUPO: PropTypes.string.isRequired,
+    PS_PRODUTO: PropTypes.string.isRequired,
+    PS_PATH_PAGE: PropTypes.string.isRequired,
+  }).isRequired,
+  images: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
+  products: PropTypes.array.isRequired,
+  cartId: PropTypes.number.isRequired,
+  sessionId: PropTypes.string.isRequired,
+  setCart: PropTypes.func.isRequired,
+  setCartItens: PropTypes.func.isRequired,
+}
 
+
+const mapState = state => state
 
 const mapDispatchToProps = dispatch => ({
   setCart: bindActionCreators(setCart, dispatch),

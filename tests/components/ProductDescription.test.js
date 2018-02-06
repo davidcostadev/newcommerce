@@ -54,15 +54,15 @@ const product = {
   PS_GARANTIA: '12 MESES',
   PS_PATH_PAGE: 'gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech',
   PS_ID_IMAGEM: '193420',
-  PS_PATH_IMAGEM_400: 'http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-400-193420.jpg',
-  PS_PATH_IMAGEM_ZOOM: 'http://www.winerp.com.br/images/mundial/products/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech---45093-2000-193420.jpg',
+  PS_PATH_IMAGEM_400: 'http://www.winerp.com.br/images/mundial/products/---45093-400-193420.jpg',
+  PS_PATH_IMAGEM_ZOOM: 'http://www.winerp.com.br/images/mundial/products/---45093-2000-193420.jpg',
   PS_IMAGEM_TXT_ALT: '',
   PS_IMAGEM_TXT_TITLE: '',
   PS_PATH_VIDEO_WEB1: '',
   PS_PATH_VIDEO_WEB2: '',
   PS_PATH_VIDEO_LOCAL: '',
   PS_DESCRICAO_VENDA: 'Característica:\r\n\r\nMarca: C3 Tech\r\nModelo: DT-100BK',
-  PS_DETALHES_PRODUTO: '<p>Especifica&ccedil;&otilde;es T&eacute;cnicas<br />Caracter&iacute;sticas:<br />Gabinete em formato SLIM<br />Fonte SFX 200W inclusa<br />1 entrada USB 2.0<br />1 entrada USB 3.0<br />Entrada de &Aacute;udio HD<br />Suporta Placa Micro ATX<br />Cabo de For&ccedil;a n&atilde;o incluso</p>\r\n<p>Outros<br />Descri&ccedil;&atilde;o: GAB DESKTOP DT-100BK C/FTE PS-200SFX C3T<br />Altura: 30,00 cm<br />Largura: 10,00 cm<br />Comprimento: 41,50 cm<br />Peso: 2,98 g</p>',
+  PS_DETALHES_PRODUTO: '<p>Especifica&ccedil;&otilde;es T&eacute;cng</p>',
 }
 
 describe('Component <ProductDescription />', () => {

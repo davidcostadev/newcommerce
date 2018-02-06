@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import { initStore } from '../store'
@@ -30,9 +31,13 @@ class Cart extends React.Component {
     }
   }
 
-  async changeQuant(movimentCartId, productId, quant) {
-    console.log('changeQuant', movimentCartId, productId)
+  constructor() {
+    super()
 
+    this.onChangeQuant = this.onChangeQuant.bind(this)
+  }
+
+  async onChangeQuant(movimentCartId, productId, quant) {
     const { cart, cartItens } = await changeQuant({
       cartId: this.props.cartId,
       sessionId: this.props.sessionId,
@@ -52,7 +57,7 @@ class Cart extends React.Component {
           <ContentCart
             cart={this.props.cart}
             cartItens={this.props.cartItens}
-            changeQuant={this.changeQuant.bind(this)}
+            changeQuant={this.onChangeQuant}
           />
         </Container>
       </Page>
@@ -60,6 +65,15 @@ class Cart extends React.Component {
   }
 }
 
+
+Cart.propTypes = {
+  cart: PropTypes.object.isRequired,
+  cartItens: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired,
+  setCartItens: PropTypes.func.isRequired,
+  cartId: PropTypes.number.isRequired,
+  sessionId: PropTypes.string.isRequired,
+}
 
 const mapState = state => state
 

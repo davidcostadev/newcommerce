@@ -22,21 +22,21 @@ const Sitemap = () => (
         <div className="col-md-3">
           <SiteMapTitle>Informações</SiteMapTitle>
           <Menu vertical>
-            <MenuItem><Link>Sobre Nós</Link></MenuItem>
-            <MenuItem><Link>Serviço ao Cliente</Link></MenuItem>
-            <MenuItem><Link>Política de Privacidade</Link></MenuItem>
-            <MenuItem><Link>Pedidos e Retornos</Link></MenuItem>
-            <MenuItem><Link>Fale conosco</Link></MenuItem>
+            <MenuItem><Link route="/"><a>Sobre Nós</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Serviço ao Cliente</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Política de Privacidade</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Pedidos e Retornos</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Fale conosco</a></Link></MenuItem>
           </Menu>
         </div>
         <div className="col-md-3">
           <SiteMapTitle>Porque Comprar Conosco?</SiteMapTitle>
           <Menu vertical>
 
-            <MenuItem><Link>Entrega e Delivery</Link></MenuItem>
-            <MenuItem><Link>Compra Segura</Link></MenuItem>
-            <MenuItem><Link>Afiliados</Link></MenuItem>
-            <MenuItem><Link>Atacado</Link></MenuItem>
+            <MenuItem><Link route="/"><a>Entrega e Delivery</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Compra Segura</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Afiliados</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Atacado</a></Link></MenuItem>
           </Menu>
         </div>
         <div className="col-md-3">
@@ -49,10 +49,10 @@ const Sitemap = () => (
               <MenuItem><Link route="dashboard"><a>Minha Conta</a></Link></MenuItem>
             </ShowToUser>
             <MenuItem><Link route="cart"><a>Ver Carrinho</a></Link></MenuItem>
-            <MenuItem><Link>Lista de Desejo</Link></MenuItem>
-            <MenuItem><Link>Rastrear Entrega</Link></MenuItem>
-            <MenuItem><Link>Meus Pedidos</Link></MenuItem>
-            <MenuItem><Link>Ajuda</Link></MenuItem>
+            <MenuItem><Link route="/"><a>Lista de Desejo</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Rastrear Entrega</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Meus Pedidos</a></Link></MenuItem>
+            <MenuItem><Link route="/"><a>Ajuda</a></Link></MenuItem>
           </Menu>
         </div>
         <div className="col-md-3">
@@ -60,7 +60,11 @@ const Sitemap = () => (
           <form action="#" className="form">
             <div className="input-group">
               <input type="text" className="form-control" placeholder="email@dominio.com.br" />
-              <div className="input-group-btn"><button className="btn btn-primary"><i className="ion-ios-search" /></button></div>
+              <div className="input-group-btn">
+                <button className="btn btn-primary">
+                  <i className="ion-ios-search" />
+                </button>
+              </div>
             </div>
           </form>
 

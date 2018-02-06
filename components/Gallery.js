@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const GalleryThumb = styled.picture`
@@ -33,17 +34,22 @@ const GalleryThumbs = styled.div`
  display: flex;
 `
 
-const Gallery = ({ image, images, urlMeta }) => {
-  return (
-    <GalleryBox>
-      <GalleryFeature>
-        <img src={image} alt={urlMeta.PS_TITLE} />
-      </GalleryFeature>
-      <GalleryThumbs>
-        <Thumbs images={images} urlMeta={urlMeta} />
-      </GalleryThumbs>
-    </GalleryBox>
-  )
+const Gallery = ({ image, images, urlMeta }) => (
+  <GalleryBox>
+    <GalleryFeature>
+      <img src={image} alt={urlMeta.PS_TITLE} />
+    </GalleryFeature>
+    <GalleryThumbs>
+      <Thumbs images={images} urlMeta={urlMeta} />
+    </GalleryThumbs>
+  </GalleryBox>
+)
+
+
+Gallery.propTypes = {
+  image: PropTypes.string.isRequired,
+  images: PropTypes.array.isRequired,
+  urlMeta: PropTypes.object.isRequired,
 }
 
 export default Gallery

@@ -11,7 +11,9 @@ async function Product(productId) {
     PE_ID_PRODUTO: productId,
   })
 
-  const response = await axios.post(`${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_landingpage_sel`, data)
+  const url = `${process.env.DOMAIN_API}/Tsvmwebsite/sp_web_busca_landingpage_sel`
+
+  const response = await axios.post(url, data)
 
   return {
     product: response.data.result[0].PS_TABELA_INFO[0],

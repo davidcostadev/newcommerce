@@ -1,3 +1,5 @@
+/* eslint max-len: "off" */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -8,8 +10,8 @@ const Section = styled.div`
   background-position: center;
   padding: 30px 60px;
   margin-bottom: 20px;
-
 `
+
 const Title = styled.h1`
   color: rgb(0, 255, 255);
   mix-blend-mode: difference;

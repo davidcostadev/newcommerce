@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import styled from 'styled-components'
-import theme from '../layout/theme'
+// import styled from 'styled-components'
+// import theme from '../layout/theme'
 import { Link } from '../routes'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
-import ButtonCart from '../components/ButtonCart'
+// import ButtonCart from '../components/ButtonCart'
 import { Container } from '../layout/Pages'
 import { setAuthentication } from '../flux/user/actions'
 import SubTitle from './page/Subtitle'
@@ -31,7 +31,7 @@ import Logo from '../layout/Logo'
 import BtnNavigation from './ButtonNavigation'
 
 Router.onRouteChangeStart = (url) => {
-  console.log(`Loading: ${url}`)
+  window.console.log(`Loading: ${url}`)
   NProgress.start()
 }
 Router.onRouteChangeComplete = () => NProgress.done()
@@ -54,7 +54,7 @@ class HeaderPage extends React.Component {
   }
 
   render() {
-    const { query, authentication, Logout } = this.props
+    const { query, Logout } = this.props
     const { openSearch } = this.state
 
     return (
@@ -123,7 +123,7 @@ class HeaderPage extends React.Component {
                   </MenuItem>
                   <ShowCart>
                     <MenuItem onlyDesktop>
-                      <ButtonCart />
+                      {/* <ButtonCart /> */}
                     </MenuItem>
                   </ShowCart>
                   <MenuItem onlyMobile>
@@ -149,7 +149,7 @@ HeaderPage.defaultProps = {
 
 HeaderPage.propTypes = {
   query: PropTypes.string,
-  authentication: PropTypes.bool.isRequired,
+  // authentication: PropTypes.bool.isRequired,
   Logout: PropTypes.func.isRequired,
 }
 

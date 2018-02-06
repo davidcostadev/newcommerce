@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export async function AddProduct(params) {
-  console.log(new Date(), 'Api Cart AddProduct')
+  window.console.log(new Date(), 'Api Cart AddProduct')
 
   const {
     sessionId,
@@ -26,7 +26,9 @@ export async function AddProduct(params) {
     PE_CEP: cep || null,
   })
 
-  const resultData = axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_ins`, data)
+  const url = `${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_ins`
+
+  const resultData = axios.post(url, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         throw new Error(response.data.result[0].PS_FEEDBACK)
@@ -41,7 +43,7 @@ export async function AddProduct(params) {
 }
 
 export async function getCart(params) {
-  console.log(new Date(), 'Api Cart getCart')
+  window.console.log(new Date(), 'Api Cart getCart')
 
   const {
     sessionId,
@@ -56,7 +58,9 @@ export async function getCart(params) {
     PE_ID_CLIENTE: null,
   })
 
-  const resultData = await axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_sel`, data)
+  const url = `${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_sel`
+
+  const resultData = await axios.post(url, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         switch (response.data.result[0].PS_ID_ERRO) {
@@ -80,7 +84,7 @@ export async function getCart(params) {
 }
 
 export async function changeQuant(params) {
-  console.log(new Date(), 'Api Cart changeQuant')
+  window.console.log(new Date(), 'Api Cart changeQuant')
 
   const {
     sessionId,
@@ -102,8 +106,8 @@ export async function changeQuant(params) {
     PE_ID_PRODUTO: productId,
     PE_QT: quant,
   })
-
-  const resultData = await axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_qtd`, data)
+  const url = `${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_qtd`
+  const resultData = await axios.post(url, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         throw new Error(response.data.result[0].PS_FEEDBACK)
@@ -118,7 +122,7 @@ export async function changeQuant(params) {
 }
 
 export async function closeCart(params) {
-  console.log(new Date(), 'Api Cart closeCart')
+  window.console.log(new Date(), 'Api Cart closeCart')
 
   const {
     sessionId,
@@ -150,9 +154,9 @@ export async function closeCart(params) {
     PE_ANOTACOES: null,
   })
 
-  // console.log(JSON.parse(data))
+  const url = `${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_fcr`
 
-  const resultData = await axios.post(`${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_fcr`, data)
+  const resultData = await axios.post(url, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         throw new Error(response.data.result[0].PS_FEEDBACK)

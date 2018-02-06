@@ -121,10 +121,10 @@ const ProductPriceCol = styled.div`
   margin-bottom: 15px;
 `
 
-const BtnFavorite = styled.button`
-  font-size: 2.00rem;
-  padding: 0.35rem 0.9rem;
-`
+// const BtnFavorite = styled.button`
+//   font-size: 2.00rem;
+//   padding: 0.35rem 0.9rem;
+// `
 
 const ProducPrice = styled.p`
 `
@@ -248,23 +248,18 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
               Comprar
             </button>
           </ShowCart>
-        {/*
-          <BtnFavorite className="btn btn-lg btn-danger btn-favorite">
-            <i className="ion-ios-heart" />
-          </BtnFavorite> */}
         </div>
       </div>
     </ProductBlock>
-      {
-        process.env.BUSSNESS_ENABLE_PRICE === 'true' ? (
-          <ProductPriceBoleto>
-            <ProductPriceBoletoCurrency>R$</ProductPriceBoletoCurrency>
-            <ProductPriceBoletoAmount>{stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}</ProductPriceBoletoAmount>
-            <ProductPriceBoletoText>7% de Desconco no Boleto ou Transferencia</ProductPriceBoletoText>
-          </ProductPriceBoleto>
-        ) : ''
-      }
-
+    <ShowPrice>
+      <ProductPriceBoleto>
+        <ProductPriceBoletoCurrency>R$</ProductPriceBoletoCurrency>
+        <ProductPriceBoletoAmount>
+          {stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}
+        </ProductPriceBoletoAmount>
+        <ProductPriceBoletoText>7% de Desconco no Boleto ou Transferencia</ProductPriceBoletoText>
+      </ProductPriceBoleto>
+    </ShowPrice>
     <ProductMore>
       {
         process.env.BUSSNESS_ENABLE_FRETE === 'true' ? (
@@ -289,5 +284,11 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
     </ProductMore>
   </ProductDetailBox>
 )
+
+ProductDetail.propTypes = {
+  product: PropTypes.object.isRequired,
+  bredcrumbs: PropTypes.array.isRequired,
+  addProductCart: PropTypes.func.isRequired,
+}
 
 export default ProductDetail

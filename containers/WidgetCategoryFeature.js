@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import WidgetCategory from '../components/WidgetCategory'
+import { WidgetCategory } from '../components/WidgetCategory'
 
 const organizeSubGroup = (subGroups) => {
   if (subGroups && !subGroups.length) return []
@@ -47,6 +48,10 @@ const WidgetCategoryFeature = (props) => {
   )
 }
 
+WidgetCategoryFeature.propTypes = {
+  categories: PropTypes.array.isRequired,
+  familyId: PropTypes.number.isRequired,
+}
 
 const mapState = state => state
 

@@ -44,8 +44,6 @@ class CartPayment extends React.Component {
     this.changeWayPayment = this.changeWayPayment.bind(this)
     this.changeWayDelivery = this.changeWayDelivery.bind(this)
 
-    console.log(this.props)
-
     this.state = {
       paymentId: 1,
       deliveryId: 1,
@@ -69,29 +67,22 @@ class CartPayment extends React.Component {
   }
 
   changeWayPayment(id) {
-    console.log('changeWayPayment', id)
-
     this.setState({
       paymentId: id,
     })
   }
 
   changeWayDelivery(id) {
-    console.log('changeWayDelivery', id)
-
     this.setState({
       deliveryId: id,
     })
   }
 
   async closeCart() {
-    console.log('closeCart')
     const {
       paymentId,
       deliveryId,
     } = this.state
-
-    console.log(this.props)
 
     this.props.setCart({})
     this.props.setCartItens([])
@@ -144,9 +135,15 @@ class CartPayment extends React.Component {
                     <div className="row">
                       <div className="col-sm-6">
                         <h4>Pagamento</h4>
-                        <WayPayment paymentDefault={paymentId} onClick={this.changeWayPayment} />
+                        <WayPayment
+                          paymentDefault={paymentId}
+                          onClick={this.changeWayPayment}
+                        />
                         <h4>Meio de Entrega</h4>
-                        <WayDelivery deliveryDefault={deliveryId} onClick={this.changeWayDelivery} />
+                        <WayDelivery
+                          deliveryDefault={deliveryId}
+                          onClick={this.changeWayDelivery}
+                        />
                       </div>
                       <div className="col-sm-6">
                         <table className="table">
@@ -188,7 +185,9 @@ class CartPayment extends React.Component {
 }
 
 CartPayment.propTypes = {
-  // userData: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  setCart: PropTypes.func.isRequired,
+  setCartItens: PropTypes.func.isRequired,
   cart: PropTypes.object.isRequired,
   cartItens: PropTypes.array.isRequired,
 }

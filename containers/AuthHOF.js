@@ -59,8 +59,6 @@ export default connect(mapStateToProps)(HOF)
 //   }),
 // }
 
-
-
 // const mapToState = state => ({
 //   categories: state.categories,
 // })

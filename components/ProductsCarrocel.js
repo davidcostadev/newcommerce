@@ -11,6 +11,10 @@ const CarrocelTitle = ({ title }) => {
   )
 }
 
+CarrocelTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+}
+
 const ProductsCarrocel = ({ products, columns, title }) => (
   <ProductsSection>
     <CarrocelTitle title={title} />

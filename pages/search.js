@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import classNames from 'classnames'
@@ -13,7 +14,14 @@ import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
 
 class Search extends React.Component {
-  static async getInitialProps({ req, store, isServer, query }) {
+  static async getInitialProps(props) {
+    const {
+      req,
+      store,
+      isServer,
+      query,
+    } = props
+
     const { sessionId } = await Page.getInitialProps(store, req, isServer)
 
     const page = query.page ? query.page : 1
@@ -59,13 +67,20 @@ class Search extends React.Component {
                     {this.props.pagination.total} Produtos
                   </div>
                   <div className="col">
-                    <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
+                    <FilterOrderProducts
+                      prefix={this.prefixGerate()}
+                      query={this.props.url.query}
+                    />
                   </div>
                 </div>
                 <ProdutosCategoriaContainer products={this.props.products} />
 
                 <div className="row-block">
-                  <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
+                  <Pagination
+                    prefix={this.prefixGerate()}
+                    query={this.props.url.query}
+                    {...this.props.pagination}
+                  />
                 </div>
               </div>
             </div>
@@ -74,6 +89,24 @@ class Search extends React.Component {
       </Page>
     )
   }
+}
+
+Search.propTypes = {
+  products: PropTypes.array.isRequired,
+  pagination: PropTypes.shape({
+    total: PropTypes.number.isRequired,
+  }).isRequired,
+  urlMeta: PropTypes.shape({
+    PS_TITLE: PropTypes.string.isRequired,
+    PS_DESCRIPTION: PropTypes.string.isRequired,
+  }).isRequired,
+  url: PropTypes.shape({
+    query: PropTypes.shape({
+      q: PropTypes.string,
+    }),
+    pathname: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.any.isRequired,
 }
 
 

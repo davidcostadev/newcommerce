@@ -15,7 +15,6 @@ import cookie from '../utils/cookie'
 
 class Page extends React.Component {
   static async getInitialProps(store, req, isServer) {
-    console.log('getInitialProps', 'Page')
     Page.initialStore({ store, req, isServer })
     await Page.getCategories(store)
 
@@ -82,14 +81,10 @@ class Page extends React.Component {
       await Page.getCart(store, cartId, sessionId)
     }
 
-
-    // const state = store.getState()
-
-    // return state.cart.PS_ID_CARRINHO || null
+    return cartId
   }
 
   static async getCart(store, cartId, sessionId) {
-    console.log('getCart')
     const state = store.getState()
 
     if (state.cartItens.length) {
@@ -105,16 +100,10 @@ class Page extends React.Component {
       sessionId,
     })
 
-    // console.log(cart, cartItens)
-
     store.dispatch(setCart(cart))
     store.dispatch(setCartItens(cartItens))
 
     return cartId
-  }
-
-  componentWillMount() {
-    // console.log(this.props)
   }
 
   render() {

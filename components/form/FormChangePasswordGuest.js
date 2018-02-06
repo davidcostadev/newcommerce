@@ -87,10 +87,13 @@ class FormChangePasswordGuest extends React.Component {
     const { isLoading, errors, success } = this.state
 
     if (success) {
+      const msg = `Um email foi encaminhado para sua endereço de email e
+      siga as instrução contida nele.`
+
       const message = [
         {
           type: 'success',
-          message: 'Um email foi encaminhado para sua endereço de email e siga as instrução contida nele.',
+          message: msg,
         },
       ]
 

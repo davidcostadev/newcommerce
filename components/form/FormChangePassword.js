@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import shortid from 'shortid'
 import FormGroup from '../form/FormGroup'
 import Input from '../form/Input'
@@ -21,24 +22,6 @@ class FormChangePassword extends React.Component {
     }
   }
 
-  handle({ target }) {
-    this.setState({
-      [target.id]: target.value,
-    })
-  }
-
-  addErrors({ type, message }) {
-    this.setState({
-      errors: [
-        {
-          id: shortid.generate(),
-          type,
-          message,
-        },
-      ],
-    })
-  }
-
   onSubmit(event) {
     event.preventDefault()
 
@@ -46,8 +29,6 @@ class FormChangePassword extends React.Component {
       password,
       passwordConfirm,
     } = this.state
-
-    console.log(password, passwordConfirm)
 
     if (password.length < 6) {
       this.addErrors({
@@ -67,14 +48,35 @@ class FormChangePassword extends React.Component {
     }
   }
 
+  handle({ target }) {
+    this.setState({
+      [target.id]: target.value,
+    })
+  }
+
+  addErrors({ type, message }) {
+    this.setState({
+      errors: [
+        {
+          id: shortid.generate(),
+          type,
+          message,
+        },
+      ],
+    })
+  }
+
   render() {
     const { isLoading, errors, success } = this.state
 
     if (success) {
+      const msg = `Um email foi encaminhado para seu endereço de email e
+      siga as instrução contida nele.`
+
       const message = [
         {
           type: 'success',
-          message: 'Um email foi encaminhado para sua endereço de email e siga as instrução contida nele.',
+          message: msg,
         },
       ]
 
@@ -122,5 +124,8 @@ class FormChangePassword extends React.Component {
   }
 }
 
+FormChangePassword.propTypes = {
+  onChange: PropTypes.func.isRequired,
+}
 
 export default FormChangePassword

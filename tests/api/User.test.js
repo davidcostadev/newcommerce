@@ -229,7 +229,7 @@ describe('should test all function of user api', () => {
         expect(response)
           .toEqual(UserMock.passwordChange)
         done()
-      }).catch(err => console.log(err))
+      })
   })
 
   it('should get fall in change password user', (done) => {

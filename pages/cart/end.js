@@ -4,13 +4,13 @@ import withRedux from 'next-redux-wrapper'
 import styled from 'styled-components'
 import { initStore } from '../../store'
 import Page from '../../containers/PageHOF'
-import TableProducts from '../../components/product/TableProducts'
-import WayPayment from '../../components/product/WayPayment'
-import WayDelivery from '../../components/product/WayDelivery'
+// import TableProducts from '../../components/product/TableProducts'
+// import WayPayment from '../../components/product/WayPayment'
+// import WayDelivery from '../../components/product/WayDelivery'
 import { Container } from '../../layout/Pages'
-import * as Cart from '../../layout/Cart'
-import { floatToReal, StringToReal } from '../../utils/money'
-import { closeCart } from '../../api/Cart'
+// import * as Cart from '../../layout/Cart'
+// import { floatToReal, StringToReal } from '../../utils/money'
+// import { closeCart } from '../../api/Cart'
 import withAuth from '../../utils/withAuth'
 
 const Title = styled.div`
@@ -77,11 +77,11 @@ class CartEnd extends React.Component {
   }
 }
 
-// CartEnd.propTypes = {
-//   // userData: PropTypes.object.isRequired,
-//   cart: PropTypes.object.isRequired,
-//   cartItens: PropTypes.array.isRequired,
-// }
+CartEnd.propTypes = {
+  // userData: PropTypes.object.isRequired,
+  cart: PropTypes.object.isRequired,
+  cartItens: PropTypes.array.isRequired,
+}
 
 const mapState = state => state
 

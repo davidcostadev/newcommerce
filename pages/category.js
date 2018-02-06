@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import classNames from 'classnames'
@@ -15,7 +16,13 @@ import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
 
 class Category extends React.Component {
-  static async getInitialProps({ req, store, isServer, query }) {
+  static async getInitialProps(props) {
+    const {
+      req,
+      store,
+      isServer,
+      query,
+    } = props
     const { sessionId } = Page.getInitialProps(store, req, isServer)
 
     const urlMeta = await ApiUrl(query)
@@ -77,7 +84,10 @@ class Category extends React.Component {
                     {this.props.pagination.total} Produtos
                   </div>
                   <div className="col">
-                    <FilterOrderProducts prefix={this.prefixGerate()} query={this.props.url.query} />
+                    <FilterOrderProducts
+                      prefix={this.prefixGerate()}
+                      query={this.props.url.query}
+                    />
                   </div>
                 </div>
                 <div>
@@ -86,7 +96,11 @@ class Category extends React.Component {
                   </div>
                 </div>
                 <div className="row-block">
-                  <Pagination prefix={this.prefixGerate()} query={this.props.url.query} {...this.props.pagination} />
+                  <Pagination
+                    prefix={this.prefixGerate()}
+                    query={this.props.url.query}
+                    {...this.props.pagination}
+                  />
                 </div>
               </div>
             </div>
@@ -97,6 +111,14 @@ class Category extends React.Component {
   }
 }
 
+Category.propTypes = {
+  products: PropTypes.array.isRequired,
+  pagination: PropTypes.object.isRequired,
+  url: PropTypes.object.isRequired,
+  urlMeta: PropTypes.shape({
+    PS_TITLE: PropTypes.string.isRequired,
+  }).isRequired,
+}
 
 const mapState = state => state
 

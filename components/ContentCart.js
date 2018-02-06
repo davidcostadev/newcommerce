@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 // import PropTypes from 'prop-types'
-import Router from 'next/router'
+// import Router from 'next/router'
 import { floatToReal, StringToReal } from '../utils/money'
 import ProductCart from '../components/ProductCart'
 import Table from '../layout/Table'
@@ -17,6 +18,12 @@ const Products = ({ products, changeQuant }) => {
   return products.map(product => (
     <ProductCart key={product.PS_ID_PRODUTO} product={product} changeQuant={changeQuant} />
   ))
+}
+
+
+Products.propTypes = {
+  products: PropTypes.array.isRequired,
+  changeQuant: PropTypes.func.isRequired,
 }
 
 const Checkout = ({ cart, cartItens }) => {
@@ -74,28 +81,37 @@ const Checkout = ({ cart, cartItens }) => {
   )
 }
 
+Checkout.propTypes = {
+  cart: PropTypes.object.isRequired,
+  cartItens: PropTypes.array.isRequired,
+}
 
-const ContentCart = ({ cart, cartItens, changeQuant }) => {
-  return (
-    <Cart.Page>
-      <Cart.Title>Carrinho</Cart.Title>
-      <Table>
-        <thead>
-          <tr>
-            <th />
-            <th>Produto</th>
-            <th>Preço Unit.</th>
-            <th>Quantidade</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <Products products={cartItens} changeQuant={changeQuant} />
-        </tbody>
-      </Table>
-      <Checkout cart={cart} cartItens={cartItens} />
-    </Cart.Page>
-  )
+const ContentCart = ({ cart, cartItens, changeQuant }) => (
+  <Cart.Page>
+    <Cart.Title>Carrinho</Cart.Title>
+    <Table>
+      <thead>
+        <tr>
+          <th />
+          <th>Produto</th>
+          <th>Preço Unit.</th>
+          <th>Quantidade</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <Products products={cartItens} changeQuant={changeQuant} />
+      </tbody>
+    </Table>
+    <Checkout cart={cart} cartItens={cartItens} />
+  </Cart.Page>
+)
+
+
+ContentCart.propTypes = {
+  cart: PropTypes.object.isRequired,
+  cartItens: PropTypes.array.isRequired,
+  changeQuant: PropTypes.func.isRequired,
 }
 
 export default ContentCart

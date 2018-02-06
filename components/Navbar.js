@@ -43,7 +43,13 @@ const Menu = ({ links }) => (
     {links.map(link => (
       <NavbarNavItem key={link.id} className="nav-item">
         <Link route={link.to}>
-          <NavBarLink href={link.to} className={classNames(['nav-link'])} title={link.title}>{link.title}</NavBarLink>
+          <NavBarLink
+            href={link.to}
+            className={classNames(['nav-link'])}
+            title={link.title}
+          >
+            {link.title}
+          </NavBarLink>
         </Link>
       </NavbarNavItem>
     ))}
@@ -80,14 +86,23 @@ const NavBarLink = styled.a`
 
 `
 
-const Navbar = ({ categories, menuMobile }) => (
-  <NavbarBlock className={classNames(['navbar', 'navbar-light', 'navbar-toggleable-md', 'bg-faded', 'navbar-expand-lg'])} menu={menuMobile}>
-    <Container className="container">
-      <CategoriesFirst categories={categories} />
-    </Container>
-  </NavbarBlock>
-)
+const Navbar = ({ categories, menuMobile }) => {
+  const classes = [
+    'navbar',
+    'navbar-light',
+    'navbar-toggleable-md',
+    'bg-faded',
+    'navbar-expand-lg',
+  ]
 
+  return (
+    <NavbarBlock className={classNames(classes)} menu={menuMobile}>
+      <Container className="container">
+        <CategoriesFirst categories={categories} />
+      </Container>
+    </NavbarBlock>
+  )
+}
 
 Navbar.propTypes = {
   categories: PropTypes.array.isRequired,

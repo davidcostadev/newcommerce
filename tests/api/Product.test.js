@@ -1,5 +1,5 @@
 import Product from '../../api/Product'
 
 xdescribe('', () => {
-  it('', () => {})
+  it('', () => Product)
 })

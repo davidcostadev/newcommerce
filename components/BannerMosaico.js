@@ -102,9 +102,9 @@ const BannerMosaicoItem = styled.div`
     }
   }
 
-  ${props => props.center ? BannerToCenter : ''}
-  ${props => props.right ? BannerToRight : ''}
-  ${props => props.left ? BannerToLeft : ''}
+  ${props => (props.center ? BannerToCenter : '')}
+  ${props => (props.right ? BannerToRight : '')}
+  ${props => (props.left ? BannerToLeft : '')}
 `
 
 

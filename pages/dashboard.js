@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import { initStore } from '../store'
@@ -81,7 +82,10 @@ class Dashboard extends React.Component {
   render() {
     const { userFull, orders } = this.props
 
-    console.log(userFull)
+    const urlId = userFull.user_id
+    const imageId = userFull.image_id
+
+    const url = `http://www.winerp.com.br/images/mundial/customers/${urlId}-255-${imageId}.jpg`
 
     return (
       <Page {...this.props}>
@@ -91,7 +95,7 @@ class Dashboard extends React.Component {
               <div className="col-xs-12 col-sm-12 col-lg-3 col-lg-pull-9 ">
                 <p className="text-center">
                   <img
-                    src={`http://www.winerp.com.br/images/mundial/customers/${userFull.user_id}-255-${userFull.image_id}.jpg`}
+                    src={url}
                     alt="imagem do perfil"
                     className="img-thumbnail"
                     style={{ width: '263px' }}
@@ -101,9 +105,21 @@ class Dashboard extends React.Component {
               <div className="col-xs-12 col-sm-12 col-lg-9 col-lg-push-3">
                 <div className="navbar navbar-light bg-light navbar-expand-lg">
                   <ul className="navbar-nav">
-                    <li className="nav-item"><Link route="dashboard"><a className="nav-link">Inicio</a></Link></li>
-                    <li className="nav-item"><Link route="dashboard/password"><a className="nav-link">Minha Senha</a></Link></li>
-                    <li className="nav-item"><Link route="dashboard/logout"><a className="nav-link">Sair</a></Link></li>
+                    <li className="nav-item">
+                      <Link route="dashboard">
+                        <a className="nav-link">Inicio</a>
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link route="dashboard/password">
+                        <a className="nav-link">Minha Senha</a>
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link route="dashboard/logout">
+                        <a className="nav-link">Sair</a>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <PageContentInner>
@@ -139,6 +155,11 @@ class Dashboard extends React.Component {
   }
 }
 
+
+Dashboard.propTypes = {
+  userFull: PropTypes.object.isRequired,
+  orders: PropTypes.array.isRequired,
+}
 
 const mapState = state => state
 
