@@ -34,7 +34,7 @@ class Product extends React.Component {
     const urlMeta = await ApiUrl(query)
     const productPage = await ApiProduct(urlMeta.PS_ID_PRODUTO)
 
-    const cartId = Page.getCartId(store, req, isServer)
+    const cartId = await Page.getCartId(store, req, isServer)
 
     return {
       sessionId,
@@ -159,12 +159,15 @@ Product.propTypes = {
   images: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
   products: PropTypes.array.isRequired,
-  cartId: PropTypes.number.isRequired,
+  cartId: PropTypes.any,
   sessionId: PropTypes.string.isRequired,
   setCart: PropTypes.func.isRequired,
   setCartItens: PropTypes.func.isRequired,
 }
 
+Product.defaultProps = {
+  cartId: null,
+}
 
 const mapState = state => state
 
