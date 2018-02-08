@@ -6,7 +6,8 @@ import axios from 'axios'
 import jsCookie from 'js-cookie'
 import shortid from 'shortid'
 import Router from 'next/router'
-import { Link } from '../../layout/Html'
+import { Link } from '../../routes'
+import { RouterLink } from '../../layout/Html'
 import FormGroup from '../form/FormGroup'
 import Input from '../form/Input'
 import User from '../../api/User'
@@ -24,7 +25,7 @@ class LoginForm extends React.Component {
       email: '',
       password: '',
       isLoading: false,
-      errors: [],
+      // errors: [],
     }
   }
 
@@ -125,8 +126,8 @@ class LoginForm extends React.Component {
               />
             </FormGroup>
             <div className="d-flex justify-content-between">
-              <Link route="password">
-                <a>Esqueci a senha</a>
+              <Link to="password">
+                <RouterLink>Esqueci a senha</RouterLink>
               </Link>
               <button className="btn btn-primary" disabled={isLoading}>Entrar</button>
             </div>
