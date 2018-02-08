@@ -28,8 +28,6 @@ class Login extends React.Component {
   static async getInitialProps(context) {
     const props = await Page.getInitialProps(context.store, context.req, context.isServer)
 
-    console.log(props)
-
     return props
   }
 

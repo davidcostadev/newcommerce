@@ -106,7 +106,6 @@ Search.propTypes = {
     }),
     pathname: PropTypes.string,
   }).isRequired,
-  children: PropTypes.any.isRequired,
 }
 
 

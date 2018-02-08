@@ -3,17 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { authSession, redirect } from './user'
 import isRedirect from '../utils/auth'
-// import Router from 'next/router'
-// import PropTypes from 'prop-types'
-// import Head from 'next/head'
-// import jsCookie from 'js-cookie'
-// import { setCategories } from '../store'
-// import { setSessionId } from '../flux/user/actions'
-// import ApiCategories from '../api/Categories'
-// import HeaderPage from '../components/HeaderPage'
-// import FooterPage from '../components/FooterPage'
-// import Sitemap from '../components/Sitemap'
-// import Copy from '../components/Copy'
 
 
 const withAuth = (ComposedComponent) => {

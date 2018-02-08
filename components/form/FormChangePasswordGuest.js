@@ -1,15 +1,10 @@
 import React from 'react'
-// import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-// import PropTypes from 'prop-types'
 import axios from 'axios'
-// import jsCookie from 'js-cookie'
 import shortid from 'shortid'
-// import Router from 'next/router'
 import FormGroup from '../form/FormGroup'
 import Input from '../form/Input'
 import User from '../../api/User'
-// import { setAuthentication } from '../../flux/user/actions'
 import { FlashMessages } from '../page/FlashMessage'
 
 class FormChangePasswordGuest extends React.Component {

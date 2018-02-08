@@ -30,8 +30,8 @@ import {
 import Logo from '../layout/Logo'
 import BtnNavigation from './ButtonNavigation'
 
-Router.onRouteChangeStart = (url) => {
-  console.log(`Loading: ${url}`)
+Router.onRouteChangeStart = () => {
+  // console.log(`Loading: ${url}`)
   NProgress.start()
 }
 Router.onRouteChangeComplete = () => NProgress.done()

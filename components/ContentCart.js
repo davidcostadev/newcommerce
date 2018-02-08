@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import PropTypes from 'prop-types'
-// import Router from 'next/router'
 import { floatToReal, StringToReal } from '../utils/money'
 import ProductCart from '../components/ProductCart'
 import Table from '../layout/Table'
