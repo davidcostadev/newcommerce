@@ -41,8 +41,12 @@ class Page extends React.Component {
     const state = store.getState()
 
     if (!state.categories.length) {
-      const categories = await ApiCategories()
-      store.dispatch(setCategories(categories))
+      try {
+        const categories = await ApiCategories()
+        store.dispatch(setCategories(categories))
+      } catch (err) {
+        console.error(err)
+      }
     }
   }
 
@@ -94,14 +98,20 @@ class Page extends React.Component {
       }
     }
 
+    console.log('cartId 1', cartId)
+    try {
+      // const { cart } = await getCart({
+      const { cart, cartItens } = await getCart({
+        cartId,
+        sessionId,
+      })
 
-    const { cart, cartItens } = await getCart({
-      cartId,
-      sessionId,
-    })
-
-    store.dispatch(setCart(cart))
-    store.dispatch(setCartItens(cartItens))
+      // console.log('cart', cart)
+      store.dispatch(setCart(cart))
+      store.dispatch(setCartItens(cartItens))
+    } catch (err) {
+      console.error(err)
+    }
 
     return cartId
   }
