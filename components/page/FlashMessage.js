@@ -23,7 +23,7 @@ FlashMessageItem.propTypes = {
 }
 
 export const FlashMessages = ({ msgs }) => {
-  if (!msgs.length) {
+  if (!msgs || !msgs.length) {
     return null
   }
 
