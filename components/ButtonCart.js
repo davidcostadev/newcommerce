@@ -42,7 +42,7 @@ const ButtonCartWrap = styled.a`
   }
 `
 
-export const ButtonCart = ({ quant }) => (
+export const Button = ({ quant }) => (
   <Link route="/cart">
     <ButtonCartWrap>
       <i className="ion-ios-cart-outline" />
@@ -51,16 +51,12 @@ export const ButtonCart = ({ quant }) => (
   </Link>
 )
 
-const ButtonCartStyled = styled(ButtonCart)`
 
-`
-
-
-ButtonCart.propTypes = {
+Button.propTypes = {
   quant: PropTypes.number,
 }
 
-ButtonCart.defaultProps = {
+Button.defaultProps = {
   quant: 0,
 }
 
@@ -68,4 +64,4 @@ const mapState = state => ({
   quant: state.cartItens.length,
 })
 
-export default connect(mapState)(ButtonCartStyled)
+export default connect(mapState)(Button)
