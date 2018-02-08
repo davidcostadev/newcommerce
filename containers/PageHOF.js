@@ -98,15 +98,12 @@ class Page extends React.Component {
       }
     }
 
-    console.log('cartId 1', cartId)
     try {
-      // const { cart } = await getCart({
       const { cart, cartItens } = await getCart({
         cartId,
         sessionId,
       })
 
-      // console.log('cart', cart)
       store.dispatch(setCart(cart))
       store.dispatch(setCartItens(cartItens))
     } catch (err) {
