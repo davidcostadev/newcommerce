@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export async function AddProduct(params) {
-  window.console.log(new Date(), 'Api Cart AddProduct')
+  console.log(new Date(), 'Api Cart AddProduct')
 
   const {
     sessionId,
@@ -43,7 +43,7 @@ export async function AddProduct(params) {
 }
 
 export async function getCart(params) {
-  window.console.log(new Date(), 'Api Cart getCart')
+  console.log(new Date(), 'Api Cart getCart')
 
   const {
     sessionId,
@@ -84,7 +84,7 @@ export async function getCart(params) {
 }
 
 export async function changeQuant(params) {
-  window.console.log(new Date(), 'Api Cart changeQuant')
+  console.log(new Date(), 'Api Cart changeQuant')
 
   const {
     sessionId,
@@ -122,7 +122,7 @@ export async function changeQuant(params) {
 }
 
 export async function closeCart(params) {
-  window.console.log(new Date(), 'Api Cart closeCart')
+  console.log(new Date(), 'Api Cart closeCart')
 
   const {
     sessionId,

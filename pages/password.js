@@ -4,7 +4,8 @@ import axios from 'axios'
 import withRedux from 'next-redux-wrapper'
 import Page from '../containers/PageHOF'
 import { initStore } from '../store'
-import { Link } from '../layout/Html'
+import { RouterLink } from '../layout/Html'
+import { Link } from '../routes'
 import { Container, PageContent } from '../layout/Pages'
 import FormChangePasswordGuest from '../components/form/FormChangePasswordGuest'
 import FormChangePassword from '../components/form/FormChangePassword'
@@ -122,7 +123,7 @@ class Password extends React.Component {
         <div>
           <FlashMessages msgs={msgs} />
           <p>
-            <Link route="/login"><a className="btn btn-primary">Entrar</a></Link>
+            <Link route="/login"><RouterLink className="btn btn-primary">Entrar</RouterLink></Link>
           </p>
         </div>
       )

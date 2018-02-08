@@ -9,7 +9,7 @@ import NProgress from 'nprogress'
 import { Link } from '../routes'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
-// import ButtonCart from '../components/ButtonCart'
+import { ButtonCart } from '../components/ButtonCart'
 import { Container } from '../layout/Pages'
 import { setAuthentication } from '../flux/user/actions'
 import SubTitle from './page/Subtitle'
@@ -31,7 +31,7 @@ import Logo from '../layout/Logo'
 import BtnNavigation from './ButtonNavigation'
 
 Router.onRouteChangeStart = (url) => {
-  window.console.log(`Loading: ${url}`)
+  console.log(`Loading: ${url}`)
   NProgress.start()
 }
 Router.onRouteChangeComplete = () => NProgress.done()
@@ -52,9 +52,12 @@ class HeaderPage extends React.Component {
   toggleSearch() {
     this.setState({ openSearch: !this.state.openSearch })
   }
-
+  /* eslint no-debugger: "off" */
   render() {
+    // debugger
+
     const { query, Logout } = this.props
+    // const { query } = this.props
     const { openSearch } = this.state
 
     return (
@@ -123,7 +126,7 @@ class HeaderPage extends React.Component {
                   </MenuItem>
                   <ShowCart>
                     <MenuItem onlyDesktop>
-                      {/* <ButtonCart /> */}
+                      <ButtonCart />
                     </MenuItem>
                   </ShowCart>
                   <MenuItem onlyMobile>

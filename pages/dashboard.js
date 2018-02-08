@@ -10,7 +10,8 @@ import { setCart, setCartItens } from '../flux/cart/cartActions'
 import withAuth from '../utils/withAuth'
 import Page from '../containers/PageHOF'
 import OrderTable from '../components/order/OrderTable'
-import { Link } from '../layout/Html'
+import { Link } from '../routes'
+import { RouterLink } from '../layout/Html'
 
 // import ContentCart from '../components/ContentCart'
 import {
@@ -70,6 +71,7 @@ class Dashboard extends React.Component {
       const userFull = await Order.get(env, axios.post, {
         userId: user.PS_ID_CADASTRO,
       })
+      console.log(userFull)
 
       return userFull
     } catch (e) {
@@ -107,17 +109,17 @@ class Dashboard extends React.Component {
                   <ul className="navbar-nav">
                     <li className="nav-item">
                       <Link route="dashboard">
-                        <a className="nav-link">Inicio</a>
+                        <RouterLink className="nav-link">Inicio</RouterLink>
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link route="dashboard/password">
-                        <a className="nav-link">Minha Senha</a>
+                        <RouterLink className="nav-link">Minha Senha</RouterLink>
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link route="dashboard/logout">
-                        <a className="nav-link">Sair</a>
+                        <RouterLink className="nav-link">Sair</RouterLink>
                       </Link>
                     </li>
                   </ul>

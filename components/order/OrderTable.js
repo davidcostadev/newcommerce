@@ -23,14 +23,14 @@ const Table = ({ orders }) => (
 
 
 Table.propTypes = {
-  orders: PropTypes.shape({
+  orders: PropTypes.arrayOf(PropTypes.shape({
     PS_ID_PEDIDO: PropTypes.string.isRequired,
     PS_QT_VOLUME: PropTypes.string.isRequired,
     PS_VL_TTL_PEDIDO: PropTypes.string.isRequired,
     PS_STATUS_PEDIDO: PropTypes.string.isRequired,
     PS_STATUS_FINANCEIRO: PropTypes.string.isRequired,
     PS_STATUS_ENTREGA: PropTypes.string.isRequired,
-  }).isRequired,
+  }).isRequired).isRequired,
 }
 
 const TableItem = ({ order }) => (

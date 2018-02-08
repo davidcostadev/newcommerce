@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from '../layout/theme'
-import Routes from '../routes'
+// import Routes from '../routes'
 
 const LinkInverse = `
   color: ${theme.linkInverse} !important;
@@ -13,20 +13,19 @@ const LinkInverse = `
   }
 `
 
-export const Link = styled(Routes.Link)`
-  a {
-    cursor: pointer;
-    color: ${theme.link} !important;
+export const RouterLink = styled.a`
+  cursor: pointer;
+  color: ${theme.link} !important;
 
-    &:hover {
-      color: ${theme.linkHover} !important;
-    }
-    &:active {
-      color: ${theme.linkActive} !important;
-    }
-
-    ${props => (props.inverse ? LinkInverse : '')}
+  &:hover {
+    color: ${theme.linkHover} !important;
   }
+  &:active {
+    color: ${theme.linkActive} !important;
+  }
+
+  ${props => (props.inverse ? LinkInverse : '')}
+
 `
 
-export default Link
+export default RouterLink

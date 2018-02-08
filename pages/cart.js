@@ -71,7 +71,7 @@ Cart.propTypes = {
   cartItens: PropTypes.array.isRequired,
   setCart: PropTypes.func.isRequired,
   setCartItens: PropTypes.func.isRequired,
-  cartId: PropTypes.number.isRequired,
+  cartId: PropTypes.string.isRequired,
   sessionId: PropTypes.string.isRequired,
 }
 

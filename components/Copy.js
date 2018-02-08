@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from '../layout/theme'
 import { Container } from '../layout/Pages'
-import { Link } from '../layout/Html'
+import { RouterLink } from '../layout/Html'
+import { Link } from '../routes'
 
 const CopyWrapper = styled.div`
   margin-top: 20px;
@@ -25,10 +26,14 @@ const Copy = () => (
         2017 Todos os Direitos Reservados
       </div>
       <div>
-        <Link href="#">newCommerce</Link> Os produtos que você curte e o melhor serviço da internet.
+        <Link route="/">
+          <RouterLink href="/">
+            newCommerce
+          </RouterLink>
+        </Link> Os produtos que você curte e o melhor serviço da internet.
       </div>
       <div>
-        Desenvolvidor por<Link href="#"> davidcosta.com.br</Link>
+        Desenvolvidor por<Link route="/"><RouterLink href="/">davidcosta.com.br</RouterLink></Link>
       </div>
     </Container>
   </CopyWrapper>
