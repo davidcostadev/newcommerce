@@ -5,10 +5,12 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: d83745e6c5240eca8212feff6d665d5b21d81185bd53f349ccb931762dc7d78b
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
-      
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -32,7 +34,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       # run tests!
       - run: yarn test
 
