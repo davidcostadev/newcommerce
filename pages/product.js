@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
+import axios from 'axios'
 import jsCookie from 'js-cookie'
 import styled from 'styled-components'
 import { initStore } from '../store'
@@ -85,20 +86,25 @@ class Product extends React.Component {
       route: `/product/${this.props.product.PS_PATH_PAGE}`,
       title: this.props.product.PS_PRODUTO,
     })
-    // console.log(itens)
+
     return itens
   }
 
   async addProductCart(productId) {
     const cartId = this.state.cartId || null
-    // console.log(cartId)
 
     try {
-      const { cart, cartItens } = await AddProduct({
+      const env = {
+        PASSKEY: process.env.PASSKEY,
+        DOMAIN_API: process.env.DOMAIN_API,
+      }
+      const data = {
         productId,
         cartId,
-        sessionId: this.props.sessionId,
-      })
+      }
+
+      const { cart, cartItens } = await AddProduct(env, axios.post, data)
+
       jsCookie.set('cartId', cart.PS_ID_CARRINHO, { expires: 7 })
 
       this.setState({ cartId: cart.PS_ID_CARRINHO })

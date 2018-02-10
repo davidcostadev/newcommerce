@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
+import axios from 'axios'
 import styled from 'styled-components'
 import jsCookie from 'js-cookie'
 import { bindActionCreators } from 'redux'
@@ -89,15 +90,23 @@ class CartPayment extends React.Component {
 
     jsCookie.set('cartId', null)
 
-    const cart = await closeCart({
-      cartId: this.props.cart.PS_ID_CARRINHO,
-      // sessionId: this.props.user.PS_ID_CADASTRO,
-      userId: this.props.user.PS_ID_CADASTRO,
-      deliveryId,
-      paymentId,
-    })
+    try {
+      const env = {
+        PASSKEY: process.env.PASSKEY,
+        DOMAIN_API: process.env.DOMAIN_API,
+      }
+      const data = {
+        cartId: this.props.cart.PS_ID_CARRINHO,
+        userId: this.props.user.PS_ID_CADASTRO,
+        deliveryId,
+        paymentId,
+      }
+      const cart = await closeCart(env, axios.post, data)
 
-    Router.replace(`/cart/end/${cart.PS_ID_CADASTRO}`)
+      Router.replace(`/cart/end/${cart.PS_ID_CADASTRO}`)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   render() {

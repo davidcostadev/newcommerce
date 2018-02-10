@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import jsCookie from 'js-cookie'
@@ -99,10 +100,16 @@ class Page extends React.Component {
     }
 
     try {
-      const { cart, cartItens } = await getCart({
+      const env = {
+        PASSKEY: process.env.PASSKEY,
+        DOMAIN_API: process.env.DOMAIN_API,
+      }
+      const data = {
         cartId,
         sessionId,
-      })
+      }
+
+      const { cart, cartItens } = await getCart(env, axios.post, data)
 
       store.dispatch(setCart(cart))
       store.dispatch(setCartItens(cartItens))

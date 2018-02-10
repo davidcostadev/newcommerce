@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
+import axios from 'axios'
 import { initStore } from '../store'
 import { changeQuant } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
@@ -38,16 +39,26 @@ class Cart extends React.Component {
   }
 
   async onChangeQuant(movimentCartId, productId, quant) {
-    const { cart, cartItens } = await changeQuant({
-      cartId: this.props.cartId,
-      sessionId: this.props.sessionId,
-      movimentCartId,
-      productId,
-      quant,
-    })
+    try {
+      const env = {
+        PASSKEY: process.env.PASSKEY,
+        DOMAIN_API: process.env.DOMAIN_API,
+      }
+      const data = {
+        cartId: this.props.cartId,
+        movimentCartId,
+        productId,
+        quant,
+      }
 
-    this.props.setCart(cart)
-    this.props.setCartItens(cartItens)
+      const { cart, cartItens } = await changeQuant(env, axios.post, data)
+
+
+      this.props.setCart(cart)
+      this.props.setCartItens(cartItens)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   render() {
