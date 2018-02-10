@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-export async function AddProduct(params) {
-  console.log(new Date(), 'Api Cart AddProduct')
-
+export async function AddProduct(env, fetch, params) {
   const {
     sessionId,
     cartId,
@@ -14,7 +12,7 @@ export async function AddProduct(params) {
 
 
   const data = JSON.stringify({
-    PE_PASSKEY: process.env.PASSKEY,
+    PE_PASSKEY: env.PASSKEY,
     PE_IP: '127.0.0.1',
     PE_SESSAO: sessionId,
     PE_ID_CARRINHO: cartId || null,
@@ -26,9 +24,9 @@ export async function AddProduct(params) {
     PE_CEP: cep || null,
   })
 
-  const url = `${process.env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_ins`
+  const url = `${env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_ins`
 
-  const resultData = axios.post(url, data)
+  const resultData = fetch(url, data)
     .then((response) => {
       if (response.data.result[0].PS_ALERTA === 206) {
         throw new Error(response.data.result[0].PS_FEEDBACK)
@@ -119,6 +117,31 @@ export async function changeQuant(params) {
     })
 
   return resultData
+}
+
+export async function deleteProduct(env, fetch, productId) {
+  const data = JSON.stringify({
+    PE_PASSKEY: env.PASSKEY,
+    PE_IP: '127.0.0.1',
+    PE_SESSAO: 'asdfg',
+    PE_ID_CADASTRO: productId,
+  })
+
+  const url = `${env.DOMAIN_API}/TSvmCarrinho/sp_web_carrinho_produto_del`
+
+  try {
+    const response = await fetch(url, data)
+
+    if (response.data.result[0].PS_ALERTA === 206) {
+      throw new Error(response.data.result[0].PS_FEEDBACK)
+    }
+    return {
+      cart: response.data.result[0].PS_TABELA_CARRINHO[0],
+      cartItens: response.data.result[0].PS_TABELA_ITENS,
+    }
+  } catch (e) {
+    throw e
+  }
 }
 
 export async function closeCart(params) {
