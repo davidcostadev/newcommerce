@@ -2452,6 +2452,12 @@ expect@^22.1.0:
     jest-message-util "^22.1.0"
     jest-regex-util "^22.1.0"
 
+express-favicon@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/express-favicon/-/express-favicon-2.0.0.tgz#a22d9a6992d05594930045db7e62ca785b93a296"
+  dependencies:
+    express "4.x"
+
 express-session@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.15.6.tgz#47b4160c88f42ab70fe8a508e31cbff76757ab0a"
@@ -2466,7 +2472,7 @@ express-session@^1.15.6:
     uid-safe "~2.1.5"
     utils-merge "1.0.1"
 
-express@^4.16.2:
+express@4.x, express@^4.16.2:
   version "4.16.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.2.tgz#e35c6dfe2d64b7dca0a5cd4f21781be3299e076c"
   dependencies:

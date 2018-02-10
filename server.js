@@ -13,10 +13,12 @@ const handler = routes.getRequestHandler(app)
 // With express
 const express = require('express')
 const session = require('express-session')
+const favicon = require('express-favicon')
 
 app.prepare().then(() => {
   const server = express()
     .use(cookieParser())
+    .use(favicon(`${__dirname}/static/favicon.ico`))
     .use(session({
       secret: 'keyboard cat',
       resave: false,

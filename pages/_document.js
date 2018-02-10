@@ -27,6 +27,7 @@ class MyDocument extends Document {
           <title>My page</title>
           <link rel="stylesheet" href={urlIonicons} />
           <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" />
+          <link rel="icon" type="image/png" href="/static/favicon.ico" />
           <link
             rel="stylesheet"
             href={`https://${urlBootstrap}`}
