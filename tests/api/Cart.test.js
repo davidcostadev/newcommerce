@@ -1,4 +1,6 @@
+import axios from 'axios'
 import {
+  Request,
   deleteProduct,
   AddProduct,
   getCart,
@@ -21,12 +23,30 @@ import {
 const fakeProcess = {
   env: {
     PASSKEY: 'key12345',
-    DOMAIN_API: 'http://api.domain.com/v1/',
+    DOMAIN_API: 'https://www.googleasdfdf.com.br/',
   },
 }
 
 
 describe('should', () => {
+  it('fall when dont have network', (done) => {
+    const fakeProcessError = {
+      env: {
+        PASSKEY: 'key12345',
+        DOMAIN_API: 'http://httpstat.us',
+      },
+    }
+
+    const fakeFetch = () => Promise.reject(new Error('Request failed with status code 500'))
+
+    Request(fakeProcessError.env, fakeFetch, '404', { legal: 1 })
+      .catch((err) => {
+        expect(err)
+          .toEqual(new Error('Request failed with status code 500'))
+        done()
+      })
+  })
+
   it('insert product in cart', (done) => {
     const data = {
       productId: 123,
