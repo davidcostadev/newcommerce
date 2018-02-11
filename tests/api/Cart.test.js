@@ -14,7 +14,6 @@ import {
   cartProductDelete,
   cartProductQuant,
   cartProductQuantError,
-  cartProdutDeleteError,
   cartClose,
   closeCloseError,
 } from './__mocks__/Cart.test.mocks'
