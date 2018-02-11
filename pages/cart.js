@@ -4,7 +4,7 @@ import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import { initStore } from '../store'
-import { changeQuant } from '../api/Cart'
+import { getCart, changeQuant, deleteProduct } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import Page from '../containers/PageHOF'
 import ContentCart from '../components/ContentCart'
@@ -36,6 +36,11 @@ class Cart extends React.Component {
     super()
 
     this.onChangeQuant = this.onChangeQuant.bind(this)
+    this.onDeleteProduct = this.onDeleteProduct.bind(this)
+
+    this.state = {
+      deletingProduct: 0,
+    }
   }
 
   async onChangeQuant(movimentCartId, productId, quant) {
@@ -61,7 +66,34 @@ class Cart extends React.Component {
     }
   }
 
+  async onDeleteProduct(productId) {
+    this.setState({
+      deletingProduct: parseInt(productId, 10),
+    })
+    try {
+      const env = {
+        PASSKEY: process.env.PASSKEY,
+        DOMAIN_API: process.env.DOMAIN_API,
+      }
+      const { cartId } = this.props
+      await deleteProduct(env, axios.post, productId)
+
+      const { cart, cartItens } = await getCart(env, axios.post, { cartId })
+
+
+      this.props.setCart(cart)
+      this.props.setCartItens(cartItens)
+    } catch (error) {
+      console.error(error)
+      this.setState({
+        deletingProduct: 0,
+      })
+    }
+  }
+
   render() {
+    const { deletingProduct } = this.state
+
     return (
       <Page {...this.props}>
         <Container>
@@ -69,6 +101,8 @@ class Cart extends React.Component {
             cart={this.props.cart}
             cartItens={this.props.cartItens}
             changeQuant={this.onChangeQuant}
+            deleteProduct={this.onDeleteProduct}
+            deletingProduct={deletingProduct}
           />
         </Container>
       </Page>

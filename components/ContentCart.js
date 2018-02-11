@@ -6,7 +6,13 @@ import Table from '../layout/Table'
 import * as Cart from '../layout/Cart'
 import { Link } from '../routes'
 
-const Products = ({ products, changeQuant }) => {
+const Products = (props) => {
+  const {
+    products,
+    changeQuant,
+    deleteProduct,
+    deletingProduct,
+  } = props
   if (!products.length) {
     return (
       <tr><td colSpan="5">Nenhum produto no carrinho</td></tr>
@@ -14,7 +20,13 @@ const Products = ({ products, changeQuant }) => {
   }
 
   return products.map(product => (
-    <ProductCart key={product.PS_ID_PRODUTO} product={product} changeQuant={changeQuant} />
+    <ProductCart
+      key={product.PS_ID_PRODUTO}
+      product={product}
+      changeQuant={changeQuant}
+      deleteProduct={deleteProduct}
+      deletingProduct={deletingProduct}
+    />
   ))
 }
 
@@ -22,6 +34,7 @@ const Products = ({ products, changeQuant }) => {
 Products.propTypes = {
   products: PropTypes.array.isRequired,
   changeQuant: PropTypes.func.isRequired,
+  deletingProduct: PropTypes.number.isRequired,
 }
 
 const Checkout = ({ cart, cartItens }) => {
@@ -84,32 +97,50 @@ Checkout.propTypes = {
   cartItens: PropTypes.array.isRequired,
 }
 
-const ContentCart = ({ cart, cartItens, changeQuant }) => (
-  <Cart.Page>
-    <Cart.Title>Carrinho</Cart.Title>
-    <Table>
-      <thead>
-        <tr>
-          <th />
-          <th>Produto</th>
-          <th>Preço Unit.</th>
-          <th>Quantidade</th>
-          <th>Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <Products products={cartItens} changeQuant={changeQuant} />
-      </tbody>
-    </Table>
-    <Checkout cart={cart} cartItens={cartItens} />
-  </Cart.Page>
-)
+const ContentCart = (props) => {
+  const {
+    cart,
+    cartItens,
+    changeQuant,
+    deleteProduct,
+    deletingProduct,
+  } = props
+
+  return (
+    <Cart.Page>
+      <Cart.Title>Carrinho</Cart.Title>
+      <Table>
+        <thead>
+          <tr>
+            <th />
+            <th>Produto</th>
+            <th>Preço Unit.</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+            <th style={{ width: '150px' }} />
+          </tr>
+        </thead>
+        <tbody>
+          <Products
+            products={cartItens}
+            changeQuant={changeQuant}
+            deleteProduct={deleteProduct}
+            deletingProduct={deletingProduct}
+          />
+        </tbody>
+      </Table>
+      <Checkout cart={cart} cartItens={cartItens} />
+    </Cart.Page>
+  )
+}
 
 
 ContentCart.propTypes = {
   cart: PropTypes.object.isRequired,
   cartItens: PropTypes.array.isRequired,
   changeQuant: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  deletingProduct: PropTypes.number.isRequired,
 }
 
 export default ContentCart

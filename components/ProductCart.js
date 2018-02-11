@@ -12,8 +12,14 @@ class Product extends React.Component {
       quant: props.product.PS_QT,
     }
 
+    this.onDelete = this.onDelete.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
+  }
+
+  onDelete(product) {
+    console.log(product)
+    this.props.deleteProduct(product.PS_ID_MOVIMENTO_CAR)
   }
 
   handleChange(e) {
@@ -35,25 +41,39 @@ class Product extends React.Component {
   }
 
   render() {
+    const { product, deletingProduct } = this.props
+
+    const movingId = parseInt(product.PS_ID_MOVIMENTO_CAR, 10)
+
     return (
       <tr>
         <td>
           <img
-            src={getUrlImage(this.props.product.PS_PATH_IMAGEM_60)}
-            alt={this.props.product.PS_DESCRICAO}
+            src={getUrlImage(product.PS_PATH_IMAGEM_60)}
+            alt={product.PS_DESCRICAO}
           />
         </td>
-        <td>{this.props.product.PS_DESCRICAO}</td>
-        <td>R$ {StringToReal(this.props.product.PS_VL_UNITARIO)}</td>
+        <td>{product.PS_DESCRICAO}</td>
+        <td>R$ {StringToReal(product.PS_VL_UNITARIO)}</td>
         <td>
           <input
             className="form-control"
             value={this.state.quant}
             onChange={this.handleChange}
-            onBlur={() => this.handleBlur(this.props.product, this.props.changeQuant)}
+            onBlur={() => this.handleBlur(product, this.props.changeQuant)}
           />
         </td>
-        <td>R$ {StringToReal(this.props.product.PS_VALOR_TOTAL)}</td>
+        <td>R$ {StringToReal(product.PS_VALOR_TOTAL)}</td>
+        <td>
+          <button
+            type="button"
+            className="btn btn-danger"
+            disabled={movingId === deletingProduct}
+            onClick={() => this.onDelete(product)}
+          >
+            {movingId === deletingProduct ? 'removendo...' : 'remover'}
+          </button>
+        </td>
       </tr>
     )
   }
@@ -62,6 +82,8 @@ class Product extends React.Component {
 Product.propTypes = {
   product: PropTypes.object.isRequired,
   changeQuant: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  deletingProduct: PropTypes.number.isRequired,
 }
 
 export default Product

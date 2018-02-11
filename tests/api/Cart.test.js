@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
   Request,
   deleteProduct,
@@ -200,28 +199,10 @@ describe('should', () => {
     deleteProduct(fakeProcess.env, fakeFetchDeleteProduct, 123)
       .then((response) => {
         expect(response)
-          .toEqual({
-            cart: cartProductDelete.PS_TABELA_CARRINHO[0],
-            cartItens: cartProductDelete.PS_TABELA_ITENS,
-          })
+          .toBe(true)
         done()
       })
       .catch(err => console.log(err))
-  })
-
-  it('return error on remove product in cart', (done) => {
-    const fakeFetchDeleteProductError = () => Promise.resolve({
-      data: {
-        result: [cartProdutDeleteError],
-      },
-    })
-
-    deleteProduct(fakeProcess.env, fakeFetchDeleteProductError, 123)
-      .catch((err) => {
-        expect(err)
-          .toEqual(new Error(cartProdutDeleteError.PS_FEEDBACK))
-        done()
-      })
   })
 
   it('close cart', (done) => {

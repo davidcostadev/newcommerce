@@ -117,19 +117,10 @@ export async function deleteProduct(env, fetch, productId) {
     PE_ID_CADASTRO: productId,
   }
 
-  try {
-    const response = await Request(env, fetch, 'TSvmCarrinho/sp_web_carrinho_produto_del', data)
 
-    if (response.data.result[0].PS_ALERTA === 206) {
-      throw new Error(response.data.result[0].PS_FEEDBACK)
-    }
-    return {
-      cart: response.data.result[0].PS_TABELA_CARRINHO[0],
-      cartItens: response.data.result[0].PS_TABELA_ITENS,
-    }
-  } catch (e) {
-    throw e
-  }
+  await Request(env, fetch, 'TSvmCarrinho/sp_web_carrinho_produto_del', data)
+
+  return true
 }
 
 export async function closeCart(env, fetch, params) {
