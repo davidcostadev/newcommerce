@@ -18,7 +18,6 @@ class Product extends React.Component {
   }
 
   onDelete(product) {
-    console.log(product)
     this.props.deleteProduct(product.PS_ID_MOVIMENTO_CAR)
   }
 

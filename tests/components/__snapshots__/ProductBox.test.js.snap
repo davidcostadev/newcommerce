@@ -20,7 +20,7 @@ exports[`Test File ProductBox ProductBox with 3 column 1`] = `
     className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
-      className="Product__ProductBtnDetails-s1fzb5ed-6 hNZFmZ"
+      className="Product__ProductBtnDetails-s1fzb5ed-6 gRlUCS"
       href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
       onClick={[Function]}
     >
@@ -50,7 +50,7 @@ exports[`Test File ProductBox ProductBox with 4 column 1`] = `
     className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
-      className="Product__ProductBtnDetails-s1fzb5ed-6 hNZFmZ"
+      className="Product__ProductBtnDetails-s1fzb5ed-6 gRlUCS"
       href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
       onClick={[Function]}
     >

@@ -6,6 +6,7 @@ import theme from '../layout/theme'
 import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
 import ShowPrice from './permissions/ShowPrice'
 import ShowCart from './permissions/ShowCart'
+import ButtonAddCart from './product/ButtonAddCart'
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -209,7 +210,7 @@ const InputGroup = styled.div`
   max-width: 290px;
 `
 
-const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
+const ProductDetail = ({ product, bredcrumbs, cartId }) => (
   <ProductDetailBox>
     <ProductTitle>{product.PS_PRODUTO}</ProductTitle>
     <ProductHeader>
@@ -241,12 +242,10 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
       <div>
         <div>
           <ShowCart>
-            <button
-              className="btn btn-lg btn-primary btn-buy"
-              onClick={() => addProductCart(product.PS_ID_PRODUTO)}
-            >
-              Comprar
-            </button>
+            <ButtonAddCart
+              productId={parseInt(product.PS_ID_PRODUTO, 10)}
+              cartId={cartId}
+            />
           </ShowCart>
         </div>
       </div>
@@ -286,9 +285,10 @@ const ProductDetail = ({ product, bredcrumbs, addProductCart }) => (
 )
 
 ProductDetail.propTypes = {
+  cartId: PropTypes.number.isRequired,
   product: PropTypes.object.isRequired,
   bredcrumbs: PropTypes.array.isRequired,
-  addProductCart: PropTypes.func.isRequired,
+  // addProductCart: PropTypes.func.isRequired,
 }
 
 export default ProductDetail

@@ -24,7 +24,7 @@ class MyDocument extends Document {
     return (
       <html lang="pt-BR">
         <Head>
-          <title>My page</title>
+          <title>{process.env.BUSSNESS_NAME || 'newcommerce'}</title>
           <link rel="stylesheet" href={urlIonicons} />
           <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" />
           <link rel="icon" type="image/png" href="/static/favicon.ico" />
