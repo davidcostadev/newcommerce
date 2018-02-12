@@ -2,21 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
-import jsCookie from 'js-cookie'
 import styled from 'styled-components'
 import { initStore } from '../store'
 import Page from '../containers/PageHOF'
 import { Container } from '../layout/Pages'
 import ApiUrl from '../api/Url'
 import ApiProduct from '../api/Product'
-import { AddProduct } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import ProductDetails from '../components/ProductDetails'
 import Gallery from '../components/Gallery'
 import ProductsCarrocel from '../components/ProductsCarrocel'
 import ProductDescription from '../components/ProductDescription'
 import Breadcrumbs from '../components/Breadcrumbs'
+import ProductUtil from '../utils/product'
+
 
 const ProductPageBox = styled.div`
   margin-bottom: 20px;
@@ -54,6 +53,7 @@ class Product extends React.Component {
 
     this.state = {
       cartId: props.cartId,
+      addingOnCart: 0,
     }
   }
 
@@ -93,27 +93,18 @@ class Product extends React.Component {
   async addProductCart(productId) {
     const cartId = this.state.cartId || null
 
-    try {
-      const env = {
-        PASSKEY: process.env.PASSKEY,
-        DOMAIN_API: process.env.DOMAIN_API,
-      }
-      const data = {
-        productId,
-        cartId,
-      }
+    this.setState({ addingOnCart: productId })
 
-      const { cart, cartItens } = await AddProduct(env, axios.post, data)
+    const newCartId = await ProductUtil.addProductCart(
+      productId,
+      cartId,
+      this.props.setCart,
+      this.props.setCartItens,
+    )
 
-      jsCookie.set('cartId', cart.PS_ID_CARRINHO, { expires: 7 })
-
-      this.setState({ cartId: cart.PS_ID_CARRINHO })
-
-      this.props.setCart(cart)
-      this.props.setCartItens(cartItens)
-    } catch (err) {
-      console.error(err)
-    }
+    this.setState({
+      cartId: newCartId,
+    })
   }
 
   render() {
@@ -132,9 +123,11 @@ class Product extends React.Component {
               </div>
               <div className="col-lg-8">
                 <ProductDetails
+                  cartId={parseInt(this.props.cartId, 10)}
                   product={this.props.product}
                   bredcrumbs={this.breadCrumbsProps()}
                   addProductCart={this.addProductCart}
+                  addingOnCart={this.state.addingOnCart}
                 />
               </div>
 

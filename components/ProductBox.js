@@ -7,6 +7,8 @@ import SquareBox from './SquareBox'
 // import { parcelado } from './ParceladoBox'
 import ShowPrice from './permissions/ShowPrice'
 import ShowCart from './permissions/ShowCart'
+import ButtonAddCart from './product/ButtonAddCart'
+
 
 export const ProductBox = ({ product, columns }) => (
   <Product.ProductItem columns={columns}>
@@ -31,9 +33,11 @@ export const ProductBox = ({ product, columns }) => (
         </Product.ProductBtnDetails>
       </Link>
       <ShowCart>
-        <Link route="/product">
-          <Product.ProductBtnBuy>Comprar</Product.ProductBtnBuy>
-        </Link>
+        <Product.ProductBtnBuy>
+          <ButtonAddCart
+            productId={parseInt(product.PS_ID_PRODUTO, 10)}
+          />
+        </Product.ProductBtnBuy>
       </ShowCart>
     </Product.ProductButtons>
   </Product.ProductItem >

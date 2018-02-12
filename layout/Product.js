@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import theme from './theme'
+// import ButtonAddCart from '../components/product/ButtonAddCart'
 
 
 const Column4 = (media) => {
@@ -118,9 +119,8 @@ const Btn = `
   font-size: 1rem;
   line-height: 1.5;
   border-radius: .25rem;
-  transition: background-color .15s ease-in-out,
-    border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+  transition: all .15s ease-in-out;
+  cursor: pointer;
 `
 
 export const ProductBtnDetails = styled.a`
@@ -139,22 +139,29 @@ export const ProductBtnDetails = styled.a`
     color: ${theme.white};
   }
 `
-export const ProductBtnBuy = styled.button`
-  ${Btn}
-  flex: 1 1 auto;
-  border-radius: 0;
-  padding-left: 0;
-  padding-right: 0;
-  background-color: ${theme.gray300};
-  color: ${theme.colorPrimary};
+// export const ProductBtnBuy = styled(ButtonAddCart)`background: red;`
 
-  &:hover {
-    background-color: ${theme.colorPrimary}
-    color: ${theme.white};
-  }
-  &:active {
-    background-color: ${theme.colorPrimary}
-    color: ${theme.white};
+export const ProductBtnBuy = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+
+  button {
+    ${Btn}
+    flex: 1;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: ${theme.gray300};
+    color: ${theme.colorPrimary};
+
+    &:hover {
+      background-color: ${theme.colorPrimary}
+      color: ${theme.white};
+    }
+    &:active {
+      background-color: ${theme.colorPrimary}
+      color: ${theme.white};
+    }
   }
 `
 
