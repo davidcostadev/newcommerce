@@ -6,7 +6,7 @@ import theme from '../layout/theme'
 import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
 import ShowPrice from './permissions/ShowPrice'
 import ShowCart from './permissions/ShowCart'
-import ButtonAddCart from './product/ButtonAddCart'
+import ButtonAdd from './product/ButtonAddCart'
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -242,7 +242,7 @@ const ProductDetail = ({ product, bredcrumbs, cartId }) => (
       <div>
         <div>
           <ShowCart>
-            <ButtonAddCart
+            <ButtonAdd
               productId={parseInt(product.PS_ID_PRODUTO, 10)}
               cartId={cartId}
             />

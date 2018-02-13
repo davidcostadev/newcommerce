@@ -8,7 +8,7 @@ import { AddProduct } from '../../api/Cart'
 
 import { setCart, setCartItens } from '../../flux/cart/cartActions'
 
-export class ButtonAddCart extends React.Component {
+export class Button extends React.Component {
   constructor(props) {
     super(props)
 
@@ -78,14 +78,14 @@ export class ButtonAddCart extends React.Component {
   }
 }
 
-ButtonAddCart.propTypes = {
+Button.propTypes = {
   productId: PropTypes.number.isRequired,
   cart: PropTypes.shape({
     PS_ID_CARRINHO: PropTypes.any,
   }),
 }
 
-ButtonAddCart.defaultProps = {
+Button.defaultProps = {
   cart: {
     PS_ID_CARRINHO: null,
   },
@@ -98,4 +98,4 @@ const mapDispatchToProps = dispatch => ({
   onSetCartItens: bindActionCreators(setCartItens, dispatch),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonAddCart)
+export default connect(mapStateToProps, mapDispatchToProps)(Button)

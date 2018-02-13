@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
 import moxios from 'moxios'
-import ButtonAddCartConnected, { ButtonAddCart } from '../../components/product/ButtonAddCart'
+import ButtonAddCartConnected, { Button } from '../../components/product/ButtonAddCart'
 import { cartProductIns, cartProductInsError } from '../api/__mocks__/Cart.test.mocks'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -42,7 +42,7 @@ describe('should', () => {
     }
 
     const wrapper = shallow((
-      <ButtonAddCart
+      <Button
         productId={1}
         onSetCart={onSetCart}
         onSetCartItens={onSetCartItens}
@@ -75,7 +75,7 @@ describe('should', () => {
       DOMAIN_API: 'http://domain.com',
     }
     const wrapper = shallow((
-      <ButtonAddCart
+      <Button
         productId={1}
         onSetCart={onSetCart}
         onSetCartItens={onSetCartItens}

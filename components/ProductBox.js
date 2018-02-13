@@ -4,10 +4,9 @@ import { Link } from '../routes'
 import * as Product from '../layout/Product'
 import { StringToReal } from '../utils/money'
 import SquareBox from './SquareBox'
-// import { parcelado } from './ParceladoBox'
 import ShowPrice from './permissions/ShowPrice'
 import ShowCart from './permissions/ShowCart'
-import ButtonAddCart from './product/ButtonAddCart'
+import ButtonAdd from './product/ButtonAddCart'
 
 
 export const ProductBox = ({ product, columns }) => (
@@ -34,7 +33,7 @@ export const ProductBox = ({ product, columns }) => (
       </Link>
       <ShowCart>
         <Product.ProductBtnBuy>
-          <ButtonAddCart
+          <ButtonAdd
             productId={parseInt(product.PS_ID_PRODUTO, 10)}
           />
         </Product.ProductBtnBuy>
