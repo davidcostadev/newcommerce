@@ -206,6 +206,18 @@ const passwordChangeFallUser = {
   PS_FEEDBACK: 'Usuário Não Indentificado',
 }
 
+const sendEmail = {
+  PS_ID_CADASTRO: 1685,
+  PS_FEEDBACK: 'A mensagem foi processada com sucesso para name',
+  PS_ID_ERRO: 0,
+}
+
+const sendEmailError = {
+  PS_ID_CADASTRO: 0,
+  PS_FEEDBACK: 'Assunto - Não pode está vazio',
+  PS_ID_ERRO: 2,
+}
+
 export default {
   get,
   getResult,
@@ -217,4 +229,6 @@ export default {
   checkHashFall,
   passwordChange,
   passwordChangeFallUser,
+  sendEmail,
+  sendEmailError,
 }
