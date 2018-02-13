@@ -33,3 +33,4 @@ http://www.atacadoribeirao.com.br/
 
 https://github.com/zeit/next.js/
 
+npm -- start --name 'atacadoribeirao.com.br'
