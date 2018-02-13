@@ -2,8 +2,8 @@ node_modules
 coverage
 dist
 static/css
-static/img/logo.js
-static/img/logo.vsg
+#static/img/logo.js
+#static/img/logo.vsg
 .env
 .env.production
 .next
