@@ -1,4 +1,4 @@
 export const getUrlImage = url => url
-  .replace('mundialsystem.com.br/images', 'winerp.com.br/images/mundial')
+  .replace('http://www.mundialsystem.com.br/images/', process.env.IMAGE_BASE)
 
 export default getUrlImage

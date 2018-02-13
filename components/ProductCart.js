@@ -41,7 +41,6 @@ class Product extends React.Component {
 
   render() {
     const { product, deletingProduct } = this.props
-
     const movingId = parseInt(product.PS_ID_MOVIMENTO_CAR, 10)
 
     return (

@@ -87,7 +87,7 @@ class Dashboard extends React.Component {
     const urlId = userFull.user_id
     const imageId = userFull.image_id
 
-    const url = `http://www.winerp.com.br/images/mundial/customers/${urlId}-255-${imageId}.jpg`
+    const url = `${process.env.IMAGE_BASE}customers/${urlId}-255-${imageId}.jpg`
 
     return (
       <Page {...this.props}>
