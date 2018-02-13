@@ -31,7 +31,7 @@ module.exports = {
       path: '/var/www/raicromdistribuidora.com.br',
       'post-deploy': [
         'npm install',
-        'npm jest',
+        'npm run jest',
         'npm run build: prod',
         'pm2 reload ecosystem.config.js --env production --name raicromdistribuidora',
       ].join(' && '),
