@@ -32,7 +32,7 @@ module.exports = {
       'post-deploy': [
         'npm install',
         'npm run jest',
-        'npm run build: prod',
+        'npm run build:prod',
         'pm2 reload ecosystem.config.js --env production --name raicromdistribuidora',
       ].join(' && '),
     },
