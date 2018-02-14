@@ -82,6 +82,8 @@ class Page extends React.Component {
       cartId = jsCookie.get('cartId') || null
     }
 
+    cartId = parseInt(cartId, 10)
+
     if (cartId) {
       await Page.getCart(store, cartId, sessionId)
     }
