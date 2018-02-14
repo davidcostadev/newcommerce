@@ -24,13 +24,9 @@ import {
 class Dashboard extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
     const props = await Page.getInitialProps(store, req, isServer)
-    // console.log(props)
-
     const { user } = props
-
     const userFull = await Dashboard.getUser(user)
     const orders = await Dashboard.getOrders(user)
-
     const urlMeta = {
       PS_TITLE: 'Dashboard',
       PS_DESCRIPTION: 'Dashboard',
@@ -71,7 +67,6 @@ class Dashboard extends React.Component {
       const userFull = await Order.get(env, axios.post, {
         userId: user.PS_ID_CADASTRO,
       })
-      console.log(userFull)
 
       return userFull
     } catch (e) {
