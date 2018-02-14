@@ -18,7 +18,15 @@ const listPayments = [
   // },
   {
     id: 1,
-    name: 'Na loja',
+    name: 'Pagar na Loja',
+  },
+  {
+    id: 2,
+    name: 'Cartão de Débido',
+  },
+  {
+    id: 22,
+    name: 'Cartão de Crédito até 3x',
   },
 ]
 
@@ -59,7 +67,11 @@ const Way = ({ paymentDefault, payment, onClick }) => {
     },
   )
   return (
-    <ButtonPayment className={classPayment} onClick={() => onClick(payment.id)}>
+    <ButtonPayment
+      type="button"
+      className={classPayment}
+      onClick={() => onClick(payment.id)}
+    >
       {payment.name}
     </ButtonPayment>
   )

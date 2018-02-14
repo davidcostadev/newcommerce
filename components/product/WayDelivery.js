@@ -60,7 +60,11 @@ const Way = ({ deliveryDefault, delivery, onClick }) => {
     },
   )
   return (
-    <ButtonDelivery className={classDelivery} onClick={() => onClick(delivery.id)}>
+    <ButtonDelivery
+      type="button"
+      className={classDelivery}
+      onClick={() => onClick(delivery.id)}
+    >
       {delivery.name}
     </ButtonDelivery>
   )
