@@ -262,6 +262,36 @@ async function changePassword(env, fetch, { userId, password }) {
   }
 }
 
+async function sendEmail(env, fetch, params) {
+  const data = JSON.stringify({
+    PE_PASSKEY: env.PASSKEY,
+    PE_IP: '127.0.0.1',
+    PE_SESSAO: 'asdfgh',
+    PE_ID_PESSOA: null,
+    PE_NOME: params.name,
+    PE_EMAIL: params.email,
+    PE_ASSUNTO: params.subject,
+    PE_TELEFONE: null,
+    PE_CIDADE: null,
+    PE_ESTADO: null,
+    PE_PAIS: null,
+    PE_ANEXO: null,
+    PE_MENSAGEM: params.message,
+  })
+
+  try {
+    const response = await fetch(`${env.DOMAIN_API}/Tsvmwebsite/sp_website_faleconosco_iu`, data)
+
+    if (response.data.result[0].PS_ALERTA !== 7) {
+      throw response.data.result[0].PS_TABELA_INFO[0]
+    }
+
+    return response.data.result[0].PS_TABELA_INFO[0]
+  } catch (e) {
+    throw e
+  }
+}
+
 export default {
   login,
   get,
@@ -269,4 +299,5 @@ export default {
   resetPassword,
   checkHash,
   changePassword,
+  sendEmail,
 }

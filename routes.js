@@ -17,6 +17,7 @@ routes
   .add('dashboard/order', '/dashboard/order/:orderId')
   .add('dashboard/password')
   .add('dashboard/logout')
+  .add('contact')
 
 module.exports = routes
 

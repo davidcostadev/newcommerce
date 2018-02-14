@@ -36,7 +36,7 @@ const Sitemap = () => (
               <Link route="/"><RouterLink href="/">Pedidos e Retornos</RouterLink></Link>
             </MenuItem>
             <MenuItem>
-              <Link route="/"><RouterLink href="/">Fale conosco</RouterLink></Link>
+              <Link route="/contact"><RouterLink href="/contact">Fale conosco</RouterLink></Link>
             </MenuItem>
           </Menu>
         </div>
