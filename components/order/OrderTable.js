@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '../../layout/Html'
+import { Link } from '../../routes'
+import { RouterLink } from '../../layout/Html'
 import { StringToReal } from '../../utils/money'
 
 const Table = ({ orders }) => (
@@ -37,7 +38,7 @@ const TableItem = ({ order }) => (
   <tr>
     <td>
       <Link route="dashboard/order" params={{ orderId: order.PS_ID_PEDIDO }}>
-        <a>{order.PS_ID_PEDIDO}</a>
+        <RouterLink>{order.PS_ID_PEDIDO}</RouterLink>
       </Link>
     </td>
     <td>{order.PS_DATADOCADASTRO}</td>
@@ -48,12 +49,11 @@ const TableItem = ({ order }) => (
     <td>{order.PS_STATUS_ENTREGA}</td>
     <td>
       <Link route="dashboard/order" params={{ orderId: order.PS_ID_PEDIDO }}>
-        <a>Ver Pedido</a>
+        <RouterLink>Ver Pedido</RouterLink>
       </Link>
     </td>
   </tr>
 )
-
 
 TableItem.propTypes = {
   order: PropTypes.shape({
@@ -95,14 +95,14 @@ const TableBody = ({ orders }) => {
 }
 
 TableBody.propTypes = {
-  orders: PropTypes.shape({
+  orders: PropTypes.arrayOf(PropTypes.shape({
     PS_ID_PEDIDO: PropTypes.string.isRequired,
     PS_QT_VOLUME: PropTypes.string.isRequired,
     PS_VL_TTL_PEDIDO: PropTypes.string.isRequired,
     PS_STATUS_PEDIDO: PropTypes.string.isRequired,
     PS_STATUS_FINANCEIRO: PropTypes.string.isRequired,
     PS_STATUS_ENTREGA: PropTypes.string.isRequired,
-  }).isRequired,
+  }).isRequired).isRequired,
 }
 
 
