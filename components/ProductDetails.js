@@ -285,10 +285,14 @@ const ProductDetail = ({ product, bredcrumbs, cartId }) => (
 )
 
 ProductDetail.propTypes = {
-  cartId: PropTypes.number.isRequired,
+  cartId: PropTypes.number,
   product: PropTypes.object.isRequired,
   bredcrumbs: PropTypes.array.isRequired,
   // addProductCart: PropTypes.func.isRequired,
+}
+
+ProductDetail.defaultProps = {
+  cartId: 0,
 }
 
 export default ProductDetail

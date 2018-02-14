@@ -158,14 +158,14 @@ Product.propTypes = {
   images: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
   products: PropTypes.array.isRequired,
-  cartId: PropTypes.any,
+  cartId: PropTypes.number,
   sessionId: PropTypes.string.isRequired,
   setCart: PropTypes.func.isRequired,
   setCartItens: PropTypes.func.isRequired,
 }
 
 Product.defaultProps = {
-  cartId: null,
+  cartId: 0,
 }
 
 const mapState = state => state

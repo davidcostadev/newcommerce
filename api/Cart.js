@@ -134,7 +134,7 @@ export async function closeCart(env, fetch, params) {
   const data = {
     PE_ID_CARRINHO: parseInt(cartId, 10),
     PE_ID_CLIENTE: parseInt(userId, 10),
-    PE_ID_VENDEDOR: null,
+    PE_ID_VENDEDOR: 1,
     PE_ID_PG_FORMA: paymentId,
     PE_ID_TIPO_FRETE: deliveryId,
     PE_QT_VOLUME: 1,

@@ -9,6 +9,7 @@ import { setCart, setCartItens } from '../flux/cart/cartActions'
 import Page from '../containers/PageHOF'
 import ContentCart from '../components/ContentCart'
 import { Container } from '../layout/Pages'
+import withAuth from '../utils/withAuth'
 
 class Cart extends React.Component {
   static async getInitialProps({ req, store, isServer }) {
@@ -116,8 +117,12 @@ Cart.propTypes = {
   cartItens: PropTypes.array.isRequired,
   setCart: PropTypes.func.isRequired,
   setCartItens: PropTypes.func.isRequired,
-  cartId: PropTypes.string.isRequired,
+  cartId: PropTypes.number,
   sessionId: PropTypes.string.isRequired,
+}
+
+Cart.defaultProps = {
+  cartId: 0,
 }
 
 const mapState = state => state
@@ -129,4 +134,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default withRedux(initStore, mapState, mapDispatchToProps)(Cart)
+export default withRedux(initStore, mapState, mapDispatchToProps)(withAuth(Cart))
