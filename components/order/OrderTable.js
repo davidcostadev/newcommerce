@@ -4,6 +4,17 @@ import { Link } from '../../routes'
 import { RouterLink } from '../../layout/Html'
 import { StringToReal } from '../../utils/money'
 
+const OrderPropTypes = PropTypes.shape({
+  PS_ID_PEDIDO: PropTypes.string.isRequired,
+  PS_QT_VOLUME: PropTypes.string.isRequired,
+  PS_VL_TTL_PEDIDO: PropTypes.string.isRequired,
+  PS_STATUS_PEDIDO: PropTypes.string.isRequired,
+  PS_STATUS_FINANCEIRO: PropTypes.string.isRequired,
+  PS_STATUS_ENTREGA: PropTypes.string.isRequired,
+})
+const OrdersPropTypes = PropTypes.arrayOf(OrderPropTypes.isRequired)
+
+
 const Table = ({ orders }) => (
   <table cellSpacing="0" className="table table-hover table-hover-link">
     <thead>
@@ -24,14 +35,7 @@ const Table = ({ orders }) => (
 
 
 Table.propTypes = {
-  orders: PropTypes.arrayOf(PropTypes.shape({
-    PS_ID_PEDIDO: PropTypes.string.isRequired,
-    PS_QT_VOLUME: PropTypes.string.isRequired,
-    PS_VL_TTL_PEDIDO: PropTypes.string.isRequired,
-    PS_STATUS_PEDIDO: PropTypes.string.isRequired,
-    PS_STATUS_FINANCEIRO: PropTypes.string.isRequired,
-    PS_STATUS_ENTREGA: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  orders: OrdersPropTypes.isRequired,
 }
 
 const TableItem = ({ order }) => (
@@ -56,14 +60,7 @@ const TableItem = ({ order }) => (
 )
 
 TableItem.propTypes = {
-  order: PropTypes.shape({
-    PS_ID_PEDIDO: PropTypes.string.isRequired,
-    PS_QT_VOLUME: PropTypes.string.isRequired,
-    PS_VL_TTL_PEDIDO: PropTypes.string.isRequired,
-    PS_STATUS_PEDIDO: PropTypes.string.isRequired,
-    PS_STATUS_FINANCEIRO: PropTypes.string.isRequired,
-    PS_STATUS_ENTREGA: PropTypes.string.isRequired,
-  }).isRequired,
+  order: OrderPropTypes.isRequired,
 }
 
 
@@ -95,14 +92,7 @@ const TableBody = ({ orders }) => {
 }
 
 TableBody.propTypes = {
-  orders: PropTypes.arrayOf(PropTypes.shape({
-    PS_ID_PEDIDO: PropTypes.string.isRequired,
-    PS_QT_VOLUME: PropTypes.string.isRequired,
-    PS_VL_TTL_PEDIDO: PropTypes.string.isRequired,
-    PS_STATUS_PEDIDO: PropTypes.string.isRequired,
-    PS_STATUS_FINANCEIRO: PropTypes.string.isRequired,
-    PS_STATUS_ENTREGA: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  orders: OrdersPropTypes.isRequired,
 }
 
 
