@@ -1,0 +1,435 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should Add product on cart 1`] = `
+<form>
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control"
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Seu Nome"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control"
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Digite seu email"
+      type="email"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control"
+      id="subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Assunto"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <textarea
+      className="form-control"
+      id="message"
+      name="message"
+      onChange={[Function]}
+      placeholder="Mensagem"
+      value=""
+    />
+  </div>
+  <div
+    className="text-center"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should fill form and submit 1`] = `
+<form>
+  <FlashMessages
+    msgs={
+      Array [
+        Object {
+          "id": 1,
+          "message": "Por favor, informe o nome",
+          "type": "danger",
+        },
+      ]
+    }
+  />
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Seu Nome"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Digite seu email"
+      type="email"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Assunto"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Textarea
+      id="message"
+      name="message"
+      onChange={[Function]}
+      placeholder="Mensagem"
+      value=""
+    />
+  </FormGroup>
+  <div
+    className="text-center"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should fill form and submit 2`] = `
+<form>
+  <FlashMessages
+    msgs={
+      Array [
+        Object {
+          "id": 2,
+          "message": "Por favor, informe o email",
+          "type": "danger",
+        },
+      ]
+    }
+  />
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Seu Nome"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Digite seu email"
+      type="email"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Assunto"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Textarea
+      id="message"
+      name="message"
+      onChange={[Function]}
+      placeholder="Mensagem"
+      value=""
+    />
+  </FormGroup>
+  <div
+    className="text-center"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should fill form and submit 3`] = `
+<form>
+  <FlashMessages
+    msgs={
+      Array [
+        Object {
+          "id": 3,
+          "message": "Por favor, informe o assunto",
+          "type": "danger",
+        },
+      ]
+    }
+  />
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Seu Nome"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Digite seu email"
+      type="email"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Assunto"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Textarea
+      id="message"
+      name="message"
+      onChange={[Function]}
+      placeholder="Mensagem"
+      value=""
+    />
+  </FormGroup>
+  <div
+    className="text-center"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should fill form and submit 4`] = `
+<form>
+  <FlashMessages
+    msgs={
+      Array [
+        Object {
+          "id": 4,
+          "message": "Por favor, informe sua mensagem",
+          "type": "danger",
+        },
+      ]
+    }
+  />
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Seu Nome"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Digite seu email"
+      type="email"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Assunto"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Textarea
+      id="message"
+      name="message"
+      onChange={[Function]}
+      placeholder="Mensagem"
+      value=""
+    />
+  </FormGroup>
+  <div
+    className="text-center"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should fill form and submit 5`] = `
+<form>
+  <FlashMessages
+    msgs={Array []}
+  />
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Seu Nome"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Digite seu email"
+      type="email"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Input
+      id="subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Assunto"
+      value=""
+    />
+  </FormGroup>
+  <FormGroup
+    row={false}
+  >
+    <Textarea
+      id="message"
+      name="message"
+      onChange={[Function]}
+      placeholder="Mensagem"
+      value=""
+    />
+  </FormGroup>
+  <div
+    className="text-center"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should fill form and submit 6`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "email": "david@email.com",
+        "message": "message",
+        "name": "david",
+        "subject": "subject",
+      },
+    ],
+  ],
+}
+`;

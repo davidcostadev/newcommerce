@@ -116,7 +116,6 @@ const fakeFetchChangePasswordFall = () => Promise.resolve({
   },
 })
 
-
 describe('should test all function of user api', () => {
   it('should do login with email and password it\'s corrent', (done) => {
     const data = {
@@ -242,6 +241,60 @@ describe('should test all function of user api', () => {
       .catch((response) => {
         expect(response)
           .toEqual(UserMock.passwordChangeFallUser)
+        done()
+      })
+  })
+
+  it('should send email', (done) => {
+    const fakeFetchSendEmail = () => Promise.resolve({
+      data: {
+        result: [
+          {
+            PS_TABELA_INFO: [UserMock.sendEmail],
+            PS_ALERTA: 7,
+            PS_FEEDBACK: 'A mensagem foi processada com sucesso para name',
+          },
+        ],
+      },
+    })
+    const data = {
+      email: 'david@newcommerce.com',
+      subject: 'subject',
+      name: 'name',
+      message: 'message',
+    }
+
+    User.sendEmail(fakeProcess.env, fakeFetchSendEmail, data)
+      .then((response) => {
+        expect(response)
+          .toEqual(UserMock.sendEmail)
+        done()
+      })
+  })
+
+  it('should don\'t send email', (done) => {
+    const fakeFetch = () => Promise.resolve({
+      data: {
+        result: [
+          {
+            PS_TABELA_INFO: [UserMock.sendEmailError],
+            PS_ALERTA: 206,
+            PS_FEEDBACK: 'Assunto - Não pode está vazio',
+          },
+        ],
+      },
+    })
+    const data = {
+      email: null,
+      subject: null,
+      name: null,
+      message: null,
+    }
+
+    User.sendEmail(fakeProcess.env, fakeFetch, data)
+      .catch((response) => {
+        expect(response)
+          .toEqual(UserMock.sendEmailError)
         done()
       })
   })

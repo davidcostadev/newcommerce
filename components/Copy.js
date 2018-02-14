@@ -33,7 +33,7 @@ const Copy = () => (
         </Link> Os produtos que você curte e o melhor serviço da internet.
       </div>
       <div>
-        Desenvolvidor por<Link route="/"><RouterLink href="/">davidcosta.com.br</RouterLink></Link>
+        Desenvolvidor por <Link route="/"><RouterLink href="/">davidcosta.com.br</RouterLink></Link>
       </div>
     </Container>
   </CopyWrapper>
