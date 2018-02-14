@@ -11,6 +11,7 @@ import FormChangePasswordGuest from '../components/form/FormChangePasswordGuest'
 import FormChangePassword from '../components/form/FormChangePassword'
 import User from '../api/User'
 import { FlashMessages } from '../components/page/FlashMessage'
+import env from '../utils/env'
 
 class Password extends React.Component {
   static async getInitialProps(props) {
@@ -51,10 +52,6 @@ class Password extends React.Component {
     }
 
     try {
-      const env = {
-        PASSKEY: process.env.PASSKEY,
-        DOMAIN_API: process.env.DOMAIN_API,
-      }
       const response = await User.checkHash(env, axios.post, key)
 
       if (response.PS_ID_PESSOA > 0) {
@@ -86,11 +83,6 @@ class Password extends React.Component {
     const { userId } = this.props
 
     try {
-      const env = {
-        PASSKEY: process.env.PASSKEY,
-        DOMAIN_API: process.env.DOMAIN_API,
-      }
-
       User.changePassword(env, axios.post, {
         userId,
         password,
@@ -103,7 +95,6 @@ class Password extends React.Component {
       console.log(err)
     }
   }
-
 
   render() {
     const { passwordValid } = this.props

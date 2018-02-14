@@ -9,6 +9,7 @@ import { FlashMessages } from '../components/page/FlashMessage'
 import Page from '../containers/PageHOF'
 import { Container, PageContent } from '../layout/Pages'
 import { RouterLink } from '../layout/Html'
+import env from '../utils/env'
 
 class Contact extends React.Component {
   static async getInitialProps(props) {
@@ -42,15 +43,7 @@ class Contact extends React.Component {
   }
 
   async send(params) {
-    console.log(params)
-    console.log(this)
-
     try {
-      const env = {
-        PASSKEY: process.env.PASSKEY,
-        DOMAIN_API: process.env.DOMAIN_API,
-      }
-
       await User.sendEmail(env, axios.post, params)
 
       this.setState({
