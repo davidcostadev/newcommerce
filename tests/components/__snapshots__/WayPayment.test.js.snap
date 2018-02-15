@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should Item way payment 1`] = `
+<button
+  className="btn btn-default WayPayment__ButtonPayment-b3out0-0 dkxUjX"
+  id="payment-22"
+  onClick={[Function]}
+  type="button"
+>
+  one
+</button>
+`;
+
+exports[`should List way payment 1`] = `
+<div>
+  <button
+    className="btn btn-default btn-primary WayPayment__ButtonPayment-b3out0-0 dkxUjX"
+    id="payment-1"
+    onClick={[Function]}
+    type="button"
+  >
+    Pagar na Loja
+  </button>
+  <button
+    className="btn btn-default WayPayment__ButtonPayment-b3out0-0 dkxUjX"
+    id="payment-2"
+    onClick={[Function]}
+    type="button"
+  >
+    Cartão de Débido
+  </button>
+  <button
+    className="btn btn-default WayPayment__ButtonPayment-b3out0-0 dkxUjX"
+    id="payment-22"
+    onClick={[Function]}
+    type="button"
+  >
+    Cartão de Crédito até 3x
+  </button>
+</div>
+`;
+
+exports[`should change way payment 1`] = `
+<WayPayment__ButtonPayment
+  className="btn btn-default"
+  id="payment-22"
+  onClick={[Function]}
+  type="button"
+>
+  one
+</WayPayment__ButtonPayment>
+`;

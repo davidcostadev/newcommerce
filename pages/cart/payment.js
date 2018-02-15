@@ -14,9 +14,10 @@ import WayPayment from '../../components/product/WayPayment'
 import WayDelivery from '../../components/product/WayDelivery'
 import { Container } from '../../layout/Pages'
 import * as Cart from '../../layout/Cart'
-import { floatToReal, StringToReal } from '../../utils/money'
+import { floatToReal, StringToReal, calcFactor } from '../../utils/money'
 import { closeCart } from '../../api/Cart'
 import withAuth from '../../utils/withAuth'
+import env from '../../utils/env'
 
 const PagePayment = styled.form`
   margin-bottom: 30px;
@@ -47,6 +48,8 @@ class CartPayment extends React.Component {
 
     this.state = {
       paymentId: 1,
+      paymentName: 'Avista',
+      paymentFactor: 1,
       deliveryId: 1,
       isLoading: false,
     }
@@ -61,15 +64,16 @@ class CartPayment extends React.Component {
   async save(e) {
     e.preventDefault()
 
-
     this.setState({ isLoading: true })
     this.closeCart()
     this.setState({ isLoading: false })
   }
 
-  changeWayPayment(id) {
+  changeWayPayment({ id, factor, name }) {
     this.setState({
       paymentId: id,
+      paymentName: name,
+      paymentFactor: factor,
     })
   }
 
@@ -91,10 +95,6 @@ class CartPayment extends React.Component {
     jsCookie.set('cartId', null)
 
     try {
-      const env = {
-        PASSKEY: process.env.PASSKEY,
-        DOMAIN_API: process.env.DOMAIN_API,
-      }
       const data = {
         cartId: this.props.cart.PS_ID_CARRINHO,
         userId: this.props.user.PS_ID_CADASTRO,
@@ -112,18 +112,28 @@ class CartPayment extends React.Component {
   render() {
     const {
       paymentId,
+      paymentName,
+      paymentFactor,
       deliveryId,
       isLoading,
     } = this.state
-
     const {
       cart,
       cartItens,
     } = this.props
-
     const urlMeta = {
       PS_TITLE: 'Carrinho: Finalização',
       PS_DESCRIPTION: 'Carrinho finalização',
+    }
+    let factorContent = null
+
+    if (paymentFactor !== 1) {
+      factorContent = (
+        <tr>
+          <td>Importo para {paymentName}</td>
+          <td>+{(paymentFactor - 1).toFixed(2).replace('.', ',')}%</td>
+        </tr>
+      )
     }
 
 
@@ -165,9 +175,10 @@ class CartPayment extends React.Component {
                               <td>Frete</td>
                               <td>R$ {floatToReal(0)}</td>
                             </tr>
+                            {factorContent}
                             <tr>
                               <td>Total</td>
-                              <td>R$ {StringToReal(cart.PS_VL_TOTAL_GERAL)}</td>
+                              <td>R$ {calcFactor(cart.PS_VL_TOTAL_GERAL, paymentFactor)}</td>
                             </tr>
                           </tbody>
                         </table>

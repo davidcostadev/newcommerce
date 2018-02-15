@@ -24,3 +24,10 @@ export const stringToDesconto = (value, desconto) => {
 
   return floatToReal(factor * float)
 }
+
+
+export const calcFactor = (value, factor) => {
+  const float = toFloat(value)
+
+  return floatToReal(factor * float)
+}
