@@ -19,14 +19,17 @@ const listPayments = [
   {
     id: 1,
     name: 'Pagar na Loja',
+    factor: 1,
   },
   {
     id: 2,
     name: 'Cartão de Débido',
+    factor: 1.03,
   },
   {
     id: 22,
     name: 'Cartão de Crédito até 3x',
+    factor: 1.05,
   },
 ]
 
@@ -36,6 +39,7 @@ const Ways = ({ paymentDefault, onClick }) => (
       listPayments.map(payment => (
         <Way
           key={payment.id}
+
           paymentDefault={paymentDefault}
           payment={payment}
           onClick={onClick}
@@ -58,7 +62,7 @@ const ButtonPayment = styled.button`
   }
 `
 
-const Way = ({ paymentDefault, payment, onClick }) => {
+export const Way = ({ paymentDefault, payment, onClick }) => {
   const classPayment = classname(
     'btn',
     'btn-default',
@@ -69,8 +73,9 @@ const Way = ({ paymentDefault, payment, onClick }) => {
   return (
     <ButtonPayment
       type="button"
+      id={`payment-${payment.id}`}
       className={classPayment}
-      onClick={() => onClick(payment.id)}
+      onClick={() => onClick(payment)}
     >
       {payment.name}
     </ButtonPayment>

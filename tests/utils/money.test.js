@@ -2,7 +2,7 @@
 
 import * as money from '../../utils/money'
 
-describe('Functions Money', () => {
+describe('should test', () => {
   it('money.toFloat', () => {
     expect(money.toFloat('100,00')).toBe(100)
     expect(money.toFloat('100,01')).toBe(100.01)
@@ -31,5 +31,17 @@ describe('Functions Money', () => {
     expect(money.stringToDesconto('100,50', 10)).toBe('90,45')
     expect(money.stringToDesconto('100', 10)).toBe('90,00')
     expect(money.stringToDesconto('100', 10)).toBe('90,00')
+  })
+
+  it('calc valor in by factor', () => {
+    expect(money.calcFactor('100', 1.03)).toBe('103,00')
+    expect(money.calcFactor('100,50', 1.03)).toBe('103,52')
+    expect(money.calcFactor('100,99', 1.03)).toBe('104,02')
+    expect(money.calcFactor('100', 1)).toBe('100,00')
+    expect(money.calcFactor('100,50', 1)).toBe('100,50')
+    expect(money.calcFactor('100,99', 1)).toBe('100,99')
+    expect(money.calcFactor('100', 1.05)).toBe('105,00')
+    expect(money.calcFactor('100,50', 1.05)).toBe('105,53')
+    expect(money.calcFactor('100,99', 1.05)).toBe('106,04')
   })
 })
