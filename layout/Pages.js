@@ -21,6 +21,15 @@ export const Card = styled.div`
   }
 `
 
+export const FormContent = styled.div`
+  padding: 70px 0 160px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+`
+
 export const Container = styled.div`
   width: 100%;
   padding-right: 15px;

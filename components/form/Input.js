@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import InputReact from 'react-input-mask'
 
 class Input extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Input extends React.Component {
     const { id, ...otherProps } = this.props
 
     return (
-      <input
+      <InputReact
         className="form-control"
         type="text"
         {...otherProps}
