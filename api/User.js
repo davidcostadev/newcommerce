@@ -198,6 +198,66 @@ async function update(env, fetch, dataApi) {
   }
 }
 
+async function create(env, fetch, dataApi) {
+  const data = JSON.stringify({
+    PE_PASSKEY: env.PASSKEY,
+    PE_IP: '127.0.0.1',
+    PE_SESSAO: 'asdfgh',
+    PE_ID_TIPO: dataApi.type_id || 1,
+    PE_ID_CATEGORIA: dataApi.category_id || 1,
+    PE_ID_FACEBOOK: dataApi.facebook_id || null,
+    PE_ID_GOOGLE: dataApi.google_id || null,
+    PE_ID_TWITTER: dataApi.twitter_id || null,
+    PE_ID_LINKEDIN: dataApi.linkedin_id || null,
+    PE_FLAG_EMAIL_MKT: dataApi.flag_mkt || null,
+    PE_NOME: dataApi.name || null,
+    PE_RAZAO_SOCIAL: dataApi.social_name || null,
+    PE_NOME_FANTASIA: dataApi.fantasy_name || null,
+    PE_PRIMEIRO_NOME: dataApi.first_name || null,
+    PE_NOME_DO_MEIO: dataApi.middle_name || null,
+    PE_SOBRENOME: dataApi.last_name || null,
+    PE_GENERO: dataApi.gender || null,
+    PE_FONE_PRINCIPAL: dataApi.phone_main || null,
+    PE_FONE_MOVEL: dataApi.phone_mobile || null,
+    PE_FONE_FIXO: dataApi.landline || null,
+    PE_CPF: dataApi.cpf || null,
+    PE_RG: dataApi.rg || null,
+    PE_CNPJ: dataApi.cnpj || null,
+    PE_INSC_ESTADUAL: dataApi.insc_state || null,
+    PE_NOME_RESPONSAVEL: dataApi.name_responsible || null,
+    PE_CARGO_RESPONSAVEL: dataApi.office_responsible || null,
+    PE_ATIVIDADE_PRINCIPAL: dataApi.main_office || null,
+    PE_CEP: dataApi.cep || null,
+    PE_ENDERECO: dataApi.address || null,
+    PE_ENDERECO_NUMERO: dataApi.address_number || null,
+    PE_COMPLEMENTO: dataApi.address_complement || null,
+    PE_BAIRRO: dataApi.address_neighborhood || null,
+    PE_CIDADE: dataApi.address_city || null,
+    PE_UF: dataApi.address_state || null,
+    PE_REGIAO_PAIS: dataApi.address_region || null,
+    PE_PAIS: dataApi.address_country || null,
+    PE_WEBSITES: dataApi.website || null,
+    PE_SKYPE: dataApi.skype || null,
+    PE_ANOTACOES: dataApi.notes || null,
+    PE_EMAIL_DE_LOGIN: dataApi.email,
+    PE_SENHA: md5(dataApi.password),
+  })
+
+  try {
+    const response = await fetch(`${env.DOMAIN_API}/Tsvmwebsite/sp_web_cliente_cadastro_ins`, data)
+
+    if (response.data.result[0].PS_ALERTA !== 7) {
+      throw response.data.result[0]
+    }
+
+    console.log('user.create', response.data.result[0])
+
+    return response.data.result[0].PS_TABELA_INFO[0]
+  } catch (e) {
+    throw e
+  }
+}
+
 async function resetPassword(env, fetch, email) {
   const data = JSON.stringify({
     PE_PASSKEY: env.PASSKEY,
@@ -296,6 +356,7 @@ export default {
   login,
   get,
   update,
+  create,
   resetPassword,
   checkHash,
   changePassword,

@@ -18,6 +18,7 @@ routes
   .add('dashboard/password')
   .add('dashboard/logout')
   .add('contact')
+  .add('signup')
 
 module.exports = routes
 

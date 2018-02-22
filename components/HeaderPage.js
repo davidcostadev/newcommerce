@@ -92,6 +92,9 @@ class HeaderPage extends React.Component {
                       <Link route="login">
                         <MenuLink>Entrar</MenuLink>
                       </Link>
+                      <Link route="signup">
+                        <MenuLink>Cadastrar</MenuLink>
+                      </Link>
                     </ShowToGuest>
                     <ShowToUser>
                       <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
