@@ -2,6 +2,7 @@ import React from 'react'
 import withRedux from 'next-redux-wrapper'
 import styled from 'styled-components'
 import Page from '../containers/PageHOF'
+import { Link } from '../routes'
 import { Container } from '../layout/Pages'
 import { initStore } from '../store'
 import LoginFrom from '../components/users/LoginForm'
@@ -43,6 +44,11 @@ class Login extends React.Component {
           <FormContent>
             <h1>Login</h1>
             <LoginFrom />
+            <Link route="signup">
+              <a href="signup">
+                Cadastro
+              </a>
+            </Link>
           </FormContent>
         </Container>
       </Page>

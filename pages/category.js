@@ -14,6 +14,7 @@ import WidgetCategoryContainer from '../containers/WidgetCategoryContainer'
 import TitleSection from '../components/TitleSection'
 import FilterOrderProducts from '../components/FilterOrderProducts'
 import Pagination from '../components/Pagination'
+import { redirect } from '../utils/user'
 
 class Category extends React.Component {
   static async getInitialProps(props) {
@@ -24,8 +25,15 @@ class Category extends React.Component {
       query,
     } = props
     const { sessionId } = Page.getInitialProps(store, req, isServer)
+    let urlMeta = null
 
-    const urlMeta = await ApiUrl(query)
+    try {
+      urlMeta = await ApiUrl(query)
+    } catch (e) {
+      redirect(props, 'categories')
+    }
+
+
     const page = query.page ? query.page : 1
 
     const resultCategory = await ApiCategory({

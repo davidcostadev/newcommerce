@@ -1,8 +1,11 @@
-import { TOGGLE_MENU } from '../type'
+import { TOGGLE_MENU, TOGGLE_SEARCH } from '../type'
 
 
 export const toggleMenu = () => ({
   type: TOGGLE_MENU,
 })
 
-export default toggleMenu
+export const toggleSearch = () => ({
+  type: TOGGLE_SEARCH,
+})
+

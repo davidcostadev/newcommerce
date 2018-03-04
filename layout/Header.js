@@ -3,6 +3,10 @@ import theme from './theme'
 
 export const HeaderPageOne = styled.div`
   background-color: white;
+
+  @media(max-width: ${theme.maxMd}) {
+    display: none;
+  }
 `
 
 export const Header = styled.header`

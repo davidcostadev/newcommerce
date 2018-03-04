@@ -25,6 +25,9 @@ const organizeGroup = (groups) => {
 }
 
 const familyFeatureMount = (categories, familyId) => {
+  if (!familyId) {
+    return null
+  }
   const categoryFind = categories.find(category => category.ID_FAMILIA === familyId)
 
   return {
@@ -40,7 +43,7 @@ const WidgetCategoryFeature = (props) => {
   const familyFeature = familyFeatureMount(props.categories, props.familyId)
 
   if (!familyFeature) {
-    return <div>vazio</div>
+    return null
   }
 
   return (
@@ -50,7 +53,11 @@ const WidgetCategoryFeature = (props) => {
 
 WidgetCategoryFeature.propTypes = {
   categories: PropTypes.array.isRequired,
-  familyId: PropTypes.number.isRequired,
+  familyId: PropTypes.number,
+}
+
+WidgetCategoryFeature.defaultProps = {
+  familyId: 0,
 }
 
 const mapState = state => state
