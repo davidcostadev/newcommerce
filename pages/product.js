@@ -10,7 +10,7 @@ import ApiUrl from '../api/Url'
 import ApiProduct from '../api/Product'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import ProductDetails from '../components/ProductDetails'
-import Gallery from '../components/Gallery'
+import GalleryBox from '../components/GalleryBox'
 import ProductsCarrocel from '../components/ProductsCarrocel'
 import ProductDescription from '../components/ProductDescription'
 import Breadcrumbs from '../components/Breadcrumbs'
@@ -115,7 +115,7 @@ class Product extends React.Component {
           <ProductPageBox>
             <div className="row">
               <div className="col-lg-4">
-                <Gallery
+                <GalleryBox
                   image={this.props.product.PS_PATH_IMAGEM_400}
                   images={this.props.images}
                   urlMeta={this.props.urlMeta}
