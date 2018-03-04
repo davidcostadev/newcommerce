@@ -1,4 +1,4 @@
-import { TOGGLE_MENU } from '../type'
+import { TOGGLE_MENU, TOGGLE_SEARCH } from '../type'
 
 export const menuMobile = (state = false, { type }) => {
   switch (type) {
@@ -9,4 +9,12 @@ export const menuMobile = (state = false, { type }) => {
   }
 }
 
-export default menuMobile
+export const showSearchMobile = (state = true, { type }) => {
+  switch (type) {
+    case TOGGLE_SEARCH:
+      return !state
+    default:
+      return state
+  }
+}
+

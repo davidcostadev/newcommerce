@@ -12,6 +12,9 @@ import HeaderPage from '../components/HeaderPage'
 import FooterPage from '../components/FooterPage'
 import Sitemap from '../components/Sitemap'
 import Copy from '../components/Copy'
+import ToolbarMobile from '../components/ToolbarMobile'
+import NavbarMobile from '../components/NavbarMobile'
+import SearchMobile from '../components/SearchMobile'
 import cookie from '../utils/cookie'
 
 class Page extends React.Component {
@@ -130,6 +133,7 @@ class Page extends React.Component {
           <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
         </Head>
         <HeaderPage query={this.props.url.query.q} />
+        <NavbarMobile query={this.props.url.query.q} />
         <main id="page-content">
           {this.props.children}
         </main>
@@ -137,6 +141,8 @@ class Page extends React.Component {
           <Sitemap />
           <Copy />
         </FooterPage>
+        <SearchMobile />
+        <ToolbarMobile />
       </div>
     )
   }

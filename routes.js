@@ -4,6 +4,7 @@ const routes = nextRoutes()
 
 routes
   .add('index')
+  .add('categories')
   .add('category', '/category/:family?/:group?/:subgroup?')
   .add('product', '/product/:slug')
   .add('search')

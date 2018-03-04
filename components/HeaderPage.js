@@ -25,10 +25,10 @@ import {
   Menu,
   MenuItem,
   MenuLink,
-  MenuButton,
+  // MenuButton,
 } from '../layout/Header'
 import Logo from '../layout/Logo'
-import BtnNavigation from './ButtonNavigation'
+// import BtnNavigation from './ButtonNavigation'
 
 Router.onRouteChangeStart = () => {
   // console.log(`Loading: ${url}`)
@@ -103,7 +103,7 @@ class HeaderPage extends React.Component {
                       </Link>
                     </ShowToUser>
                   </MenuItem>
-                  <MenuItem onlyMobile>
+                  {/* <MenuItem onlyMobile>
                     <ShowToGuest>
                       <Link route="/login">
                         <MenuButton>
@@ -121,20 +121,20 @@ class HeaderPage extends React.Component {
                         </MenuButton>
                       </Link>
                     </ShowToUser>
-                  </MenuItem>
-                  <MenuItem onlyMobile>
+                  </MenuItem> */}
+                  {/* <MenuItem onlyMobile>
                     <MenuButton onClick={this.toggleSearch}>
                       <i className={`ion-ios-${openSearch ? 'close-empty' : 'search'}`} />
                     </MenuButton>
-                  </MenuItem>
+                  </MenuItem> */}
                   <ShowCart>
                     <MenuItem onlyDesktop>
                       <ButtonCart />
                     </MenuItem>
                   </ShowCart>
-                  <MenuItem onlyMobile>
+                  {/* <MenuItem onlyMobile>
                     <BtnNavigation />
-                  </MenuItem>
+                  </MenuItem> */}
                 </Menu>
               </div>
             </div>
