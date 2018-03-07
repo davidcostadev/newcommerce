@@ -24,8 +24,8 @@ module.exports = {
    */
   deploy: {
     production: {
-      user: 'ubuntu',
-      host: '34.239.129.224',
+      user: 'root',
+      host: '159.203.121.112',
       ref: 'origin/master',
       repo: 'git@github.com:davidcostadev/newcommerce.git',
       path: '/var/www/raicromdistribuidora.com.br',
