@@ -27,7 +27,7 @@ module.exports = {
       user: 'root',
       host: '159.203.121.112',
       ref: 'origin/master',
-      repo: 'git@github.com:davidcostadev/newcommerce.git',
+      repo: 'https://github.com/davidcostadev/newcommerce.git',
       path: '/var/www/raicromdistribuidora.com.br',
       'post-deploy': [
         'npm install',
