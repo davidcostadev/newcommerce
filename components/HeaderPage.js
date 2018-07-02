@@ -9,22 +9,22 @@ import NProgress from 'nprogress'
 import { Link } from '../routes'
 import SearchForm from './SearchForm'
 import CategoriasContainer from '../containers/Categorias'
-import ButtonCart from '../components/ButtonCart'
+// import ButtonCart from '../components/ButtonCart'
 import { Container } from '../layout/Pages'
 import { setAuthentication } from '../flux/user/actions'
 import SubTitle from './page/Subtitle'
-import ShowCart from './permissions/ShowCart'
-import ShowToGuest from './permissions/ShowToGuest'
-import ShowToUser from './permissions/ShowToUser'
+// import ShowCart from './permissions/ShowCart'
+// import ShowToGuest from './permissions/ShowToGuest'
+// import ShowToUser from './permissions/ShowToUser'
 import {
   HeaderPageOne,
   Header,
   Brand,
   ColSearch,
   ColSearchMobile,
-  Menu,
-  MenuItem,
-  MenuLink,
+  // Menu,
+  // MenuItem,
+  // MenuLink,
   // MenuButton,
 } from '../layout/Header'
 import Logo from '../layout/Logo'
@@ -56,7 +56,7 @@ class HeaderPage extends React.Component {
   render() {
     // debugger
 
-    const { query, Logout } = this.props
+    const { query } = this.props
     // const { query } = this.props
     const { openSearch } = this.state
 
@@ -76,67 +76,6 @@ class HeaderPage extends React.Component {
               <ColSearch className="col">
                 <SearchForm query={query} />
               </ColSearch>
-              <div className="col col-md-8 col-lg-3">
-                <Menu right>
-                  {
-                    process.env.BUSSNESS_ENABLE_CART === 'true' ? (
-                      <MenuItem onlyDesktop>
-                        <Link route="/dashboard/orders">
-                          <MenuLink>Meus Pedidos</MenuLink>
-                        </Link>
-                      </MenuItem>
-                    ) : ''
-                  }
-                  <MenuItem onlyDesktop>
-                    <ShowToGuest>
-                      <Link route="login">
-                        <MenuLink>Entrar</MenuLink>
-                      </Link>
-                      <Link route="signup">
-                        <MenuLink>Cadastrar</MenuLink>
-                      </Link>
-                    </ShowToGuest>
-                    <ShowToUser>
-                      <MenuLink onClick={() => Logout(false)}>Sair</MenuLink>
-                      <Link route="dashboard">
-                        <MenuLink>Meus Pedidos</MenuLink>
-                      </Link>
-                    </ShowToUser>
-                  </MenuItem>
-                  {/* <MenuItem onlyMobile>
-                    <ShowToGuest>
-                      <Link route="/login">
-                        <MenuButton>
-                          <i className="ion-ios-person" />
-                        </MenuButton>
-                      </Link>
-                    </ShowToGuest>
-                    <ShowToUser>
-                      <MenuLink onClick={() => Logout(false)}>
-                        <i className="ion-ios-upload-outline" />
-                      </MenuLink>
-                      <Link route="dashboard">
-                        <MenuButton>
-                          <i className="ion-ios-person" />
-                        </MenuButton>
-                      </Link>
-                    </ShowToUser>
-                  </MenuItem> */}
-                  {/* <MenuItem onlyMobile>
-                    <MenuButton onClick={this.toggleSearch}>
-                      <i className={`ion-ios-${openSearch ? 'close-empty' : 'search'}`} />
-                    </MenuButton>
-                  </MenuItem> */}
-                  <ShowCart>
-                    <MenuItem onlyDesktop>
-                      <ButtonCart />
-                    </MenuItem>
-                  </ShowCart>
-                  {/* <MenuItem onlyMobile>
-                    <BtnNavigation />
-                  </MenuItem> */}
-                </Menu>
-              </div>
             </div>
           </Container>
         </Header>
@@ -156,7 +95,7 @@ HeaderPage.defaultProps = {
 HeaderPage.propTypes = {
   query: PropTypes.string,
   // authentication: PropTypes.bool.isRequired,
-  Logout: PropTypes.func.isRequired,
+  // Logout: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = ({ authentication }) => ({
