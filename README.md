@@ -11,6 +11,7 @@ Just more an open source Ecommerce Project, build with React
 ### Dev
 
 ```
+cp .env.example .env.test
 npm run dev
 npm run test
 ```
@@ -21,6 +22,7 @@ npm run test
 ### PROD
 
 ```
+cp .env.example .env
 npm dev build:prod
 npm run start
 ```

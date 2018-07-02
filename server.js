@@ -4,7 +4,7 @@ const qs = require('querystring')
 const cookieParser = require('cookie-parser')
 const routes = require('./routes')
 require('dotenv').config({
-  path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env',
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
