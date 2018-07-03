@@ -3,9 +3,8 @@ const next = require('next')
 const qs = require('querystring')
 const cookieParser = require('cookie-parser')
 const routes = require('./routes')
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+
+require('dotenv').config()
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handler = routes.getRequestHandler(app)

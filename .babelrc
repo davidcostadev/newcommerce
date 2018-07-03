@@ -6,10 +6,54 @@
     "next/babel"
   ],
   "plugins": [
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }],
-    ["styled-components", { "ssr": true, "displayName": true, "preprocess": false } ],
-  ]
+    "inline-dotenv"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": true,
+            "preprocess": false
+          }
+        ]
+      ]
+    },
+    "test": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": true,
+            "preprocess": false
+          }
+        ]
+      ],
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {
+              "modules": "commonjs"
+            }
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "displayName": false,
+            "preprocess": false
+          }
+        ]
+      ]
+    }
+  }
 }
