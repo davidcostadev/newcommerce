@@ -3,6 +3,7 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import jsCookie from 'js-cookie'
+import { withRouter } from 'next/router'
 import { getCart } from '../api/Cart'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import { setCategories } from '../store'
@@ -132,8 +133,8 @@ class Page extends React.Component {
           <title>{this.props.urlMeta.PS_TITLE}</title>
           <meta name="description" content={this.props.urlMeta.PS_DESCRIPTION} />
         </Head>
-        <HeaderPage query={this.props.url.query.q} />
-        <NavbarMobile query={this.props.url.query.q} />
+        <HeaderPage query={this.props.router.query.q} />
+        <NavbarMobile query={this.props.router.query.q} />
         <main id="page-content">
           {this.props.children}
         </main>
@@ -170,7 +171,7 @@ Page.defaultProps = {
 }
 
 
-export default Page
+export default withRouter(Page)
 
 // const mapToState = state => ({
 //   categories: state.categories,

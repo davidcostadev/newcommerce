@@ -6,10 +6,21 @@
     "next/babel"
   ],
   "plugins": [
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }],
-    ["styled-components", { "ssr": true, "displayName": true, "preprocess": false } ],
-  ]
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ]
+  ],
+  "env": {
+    "development": {
+      "plugins": ["inline-dotenv"]
+    },
+    "production": {
+      "plugins": ["transform-inline-environment-variables"]
+    }
+  }
 }

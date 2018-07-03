@@ -3,14 +3,14 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 import { CATEGORIES_FULL, SET_FAMILY_ID } from './flux/type'
-import { sessionId, initialStateUser, authentication, user } from './flux/user/reducers'
+import { sessionId, initialState, authentication, user } from './flux/user/reducers'
 import * as cart from './flux/cart/cartReducers'
 import { menuMobile, showSearchMobile } from './flux/config/configReducers'
 
 const initialStateAll = {
   categories: [],
   familyId: 0,
-  sessionId: initialStateUser,
+  sessionId: initialState,
   cart: cart.initialStateCart,
   cartItens: cart.initialStateItens,
   authentication: false,
