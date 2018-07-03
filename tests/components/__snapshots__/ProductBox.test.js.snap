@@ -17,6 +17,25 @@ exports[`Test File ProductBox ProductBox with 3 column 1`] = `
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
   </div>
   <div
+    className="Product__ProductPrice-s1fzb5ed-2 bRkSso"
+  >
+    <span
+      className="Product__ProductCurrency-s1fzb5ed-3 gRgDZn"
+    >
+      R$
+    </span>
+    <span
+      className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
+    >
+      284,00
+    </span>
+  </div>
+  <div
+    className="Product__Status-s1fzb5ed-8 ijDCaF"
+  >
+    Entrega Imediata
+  </div>
+  <div
     className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
@@ -45,6 +64,25 @@ exports[`Test File ProductBox ProductBox with 4 column 1`] = `
     className="Product__ProductTitle-s1fzb5ed-1 cuXePX"
   >
     Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
+  </div>
+  <div
+    className="Product__ProductPrice-s1fzb5ed-2 bRkSso"
+  >
+    <span
+      className="Product__ProductCurrency-s1fzb5ed-3 gRgDZn"
+    >
+      R$
+    </span>
+    <span
+      className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
+    >
+      284,00
+    </span>
+  </div>
+  <div
+    className="Product__Status-s1fzb5ed-8 ijDCaF"
+  >
+    Entrega Imediata
   </div>
   <div
     className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
