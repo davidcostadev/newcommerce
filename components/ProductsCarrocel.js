@@ -20,7 +20,11 @@ const ProductsCarrocel = ({ products, columns, title }) => (
     <CarrocelTitle title={title} />
     <ProductsSectionRow columns4>
       {products.map(product => (
-        <Product product={product} key={product.PS_ID_PRODUTO} columns={columns} />
+        <Product
+          key={product.idOffer}
+          product={product}
+          columns={columns}
+        />
       ))}
     </ProductsSectionRow>
   </ProductsSection>
