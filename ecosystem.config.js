@@ -1,13 +1,15 @@
+const dotenv = require('dotenv')
+
+dotenv.config()
+
 module.exports = {
   /**
    * Application configuration section
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
   apps: [
-
-    // First application
     {
-      name: 'raicromdistribuidora',
+      name: process.env.DEPLOY_NAME,
       script: 'server.js',
       env: {
         COMMON_VARIABLE: 'true',
@@ -24,16 +26,16 @@ module.exports = {
    */
   deploy: {
     production: {
-      user: 'root',
-      host: '159.203.121.112',
+      user: process.env.DEPLOY_USER,
+      host: process.env.DEPLOY_HOST,
       ref: 'origin/master',
       repo: 'https://github.com/davidcostadev/newcommerce.git',
-      path: '/var/www/raicromdistribuidora.com.br',
+      path: process.env.DEPLOY_PATH,
       'post-deploy': [
         'npm install',
         'npm run jest',
         'npm run build:prod',
-        'pm2 reload ecosystem.config.js --env production --name raicromdistribuidora',
+        `pm2 reload ecosystem.config.js --env production --name ${process.env.DEPLOY_NAME}`,
       ].join(' && '),
     },
   },
