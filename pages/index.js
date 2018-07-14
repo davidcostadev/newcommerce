@@ -3,9 +3,9 @@ import withRedux from 'next-redux-wrapper'
 import Page from '../containers/PageHOF'
 import { initStore } from '../store'
 import ProdutosEmDestaque from '../containers/ProdutosEmDestaque'
-import InfoBlocks from '../components/InfoBlocks'
-import BannerMosaico from '../components/BannerMosaico'
-import BannerSeparate from '../components/BannerSeparate'
+// import InfoBlocks from '../components/InfoBlocks'
+// import BannerMosaico from '../components/BannerMosaico'
+// import BannerSeparate from '../components/BannerSeparate'
 import { Container } from '../layout/Pages'
 
 class Home extends React.Component {
@@ -26,11 +26,11 @@ class Home extends React.Component {
   render() {
     return (
       <Page {...this.props}>
-        <BannerMosaico />
+        {/* <BannerMosaico /> */}
         <Container>
           <ProdutosEmDestaque />
-          <BannerSeparate />
-          <InfoBlocks />
+          {/* <BannerSeparate /> */}
+          {/* <InfoBlocks /> */}
         </Container>
       </Page>
     )
