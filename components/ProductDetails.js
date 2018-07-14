@@ -1,37 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Link } from '../routes'
 import theme from '../layout/theme'
-import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
-import ShowPrice from './permissions/ShowPrice'
-import ShowCart from './permissions/ShowCart'
-import ButtonAdd from './product/ButtonAddCart'
-
-function parcelado(number) {
-  const float = toFloat(number)
-
-  let currentParcel = 0
-  let currentAmount = 0
-  const limitSemJuros = 3
-  const minimoParcela = 5
-
-  if (float < minimoParcela) {
-    return <ParcelBox parcel={currentParcel} amount={floatToReal(float)} />
-  }
-
-  for (let i = 1; i <= limitSemJuros; i += 1) {
-    const current = float / i
-    if (current < minimoParcela) {
-      break
-    }
-    currentParcel = i
-    currentAmount = current
-  }
-
-  return <ParcelBox parcel={currentParcel} amount={floatToReal(currentAmount)} />
-}
-
+import { floatToReal } from '../utils/money'
+import ButtonToStore from './product/ButtonToStore'
+import { contentEscape } from './BlockInfo'
 
 const ProductComplement = styled.p`
   display: flex;
@@ -98,12 +71,12 @@ const ProductSku = styled.span`
     padding-left: 5px;
   }
 `
-const ProductTags = styled.span`
-  i {
-    color: ${theme.colorSecond};
-    margin-right: 5px;
-  }
-`
+// const ProductTags = styled.span`
+//   i {
+//     color: ${theme.colorSecond};
+//     margin-right: 5px;
+//   }
+// `
 const ProductBlock = styled.div`
   display: flex;
   justify-content: space-between;
@@ -121,11 +94,6 @@ const ProductBlock = styled.div`
 const ProductPriceCol = styled.div`
   margin-bottom: 15px;
 `
-
-// const BtnFavorite = styled.button`
-//   font-size: 2.00rem;
-//   padding: 0.35rem 0.9rem;
-// `
 
 const ProducPrice = styled.p`
 `
@@ -149,150 +117,102 @@ const ProducAmount = styled.span`
   font-weight: 600;
 `
 
-const ProductPriceBoleto = styled.p`
-  background: ${theme.gray300};
-  margin-bottom: 0;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 15px;
-  margin: 0 -15px 15px;
+// const ProductPriceBoleto = styled.p`
+//   background: ${theme.gray300};
+//   margin-bottom: 0;
+//   font-size: 12px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 10px 15px;
+//   margin: 0 -15px 15px;
 
-  @media(min-width: ${theme.minSm}) {
-    font-size: 18px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-`
+//   @media(min-width: ${theme.minSm}) {
+//     font-size: 18px;
+//     margin-left: 0;
+//     margin-right: 0;
+//   }
+// `
 
-const ProductPriceBoletoCurrency = styled.span``
-const ProductPriceBoletoAmount = styled.span`
-  font-size: 26px;
-  color: ${theme.colorPrimary};
-`
-const ProductPriceBoletoText = styled.span`
-  margin: 10px;
-`
+// const ProductPriceBoletoCurrency = styled.span``
+// const ProductPriceBoletoAmount = styled.span`
+//   font-size: 26px;
+//   color: ${theme.colorPrimary};
+// `
+// const ProductPriceBoletoText = styled.span`
+//   margin: 10px;
+// `
 
-const ProductMore = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+// const ProductMore = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-direction: column;
 
-  @media(min-width: ${theme.minSm}) {
-    flex-direction: row;
-  }
-`
+//   @media(min-width: ${theme.minSm}) {
+//     flex-direction: row;
+//   }
+// `
 
-const ProductCorreioCalc = styled.div`
-  display: flex;
-  align-items: end;
-  padding: 15px 0;
-  margin-bottom: 20px;
-  flex-direction: column;
+// const ProductCorreioCalc = styled.div`
+//   display: flex;
+//   align-items: end;
+//   padding: 15px 0;
+//   margin-bottom: 20px;
+//   flex-direction: column;
 
-  i {
-    color: ${theme.colorPrimary};
-    font-size: 20px;
-    margin-right: 20px;
-  }
-  span {
-    flex: 1;
-  }
-  & > sProductMorepan {
-    margin-bottom: 15px
-  }
-`
+//   i {
+//     color: ${theme.colorPrimary};
+//     font-size: 20px;
+//     margin-right: 20px;
+//   }
+//   span {
+//     flex: 1;
+//   }
+//   & > sProductMorepan {
+//     margin-bottom: 15px
+//   }
+// `
 
-const InputGroup = styled.div`
-  max-width: 290px;
-`
+// const InputGroup = styled.div`
+//   max-width: 290px;
+// `
 
-const ProductDetail = ({ product, bredcrumbs, cartId }) => (
+const ProductDetail = ({ product, content }) => (
   <ProductDetailBox>
-    <ProductTitle>{product.PS_PRODUTO}</ProductTitle>
+    <ProductTitle>{product.name}</ProductTitle>
     <ProductHeader>
       <ProductSku>
         <i className="ion-ios-grid-view-outline" />
-        <span>{product.PS_ID_PRODUTO}</span>
+        <span>{product.idOffer}</span>
       </ProductSku>
-      <ProductTags>
+      {/* <ProductTags>
         <i className="ion-ios-pricetag-outline" />
         <Link route={bredcrumbs[2].route}><a>{bredcrumbs[2].title}</a></Link>
-      </ProductTags>
+      </ProductTags> */}
     </ProductHeader>
-    <p>{product.PS_DESCRICAO_VENDA}</p>
+    <div dangerouslySetInnerHTML={contentEscape(content.call1)} />
     <ProductBlock>
-      <ShowPrice>
-        <ProductPriceCol>
-          <ProducPrice>
-            <ProducText>Por</ProducText>
-            <ProducCurrency>R$</ProducCurrency>
-            <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
-          </ProducPrice>
-          {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
-          <p>
-            {StringToReal(product.PS_VL_VENDA_CCDEBITO)} no cartão de débito
-          </p>
-        </ProductPriceCol>
-      </ShowPrice>
+      <ProductPriceCol>
+        <ProducPrice>
+          <ProducText>Por</ProducText>
+          <ProducCurrency>R$</ProducCurrency>
+          <ProducAmount>{floatToReal(product.regularPriceReal)}</ProducAmount>
+        </ProducPrice>
+      </ProductPriceCol>
 
       <div>
-        <div>
-          <ShowCart>
-            <ButtonAdd
-              productId={parseInt(product.PS_ID_PRODUTO, 10)}
-              cartId={cartId}
-            />
-          </ShowCart>
-        </div>
+        <ButtonToStore
+          to={product.urlAffiliate}
+        />
       </div>
     </ProductBlock>
-    <ShowPrice>
-      <ProductPriceBoleto>
-        <ProductPriceBoletoCurrency>R$</ProductPriceBoletoCurrency>
-        <ProductPriceBoletoAmount>
-          {stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}
-        </ProductPriceBoletoAmount>
-        <ProductPriceBoletoText>7% de Desconco no Boleto ou Transferencia</ProductPriceBoletoText>
-      </ProductPriceBoleto>
-    </ShowPrice>
-    <ProductMore>
-      {
-        process.env.BUSSNESS_ENABLE_FRETE === 'true' ? (
-          <ProductCorreioCalc>
-            <span>
-              <i className="ion-ios-location" />
-              <span>Digite seu CEP para calcular o frete</span>
-            </span>
-            <InputGroup className="input-group">
-              <input type="text" className="form-control" placeholder="00000-000" />
-              <span className="input-group-btn">
-                <button className="btn btn-primary">Calcular</button>
-              </span>
-            </InputGroup>
-          </ProductCorreioCalc>
-        ) : ''
-      }
-
-      {/* <div>
-        <button className="btn btn-default">Achou preço melhor?</button>
-      </div> */}
-    </ProductMore>
   </ProductDetailBox>
 )
 
 ProductDetail.propTypes = {
-  cartId: PropTypes.number,
   product: PropTypes.object.isRequired,
-  bredcrumbs: PropTypes.array.isRequired,
-  // addProductCart: PropTypes.func.isRequired,
-}
-
-ProductDetail.defaultProps = {
-  cartId: 0,
+  content: PropTypes.array.isRequired,
 }
 
 export default ProductDetail

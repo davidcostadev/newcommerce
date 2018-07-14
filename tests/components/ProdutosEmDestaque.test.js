@@ -9,7 +9,6 @@ import { offers as mockOffer } from './__mocks__/offer'
 Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock('../../api/Offers.js', () => () => (Promise.resolve(mockOffer)))
-jest.mock('../../components/permissions/ShowCart.js')
 
 describe('Component <ProdutosEmDestaque />', () => {
   describe('render', () => {

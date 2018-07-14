@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import theme from '../layout/theme'
 
-const contentEscape = content => ({
+export const contentEscape = content => ({
   __html: content,
 })
 
