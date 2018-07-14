@@ -1,3 +1,5 @@
+/* eslint max-len: "off" */
+
 const offer = [
   {
     RegularPriceDolar: 13.27,
