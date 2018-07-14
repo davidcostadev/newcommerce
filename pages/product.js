@@ -12,9 +12,9 @@ import ApiProductImages from '../api/ProductImages'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import ProductDetails from '../components/ProductDetails'
 import GalleryBox from '../components/GalleryBox'
-import ProductsCarrocel from '../components/ProductsCarrocel'
+// import ProductsCarrocel from '../components/ProductsCarrocel'
 import ProductDescription from '../components/ProductDescription'
-import Breadcrumbs from '../components/Breadcrumbs'
+// import Breadcrumbs from '../components/Breadcrumbs'
 import ProductUtil from '../utils/product'
 
 
@@ -153,7 +153,10 @@ class Product extends React.Component {
           </ProductPageBox>
 
           <ProductDescription content={this.props.content} />
-          {/* <ProductsCarrocel title="Relacionados" products={this.props.products.slice(0, 4)} /> */}
+          {/* <ProductsCarrocel
+            title="Relacionados"
+            products={this.props.products.slice(0, 4)}
+          /> */}
         </Container>
       </Page>
     )
@@ -166,13 +169,14 @@ Product.propTypes = {
     PS_DESCRIPTION: PropTypes.string.isRequired,
   }).isRequired,
   product: PropTypes.shape({
-    PS_PATH_IMAGEM_400: PropTypes.string.isRequired,
+    urlImage: PropTypes.string.isRequired,
     idFamily: PropTypes.string.isRequired,
     idGroup: PropTypes.string.isRequired,
     idSubgroup1: PropTypes.string.isRequired,
     PS_PRODUTO: PropTypes.string.isRequired,
     PS_PATH_PAGE: PropTypes.string.isRequired,
   }).isRequired,
+  content: PropTypes.object.isRequired,
   images: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
   products: PropTypes.array.isRequired,

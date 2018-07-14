@@ -44,7 +44,7 @@ exports[`Test File ProductBox ProductBox with 3 column 1`] = `
       Ver Detalhes
     </a>
     <div
-      className="Product__ProductBtnBuy-s1fzb5ed-7 fpGzty"
+      className="Product__ProductBtnBuy-s1fzb5ed-7 gRhpcW"
     >
       <a
         className="btn btn-lg btn-primary btn-buy"
@@ -101,7 +101,7 @@ exports[`Test File ProductBox ProductBox with 4 column 1`] = `
       Ver Detalhes
     </a>
     <div
-      className="Product__ProductBtnBuy-s1fzb5ed-7 fpGzty"
+      className="Product__ProductBtnBuy-s1fzb5ed-7 gRhpcW"
     >
       <a
         className="btn btn-lg btn-primary btn-buy"
