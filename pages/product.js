@@ -6,8 +6,9 @@ import styled from 'styled-components'
 import { initStore } from '../store'
 import Page from '../containers/PageHOF'
 import { Container } from '../layout/Pages'
-import ApiUrl from '../api/Url'
-import ApiProduct from '../api/Product'
+import ApiOffers from '../api/Offers'
+import ApiOfferContent from '../api/OfferContent'
+import ApiProductImages from '../api/ProductImages'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import ProductDetails from '../components/ProductDetails'
 import GalleryBox from '../components/GalleryBox'
@@ -30,9 +31,22 @@ class Product extends React.Component {
       isServer,
     } = props
     const { sessionId } = await Page.getInitialProps(store, req, isServer)
+    let productPage
+    let productContent
+    let productImages = []
+    let urlMeta
 
-    const urlMeta = await ApiUrl(query)
-    const productPage = await ApiProduct(urlMeta.PS_ID_PRODUTO)
+    if (query.slug) {
+      productPage = await ApiOffers({ slug: query.slug, limit: 1 })
+      productContent = await ApiOfferContent(productPage.idOffer)
+      productImages = await ApiProductImages(productPage.idProductMain)
+
+      urlMeta = {
+        PS_TITLE: productPage.metaTitle,
+        PS_DESCRIPTION: productPage.metaDescription,
+      }
+    }
+
 
     const cartId = await Page.getCartId(store, req, isServer)
 
@@ -40,9 +54,10 @@ class Product extends React.Component {
       sessionId,
       cartId,
       urlMeta,
-      product: productPage.product,
-      images: productPage.images,
-      products: productPage.products,
+      product: productPage,
+      content: productContent,
+      images: productImages,
+      products: [],
     }
   }
 
@@ -57,38 +72,40 @@ class Product extends React.Component {
     }
   }
 
-  breadCrumbsProps() {
-    const itens = []
+  // breadCrumbsProps() {
+  //   const itens = []
 
-    const family = this.props.categories
-      .find(element => element.ID_FAMILIA === parseInt(this.props.product.PS_ID_FAMILIA, 10))
+  //   console.log(this.props.product)
 
-    const group = family.TABLE_GRUPO
-      .find(element => element.ID_GRUPO === parseInt(this.props.product.PS_ID_GRUPO, 10))
+  //   const family = this.props.categories
+  //     .find(element => element.ID_FAMILIA === parseInt(this.props.product.idFamily, 10))
 
-    const subgroup = group.TABLE_SUBGRUPO
-      .find(element => element.ID_SUBGRUPO === parseInt(this.props.product.PS_ID_SUBGRUPO, 10))
+  //   const group = family.TABLE_GRUPO
+  //     .find(element => element.ID_GRUPO === parseInt(this.props.product.idGroup, 10))
+
+  //   const subgroup = group.TABLE_SUBGRUPO
+  //     .find(element => element.ID_SUBGRUPO === parseInt(this.props.product.idSubgroup1, 10))
 
 
-    itens.push({
-      route: `/category/${family.PATH_PAGE_FAMILIA}`,
-      title: family.FAMILIA,
-    })
-    itens.push({
-      route: `/category/${group.PATH_PAGE_GRUPO}`,
-      title: group.GRUPO,
-    })
-    itens.push({
-      route: `/category/${subgroup.PATH_PAGE_SUBGRUPO}`,
-      title: subgroup.SUBGRUPO,
-    })
-    itens.push({
-      route: `/product/${this.props.product.PS_PATH_PAGE}`,
-      title: this.props.product.PS_PRODUTO,
-    })
+  //   itens.push({
+  //     route: `/category/${family.PATH_PAGE_FAMILIA}`,
+  //     title: family.FAMILIA,
+  //   })
+  //   itens.push({
+  //     route: `/category/${group.PATH_PAGE_GRUPO}`,
+  //     title: group.GRUPO,
+  //   })
+  //   itens.push({
+  //     route: `/category/${subgroup.PATH_PAGE_SUBGRUPO}`,
+  //     title: subgroup.SUBGRUPO,
+  //   })
+  //   itens.push({
+  //     route: `/product/${this.props.product.PS_PATH_PAGE}`,
+  //     title: this.props.product.PS_PRODUTO,
+  //   })
 
-    return itens
-  }
+  //   return itens
+  // }
 
   async addProductCart(productId) {
     const cartId = this.state.cartId || null
@@ -111,12 +128,12 @@ class Product extends React.Component {
     return (
       <Page {...this.props}>
         <Container>
-          <Breadcrumbs itens={this.breadCrumbsProps()} />
+          {/* <Breadcrumbs itens={this.breadCrumbsProps()} /> */}
           <ProductPageBox>
             <div className="row">
               <div className="col-lg-4">
                 <GalleryBox
-                  image={this.props.product.PS_PATH_IMAGEM_400}
+                  image={this.props.product.urlImage}
                   images={this.props.images}
                   urlMeta={this.props.urlMeta}
                 />
@@ -125,7 +142,8 @@ class Product extends React.Component {
                 <ProductDetails
                   cartId={parseInt(this.props.cartId, 10)}
                   product={this.props.product}
-                  bredcrumbs={this.breadCrumbsProps()}
+                  content={this.props.content}
+                  // bredcrumbs={this.breadCrumbsProps()}
                   addProductCart={this.addProductCart}
                   addingOnCart={this.state.addingOnCart}
                 />
@@ -134,8 +152,8 @@ class Product extends React.Component {
             </div>
           </ProductPageBox>
 
-          <ProductDescription product={this.props.product} />
-          <ProductsCarrocel title="Relacionados" products={this.props.products.slice(0, 4)} />
+          <ProductDescription content={this.props.content} />
+          {/* <ProductsCarrocel title="Relacionados" products={this.props.products.slice(0, 4)} /> */}
         </Container>
       </Page>
     )
@@ -149,9 +167,9 @@ Product.propTypes = {
   }).isRequired,
   product: PropTypes.shape({
     PS_PATH_IMAGEM_400: PropTypes.string.isRequired,
-    PS_ID_FAMILIA: PropTypes.string.isRequired,
-    PS_ID_GRUPO: PropTypes.string.isRequired,
-    PS_ID_SUBGRUPO: PropTypes.string.isRequired,
+    idFamily: PropTypes.string.isRequired,
+    idGroup: PropTypes.string.isRequired,
+    idSubgroup1: PropTypes.string.isRequired,
     PS_PRODUTO: PropTypes.string.isRequired,
     PS_PATH_PAGE: PropTypes.string.isRequired,
   }).isRequired,

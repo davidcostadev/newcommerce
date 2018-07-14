@@ -4,9 +4,8 @@ import styled from 'styled-components'
 import { Link } from '../routes'
 import theme from '../layout/theme'
 import { toFloat, floatToReal, StringToReal, stringToDesconto } from '../utils/money'
-import ShowPrice from './permissions/ShowPrice'
-import ShowCart from './permissions/ShowCart'
-import ButtonAdd from './product/ButtonAddCart'
+import ButtonToStore from './product/ButtonToStore'
+import { contentEscape } from './BlockInfo'
 
 function parcelado(number) {
   const float = toFloat(number)
@@ -210,85 +209,41 @@ const InputGroup = styled.div`
   max-width: 290px;
 `
 
-const ProductDetail = ({ product, bredcrumbs, cartId }) => (
+const ProductDetail = ({ product, content, bredcrumbs }) => (
   <ProductDetailBox>
-    <ProductTitle>{product.PS_PRODUTO}</ProductTitle>
+    <ProductTitle>{product.name}</ProductTitle>
     <ProductHeader>
       <ProductSku>
         <i className="ion-ios-grid-view-outline" />
-        <span>{product.PS_ID_PRODUTO}</span>
+        <span>{product.idOffer}</span>
       </ProductSku>
-      <ProductTags>
+      {/* <ProductTags>
         <i className="ion-ios-pricetag-outline" />
         <Link route={bredcrumbs[2].route}><a>{bredcrumbs[2].title}</a></Link>
-      </ProductTags>
+      </ProductTags> */}
     </ProductHeader>
-    <p>{product.PS_DESCRICAO_VENDA}</p>
+    <div dangerouslySetInnerHTML={contentEscape(content.call1)} />
     <ProductBlock>
-      <ShowPrice>
-        <ProductPriceCol>
-          <ProducPrice>
-            <ProducText>Por</ProducText>
-            <ProducCurrency>R$</ProducCurrency>
-            <ProducAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</ProducAmount>
-          </ProducPrice>
-          {parcelado(product.PS_VL_VENDA_CCCREDITO3X)}
-          <p>
-            {StringToReal(product.PS_VL_VENDA_CCDEBITO)} no cartão de débito
-          </p>
-        </ProductPriceCol>
-      </ShowPrice>
+      <ProductPriceCol>
+        <ProducPrice>
+          <ProducText>Por</ProducText>
+          <ProducCurrency>R$</ProducCurrency>
+          <ProducAmount>{floatToReal(product.regularPriceReal)}</ProducAmount>
+        </ProducPrice>
+      </ProductPriceCol>
 
       <div>
-        <div>
-          <ShowCart>
-            <ButtonAdd
-              productId={parseInt(product.PS_ID_PRODUTO, 10)}
-              cartId={cartId}
-            />
-          </ShowCart>
-        </div>
+        <ButtonToStore
+          to={product.urlAffiliate}
+        />
       </div>
     </ProductBlock>
-    <ShowPrice>
-      <ProductPriceBoleto>
-        <ProductPriceBoletoCurrency>R$</ProductPriceBoletoCurrency>
-        <ProductPriceBoletoAmount>
-          {stringToDesconto(product.PS_VALOR_DE_VENDA, 6)}
-        </ProductPriceBoletoAmount>
-        <ProductPriceBoletoText>7% de Desconco no Boleto ou Transferencia</ProductPriceBoletoText>
-      </ProductPriceBoleto>
-    </ShowPrice>
-    <ProductMore>
-      {
-        process.env.BUSSNESS_ENABLE_FRETE === 'true' ? (
-          <ProductCorreioCalc>
-            <span>
-              <i className="ion-ios-location" />
-              <span>Digite seu CEP para calcular o frete</span>
-            </span>
-            <InputGroup className="input-group">
-              <input type="text" className="form-control" placeholder="00000-000" />
-              <span className="input-group-btn">
-                <button className="btn btn-primary">Calcular</button>
-              </span>
-            </InputGroup>
-          </ProductCorreioCalc>
-        ) : ''
-      }
-
-      {/* <div>
-        <button className="btn btn-default">Achou preço melhor?</button>
-      </div> */}
-    </ProductMore>
   </ProductDetailBox>
 )
 
 ProductDetail.propTypes = {
-  cartId: PropTypes.number,
   product: PropTypes.object.isRequired,
   bredcrumbs: PropTypes.array.isRequired,
-  // addProductCart: PropTypes.func.isRequired,
 }
 
 ProductDetail.defaultProps = {

@@ -145,7 +145,7 @@ export const ProductBtnBuy = styled.div`
   flex: 1 1 auto;
   display: flex;
 
-  button {
+  a {
     ${Btn}
     flex: 1;
     border-radius: 0;

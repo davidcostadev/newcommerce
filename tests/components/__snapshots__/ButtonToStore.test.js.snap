@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonToStore /> render default 1`] = `
+<a
+  className="btn btn-lg btn-primary btn-buy"
+  href="http://domain/product"
+>
+  Ir para loja
+</a>
+`;

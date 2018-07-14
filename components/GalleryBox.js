@@ -14,11 +14,11 @@ const Thumbs = (props) => {
 
   return images.map(image => (
     <Gallery.Thumb
-      key={image.PS_ID_ARQUIVO}
-      onClick={() => onClick(image.PS_PATH_IMAGEM_400)}
-      featured={image.PS_PATH_IMAGEM_400 === feature}
+      key={image.idImage}
+      onClick={() => onClick(image.aliexpress)}
+      featured={image.aliexpress === feature}
     >
-      <img src={image.PS_PATH_IMAGEM_400} alt={urlMeta.PS_TITLE} />
+      <img src={image.aliexpress} alt={urlMeta.PS_TITLE} />
     </Gallery.Thumb>
   ))
 }
@@ -32,7 +32,7 @@ class GalleryBox extends React.Component {
     let { image } = props
 
     if (props.images.length) {
-      image = props.images[0].PS_PATH_IMAGEM_400
+      image = props.images[0].aliexpress
     }
 
     this.state = {
