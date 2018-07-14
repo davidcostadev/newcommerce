@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '../routes'
 import * as Product from '../layout/Product'
-import { StringToReal } from '../utils/money'
+import { floatToReal } from '../utils/money'
 import SquareBox from './SquareBox'
 import ShowPrice from './permissions/ShowPrice'
 import ShowCart from './permissions/ShowCart'
@@ -11,22 +11,21 @@ import ButtonAdd from './product/ButtonAddCart'
 
 export const ProductBox = ({ product, columns }) => (
   <Product.ProductItem columns={columns}>
-    <SquareBox image={product.PS_PATH_IMAGEM_250} />
-    <Product.ProductTitle>{product.PS_PRODUTO}</Product.ProductTitle>
+    <SquareBox image={product.urlImage} />
+    <Product.ProductTitle>{product.name}</Product.ProductTitle>
     <ShowPrice>
       <Product.ProductPrice>
         <Product.ProductCurrency>R$</Product.ProductCurrency>
-        <Product.ProductAmount>{StringToReal(product.PS_VALOR_DE_VENDA)}</Product.ProductAmount>
+        <Product.ProductAmount>{floatToReal(product.regularPriceReal)}</Product.ProductAmount>
       </Product.ProductPrice>
-      {/* parcelado(product.PS_VL_VENDA_CCCREDITO3X) */}
-      <Product.Status red green={parseInt(product.PS_FLAG_DISPONIBILIDADE, 10)}>
+      <Product.Status red green={parseInt(product.flagUnavaliable, 10)}>
         {product.PS_DISPONIBILIDADE}
       </Product.Status>
     </ShowPrice>
     <Product.ProductButtons>
-      <Link route={`/product/${product.PS_PATH_PAGE}`}>
+      <Link route={`/product/${product.slug}`}>
         <Product.ProductBtnDetails
-          href={`/product/${product.PS_PATH_PAGE}`}
+          href={`/product/${product.slug}`}
         >
           Ver Detalhes
         </Product.ProductBtnDetails>
@@ -34,7 +33,7 @@ export const ProductBox = ({ product, columns }) => (
       <ShowCart>
         <Product.ProductBtnBuy>
           <ButtonAdd
-            productId={parseInt(product.PS_ID_PRODUTO, 10)}
+            productId={parseInt(product.idOffer, 10)}
           />
         </Product.ProductBtnBuy>
       </ShowCart>
