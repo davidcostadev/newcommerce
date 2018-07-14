@@ -4,7 +4,7 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import toJson from 'enzyme-to-json'
 import ProdutosEmDestaque from '../../containers/ProdutosEmDestaque'
-import mockOffer from './__mocks__/offer'
+import { offers as mockOffer } from './__mocks__/offer'
 
 Enzyme.configure({ adapter: new Adapter() })
 

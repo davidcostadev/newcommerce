@@ -8,13 +8,13 @@ exports[`Test File ProductBox ProductBox with 3 column 1`] = `
     className="SquareBox__BoxSquare-buzb9n-0 csFNBJ"
   >
     <div
-      className="SquareBox__BoxSquareInner-buzb9n-1 ebtWZu"
+      className="SquareBox__BoxSquareInner-buzb9n-1 dJxlZh"
     />
   </picture>
   <div
     className="Product__ProductTitle-s1fzb5ed-1 cuXePX"
   >
-    Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
+    Caixa de 40 Iscas com Ganchos de Pesca Venda Quente Agradável Pcs Durable Prático Moscas Artificiais Pena
   </div>
   <div
     className="Product__ProductPrice-s1fzb5ed-2 bRkSso"
@@ -27,20 +27,18 @@ exports[`Test File ProductBox ProductBox with 3 column 1`] = `
     <span
       className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
     >
-      284,00
+      48,95
     </span>
   </div>
   <div
-    className="Product__Status-s1fzb5ed-8 ijDCaF"
-  >
-    Entrega Imediata
-  </div>
+    className="Product__Status-s1fzb5ed-8 cGeqRU"
+  />
   <div
     className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
       className="Product__ProductBtnDetails-s1fzb5ed-6 gRlUCS"
-      href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
+      href="/product/iscas-de-pesca-caixa-de-40-iscas-com-ganchos-de-pesca-venda-quente-agradavel-pcs-durable"
       onClick={[Function]}
     >
       Ver Detalhes
@@ -57,13 +55,13 @@ exports[`Test File ProductBox ProductBox with 4 column 1`] = `
     className="SquareBox__BoxSquare-buzb9n-0 csFNBJ"
   >
     <div
-      className="SquareBox__BoxSquareInner-buzb9n-1 ebtWZu"
+      className="SquareBox__BoxSquareInner-buzb9n-1 dJxlZh"
     />
   </picture>
   <div
     className="Product__ProductTitle-s1fzb5ed-1 cuXePX"
   >
-    Gabinete Slim DT-100BK C/Fonte PS-200 FX C3TECH S/Cabo
+    Caixa de 40 Iscas com Ganchos de Pesca Venda Quente Agradável Pcs Durable Prático Moscas Artificiais Pena
   </div>
   <div
     className="Product__ProductPrice-s1fzb5ed-2 bRkSso"
@@ -76,20 +74,18 @@ exports[`Test File ProductBox ProductBox with 4 column 1`] = `
     <span
       className="Product__ProductAmount-s1fzb5ed-4 UhmjH"
     >
-      284,00
+      48,95
     </span>
   </div>
   <div
-    className="Product__Status-s1fzb5ed-8 ijDCaF"
-  >
-    Entrega Imediata
-  </div>
+    className="Product__Status-s1fzb5ed-8 cGeqRU"
+  />
   <div
     className="Product__ProductButtons-s1fzb5ed-5 jeLvUD"
   >
     <a
       className="Product__ProductBtnDetails-s1fzb5ed-6 gRlUCS"
-      href="/product/gabinete-slim-dt-100bk-c-fonte-ps-200-fx-c3tech"
+      href="/product/iscas-de-pesca-caixa-de-40-iscas-com-ganchos-de-pesca-venda-quente-agradavel-pcs-durable"
       onClick={[Function]}
     >
       Ver Detalhes

@@ -1,7 +1,6 @@
 /* eslint max-len: "off" */
 
-const offer = [
-  {
+export const offer = {
     RegularPriceDolar: 13.27,
     familyName: 'Sports & Entretenimento',
     flagDestiny: 0,
@@ -32,7 +31,6 @@ const offer = [
     urlAffiliate: 'http://s.click.aliexpress.com/deep_link.htm?dl_target_url=https%3A%2F%2Fpt.aliexpress.com%2Fitem%2FHot-Selling-Nice-Box-40Pcs-Durable-pesca-Feather-Practical-Artificial-Flies-Lures-With-Hooks%2F32858874542.html&aff_short_key=7iaYFMN',
     urlDestiny: 'https://pt.aliexpress.com/item/Hot-Selling-Nice-Box-40Pcs-Durable-pesca-Feather-Practical-Artificial-Flies-Lures-With-Hooks/32858874542.html',
     urlImage: 'https://ae01.alicdn.com/kf/HTB1.VSvOXXXXXbKapXXq6xXFXXXu/venda-quente-agradavel-caixa-de-40-pcs-durable-pratico-moscas-artificiais-iscas-com-ganchos-de-pesca.jpg',
-  },
-]
+  }
 
-export default offer
+export const offers = [offer]
