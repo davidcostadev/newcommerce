@@ -8,11 +8,12 @@ import Page from '../containers/PageHOF'
 import { Container } from '../layout/Pages'
 import ApiOffers from '../api/Offers'
 import ApiOfferContent from '../api/OfferContent'
+import ApiOfferRel from '../api/OfferRel'
 import ApiProductImages from '../api/ProductImages'
 import { setCart, setCartItens } from '../flux/cart/cartActions'
 import ProductDetails from '../components/ProductDetails'
 import GalleryBox from '../components/GalleryBox'
-// import ProductsCarrocel from '../components/ProductsCarrocel'
+import ProductsCarrocel from '../components/ProductsCarrocel'
 import ProductDescription from '../components/ProductDescription'
 // import Breadcrumbs from '../components/Breadcrumbs'
 import ProductUtil from '../utils/product'
@@ -69,6 +70,7 @@ class Product extends React.Component {
     this.state = {
       cartId: props.cartId,
       addingOnCart: 0,
+      offersRel: [],
     }
   }
 
@@ -106,6 +108,20 @@ class Product extends React.Component {
 
   //   return itens
   // }
+
+  componentDidMount() {
+    this.getOffers()
+  }
+
+  async getOffers() {
+    try {
+      const offersRel = await ApiOfferRel(this.props.product.idOffer, { limit: 4 })
+
+      this.setState({ offersRel })
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   async addProductCart(productId) {
     const cartId = this.state.cartId || null
@@ -151,12 +167,11 @@ class Product extends React.Component {
 
             </div>
           </ProductPageBox>
-
-          <ProductDescription content={this.props.content} />
-          {/* <ProductsCarrocel
+          <ProductsCarrocel
             title="Relacionados"
-            products={this.props.products.slice(0, 4)}
-          /> */}
+            products={this.state.offersRel}
+          />
+          <ProductDescription content={this.props.content} />
         </Container>
       </Page>
     )
@@ -169,10 +184,11 @@ Product.propTypes = {
     PS_DESCRIPTION: PropTypes.string.isRequired,
   }).isRequired,
   product: PropTypes.shape({
+    idOffer: PropTypes.number.isRequired,
     urlImage: PropTypes.string.isRequired,
-    idFamily: PropTypes.string.isRequired,
-    idGroup: PropTypes.string.isRequired,
-    idSubgroup1: PropTypes.string.isRequired,
+    idFamily: PropTypes.number.isRequired,
+    idGroup: PropTypes.number.isRequired,
+    idSubgroup1: PropTypes.number.isRequired,
     PS_PRODUTO: PropTypes.string.isRequired,
     PS_PATH_PAGE: PropTypes.string.isRequired,
   }).isRequired,
